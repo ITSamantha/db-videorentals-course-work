@@ -157,7 +157,23 @@ namespace BD_course_work
 
                 return null;
             }
+        }
 
+        public static void insertIntoDirectTable(string table,string vary)//Вставка в справочники
+        {
+            NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+            c.Open();
+
+            string command = $"insert into {table} (pk_country_id,country_name) values (default,'{vary}');";
+
+            var command_s = new NpgsqlCommand(command, c);
+            
+            var cq=command_s.ExecuteNonQuery();
+
+            command_s.Dispose();
+            
+            c.Close();
 
         }
 

@@ -91,6 +91,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddOrEditCountry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrEditCountry.Designer.cs">
+      <DependentUpon>AddOrEditCountry.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControllerForDB.cs" />
     <Compile Include="Instruments.cs" />
     <Compile Include="Main_Menu.cs">
@@ -101,6 +107,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddOrEditCountry.resx">
+      <DependentUpon>AddOrEditCountry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>
     </EmbeddedResource>

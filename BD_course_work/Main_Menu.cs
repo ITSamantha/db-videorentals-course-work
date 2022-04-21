@@ -20,6 +20,21 @@ namespace BD_course_work
 
         public DataTable dt;
 
+        enum Pages
+        {
+            VideoRental=0,
+            Orders,
+            Cassettes,
+            Films,
+            Districts,
+            Property,
+            Services,
+            Owners,
+            Producers,
+            Studios,
+            Countries
+        }
+
         public Main_Menu()
         {
             InitializeComponent();
@@ -87,6 +102,8 @@ namespace BD_course_work
 
         private void countriesB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Countries;
+
             dt= ControllerForDB.selectAllFromTablesDirectories("countries");
 
             if (dt != null)
@@ -102,6 +119,8 @@ namespace BD_course_work
 
         private void studiosB_Click(object sender, EventArgs e)//Таблица "Студии"
         {
+            mainControl.SelectedIndex = (int)Pages.Studios;
+
             dt = ControllerForDB.selectAllFromMainTables("studios");
 
             if (dt != null)
@@ -118,6 +137,8 @@ namespace BD_course_work
 
         private void producersB_Click(object sender, EventArgs e)//Таблица "Режиссеры"
         {
+            mainControl.SelectedIndex = (int)Pages.Producers;
+
             dt = ControllerForDB.selectAllFromTablesDirectories("producers");
 
             if (dt != null)
@@ -137,6 +158,8 @@ namespace BD_course_work
 
         private void ownersB_Click(object sender, EventArgs e)//Таблица"Хозяины"
         {
+            mainControl.SelectedIndex = (int)Pages.Owners;
+
             dt = ControllerForDB.selectAllFromTablesDirectories("owners");
 
             if (dt != null)
@@ -155,6 +178,8 @@ namespace BD_course_work
 
         private void servicesB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Services;
+
             dt = ControllerForDB.selectAllFromTablesDirectories("services");
 
             if (dt != null)
@@ -169,6 +194,8 @@ namespace BD_course_work
 
         private void proptypeB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Property;
+
             dt = ControllerForDB.selectAllFromTablesDirectories("property_type");
 
             if (dt != null)
@@ -183,6 +210,8 @@ namespace BD_course_work
 
         private void districtB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Districts;
+
             dt = ControllerForDB.selectAllFromTablesDirectories("district");
 
             if (dt != null)
@@ -197,6 +226,8 @@ namespace BD_course_work
 
         private void filmsB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Films;
+
             dt = ControllerForDB.selectAllFromMainTables("films");
 
             if (dt != null)
@@ -225,6 +256,8 @@ namespace BD_course_work
 
         private void cassettesB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.Cassettes;
+
             dt = ControllerForDB.selectAllFromMainTables("cassettes");
 
             if (dt != null)
@@ -248,6 +281,8 @@ namespace BD_course_work
 
         private void videorentalB_Click(object sender, EventArgs e)
         {
+            mainControl.SelectedIndex = (int)Pages.VideoRental;
+
             dt = ControllerForDB.selectAllFromMainTables("video_rental");
 
             if (dt != null)
@@ -281,5 +316,80 @@ namespace BD_course_work
                 videoTable.Columns[12].HeaderText = "Отчество хозяина";
             }
         }
+
+        private void ordersB_Click(object sender, EventArgs e)
+        {
+            mainControl.SelectedIndex = (int)Pages.Orders;
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addCountry_Click(object sender, EventArgs e)
+        {
+            AddOrEditCountry add = new AddOrEditCountry();
+
+            add.ShowDialog();
+            
+            ControllerForDB.insertIntoDirectTable("countries", add.countryTB.Text);
+
+            ControllerForDB.selectAllFromTablesDirectories("countries");//??
+
+            //проверка ТБ на пустоту, проверка на повторение имени!ОБРАБОТАТЬ ИСКЛЮЧЕНИЕ!
+
+            addCountry.Text = "";
+
+        }
+
+
+
+        // public void 
     }
 }
