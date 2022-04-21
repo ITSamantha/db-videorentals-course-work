@@ -120,4 +120,32 @@
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="deleteCountry.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAALEAAACxAcYtSY0AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAA9ElEQVRIS+2VIQ4CMRBFa+ACHIAzEBTBIPDAIbgAJ0CiSeAgWAQXQKDwJGgEF4D/utmkKVPSpQax
+        P3nZtvOnM10zLkM9MU1ArFgH8UpArFgncRFx95wRy9ZeWF3+wk58iG5uYlMId5gv4/AhjoVwh1lgKc6C
+        J/K1kr8R5nKXqYnAxLepsnJj00hsq6UXnYXdEcODfiqwFuxr8W/D/0sMD2oLeLUF2gJ/WGAlntXSiwkW
+        TjFieFBWgYHANPM757qiXy29mMHhHCaGB80FudyRFOa7uIqFiMdkCrzkkFsXTGosMNJNE8ghN0sdMRRW
+        txZ4yYnk3Bsl/r+3PBs09QAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="addCountry.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAALEAAACxAcYtSY0AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABeElEQVRIS82VyU0DQRBFHQESHFgS4MqBTYgIEHBhSYQlIsQWAyBEIqwXIAMQCN6zqdHYzNRoQEZ8
+        6cnd7eqqdne5qlOhdTiFB3iFjwa0uQf3rEGtpuAKqpy04RImoU86vwUN3uAANmEeZhvQRttDcK8+bmAC
+        CsXJH2HRhR9qCZ5AXxcuKO88Tt7kfB92e8NaGSR+yaoLPo4TryXTGGgnjjMdgXZ+djPAyYaTRN5pBOi7
+        3wptgXa+a5GKc04StQmgL+1enMSmGSeJ2gTQV9gWgz8NMAKjA0xD2Doe/N49oTSAqRhrbYkUTgPsQay1
+        ZQdUGkAN9Yrq9H+zaOh/tCgVltxMbQJsg3bdUnHyNbGeZyoXOx810zFo1y12tjknllhLbSbzPFKxTsvw
+        DvpccUHZ5lywWTQFyaTzZ9DXmQshe6htzi+M7nVZchegqk2W0UZbryVOfg3j0CcfzjanwW84h2/Oy7LN
+        eZo7MM2qnJTRxmzxQYs776nT+QThPuAGPmfOOwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
+  </metadata>
 </root>
