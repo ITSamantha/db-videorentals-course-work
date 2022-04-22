@@ -16,6 +16,8 @@ namespace BD_course_work
 
         bool isCollapsed = true;
 
+        bool isEntered = false;
+
         public string connectionStringDB= "Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ";
 
         public DataTable dt;
@@ -322,74 +324,113 @@ namespace BD_course_work
             mainControl.SelectedIndex = (int)Pages.Orders;
         }
 
-        private void button29_Click(object sender, EventArgs e)
-        {
+        //Методы добавления
 
+        private void button9_Click(object sender, EventArgs e)//Добавление хозяина
+        {
+            addToPeopleTable("owners");
         }
 
-        private void button28_Click(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)//Добавление режиссера
         {
-
+            addToPeopleTable("producers");
         }
 
-        private void button30_Click(object sender, EventArgs e)
+        public void addToPeopleTable(string t)
         {
+            AddOrEditThreeColumns add = new AddOrEditThreeColumns();
 
-        }
+            add.mainL2.Text = t=="owners"?"Добавить хозяина":"Добавить режиссера";
 
-        private void mainControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
+            m1:
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void addCountry_Click(object sender, EventArgs e)
-        {
-            AddOrEditCountry add = new AddOrEditCountry();
+            add.clean();
 
             add.ShowDialog();
-            
-            ControllerForDB.insertIntoDirectTable("countries", add.countryTB.Text);
 
-            ControllerForDB.selectAllFromTablesDirectories("countries");//??
+            if (add.fam.Text != String.Empty && add.name.Text != String.Empty)
+            {
+                ControllerForDB.insertIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text);
+
+                ControllerForDB.selectAllFromTablesDirectories(t);
+            }
+            else
+            {
+                if (add.isCanceled && add.isEnabled && (add.fam.Text == String.Empty || add.name.Text == String.Empty))
+                {
+                    MessageBox.Show("Вы не ввели фамилию или имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+
+                }
+                return;
+            }
+
+            add.fam.Text = "";
+
+            add.name.Text = "";
+
+            add.patronymic.Text = "";
+        }
+
+        public void insertIntoDirectTables(string t)
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            switch (t)
+            {
+                case "countries":
+                    {
+                        add.mainL1.Text = "Добавить страну";
+                        break;
+                    }
+                case "services":
+                    {
+                        add.mainL1.Text = "Добавить услугу";
+                        break;
+                    }
+                case "property_type":
+                    {
+                        add.mainL1.Text = "Добавить тип \nсобственности";
+                        break;
+                    }
+                case "district":
+                    {
+                        add.mainL1.Text = "Добавить район";
+                        break;
+                    }
+            }
+            
+            add.ShowDialog();
+
+            ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
+
+            ControllerForDB.selectAllFromTablesDirectories(t);//??
 
             //проверка ТБ на пустоту, проверка на повторение имени!ОБРАБОТАТЬ ИСКЛЮЧЕНИЕ!
 
             addCountry.Text = "";
-
+        }
+        
+        private void addCountry_Click(object sender, EventArgs e)//Добавление страны
+        {
+            insertIntoDirectTables("countries");
+        }
+        
+        private void button12_Click(object sender, EventArgs e)//Добавление услуги
+        {
+            insertIntoDirectTables("services");
         }
 
+        private void button15_Click(object sender, EventArgs e)//Добавить тип собственности
+        {
+            insertIntoDirectTables("property_type");
+        }
 
-
-        // public void 
+        private void button18_Click(object sender, EventArgs e)//Добавить район
+        {
+            insertIntoDirectTables("district");
+        }
+        
     }
 }

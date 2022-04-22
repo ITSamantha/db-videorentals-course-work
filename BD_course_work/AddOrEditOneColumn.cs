@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BD_course_work
 {
-    public partial class AddOrEditCountry : Form
+    public partial class AddOrEditOneColumn : Form
     {
-        public AddOrEditCountry()
+        public AddOrEditOneColumn()
         {
             InitializeComponent();
         }

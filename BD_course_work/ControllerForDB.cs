@@ -165,8 +165,8 @@ namespace BD_course_work
 
             c.Open();
 
-            string command = $"insert into {table} (pk_country_id,country_name) values (default,'{vary}');";
-
+            string command = $"insert into {table}  values (default,'{vary}');";
+           
             var command_s = new NpgsqlCommand(command, c);
             
             var cq=command_s.ExecuteNonQuery();
@@ -175,6 +175,23 @@ namespace BD_course_work
             
             c.Close();
 
+        }
+
+        public static void insertIntoPeopleTable(string table,string last,string first,string patron)
+        {
+            NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+            c.Open();
+
+            string command = $"insert into {table}  values (default,'{first}','{last}','{patron}');";//Проверка на допустимый null?
+
+            var command_s = new NpgsqlCommand(command, c);
+
+            var cq = command_s.ExecuteNonQuery();
+
+            command_s.Dispose();
+
+            c.Close();
         }
 
     }
