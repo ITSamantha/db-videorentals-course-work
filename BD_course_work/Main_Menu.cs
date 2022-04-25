@@ -22,6 +22,8 @@ namespace BD_course_work
 
         public DataTable dt;
 
+        public string strAmount = "Количество полей:";
+
         enum Pages
         {
             VideoRental=0,
@@ -104,6 +106,7 @@ namespace BD_course_work
 
         private void countriesB_Click(object sender, EventArgs e)
         {
+            if (!label2.Text.Equals(strAmount)) { label2.Text = strAmount; }
             mainControl.SelectedIndex = (int)Pages.Countries;
 
             dt= ControllerForDB.selectAllFromTablesDirectories("countries");
@@ -116,11 +119,14 @@ namespace BD_course_work
 
                 countriesTable.Columns[1].HeaderText = "Страна";
             }
+
+            label2.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
             
         }
 
         private void studiosB_Click(object sender, EventArgs e)//Таблица "Студии"
         {
+            if (!label3.Text.Equals(strAmount)) { label3.Text = strAmount; }
             mainControl.SelectedIndex = (int)Pages.Studios;
 
             dt = ControllerForDB.selectAllFromMainTables("studios");
@@ -135,10 +141,14 @@ namespace BD_course_work
 
                 studiosTable.Columns[2].HeaderText = "Страна";
             }
+
+            label3.Text += ControllerForDB.amount;
         }
 
         private void producersB_Click(object sender, EventArgs e)//Таблица "Режиссеры"
         {
+            if (!label4.Text.Equals(strAmount)) { label4.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Producers;
 
             dt = ControllerForDB.selectAllFromTablesDirectories("producers");
@@ -156,10 +166,14 @@ namespace BD_course_work
                 producersTable.Columns[3].HeaderText = "Отчество";
             }
 
+            label4.Text += ControllerForDB.amount;
+
         }
 
         private void ownersB_Click(object sender, EventArgs e)//Таблица"Хозяины"
         {
+            if (!label5.Text.Equals(strAmount)) { label5.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Owners;
 
             dt = ControllerForDB.selectAllFromTablesDirectories("owners");
@@ -176,10 +190,14 @@ namespace BD_course_work
 
                 ownersTable.Columns[3].HeaderText = "Отчество";
             }
+
+            label5.Text += ControllerForDB.amount;
         }
 
-        private void servicesB_Click(object sender, EventArgs e)
+        private void servicesB_Click(object sender, EventArgs e)//Услуги
         {
+            if (!label6.Text.Equals(strAmount)) { label6.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Services;
 
             dt = ControllerForDB.selectAllFromTablesDirectories("services");
@@ -192,10 +210,13 @@ namespace BD_course_work
 
                 servicesTable.Columns[1].HeaderText = "Услуга";
             }
+            label6.Text += ControllerForDB.amount;
         }
 
-        private void proptypeB_Click(object sender, EventArgs e)
+        private void proptypeB_Click(object sender, EventArgs e)//Тип_собственности
         {
+            if (!label7.Text.Equals(strAmount)) { label7.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Property;
 
             dt = ControllerForDB.selectAllFromTablesDirectories("property_type");
@@ -208,10 +229,13 @@ namespace BD_course_work
 
                 propertyTable.Columns[1].HeaderText = "Тип собственности";
             }
+            label7.Text += ControllerForDB.amount;
         }
 
-        private void districtB_Click(object sender, EventArgs e)
+        private void districtB_Click(object sender, EventArgs e)//Район
         {
+            if (!label8.Text.Equals(strAmount)) { label8.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Districts;
 
             dt = ControllerForDB.selectAllFromTablesDirectories("district");
@@ -224,10 +248,13 @@ namespace BD_course_work
 
                 districtsTable.Columns[1].HeaderText = "Район";
             }
+            label8.Text += ControllerForDB.amount;
         }
 
-        private void filmsB_Click(object sender, EventArgs e)
+        private void filmsB_Click(object sender, EventArgs e)//Фильмы
         {
+            if (!label9.Text.Equals(strAmount)) { label9.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Films;
 
             dt = ControllerForDB.selectAllFromMainTables("films");
@@ -254,10 +281,13 @@ namespace BD_course_work
 
                 filmsTable.Columns[8].HeaderText = "Информация";
             }
+            label9.Text += ControllerForDB.amount;
         }
 
         private void cassettesB_Click(object sender, EventArgs e)
         {
+            if (!label10.Text.Equals(strAmount)) { label10.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.Cassettes;
 
             dt = ControllerForDB.selectAllFromMainTables("cassettes");
@@ -278,11 +308,13 @@ namespace BD_course_work
 
                 cassettesTable.Columns[5].HeaderText = "Фильм";
             }
-
+            label10.Text += ControllerForDB.amount;
         }
 
         private void videorentalB_Click(object sender, EventArgs e)
         {
+            if (!label12.Text.Equals(strAmount)) { label12.Text = strAmount; }
+
             mainControl.SelectedIndex = (int)Pages.VideoRental;
 
             dt = ControllerForDB.selectAllFromMainTables("video_rental");
@@ -317,9 +349,10 @@ namespace BD_course_work
 
                 videoTable.Columns[12].HeaderText = "Отчество хозяина";
             }
+            label12.Text += ControllerForDB.amount;
         }
 
-        private void ordersB_Click(object sender, EventArgs e)
+        private void ordersB_Click(object sender, EventArgs e)//Сделки
         {
             mainControl.SelectedIndex = (int)Pages.Orders;
         }

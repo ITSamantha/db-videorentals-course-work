@@ -18,7 +18,7 @@ namespace BD_course_work
                                           "studios", "videorental" };
 
 
-
+        public static long amount;
 
         public static bool Connection(string connect)
         {
@@ -50,10 +50,10 @@ namespace BD_course_work
 
                 n.Open();
 
-                string command =$"select * from {table_name}";
+                string command =$"select * from {table_name} ";
 
                 var command_sql = new NpgsqlCommand(command, n);
-
+                
                 NpgsqlDataReader reader = command_sql.ExecuteReader();
 
                 DataTable dt = new DataTable();
@@ -71,6 +71,8 @@ namespace BD_course_work
 
                 n.Close();
 
+                amount = getAmountOfRows(table_name);//ПОДУМАЙ НАД ОПТИМАЛЬНОСТЬЮ
+
                 return dt;
             }
             catch(Exception e)
@@ -79,8 +81,26 @@ namespace BD_course_work
 
                 return null;
             }
-           
-    
+        }
+
+        public static long getAmountOfRows(string table_name)//Количество строк в таблице
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string command = $"Select count(*) from {table_name} ";
+
+            var command_sql = new NpgsqlCommand(command, n);
+            
+            long amount = (long)command_sql.ExecuteScalar();
+
+            command_sql.Dispose();
+            
+            n.Close();
+
+            return amount;
+
         }
 
         public static DataTable selectAllFromMainTables(string table_name)//Выбока всего из главных таблиц
@@ -142,6 +162,8 @@ namespace BD_course_work
                     dt.Load(reader);
 
                 }
+
+                amount = getAmountOfRows(table_name);
 
                 command_sql.Dispose();
 

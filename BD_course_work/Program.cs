@@ -16,7 +16,9 @@ namespace BD_course_work
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main_Menu());
+            Application.Run(new Connect());
+            if (Connect.status == "running")
+                Application.Run(new Main_Menu());
         }
     }
 }

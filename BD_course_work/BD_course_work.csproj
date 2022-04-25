@@ -103,6 +103,12 @@
     <Compile Include="AddOrEditThreeColumns.Designer.cs">
       <DependentUpon>AddOrEditThreeColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Connect.Designer.cs">
+      <DependentUpon>Connect.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControllerForDB.cs" />
     <Compile Include="Instruments.cs" />
     <Compile Include="Main_Menu.cs">
@@ -118,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditThreeColumns.resx">
       <DependentUpon>AddOrEditThreeColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Connect.resx">
+      <DependentUpon>Connect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>
