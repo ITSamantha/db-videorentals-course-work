@@ -49,6 +49,7 @@ namespace BD_course_work
             Form_Initialization();
 
             ControllerForDB.Connection(connectionStringDB);
+            
         }
 
         private void Close_App_Button_Click(object sender, EventArgs e)
@@ -110,19 +111,23 @@ namespace BD_course_work
         {
             if (!label15.Text.Equals(strAmount)) { label15.Text = strAmount; }
 
-            mainControl.SelectedIndex = (int)Pages.Images;
-            /*
-            //dt = ControllerForDB.selectAllFromTablesDirectories("services_prices");
+            mainControl.SelectedIndex = (int)Pages.ServPrice;
+
+            dt = ControllerForDB.selectAllFromMainTables("services_prices");
             //Другой метод!
             if (dt != null)
             {
-                qualityTable.DataSource = dt;
+                servpriceTable.DataSource = dt;
 
-                qualityTable.Columns[0].HeaderText = "ID";//ДОДЕЛАТЬ!кАКОЕ ОБЬЪЕДИНЕНИЕ БУДЕТ!?
+                servpriceTable.Columns[0].HeaderText = "ID";//ДОДЕЛАТЬ!кАКОЕ ОБЬЪЕДИНЕНИЕ БУДЕТ!?
 
-                qualityTable.Columns[1].HeaderText = "Фото";
+                servpriceTable.Columns[1].HeaderText = "Видеопрокат";
+
+                servpriceTable.Columns[2].HeaderText = "Услуга";
+
+                servpriceTable.Columns[3].HeaderText = "Цена";
             }
-            */
+            
             label15.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
         }
 
@@ -136,11 +141,11 @@ namespace BD_course_work
 
             if (dt != null)
             {
-                qualityTable.DataSource = dt;
+                imagesTable.DataSource = dt;
 
-                qualityTable.Columns[0].HeaderText = "ID";
+                imagesTable.Columns[0].HeaderText = "ID";
 
-                qualityTable.Columns[1].HeaderText = "Фото";
+                imagesTable.Columns[1].HeaderText = "Фото";
             }
 
             label14.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
@@ -418,7 +423,34 @@ namespace BD_course_work
 
         private void ordersB_Click(object sender, EventArgs e)//Сделки
         {
-            mainControl.SelectedIndex = (int)Pages.Orders;//ДОДЕЛАТЬ!
+            if (!label11.Text.Equals(strAmount)) { label11.Text = strAmount; }
+
+            mainControl.SelectedIndex = (int)Pages.Orders;
+
+            dt = ControllerForDB.selectAllFromMainTables("deals");
+
+            if (dt != null)
+            {
+                ordersTable.DataSource = dt;
+
+                ordersTable.Columns[0].HeaderText = "ID";
+
+                ordersTable.Columns[1].HeaderText = "Видеопрокат";
+                
+                ordersTable.Columns[2].HeaderText = "ID кассеты";
+
+                ordersTable.Columns[3].HeaderText = "Фильм";
+                
+                ordersTable.Columns[4].HeaderText = "Квитанция";
+
+                ordersTable.Columns[5].HeaderText = "Дата заказа";
+
+                ordersTable.Columns[6].HeaderText = "Услуга";
+
+                ordersTable.Columns[7].HeaderText = "Цена";
+                
+            }
+            label11.Text += ControllerForDB.amount;
         }
 
         //Методы добавления

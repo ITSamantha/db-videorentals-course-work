@@ -16,10 +16,180 @@ namespace BD_course_work
         public static readonly string[] tables ={ "cassette_photo", "cassette_quality", "cassettes",
                                            "countries", "deals", "district", "films", "owners",
                                           "producers", "property_type", "services", "services_prices",
-                                          "studios", "videorental" };
+                                          "studios", "video_rental" };
 
+        public static string[] cassette_quality = { "Превосходное", "Хорошее", "Нормальное", "Плохое", "Ужасное" };//НЕ МЕНЕЕ 10
+
+        public static string[] countries = { "Россия", "Норвегия", "США", "Таджикистан", "Румыния", "Япония", "Китай", "Англия", "Греция", "Польша", "Италия", "Франция" };
+
+        public static string[] districts = { "Киевский", "Пролетарский", "Ленинский", "Петровский", "Куйбышевский", "Ворошиловский", "Буденновский", "Калининский", "Кировский" };
+
+        public static string[] prop_type = { "Государственная", "Частная(физ.лицо)", "Частная(юр.лицо)", "Коллективная" };
+
+        public static string[] services = { "Прокат", "Запись", "Продажа кассеты", "Обмен кассеты", "Перезапись фильма" };
+
+        public static string[] studios = { "PrismaStudio" , "WowStudio" , "Paramount Pictures" , "20th Century Fox" ,
+                                "Columbia Pictures" , "BestFilms" , "Warner Bros." , "Bad Robot Productions" , "Constantin Film" ,
+                                "Lucasfilm" , "Original Film" , "Netflix" , "Millennium Films" , "Walt Disney Pictures" , "Pathé" ,
+                                "Nobis assumenda quis" , "Est sunt" };
+
+        public static string[] films = { "Достучаться до небес", "Зелёная миля", "Сила воли", "Никогда не сдавайся", "Прислуга", "Форрест Гамп", "Человек паук",
+                                  "Великий Гэтсби", "Мемуары Гейши", "Жизнь Пи", "Цветок пустыни", "Три метра над уровнем моря", "Четыре метра над уровнем моря",
+                                  "Жизнь Пи=3.14", "Криминальное некриминальное", "Куда приводит ПИ", "Жизнь математика в 3D", "Век Адалин", "Амели" };
+
+        public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда", "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm" };
+
+        public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патиция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
+
+        public static string[] female_last_names = { "Савельева", "Барашкина", "Лисицына", "Шубина", "Яковлева", "Елисеева", "Блохина", "Мартова", "Бурова", "Емельянова", "Пушкина", "Баранова", "Вишнякова", "Чернель", "Дубова" };
+
+        public static string[] female_patron = { "Александровна", "Романовна", "Аркадьевна", "Владимировна" };
+
+        public static string[] male_names = { "Боб", "Лаврентий", "Ростислав", "Алекс", "Марат", "Олег", "Валентин", "Владислав", "Петр", "Макар", "Марк", "Дмитрий" };
+
+        public static string[] male_last_names = { "Савельев", "Барашкин", "Лисицын", "Шубин", "Яковлев", "Елисеев", "Блохин", "Мартов", "Буров", "Емельянов", "Пушкин", "Баранов", "Вишняков", "Чернель", "Дубов" };
+
+        public static string[] male_patron = { "Александрович", "Романович", "Аркадьевич", "Владимирович" };
 
         public static long amount;
+
+        public static void generateServicesPrices()//Генерация services_prices
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string command = "Insert into services_prices values";
+
+            int counter = 1;
+
+            double n1 = 0.01f;
+
+            Random r = new Random();
+
+            for (int i = 1; i < getAmountOfRows("services_prices"); i++)
+            {
+                for (int j = 1; j < getAmountOfRows("video_rental"); j++)
+                {
+                    if (i == 5 && j == 40)
+                    {
+                        command += $"( {counter}, {i}, {j} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' );";
+                        break;
+                    }
+                    command += $"( {counter}, {i}, {j} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ),";
+                    n1 += 0.03f;
+                    counter++;
+                }
+            }
+
+            var command_sql = new NpgsqlCommand(command, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            reader.Close();
+
+            command_sql.Dispose();
+
+            n.Close();
+
+        }
+
+        /*public static bool deleteAllInTable(string table)
+        {
+
+        }*/
+
+        public static int N=10001;
+
+        public static void generateOrders()
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                StringBuilder command = new StringBuilder("Insert into deals values");
+
+                Random r = new Random();
+
+                for (int i = 1; i < N; i++)
+                {
+                    var count_serv = (int)getAmountOfRows("services_prices");
+
+                    var count_cassettes = (int)getAmountOfRows("cassettes");
+
+                    var cassette_id = r.Next(1, count_cassettes);
+
+                    var service_id = (int)r.Next(1, count_serv);
+                    
+                    var price = (double)selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + (double)selectSmthById(cassette_id, "cassettes", "cassette_price", "pk_cassette_id");
+
+                    DateTime date = new DateTime(r.Next(2000, 2021), r.Next(1, 12),r.Next(1, 28));
+
+                    var d = $"{date.Year}-";
+
+                    if (date.Month < 10){ d += $"0{date.Month}-";}
+                    else{d += $"{date.Month}-";}
+                    if (date.Day < 10) { d += $"0{date.Day}"; }
+                    else { d += $"{date.Day}"; }
+
+                    if (count_serv != 0 && count_cassettes != 0)
+                    {
+                        if (i == ( N-1))
+                        {
+                            command.Append($"( {i}, {cassette_id} , ");
+
+                            command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ); ");
+
+                            break;
+                        }
+                        command.Append($"( {i}, {cassette_id} , ");
+
+                        command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ), ");
+                    }
+
+                }
+
+                var command_sql = new NpgsqlCommand(command.ToString(), n);
+
+                NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+                reader.Close();
+
+                command_sql.Dispose();
+
+                n.Close();
+
+                MessageBox.Show("Успешно сгенерировано.","Оповещение");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+
+                return;
+            }
+            
+        }
+
+        public static object selectSmthById(int id,string table,string param,string idd)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            var s = $"Select {param} from {table} where {idd}={id};";
+
+            NpgsqlCommand com = new NpgsqlCommand(s, n);
+
+            var am = com.ExecuteScalar();
+
+            com.Dispose();
+
+            n.Close();
+
+            return am;
+        }
 
         public static bool Connection(string connect)
         {
@@ -119,37 +289,55 @@ namespace BD_course_work
                     case "studios"://Студии
                         {
                             command = $"select a.pk_studio_id,a.studio_name,b.country_name from {table_name} a " +
-                                $"left join {tables[3]} b on a.fk_studio_country=b.pk_country_id";
+                                $"inner join {tables[3]} b on a.fk_studio_country=b.pk_country_id";
                             break;
                         }
                     case "films":
                         {
                             command = $"select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name,a.film_year,a.film_duration,a.film_info from {table_name} a " +
-                                $"left join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
-                                $"left join {tables[12]} c on a.fk_studio_id=c.pk_studio_id";
+                                $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
+                                $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id";
                             break;
                         }
                     case "cassettes":
                         { 
                         command = $"select a.pk_cassette_id,b.quality_name,c.photo,a.cassette_price,a.cassette_demand,d.film_name from {table_name} a " +
-                                $"left join {tables[1]} b on a.fk_cassette_quality=b.pk_quality_id " +
-                                $"left join {tables[0]} c on a.fk_cassette_photo= c.pk_photo_id " +
-                                $"left join {tables[6]} d on a.fk_film_id=d.pk_film_id";
-                            break;
+                                $"inner join {tables[1]} b on a.fk_cassette_quality=b.pk_quality_id " +
+                                $"inner join {tables[0]} c on a.fk_cassette_photo= c.pk_photo_id " +
+                                $"inner join {tables[6]} d on a.fk_film_id=d.pk_film_id";
+                            break;//,
                         }
                     case "video_rental":
                         {
                             command = $"select a.pk_video_rental_id,a.video_caption,b.district_name,a.video_adress," +
                                 $"c.property_type_name,a.video_phone,a.license_number,a.time_start,a.time_end," +
                                 $"a.amount_of_employees,d.owner_last_name,d.owner_first_name,d.owner_patronymic from {table_name} a " +
-                                $"left join {tables[5]} b on a.fk_video_district=b.pk_district_id " +
+                                $"left join {tables[5]} b on a.fk_video_district=b.pk_district_id " +//left join
                                 $"left join {tables[9]} c on a.fk_property_type=c.pk_property_type_id " +
                                 $"left join {tables[7]} d on a.fk_owner_id=d.pk_owner_id";
                             break;
                         }
-                  
 
+                    case "services_prices":
+                        {
+                            command = $"select a.pk_service_price_id,c.video_caption, b.service_name,a.service_price from {table_name}" +
+                                $"  a left join {tables[10]} b on a.fk_service_id=b.pk_service_id left join {tables[13]}" +
+                                $" c on a.fk_video_rental=c.pk_video_rental_id";
+                            break;
+                        }
+
+                    case"deals":
+                        {
+                            command = $"select a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,a.recipe_deal,a.deal_date,e.service_name,a.general_price from " +
+                                $"{table_name} a inner join services_prices b on a.fk_service_price=b.pk_service_price_id inner join cassettes c on a.fk_cassete_id=c.pk_cassette_id " +
+                                $"inner join films d on c.fk_film_id=d.pk_film_id inner join services e on b.fk_service_id=e.pk_service_id inner join video_rental f on b.fk_video_rental = f.pk_video_rental_id;"; 
+                               //+ $"a inner join cassettes on a.fk_cassette_id=b.
+
+                            break;
+                        }
                 }
+                
+                amount = getAmountOfRows(table_name);
 
                 var command_sql = new NpgsqlCommand(command, n);
 
@@ -159,12 +347,9 @@ namespace BD_course_work
 
                 if (reader.HasRows)
                 {
-
                     dt.Load(reader);
 
                 }
-
-                amount = getAmountOfRows(table_name);
 
                 command_sql.Dispose();
 
