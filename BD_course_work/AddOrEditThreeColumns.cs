@@ -30,20 +30,21 @@ namespace BD_course_work
 
             Close();
         }
-
-        private void AddOrEditThreeColumns_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                isCanceled = true;
-            }
-        }
-
+        
         public void clean()
         {
             isEnabled = false;
 
             isCanceled = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isCanceled = true;
+
+            Close();
+        }
+
+      
     }
 }

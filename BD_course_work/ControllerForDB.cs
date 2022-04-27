@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows.Forms;
 
 namespace BD_course_work
 {
@@ -214,6 +215,46 @@ namespace BD_course_work
             command_s.Dispose();
 
             c.Close();
+        }
+
+        public static bool isCanceledDelete;
+
+        public static bool deleteById(int id,string table,string id_title)
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+
+            isCanceledDelete = false;
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                    c.Open();
+
+                    string command = $"delete from {table} where {id_title} = {id};";//Подумать над каскадным удалением, не удаляет, когда используется во внешнем ключе
+
+                    var command_s = new NpgsqlCommand(command, c);
+
+
+                    command_s.ExecuteNonQuery();
+
+                    command_s.Dispose();
+
+                    c.Close();
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return false;
+                }
+            }
+            isCanceledDelete = true;
+
+            return false;
         }
 
     }

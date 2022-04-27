@@ -29,130 +29,155 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.fam = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.mainL2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fam = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.name = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.patronymic = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(166, 313);
+            this.button1.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(66, 313);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 36);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 20;
             this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(285, 313);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 36);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Отмена";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // mainL2
+            // 
+            this.mainL2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.mainL2.Font = new System.Drawing.Font("Garamond", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mainL2.Location = new System.Drawing.Point(-16, -2);
+            this.mainL2.Name = "mainL2";
+            this.mainL2.Size = new System.Drawing.Size(520, 43);
+            this.mainL2.TabIndex = 22;
+            this.mainL2.Text = "Добавить";
+            this.mainL2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.fam);
+            this.groupBox1.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(47, 55);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(388, 75);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Фамилия";
             // 
             // fam
             // 
             this.fam.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.fam.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fam.Location = new System.Drawing.Point(155, 72);
+            this.fam.Location = new System.Drawing.Point(6, 24);
             this.fam.Multiline = true;
             this.fam.Name = "fam";
-            this.fam.Size = new System.Drawing.Size(317, 40);
-            this.fam.TabIndex = 4;
+            this.fam.Size = new System.Drawing.Size(360, 37);
+            this.fam.TabIndex = 13;
             // 
-            // mainL2
+            // groupBox2
             // 
-            this.mainL2.AutoSize = true;
-            this.mainL2.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mainL2.Location = new System.Drawing.Point(117, 9);
-            this.mainL2.Name = "mainL2";
-            this.mainL2.Size = new System.Drawing.Size(281, 32);
-            this.mainL2.TabIndex = 3;
-            this.mainL2.Text = "Добавить режиссера";
+            this.groupBox2.Controls.Add(this.name);
+            this.groupBox2.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox2.Location = new System.Drawing.Point(47, 136);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(388, 75);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Имя";
             // 
             // name
             // 
             this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.name.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.name.Location = new System.Drawing.Point(155, 155);
+            this.name.Location = new System.Drawing.Point(6, 24);
             this.name.Multiline = true;
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(317, 40);
-            this.name.TabIndex = 6;
+            this.name.Size = new System.Drawing.Size(360, 37);
+            this.name.TabIndex = 13;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.patronymic);
+            this.groupBox3.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox3.Location = new System.Drawing.Point(47, 217);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(388, 75);
+            this.groupBox3.TabIndex = 25;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Отчество";
             // 
             // patronymic
             // 
             this.patronymic.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.patronymic.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.patronymic.Location = new System.Drawing.Point(155, 237);
+            this.patronymic.Location = new System.Drawing.Point(6, 24);
             this.patronymic.Multiline = true;
             this.patronymic.Name = "patronymic";
-            this.patronymic.Size = new System.Drawing.Size(317, 40);
-            this.patronymic.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(32, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 31);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Фамилия";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(86, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 31);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Имя";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(27, 237);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 31);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Отчество";
+            this.patronymic.Size = new System.Drawing.Size(360, 37);
+            this.patronymic.TabIndex = 13;
             // 
             // AddOrEditThreeColumns
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 361);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.patronymic);
-            this.Controls.Add(this.name);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.fam);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.mainL2);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddOrEditThreeColumns";
             this.Text = "Добавление";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddOrEditThreeColumns_FormClosed);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.TextBox fam;
+        private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Label mainL2;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.TextBox fam;
+        public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.TextBox name;
+        public System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.TextBox patronymic;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
     }
 }

@@ -36,7 +36,10 @@ namespace BD_course_work
             Owners,
             Producers,
             Studios,
-            Countries
+            Countries,
+            Quality,
+            Images,
+            ServPrice
         }
 
         public Main_Menu()
@@ -103,8 +106,69 @@ namespace BD_course_work
         {
             Close();
         }
+        private void button36_Click(object sender, EventArgs e)//Таблица "Услуги и цены"
+        {
+            if (!label15.Text.Equals(strAmount)) { label15.Text = strAmount; }
 
-        private void countriesB_Click(object sender, EventArgs e)
+            mainControl.SelectedIndex = (int)Pages.Images;
+            /*
+            //dt = ControllerForDB.selectAllFromTablesDirectories("services_prices");
+            //Другой метод!
+            if (dt != null)
+            {
+                qualityTable.DataSource = dt;
+
+                qualityTable.Columns[0].HeaderText = "ID";//ДОДЕЛАТЬ!кАКОЕ ОБЬЪЕДИНЕНИЕ БУДЕТ!?
+
+                qualityTable.Columns[1].HeaderText = "Фото";
+            }
+            */
+            label15.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
+        }
+
+        private void button35_Click(object sender, EventArgs e)//Таблица "Картинки"
+        {
+            if (!label14.Text.Equals(strAmount)) { label14.Text = strAmount; }
+
+            mainControl.SelectedIndex = (int)Pages.Images;
+
+            dt = ControllerForDB.selectAllFromTablesDirectories("cassette_photo");
+
+            if (dt != null)
+            {
+                qualityTable.DataSource = dt;
+
+                qualityTable.Columns[0].HeaderText = "ID";
+
+                qualityTable.Columns[1].HeaderText = "Фото";
+            }
+
+            label14.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
+
+        }
+
+        private void button34_Click(object sender, EventArgs e)//Таблица "Качество кассеты"
+        {
+            if (!label13.Text.Equals(strAmount)) { label13.Text = strAmount; }
+
+            mainControl.SelectedIndex = (int)Pages.Quality;
+
+            dt = ControllerForDB.selectAllFromTablesDirectories("cassette_quality");
+
+            if (dt != null)
+            {
+                qualityTable.DataSource = dt;
+
+                qualityTable.Columns[0].HeaderText = "ID";
+
+                qualityTable.Columns[1].HeaderText = "Качество";
+            }
+
+            label13.Text += ControllerForDB.amount;//Доделать очистку lable  и добавить else с количеством 0
+
+        }
+        
+        private void countriesB_Click(object sender, EventArgs e)//Таблица "Страны"
         {
             if (!label2.Text.Equals(strAmount)) { label2.Text = strAmount; }
             mainControl.SelectedIndex = (int)Pages.Countries;
@@ -354,10 +418,14 @@ namespace BD_course_work
 
         private void ordersB_Click(object sender, EventArgs e)//Сделки
         {
-            mainControl.SelectedIndex = (int)Pages.Orders;
+            mainControl.SelectedIndex = (int)Pages.Orders;//ДОДЕЛАТЬ!
         }
 
         //Методы добавления
+        private void button33_Click(object sender, EventArgs e)
+        {
+            insertIntoDirectTables("cassette_quality");
+        }
 
         private void button9_Click(object sender, EventArgs e)//Добавление хозяина
         {
@@ -381,7 +449,7 @@ namespace BD_course_work
 
             add.ShowDialog();
 
-            if (add.fam.Text != String.Empty && add.name.Text != String.Empty)
+            if (add.fam.Text != String.Empty && add.name.Text != String.Empty&&!add.isCanceled&&add.isEnabled)
             {
                 ControllerForDB.insertIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text);
 
@@ -389,7 +457,7 @@ namespace BD_course_work
             }
             else
             {
-                if (add.isCanceled && add.isEnabled && (add.fam.Text == String.Empty || add.name.Text == String.Empty))
+                if ( add.isEnabled && (add.fam.Text == String.Empty || add.name.Text == String.Empty))
                 {
                     MessageBox.Show("Вы не ввели фамилию или имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -415,33 +483,68 @@ namespace BD_course_work
                 case "countries":
                     {
                         add.mainL1.Text = "Добавить страну";
+
+                        add.groupBox1.Text = "Страна";
+
                         break;
                     }
                 case "services":
                     {
                         add.mainL1.Text = "Добавить услугу";
+
+                        add.groupBox1.Text = "Услуга";
+
                         break;
                     }
                 case "property_type":
                     {
                         add.mainL1.Text = "Добавить тип \nсобственности";
+
+                        add.groupBox1.Text = "Тип собственности";
+
                         break;
                     }
                 case "district":
                     {
                         add.mainL1.Text = "Добавить район";
+
+                        add.groupBox1.Text = "Район";
+
+                        break;
+                    }
+                case "cassette_quality":
+                    {
+                        add.mainL1.Text = "Добавить качество\nкассеты";
+
+                        add.groupBox1.Text = "Качество кассеты";
+
                         break;
                     }
             }
-            
+
+            m1:
+
+            add.clean();
+
             add.ShowDialog();
 
-            ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
+            if (add.countryTB.Text != String.Empty&&!add.isCanceled&&add.isEnabled)
+            {
+                ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
 
-            ControllerForDB.selectAllFromTablesDirectories(t);//??
+                ControllerForDB.selectAllFromTablesDirectories(t);//??
+            }
+            else
+            {
+                if (add.isEnabled && (add.countryTB.Text == String.Empty))
+                {
+                    MessageBox.Show("Вы не ввели данные.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            //проверка ТБ на пустоту, проверка на повторение имени!ОБРАБОТАТЬ ИСКЛЮЧЕНИЕ!
+                    goto m1;
 
+                }
+                return;
+            }
             addCountry.Text = "";
         }
         
@@ -464,6 +567,97 @@ namespace BD_course_work
         {
             insertIntoDirectTables("district");
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button32_Click(object sender, EventArgs e)//Удаление "Качетсво кассеты"
+        {
+            deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
+        }
+
+
+        private void deleteCountry_Click(object sender, EventArgs e)//Удаление "Страны"    Доделать еще 2 вида!
+        {
+            deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
+        }
+
+        private void button2_Click(object sender, EventArgs e)//Удаление "Студии"
+        {
+            deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
+        }
+
+        private void button5_Click(object sender, EventArgs e)//Удаление "Режиссеры"
+        {
+            deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
+        }
+
+        private void button8_Click(object sender, EventArgs e)//Удаление "Хозяины"
+        {
+            deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
+        }
+
+        private void button11_Click(object sender, EventArgs e)//Удаление "Услуги"
+        {
+            deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id");
+        }
+
+        private void button14_Click(object sender, EventArgs e)//Удаление"Тип собственности"
+        {
+            deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
+        }
+
+        private void button17_Click(object sender, EventArgs e)//Удаление "Районы"
+        {
+            deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
+        }
+
+        private void button20_Click(object sender, EventArgs e)//Удаление "Фильмы"
+        {
+            deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
+        }
+
+        private void button23_Click(object sender, EventArgs e)//Удаление "Кассеты"
+        {
+            deleteRowById((int)cassettesTable.SelectedRows[0].Cells[0].Value, "cassettes", "pk_cassette_id");
+        }
+
+        private void button26_Click(object sender, EventArgs e)//Удаление "Сделки"
+        {
+            deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
+        }
+
+        private void button29_Click(object sender, EventArgs e)//Удаление "Видеопрокаты"
+        {
+            deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
+        }
         
+        public void deleteRowById(int index,string table,string id_value)//Функция удаления с выводом информации
+        {
+            if (ControllerForDB.deleteById(index, table, id_value))
+            {
+                MessageBox.Show("Строка удалена.", "Оповещение");
+            }
+            else
+            {
+                if (ControllerForDB.isCanceledDelete) { return; }
+                MessageBox.Show("По каким-то причинам строка не удалена.", "Оповещение");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        //ДОДЕЛАТЬ ОСТАЛЬНЫЕ ТАБЛИЦЫ
     }
 }
