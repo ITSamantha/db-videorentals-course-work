@@ -45,6 +45,7 @@
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cassettesTable = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
@@ -136,13 +137,13 @@
             this.ordersB = new System.Windows.Forms.Button();
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
-            this.cassettesTable = new System.Windows.Forms.DataGridView();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
             this.ordersPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersTable)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cassettesTable)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filmsTable)).BeginInit();
             this.tabPage4.SuspendLayout();
@@ -167,7 +168,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cassettesTable)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -374,6 +374,20 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Кассеты";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cassettesTable
+            // 
+            this.cassettesTable.AllowUserToAddRows = false;
+            this.cassettesTable.AllowUserToDeleteRows = false;
+            this.cassettesTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cassettesTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cassettesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.cassettesTable.Location = new System.Drawing.Point(21, 41);
+            this.cassettesTable.Name = "cassettesTable";
+            this.cassettesTable.ReadOnly = true;
+            this.cassettesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.cassettesTable.Size = new System.Drawing.Size(880, 507);
+            this.cassettesTable.TabIndex = 13;
             // 
             // label10
             // 
@@ -1125,6 +1139,7 @@
             this.button31.Size = new System.Drawing.Size(44, 38);
             this.button31.TabIndex = 9;
             this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
             // button32
             // 
@@ -1220,6 +1235,7 @@
             this.button38.Size = new System.Drawing.Size(44, 38);
             this.button38.TabIndex = 13;
             this.button38.UseVisualStyleBackColor = false;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
             // button39
             // 
@@ -1233,6 +1249,7 @@
             this.button39.Size = new System.Drawing.Size(44, 38);
             this.button39.TabIndex = 12;
             this.button39.UseVisualStyleBackColor = false;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
             // 
             // serpricePage
             // 
@@ -1651,20 +1668,6 @@
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
             // 
-            // cassettesTable
-            // 
-            this.cassettesTable.AllowUserToAddRows = false;
-            this.cassettesTable.AllowUserToDeleteRows = false;
-            this.cassettesTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.cassettesTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.cassettesTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cassettesTable.Location = new System.Drawing.Point(21, 41);
-            this.cassettesTable.Name = "cassettesTable";
-            this.cassettesTable.ReadOnly = true;
-            this.cassettesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.cassettesTable.Size = new System.Drawing.Size(880, 507);
-            this.cassettesTable.TabIndex = 13;
-            // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1689,6 +1692,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ordersTable)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cassettesTable)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.filmsTable)).EndInit();
@@ -1724,7 +1728,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cassettesTable)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -12,6 +12,8 @@ namespace BD_course_work
     {
         public static int radius = 30;
 
+        public static ImageConverter converter = new ImageConverter();
+
         public static void SetRoundedShape(Control control, int radius)
         {
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
@@ -25,5 +27,11 @@ namespace BD_course_work
             path.AddArc(0, 0, radius, radius, 180, 90);
             control.Region = new Region(path);
         }
+
+        //Конвертация Image в Byte[]
+        public static Byte[] convertImageIntoB(Image image) => (byte[])converter.ConvertTo(image, typeof(byte[]));
+
+        //Конвертация Byte[] в Image
+        public static Image convertBIntoImage(Byte[] b) => (Image)converter.ConvertFrom(b);
     }
 }

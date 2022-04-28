@@ -15,9 +15,7 @@ namespace BD_course_work
     {
 
         bool isCollapsed = true;
-
-        bool isEntered = false;
-
+        
         public string connectionStringDB= "Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ";
 
         public DataTable dt;
@@ -49,6 +47,7 @@ namespace BD_course_work
             Form_Initialization();
 
             ControllerForDB.Connection(connectionStringDB);
+            
             
         }
 
@@ -107,6 +106,7 @@ namespace BD_course_work
         {
             Close();
         }
+
         private void button36_Click(object sender, EventArgs e)//Таблица "Услуги и цены"
         {
             if (!label15.Text.Equals(strAmount)) { label15.Text = strAmount; }
@@ -114,12 +114,12 @@ namespace BD_course_work
             mainControl.SelectedIndex = (int)Pages.ServPrice;
 
             dt = ControllerForDB.selectAllFromMainTables("services_prices");
-            //Другой метод!
+            
             if (dt != null)
             {
                 servpriceTable.DataSource = dt;
 
-                servpriceTable.Columns[0].HeaderText = "ID";//ДОДЕЛАТЬ!кАКОЕ ОБЬЪЕДИНЕНИЕ БУДЕТ!?
+                servpriceTable.Columns[0].HeaderText = "ID";
 
                 servpriceTable.Columns[1].HeaderText = "Видеопрокат";
 
@@ -454,9 +454,14 @@ namespace BD_course_work
         }
 
         //Методы добавления
-        private void button33_Click(object sender, EventArgs e)
+        private void button33_Click(object sender, EventArgs e)//Добавление качества
         {
             insertIntoDirectTables("cassette_quality");
+        }
+
+        private void button39_Click(object sender, EventArgs e)//Добавление картинки
+        {
+            insertPhotoIntoTable();
         }
 
         private void button9_Click(object sender, EventArgs e)//Добавление хозяина
@@ -467,6 +472,20 @@ namespace BD_course_work
         private void button6_Click(object sender, EventArgs e)//Добавление режиссера
         {
             addToPeopleTable("producers");
+        }
+
+        public void insertPhotoIntoTable()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG;*.JPEG)|*.BMP;*.JPG;*.PNG;*.JPEG|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
+            {
+                return;
+            }
+
+            ControllerForDB.insertPhoto(openFileDialog.FileName);
         }
 
         public void addToPeopleTable(string t)
@@ -579,7 +598,7 @@ namespace BD_course_work
             }
             addCountry.Text = "";
         }
-        
+        //Методы INSERT
         private void addCountry_Click(object sender, EventArgs e)//Добавление страны
         {
             insertIntoDirectTables("countries");
@@ -605,6 +624,7 @@ namespace BD_course_work
 
         }
 
+        //Методы DELETE
         private void button32_Click(object sender, EventArgs e)//Удаление "Качетсво кассеты"
         {
             deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
@@ -665,7 +685,12 @@ namespace BD_course_work
         {
             deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
         }
-        
+
+        private void button38_Click(object sender, EventArgs e)
+        {
+            deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
+        }
+
         public void deleteRowById(int index,string table,string id_value)//Функция удаления с выводом информации
         {
             if (ControllerForDB.deleteById(index, table, id_value))
@@ -678,6 +703,15 @@ namespace BD_course_work
                 MessageBox.Show("По каким-то причинам строка не удалена.", "Оповещение");
             }
         }
+        //Методы UPDATE
+        private void button31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
 
 
 

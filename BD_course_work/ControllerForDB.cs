@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Windows.Forms;
+using System.Drawing;
+using System.IO;
 
 namespace BD_course_work
 {
@@ -53,6 +55,74 @@ namespace BD_course_work
 
         public static long amount;
 
+        public static byte[][] pics={Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas1.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas2.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas3.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas4.jpeg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas5.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas6.jpeg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas7.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas8.jpeg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas9.jpg")),
+                                     Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas10.jpg")),
+        };                           
+
+        //Генерация данных
+
+        public static void generatePics(int num)
+        {
+            Random r = new Random();
+            
+            for(int i = 1; i < num + 1; i++)
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );", n);
+                
+                NpgsqlParameter parameter = com.CreateParameter();
+
+                parameter.ParameterName = "@Image";
+
+                parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
+
+                parameter.Value = pics[r.Next(0, 10)];
+
+                com.Parameters.Add(parameter);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                n.Close();
+            }
+        }
+        
+        public static void insertPhoto(string path)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand("Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );", n);
+
+            NpgsqlParameter parameter = com.CreateParameter();
+
+            parameter.ParameterName = "@Image";
+
+            parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
+
+            parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
+
+            com.Parameters.Add(parameter);
+
+            com.ExecuteNonQuery();
+
+            com.Dispose();
+
+            n.Close();
+        }
         public static void generateServicesPrices()//Генерация services_prices
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -94,14 +164,16 @@ namespace BD_course_work
 
         }
 
+        /*public void generate*/
+
         /*public static bool deleteAllInTable(string table)
         {
 
         }*/
 
-        public static int N=10001;
+        //public static int N=10001;
 
-        public static void generateOrders()
+        public static void generateOrders(int N)
         {
             try
             {
@@ -113,12 +185,12 @@ namespace BD_course_work
 
                 Random r = new Random();
 
+                var count_serv = (int)getAmountOfRows("services_prices");
+
+                var count_cassettes = (int)getAmountOfRows("cassettes");
+
                 for (int i = 1; i < N; i++)
                 {
-                    var count_serv = (int)getAmountOfRows("services_prices");
-
-                    var count_cassettes = (int)getAmountOfRows("cassettes");
-
                     var cassette_id = r.Next(1, count_cassettes);
 
                     var service_id = (int)r.Next(1, count_serv);
@@ -401,12 +473,12 @@ namespace BD_course_work
 
             c.Close();
         }
-
+        public static bool updateTables()
         public static bool isCanceledDelete;
 
         public static bool deleteById(int id,string table,string id_title)
         {
-            DialogResult dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+            DialogResult dialogResult = MessageBox.Show("Вы уверены? В таблицах удалятся все записи, связанные с данной.Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
 
             isCanceledDelete = false;
 
