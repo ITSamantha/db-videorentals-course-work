@@ -466,7 +466,29 @@ namespace BD_course_work
                 return;
             }
 
-            ControllerForDB.insertPhoto(openFileDialog.FileName);
+            ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName,0);
+        }
+
+        public void updatePhotoIntoTable()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG;*.JPEG)|*.BMP;*.JPG;*.PNG;*.JPEG|All files (*.*)|*.*";
+
+            if (openFileDialog.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
+            {
+                return;
+            }
+
+            if(ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value))
+            {
+                MessageBox.Show("Фото обновлено.", "Оповещение");
+            }
+            else
+            {
+                if (ControllerForDB.isCanceledDelete) { return; }
+                MessageBox.Show("По каким-то причинам фото не обновлено.", "Оповещение");
+            }
         }
 
         public void addToPeopleTable(string t)
@@ -483,7 +505,7 @@ namespace BD_course_work
 
             if (add.fam.Text != String.Empty && add.name.Text != String.Empty&&!add.isCanceled&&add.isEnabled)
             {
-                ControllerForDB.insertIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text);
+                ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text,0);
 
                 ControllerForDB.selectAllFromTablesDirectories(t);
             }
@@ -514,56 +536,39 @@ namespace BD_course_work
             {
                 case "countries":
                     {
-                        
                         add.mainL1.Text = "Добавить страну";
-
                         add.groupBox1.Text = "Страна";
-                        
                         break;
                     }
                 case "services":
                     {
-                        
                             add.mainL1.Text = "Добавить услугу";
-
                             add.groupBox1.Text = "Услуга";
-                        
                         break;
                     }
                 case "property_type":
                     {
-                        
                             add.mainL1.Text = "Добавить тип \nсобственности";
-
                             add.groupBox1.Text = "Тип собственности";
-                        
                         break;
                     }
                 case "district":
                     {
-                        
                             add.mainL1.Text = "Добавить район";
-
                             add.groupBox1.Text = "Район";
-                        
                         break;
                     }
                 case "cassette_quality":
                     {
                           add.mainL1.Text = "Добавить качество\nкассеты";
-
-                            add.groupBox1.Text = "Качество кассеты";
-                        
+                          add.groupBox1.Text = "Качество кассеты";
                         break;
                     }
             }
 
             m1:
-
             add.clean();
-
             add.ShowDialog();
-            
             if (add.countryTB.Text != String.Empty&&!add.isCanceled&&add.isEnabled)
             {
                     ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
@@ -634,8 +639,7 @@ namespace BD_course_work
         {
             deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
         }
-
-
+        
         private void deleteCountry_Click(object sender, EventArgs e)//Удаление "Страны"    Доделать еще 2 вида!
         {
             deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
@@ -724,7 +728,7 @@ namespace BD_course_work
             UpdateDirectT("services", (int)servicesTable.SelectedRows[0].Cells[0].Value, (string)servicesTable.SelectedRows[0].Cells[1].Value);
         }
 
-        private void button13_Click(object sender, EventArgs e)
+        private void button13_Click(object sender, EventArgs e)//Тип собственности
         {
             UpdateDirectT("property_type", (int)propertyTable.SelectedRows[0].Cells[0].Value, (string)propertyTable.SelectedRows[0].Cells[1].Value);
         }
@@ -734,6 +738,21 @@ namespace BD_course_work
             UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
         }
 
+        private void button37_Click(object sender, EventArgs e)//Редактирование фото
+        {
+            updatePhotoIntoTable();
+        }
+
+        private void button4_Click(object sender, EventArgs e)//Режиссеры
+        {
+
+            updatePeopleTable("producers", 1, (string)producersTable.SelectedRows[0].Cells[1].Value, (string)producersTable.SelectedRows[0].Cells[2].Value, producersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null : (string)producersTable.SelectedRows[0].Cells[3].Value);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            updatePeopleTable("owners", 1, (string)ownersTable.SelectedRows[0].Cells[1].Value, (string)ownersTable.SelectedRows[0].Cells[2].Value, ownersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null :(string)ownersTable.SelectedRows[0].Cells[3].Value);
+        }
 
         public void UpdateDirectT(string t,int i,string val)
         {
@@ -796,16 +815,69 @@ namespace BD_course_work
                 if (add.isEnabled && (add.countryTB.Text == String.Empty))
                 {
                     MessageBox.Show("Нельзя ввести пустую строку!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
                     goto m1;
-
                 }
                 return;
             }
             addCountry.Text = "";
         }
 
+        public void updatePeopleTable(string t,int id,string l,string f,string patr)
+        {
+            AddOrEditThreeColumns add = new AddOrEditThreeColumns();
+
+            add.mainL2.Text = t == "owners" ? "Редактировать хозяина" : "Редактировать режиссера";
+
+            add.clean();
+
+            m1:
+
+            add.fam.Text = l;
+
+            add.name.Text = f;
+
+            add.patronymic.Text = patr;
+            
+            add.ShowDialog();
+
+            if (add.fam.Text != String.Empty && add.name.Text != String.Empty && !add.isCanceled && add.isEnabled)
+            {
+                if(ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.name.Text, add.fam.Text, add.patronymic.Text,1, t.Equals("owners")?(int)ownersTable.SelectedRows[0].Cells[0].Value: (int)producersTable.SelectedRows[0].Cells[0].Value))
+                {
+                    MessageBox.Show("Строка обновлена.", "Оповещение");
+                }
+                else
+                {
+                if (ControllerForDB.isCanceledDelete) { return; }
+                MessageBox.Show("По каким-то причинам строка не обновлена.", "Оповещение");
+                }
+        }
+            else
+            {
+                if (add.isEnabled && (add.fam.Text == String.Empty || add.name.Text == String.Empty))
+                {
+                    MessageBox.Show("Вы не ввели фамилию или имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+
+                }
+                return;
+            }
+
+            add.fam.Text = "";
+
+            add.name.Text = "";
+
+            add.patronymic.Text = "";
+        }
+
         
+
+
+
+
+
+
 
 
 

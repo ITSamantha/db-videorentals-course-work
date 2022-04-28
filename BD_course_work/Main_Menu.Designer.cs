@@ -817,6 +817,7 @@
             this.button7.Size = new System.Drawing.Size(44, 38);
             this.button7.TabIndex = 10;
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -898,6 +899,7 @@
             this.button4.Size = new System.Drawing.Size(44, 38);
             this.button4.TabIndex = 7;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -1226,6 +1228,7 @@
             this.button37.Size = new System.Drawing.Size(44, 38);
             this.button37.TabIndex = 14;
             this.button37.UseVisualStyleBackColor = false;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
             // button38
             // 

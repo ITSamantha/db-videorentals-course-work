@@ -99,29 +99,41 @@ namespace BD_course_work
             }
         }
         
-        public static void insertPhoto(string path)
+        public static bool insertOrUpdatePhoto(string path,int val,int id=0)
         {
-            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
-            n.Open();
+                n.Open();
 
-            NpgsqlCommand com = new NpgsqlCommand("Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );", n);
+                string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );" : $"Update cassette_photo set photo=@Image where pk_photo_id={id};";
 
-            NpgsqlParameter parameter = com.CreateParameter();
+                NpgsqlCommand com = new NpgsqlCommand(command, n);
 
-            parameter.ParameterName = "@Image";
+                NpgsqlParameter parameter = com.CreateParameter();
 
-            parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
+                parameter.ParameterName = "@Image";
 
-            parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
+                parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
 
-            com.Parameters.Add(parameter);
+                parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
 
-            com.ExecuteNonQuery();
+                com.Parameters.Add(parameter);
 
-            com.Dispose();
+                com.ExecuteNonQuery();
 
-            n.Close();
+                com.Dispose();
+
+                n.Close();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
         }
         public static void generateServicesPrices()//Генерация services_prices
         {
@@ -457,22 +469,37 @@ namespace BD_course_work
 
         }
 
-        public static void insertIntoPeopleTable(string table,string last,string first,string patron)
+        public static bool insertOrUpdateIntoPeopleTable(string table,string last,string first,string patron,int val,int id=0)
         {
-            NpgsqlConnection c = new NpgsqlConnection(connectionString);
+            try
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
 
-            c.Open();
+                c.Open();
 
-            string command = $"insert into {table}  values (default,'{first}','{last}','{patron}');";//Проверка на допустимый null?
+                string command = val == 0 ? $"insert into {table}  values (default,'{first}','{last}','{patron}');" :
+                    (table.Equals("owners") ? $"update {table}  set owner_first_name = '{first}', owner_last_name = '{last}', owner_patronymic = '{patron}' where pk_owner_id={id};" :
+                    $"update {table}  set producer_first_name = '{first}', producer_last_name = '{last}', producer_patronymic = '{patron}' where pk_producer_id={id};");
 
-            var command_s = new NpgsqlCommand(command, c);
+                var command_s = new NpgsqlCommand(command, c);
 
-            var cq = command_s.ExecuteNonQuery();
+                var cq = command_s.ExecuteNonQuery();
 
-            command_s.Dispose();
+                command_s.Dispose();
 
-            c.Close();
+                c.Close();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            
         }
+
+       
         public static bool updateDirectTables(string table,int id,string value)//ФОТО СДЕЛАТЬ ОТДЕЛЬНО!
         {
             NpgsqlConnection c = new NpgsqlConnection(connectionString);
