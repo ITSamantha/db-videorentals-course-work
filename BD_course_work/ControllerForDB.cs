@@ -499,6 +499,31 @@ namespace BD_course_work
             
         }
 
+        public static bool insertIntoVideoRental(string video_name,int video_id,string adress,int prop,string phone,string number,string time_s,string time_e,int amount,int owner_id)//Добавление в Video_Rental
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                var command = $"insert into video_rental values (default,'{video_name}','{video_id}','{adress}','{prop}','{phone}','{number}','{time_s}','{time_e}','{amount}','{owner_id}' );";
+
+                NpgsqlCommand com = new NpgsqlCommand(command, n);
+
+                com.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
        
         public static bool updateDirectTables(string table,int id,string value)//ФОТО СДЕЛАТЬ ОТДЕЛЬНО!
         {
@@ -600,6 +625,53 @@ namespace BD_course_work
             isCanceledDelete = true;
 
             return false;
+        }
+
+        public static List<string> selectForComboBox(string table,string whatChoose="")
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            List<string> list = new List<string>();
+
+            string textCommand="";
+
+            if (table.Equals("owners") || table.Equals("producers"))
+            {
+                if (table.Equals("owners"))
+                {
+                    textCommand = $"Select owner_first_name, owner_last_name, owner_patronymic from {table} ;";
+                }
+                if (table.Equals("producers"))
+                {
+                    textCommand = $"Select producer_first_name, producer_last_name, producer_patronymic from {table} ;";
+                }
+            }
+            else
+            {
+                textCommand = $"Select {whatChoose} from {table} ;";
+            }
+            
+            var command = new NpgsqlCommand(textCommand, n);
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (table.Equals("owners") || table.Equals("owners"))
+                {
+                    list.Add(reader.GetString(1) + " " + reader.GetString(0) + " " + reader.GetString(2));
+
+                    continue;
+                }
+                list.Add(reader.GetString(0));
+            }
+            reader.Close();
+
+            n.Close();
+
+            return list;
         }
 
     }

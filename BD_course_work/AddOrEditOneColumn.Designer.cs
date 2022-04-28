@@ -120,7 +120,7 @@
         public System.Windows.Forms.TextBox countryTB;
         public System.Windows.Forms.Label mainL1;
         public System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button button1;
     }
 }

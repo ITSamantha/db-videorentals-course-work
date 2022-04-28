@@ -146,3 +146,4 @@ C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_wo
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.AddOrEditOneColumn.resources
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.AddOrEditThreeColumns.resources
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.Connect.resources
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.AddOrEditVideoRental.resources

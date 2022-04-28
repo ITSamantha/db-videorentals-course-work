@@ -491,7 +491,7 @@ namespace BD_course_work
             }
         }
 
-        public void addToPeopleTable(string t)
+        public static void addToPeopleTable(string t)
         {
             AddOrEditThreeColumns add = new AddOrEditThreeColumns();
 
@@ -528,7 +528,7 @@ namespace BD_course_work
             add.patronymic.Text = "";
         }
 
-        public void InsertIntoDirectTables(string t)//Метод добавления и обновления таблиц-справочников
+        public static void InsertIntoDirectTables(string t)//Метод добавления и обновления таблиц-справочников
         {
             AddOrEditOneColumn add = new AddOrEditOneColumn();
 
@@ -574,6 +574,8 @@ namespace BD_course_work
                     ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
 
                     ControllerForDB.selectAllFromTablesDirectories(t);//??
+
+                     MessageBox.Show("Строка добавлена.", "Оповещение");
             }
             else
             {
@@ -586,12 +588,12 @@ namespace BD_course_work
                 }
                 return;
             }
-            addCountry.Text = "";
+           // addCountry.Text = "";
         }
         //Методы INSERT
         private void addCountry_Click(object sender, EventArgs e)//Добавление страны
         {
-            InsertIntoDirectTables("countries");
+            Main_Menu.InsertIntoDirectTables("countries");
         }
         
         private void button12_Click(object sender, EventArgs e)//Добавление услуги
@@ -629,8 +631,38 @@ namespace BD_course_work
             addToPeopleTable("producers");
         }
 
-        private void button30_Click(object sender, EventArgs e)
+        private void button30_Click(object sender, EventArgs e)//Добавление видеопроката
         {
+            AddOrEditVideoRental add = new AddOrEditVideoRental();
+
+            m1:
+
+            add.ShowDialog();
+            
+            if (!add.isCanceled && add.isEnabled&& add.title.Text!=String.Empty&& add.adress.Text!=String.Empty && add.number.Text!=String.Empty)
+            {
+                if (ControllerForDB.insertIntoVideoRental(add.title.Text, (add.districtCB.SelectedIndex + 1), add.adress.Text, (add.propCB.SelectedIndex + 1), add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), (add.ownerCB.SelectedIndex + 1)))
+                {
+                    MessageBox.Show("Строка добавлена.", "Оповещение");
+                }
+                else
+                {
+                    if (ControllerForDB.isCanceledDelete) { return; }
+                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                }
+            }
+            else
+            {
+                if (add.isCanceled)
+                {
+                    return;
+                }
+                goto m1;
+
+
+            }
+            
+            
 
         }
 
@@ -870,28 +902,6 @@ namespace BD_course_work
 
             add.patronymic.Text = "";
         }
-
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //ДОДЕЛАТЬ ОСТАЛЬНЫЕ ТАБЛИЦЫ
     }
 }
