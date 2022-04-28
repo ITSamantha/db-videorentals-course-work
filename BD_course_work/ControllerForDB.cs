@@ -473,7 +473,68 @@ namespace BD_course_work
 
             c.Close();
         }
-        public static bool updateTables()
+        public static bool updateDirectTables(string table,int id,string value)//ФОТО СДЕЛАТЬ ОТДЕЛЬНО!
+        {
+            NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+            c.Open();
+
+            string command="";
+
+            switch (table)
+            {
+                case "cassette_quality":
+                    {
+                        command = $"update {table} set quality_name = '{value}' where pk_quality_id={id};";
+
+                        break;
+                    }
+                
+                case "district":
+                    {
+                        command = $"update {table} set district_name = '{value}' where pk_district_id={id};";
+
+                        break;
+                    }
+                case "countries":
+                    {
+                        command = $"update {table} set country_name = '{value}' where pk_country_id={id};";
+
+                        break;
+                    }
+                case "property_type":
+                    {
+                        command = $"update {table} set property_type_name = '{value}' where pk_property_type_id={id};";
+
+                        break;
+                    }
+                case "services":
+                    {
+                        command = $"update {table} set service_name = '{value}' where pk_service_id={id};";
+
+                        break;
+                    }
+            }
+            try
+            {
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                c.Close();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                return false;
+            }
+            
+            
+        }
+
         public static bool isCanceledDelete;
 
         public static bool deleteById(int id,string table,string id_title)

@@ -453,26 +453,7 @@ namespace BD_course_work
             label11.Text += ControllerForDB.amount;
         }
 
-        //Методы добавления
-        private void button33_Click(object sender, EventArgs e)//Добавление качества
-        {
-            insertIntoDirectTables("cassette_quality");
-        }
-
-        private void button39_Click(object sender, EventArgs e)//Добавление картинки
-        {
-            insertPhotoIntoTable();
-        }
-
-        private void button9_Click(object sender, EventArgs e)//Добавление хозяина
-        {
-            addToPeopleTable("owners");
-        }
-
-        private void button6_Click(object sender, EventArgs e)//Добавление режиссера
-        {
-            addToPeopleTable("producers");
-        }
+        
 
         public void insertPhotoIntoTable()
         {
@@ -525,7 +506,7 @@ namespace BD_course_work
             add.patronymic.Text = "";
         }
 
-        public void insertIntoDirectTables(string t)
+        public void InsertIntoDirectTables(string t)//Метод добавления и обновления таблиц-справочников
         {
             AddOrEditOneColumn add = new AddOrEditOneColumn();
 
@@ -533,42 +514,46 @@ namespace BD_course_work
             {
                 case "countries":
                     {
+                        
                         add.mainL1.Text = "Добавить страну";
 
                         add.groupBox1.Text = "Страна";
-
+                        
                         break;
                     }
                 case "services":
                     {
-                        add.mainL1.Text = "Добавить услугу";
+                        
+                            add.mainL1.Text = "Добавить услугу";
 
-                        add.groupBox1.Text = "Услуга";
-
+                            add.groupBox1.Text = "Услуга";
+                        
                         break;
                     }
                 case "property_type":
                     {
-                        add.mainL1.Text = "Добавить тип \nсобственности";
+                        
+                            add.mainL1.Text = "Добавить тип \nсобственности";
 
-                        add.groupBox1.Text = "Тип собственности";
-
+                            add.groupBox1.Text = "Тип собственности";
+                        
                         break;
                     }
                 case "district":
                     {
-                        add.mainL1.Text = "Добавить район";
+                        
+                            add.mainL1.Text = "Добавить район";
 
-                        add.groupBox1.Text = "Район";
-
+                            add.groupBox1.Text = "Район";
+                        
                         break;
                     }
                 case "cassette_quality":
                     {
-                        add.mainL1.Text = "Добавить качество\nкассеты";
+                          add.mainL1.Text = "Добавить качество\nкассеты";
 
-                        add.groupBox1.Text = "Качество кассеты";
-
+                            add.groupBox1.Text = "Качество кассеты";
+                        
                         break;
                     }
             }
@@ -578,12 +563,12 @@ namespace BD_course_work
             add.clean();
 
             add.ShowDialog();
-
+            
             if (add.countryTB.Text != String.Empty&&!add.isCanceled&&add.isEnabled)
             {
-                ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
+                    ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text);
 
-                ControllerForDB.selectAllFromTablesDirectories(t);//??
+                    ControllerForDB.selectAllFromTablesDirectories(t);//??
             }
             else
             {
@@ -601,22 +586,42 @@ namespace BD_course_work
         //Методы INSERT
         private void addCountry_Click(object sender, EventArgs e)//Добавление страны
         {
-            insertIntoDirectTables("countries");
+            InsertIntoDirectTables("countries");
         }
         
         private void button12_Click(object sender, EventArgs e)//Добавление услуги
         {
-            insertIntoDirectTables("services");
+            InsertIntoDirectTables("services");
         }
 
         private void button15_Click(object sender, EventArgs e)//Добавить тип собственности
         {
-            insertIntoDirectTables("property_type");
+            InsertIntoDirectTables("property_type");
         }
 
         private void button18_Click(object sender, EventArgs e)//Добавить район
         {
-            insertIntoDirectTables("district");
+            InsertIntoDirectTables("district");
+        }
+        
+        private void button33_Click(object sender, EventArgs e)//Добавление качества
+        {
+            InsertIntoDirectTables("cassette_quality");
+        }
+
+        private void button39_Click(object sender, EventArgs e)//Добавление картинки
+        {
+            insertPhotoIntoTable();
+        }
+
+        private void button9_Click(object sender, EventArgs e)//Добавление хозяина
+        {
+            addToPeopleTable("owners");
+        }
+
+        private void button6_Click(object sender, EventArgs e)//Добавление режиссера
+        {
+            addToPeopleTable("producers");
         }
 
         private void button30_Click(object sender, EventArgs e)
@@ -704,12 +709,103 @@ namespace BD_course_work
             }
         }
         //Методы UPDATE
-        private void button31_Click(object sender, EventArgs e)
+        private void button31_Click(object sender, EventArgs e)//Качество
         {
+            UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
+        }
 
+        private void editCountry_Click(object sender, EventArgs e)//Страны
+        {
+            UpdateDirectT("countries", (int)countriesTable.SelectedRows[0].Cells[0].Value, (string)countriesTable.SelectedRows[0].Cells[1].Value);
+        }
+
+        private void button10_Click(object sender, EventArgs e)//Услуги
+        {
+            UpdateDirectT("services", (int)servicesTable.SelectedRows[0].Cells[0].Value, (string)servicesTable.SelectedRows[0].Cells[1].Value);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            UpdateDirectT("property_type", (int)propertyTable.SelectedRows[0].Cells[0].Value, (string)propertyTable.SelectedRows[0].Cells[1].Value);
+        }
+
+        private void button16_Click(object sender, EventArgs e)//Районы
+        {
+            UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
         }
 
 
+        public void UpdateDirectT(string t,int i,string val)
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            switch (t)
+            {
+                case "countries":
+                    {
+                        add.mainL1.Text = "Редактировать страну";
+                        add.groupBox1.Text = "Страна";
+                        break;
+                    }
+                case "services":
+                    {
+                        add.mainL1.Text = "Редактировать услугу";
+                        add.groupBox1.Text = "Услуга";
+                        break;
+                    }
+                case "property_type":
+                    {
+                        add.mainL1.Text = "Редактировать тип \nсобственности";
+                        add.groupBox1.Text = "Тип собственности";
+                        break;
+                    }
+                case "district":
+                    {
+                        add.mainL1.Text = "Редактировать район";
+                        add.groupBox1.Text = "Район";
+                        break;
+                    }
+                case "cassette_quality":
+                    {
+                        add.mainL1.Text = "Редактировать качество\nкассеты";
+                        add.groupBox1.Text = "Качество кассеты";
+                        break;
+                    }
+            }
+        add.clean();
+
+        m1:
+            add.countryTB.Text = val;
+
+            add.ShowDialog();
+            
+            if (add.countryTB.Text != String.Empty && !add.isCanceled && add.isEnabled)
+            {
+                if (ControllerForDB.updateDirectTables(t, i, add.countryTB.Text))
+                {
+                    MessageBox.Show("Строка обновлена.", "Оповещение");
+                }
+                else
+                {
+                    if (ControllerForDB.isCanceledDelete) { return; }
+                    MessageBox.Show("По каким-то причинам строка не обновлена.", "Оповещение");
+                }
+            }
+            else
+            {
+                if (add.isEnabled && (add.countryTB.Text == String.Empty))
+                {
+                    MessageBox.Show("Нельзя ввести пустую строку!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+
+                }
+                return;
+            }
+            addCountry.Text = "";
+        }
+
+        
 
 
 
