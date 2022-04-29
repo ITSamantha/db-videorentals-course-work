@@ -38,6 +38,7 @@
             this.adress1 = new System.Windows.Forms.GroupBox();
             this.adress = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.number = new System.Windows.Forms.MaskedTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.license = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,6 @@
             this.timeEnd = new System.Windows.Forms.MaskedTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.ownerCB = new System.Windows.Forms.ComboBox();
-            this.number = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.adress1.SuspendLayout();
@@ -79,10 +79,10 @@
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Font = new System.Drawing.Font("Garamond", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.Location = new System.Drawing.Point(448, 471);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 36);
+            this.button2.Size = new System.Drawing.Size(165, 36);
             this.button2.TabIndex = 22;
             this.button2.Text = "Отмена";
             this.button2.UseVisualStyleBackColor = false;
@@ -93,12 +93,11 @@
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Garamond", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(243, 471);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 36);
+            this.button1.Size = new System.Drawing.Size(163, 36);
             this.button1.TabIndex = 21;
-            this.button1.Text = "Добавить";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -176,6 +175,16 @@
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Телефон";
+            // 
+            // number
+            // 
+            this.number.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.number.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.number.Location = new System.Drawing.Point(6, 29);
+            this.number.Mask = "(999) 000-0000";
+            this.number.Name = "number";
+            this.number.Size = new System.Drawing.Size(369, 32);
+            this.number.TabIndex = 2;
             // 
             // groupBox4
             // 
@@ -309,16 +318,6 @@
             this.ownerCB.TabIndex = 1;
             this.ownerCB.SelectedIndexChanged += new System.EventHandler(this.ownerCB_SelectedIndexChanged);
             // 
-            // number
-            // 
-            this.number.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.number.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.number.Location = new System.Drawing.Point(6, 29);
-            this.number.Mask = "(999) 000-0000";
-            this.number.Name = "number";
-            this.number.Size = new System.Drawing.Size(369, 32);
-            this.number.TabIndex = 2;
-            // 
             // AddOrEditVideoRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -369,7 +368,6 @@
 
         public System.Windows.Forms.Label mainL1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.GroupBox groupBox1;
         public System.Windows.Forms.TextBox title;
         public System.Windows.Forms.GroupBox groupBox2;
@@ -390,5 +388,6 @@
         public System.Windows.Forms.MaskedTextBox timeEnd;
         public System.Windows.Forms.MaskedTextBox license;
         public System.Windows.Forms.MaskedTextBox number;
+        public System.Windows.Forms.Button button1;
     }
 }

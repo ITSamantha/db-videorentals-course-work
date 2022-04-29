@@ -103,6 +103,12 @@
     <Compile Include="AddOrEditThreeColumns.Designer.cs">
       <DependentUpon>AddOrEditThreeColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="addOrEditTwoColumns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addOrEditTwoColumns.Designer.cs">
+      <DependentUpon>addOrEditTwoColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddOrEditVideoRental.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditThreeColumns.resx">
       <DependentUpon>AddOrEditThreeColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addOrEditTwoColumns.resx">
+      <DependentUpon>addOrEditTwoColumns.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditVideoRental.resx">
       <DependentUpon>AddOrEditVideoRental.cs</DependentUpon>

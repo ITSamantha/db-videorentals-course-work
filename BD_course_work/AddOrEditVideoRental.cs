@@ -75,11 +75,11 @@ namespace BD_course_work
         }
 
 
-        public  Dictionary<string,int> list;
+        public  SortedDictionary<string,int> list;
 
-        public  Dictionary<string, int> prop_list;
+        public  SortedDictionary<string, int> prop_list;
 
-        public Dictionary<string, int> owner_list;
+        public SortedDictionary<string, int> owner_list;
 
         public bool isCanceled=false;
 

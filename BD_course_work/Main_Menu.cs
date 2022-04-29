@@ -590,6 +590,79 @@ namespace BD_course_work
             }
            // addCountry.Text = "";
         }
+
+        public void insertOrUpdateIntoStudios(int val)
+        {
+            addOrEditTwoColumns add = new addOrEditTwoColumns();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить студию";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать студию";
+
+                add.button1.Text = "Сохранить";
+            }
+
+            if (val == 1)
+            {
+                add.title.Text= (string)studiosTable.SelectedRows[0].Cells[1].Value;
+
+                add.countryCB.Text= (string)studiosTable.SelectedRows[0].Cells[2].Value;
+            }
+            
+            m1:
+
+                add.clean();
+
+                add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty)
+            {
+                if (val == 0)
+                {
+                    if (ControllerForDB.insertIntoStudios(add.title.Text,add.list[add.countryCB.Text]))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete) { return; }
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+                else
+                {
+                    if (ControllerForDB.updateStudios(add.title.Text, add.list[add.countryCB.Text], (int)studiosTable.SelectedRows[0].Cells[0].Value))
+                    {
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete) { return; }
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+            }
+            else
+            {
+                if (add.isEnabled)
+                {
+                    if (add.title.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели название.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                }
+                return;
+            }
+        }
+
         //Методы INSERT
         private void addCountry_Click(object sender, EventArgs e)//Добавление страны
         {
@@ -633,15 +706,33 @@ namespace BD_course_work
 
         private void button30_Click(object sender, EventArgs e)//Добавление видеопроката
         {
-            inserOrUpdatetIntoVideoRental(0);
+            inserOrUpdatetIntoVideoRental(0); 
         }
-        
+
+        private void button3_Click(object sender, EventArgs e)//Добавление студии
+        {
+            insertOrUpdateIntoStudios(0);
+        }
+
         public void inserOrUpdatetIntoVideoRental(int val)//Добавление и редактирование Видеопрокатов
         {
             AddOrEditVideoRental add = new AddOrEditVideoRental();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить видеопрокат";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать видеопрокат";
+
+                add.button1.Text = "Сохранить";
+            }
+
             if (val == 1)
             {
-
                 add.title.Text = (string)videoTable.SelectedRows[0].Cells[1].Value;
                 
                 add.districtCB.Text = (string)videoTable.SelectedRows[0].Cells[2].Value;
@@ -748,7 +839,6 @@ namespace BD_course_work
                         MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
                     }
                 }
-                
             }
             else
             {
@@ -886,7 +976,7 @@ namespace BD_course_work
             updatePeopleTable("producers", 1, (string)producersTable.SelectedRows[0].Cells[1].Value, (string)producersTable.SelectedRows[0].Cells[2].Value, producersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null : (string)producersTable.SelectedRows[0].Cells[3].Value);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)//Хозяины
         {
             updatePeopleTable("owners", 1, (string)ownersTable.SelectedRows[0].Cells[1].Value, (string)ownersTable.SelectedRows[0].Cells[2].Value, ownersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null :(string)ownersTable.SelectedRows[0].Cells[3].Value);
         }
@@ -894,6 +984,11 @@ namespace BD_course_work
         private void button28_Click(object sender, EventArgs e)//Видеопрокаты
         {
             inserOrUpdatetIntoVideoRental(1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)//Студии
+        {
+            insertOrUpdateIntoStudios(1);
         }
 
         public void UpdateDirectT(string t,int i,string val)
@@ -961,7 +1056,6 @@ namespace BD_course_work
                 }
                 return;
             }
-            addCountry.Text = "";
         }
 
         public void updatePeopleTable(string t,int id,string l,string f,string patr)
@@ -1005,14 +1099,6 @@ namespace BD_course_work
                 }
                 return;
             }
-
-            add.fam.Text = "";
-
-            add.name.Text = "";
-
-            add.patronymic.Text = "";
         }
-
-        
     }
 }

@@ -14,13 +14,14 @@ namespace BD_course_work
     class ControllerForDB
     {
         public static string connectionString;
-
+        
+        //Данные для генерации
         public static readonly string[] tables ={ "cassette_photo", "cassette_quality", "cassettes",
                                            "countries", "deals", "district", "films", "owners",
                                           "producers", "property_type", "services", "services_prices",
                                           "studios", "video_rental" };
 
-        public static string[] cassette_quality = { "Превосходное", "Хорошее", "Нормальное", "Плохое", "Ужасное" };//НЕ МЕНЕЕ 10
+        public static string[] cassette_quality = { "Превосходное", "Хорошее", "Нормальное", "Плохое", "Ужасное" };
 
         public static string[] countries = { "Россия", "Норвегия", "США", "Таджикистан", "Румыния", "Япония", "Китай", "Англия", "Греция", "Польша", "Италия", "Франция" };
 
@@ -65,10 +66,32 @@ namespace BD_course_work
                                      Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas8.jpeg")),
                                      Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas9.jpg")),
                                      Instruments.convertImageIntoB(Image.FromFile(Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - 24) + "images\\cas10.jpg")),
-        };                           
+        };
+
+        //Тестовое соединение
+        public static bool Connection(string connect)
+        {
+            try
+            {
+                connectionString = connect;
+
+                NpgsqlConnection connection = new NpgsqlConnection();
+
+                connection.Open();
+
+                connection.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Connection error: \n {e} ");
+
+                return false;
+            }
+        }
 
         //Генерация данных
-
         public static void generatePics(int num)
         {
             Random r = new Random();
@@ -256,6 +279,8 @@ namespace BD_course_work
             
         }
 
+        //SELECT-методы
+
         public static object selectSmthById(int id,string table,string param,string idd)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -274,29 +299,7 @@ namespace BD_course_work
 
             return am;
         }
-
-        public static bool Connection(string connect)
-        {
-            try
-            {
-                connectionString = connect;
-
-                NpgsqlConnection connection = new NpgsqlConnection();
-                
-                connection.Open();
-
-                connection.Close();
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Connection error: \n {e} ");
-
-                return false;
-            }
-        }
-
+        
         public static DataTable selectAllFromTablesDirectories(string table_name)//Выбока всего из таблиц-справочников
         {
             try
@@ -451,6 +454,8 @@ namespace BD_course_work
             }
         }
 
+
+        //INSERT-методы
         public static void insertIntoDirectTable(string table,string vary)//Вставка в справочники
         {
             NpgsqlConnection c = new NpgsqlConnection(connectionString);
@@ -467,6 +472,30 @@ namespace BD_course_work
             
             c.Close();
 
+        }
+
+        public static bool insertIntoStudios(string name,int id_country)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand($"insert into studios values (default, '{name}', {id_country});", n);
+
+                com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
         }
 
         public static bool insertOrUpdateIntoPeopleTable(string table,string last,string first,string patron,int val,int id=0)
@@ -517,6 +546,30 @@ namespace BD_course_work
 
             }
             catch(Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
+        public static bool updateStudios(string name, int id_country,int studio_id)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand($"update studios set studio_name= '{name}', fk_studio_country= {id_country} where pk_studio_id ={ studio_id};", n);
+
+                com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e);
 
@@ -657,13 +710,13 @@ namespace BD_course_work
             return false;
         }
 
-        public static Dictionary<string,int> selectForComboBox(string table,string whatChoose="",string id_type="")
+        public static SortedDictionary<string,int> selectForComboBox(string table,string whatChoose="",string id_type="")
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
             n.Open();
 
-            Dictionary<string,int> list = new Dictionary<string,int>();
+            SortedDictionary<string,int> list = new SortedDictionary<string,int>();
 
             string textCommand="";
 
@@ -697,6 +750,7 @@ namespace BD_course_work
                 }
                 list.Add(reader.GetString(1), reader.GetInt32(0));
             }
+
             reader.Close();
 
             n.Close();
