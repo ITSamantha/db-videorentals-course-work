@@ -503,8 +503,7 @@ namespace BD_course_work
                 return null;
             }
         }
-
-
+        
         //INSERT-методы
         public static void insertIntoDirectTable(string table,string vary)//Вставка в справочники
         {
@@ -656,8 +655,7 @@ namespace BD_course_work
                 return false;
             }
         }
-
-
+        
         public static bool updateDirectTables(string table,int id,string value)//ФОТО СДЕЛАТЬ ОТДЕЛЬНО!
         {
             NpgsqlConnection c = new NpgsqlConnection(connectionString);
@@ -716,14 +714,105 @@ namespace BD_course_work
             {
                 return false;
             }
-            
-            
         }
         
         //DELETE-методы
         public static bool deleteById(int id,string table,string id_title)
         {
-            DialogResult dialogResult = MessageBox.Show("Вы уверены? В таблицах удалятся все записи, связанные с данной.Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+            DialogResult dialogResult= new DialogResult();
+
+            switch (table)
+            {
+                case "cassette_photo":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "cassette_quality":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблице \"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "cassettes":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблице \"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "countries":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Студии\", \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "deals":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "district":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокаты\",\"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "films":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "owners":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокат\",\"Сделки\",\"Услуги и цены\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "producers":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "property_type":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокат\",\"Сделки\",\"Услуги и цены\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "services":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "services_prices":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "studios":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "viseo_rental":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+
+
+
+
+            }
+
 
             isCanceledDelete = false;
 
