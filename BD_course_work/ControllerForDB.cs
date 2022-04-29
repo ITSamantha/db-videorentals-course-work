@@ -801,7 +801,7 @@ namespace BD_course_work
 
                         break;
                     }
-                case "viseo_rental":
+                case "video_rental":
                     {
                         dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
