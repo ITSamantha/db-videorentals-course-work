@@ -509,7 +509,12 @@ namespace BD_course_work
         {
             insertOrUpdateIntoStudios(0);
         }
-        
+
+        private void button21_Click(object sender, EventArgs e)//Добавление фильма
+        {
+
+        }
+
         public void insertPhotoIntoTable()//Добавление фото в таблицу
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -523,7 +528,7 @@ namespace BD_course_work
 
             ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName,0);
         }
-
+        
         public static void addToPeopleTable(string t)
         {
             AddOrEditThreeColumns add = new AddOrEditThreeColumns();
@@ -687,8 +692,12 @@ namespace BD_course_work
             }
             else
             {
-                if (ControllerForDB.isCanceledDelete) { return; }
-                MessageBox.Show("По каким-то причинам фото не обновлено.", "Оповещение");
+                if (ControllerForDB.isCanceledDelete)
+                {
+                    return;
+                }
+
+                MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
             }
         }
 
@@ -731,7 +740,8 @@ namespace BD_course_work
             }
             add.clean();
 
-        m1:
+            m1:
+
             add.countryTB.Text = val;
 
             add.ShowDialog();
@@ -744,8 +754,12 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.isCanceledDelete) { return; }
-                    MessageBox.Show("По каким-то причинам строка не обновлена.", "Оповещение");
+                    if (ControllerForDB.isCanceledDelete)
+                    {
+                        return;
+                    }
+
+                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
                 }
             }
             else
@@ -767,7 +781,7 @@ namespace BD_course_work
 
             add.clean();
 
-        m1:
+            m1:
 
             add.fam.Text = l;
 
@@ -785,8 +799,12 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.isCanceledDelete) { return; }
-                    MessageBox.Show("По каким-то причинам строка не обновлена.", "Оповещение");
+                    if (ControllerForDB.isCanceledDelete)
+                    {
+                        return;
+                    }
+
+                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
                 }
             }
             else
@@ -796,7 +814,6 @@ namespace BD_course_work
                     MessageBox.Show("Вы не ввели фамилию или имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     goto m1;
-
                 }
                 return;
             }
@@ -882,6 +899,96 @@ namespace BD_course_work
                 }
                 return;
             }
+        }
+
+        public void insertOrUpdateIntoFilms(int val)
+        {
+            addOrEditFilm add = new addOrEditFilm();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить фильм";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать фильм";
+
+                add.button1.Text = "Сохранить";
+            }
+
+            if (val == 1)
+            {
+                add.title.Text = (string)studiosTable.SelectedRows[0].Cells[1].Value;
+
+                add.producerCB.Text = (string)studiosTable.SelectedRows[0].Cells[2].Value;
+
+                add.studioCB.Text = (string)studiosTable.SelectedRows[0].Cells[3].Value;
+
+                add.year.Text = (string)studiosTable.SelectedRows[0].Cells[4].Value;
+
+                add.duration.Text = (string)studiosTable.SelectedRows[0].Cells[5].Value;
+
+                add.info.Text = (string)studiosTable.SelectedRows[0].Cells[6].Value;
+            }
+
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty&&add.year.MaskCompleted&&add.duration.Text!=String.Empty&&add.info.Text!=String.Empty)
+            {
+                if (val == 0)//Доделать добавление и update фильма
+                {
+                    if (ControllerForDB.insertIntoStudios(add.title.Text, add.list[add.countryCB.Text]))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+
+                    }
+                }
+                else
+                {
+                    if (ControllerForDB.updateStudios(add.title.Text, add.list[add.countryCB.Text], (int)studiosTable.SelectedRows[0].Cells[0].Value))
+                    {
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+            }
+            else
+            {
+                if (add.isEnabled)
+                {
+                    if (add.title.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели название.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                }
+                return;
+            }
+
         }
 
         public void inserOrUpdatetIntoVideoRental(int val)//Добавление и редактирование "Видеопрокатов"
@@ -1121,13 +1228,14 @@ namespace BD_course_work
             }
             else
             {
-                if (ControllerForDB.isCanceledDelete) { return; }
-                MessageBox.Show("По каким-то причинам строка не удалена.", "Оповещение");
+                if (ControllerForDB.isCanceledDelete)
+                {
+                    return;
+                }
+
+                MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
             }
         }
-        
-
-        
 
         
     }

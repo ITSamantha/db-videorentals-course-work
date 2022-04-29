@@ -93,6 +93,7 @@
             this.cassettesB = new System.Windows.Forms.Button();
             this.ordersB = new System.Windows.Forms.Button();
             this.videorentalB = new System.Windows.Forms.Button();
+            this.studiosTable = new System.Windows.Forms.DataGridView();
             this.tables = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
@@ -136,7 +137,6 @@
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
-            this.studiosTable = new System.Windows.Forms.DataGridView();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -1068,6 +1068,20 @@
             this.videorentalB.UseVisualStyleBackColor = false;
             this.videorentalB.Click += new System.EventHandler(this.videorentalB_Click);
             // 
+            // studiosTable
+            // 
+            this.studiosTable.AllowUserToAddRows = false;
+            this.studiosTable.AllowUserToDeleteRows = false;
+            this.studiosTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.studiosTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.studiosTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studiosTable.Location = new System.Drawing.Point(21, 41);
+            this.studiosTable.Name = "studiosTable";
+            this.studiosTable.ReadOnly = true;
+            this.studiosTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.studiosTable.Size = new System.Drawing.Size(883, 519);
+            this.studiosTable.TabIndex = 9;
+            // 
             // tables
             // 
             this.tables.BackColor = System.Drawing.Color.Transparent;
@@ -1246,6 +1260,7 @@
             this.button21.Size = new System.Drawing.Size(44, 38);
             this.button21.TabIndex = 8;
             this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // button16
             // 
@@ -1664,20 +1679,6 @@
             this.button42.Size = new System.Drawing.Size(44, 38);
             this.button42.TabIndex = 17;
             this.button42.UseVisualStyleBackColor = false;
-            // 
-            // studiosTable
-            // 
-            this.studiosTable.AllowUserToAddRows = false;
-            this.studiosTable.AllowUserToDeleteRows = false;
-            this.studiosTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.studiosTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.studiosTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.studiosTable.Location = new System.Drawing.Point(21, 41);
-            this.studiosTable.Name = "studiosTable";
-            this.studiosTable.ReadOnly = true;
-            this.studiosTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.studiosTable.Size = new System.Drawing.Size(883, 519);
-            this.studiosTable.TabIndex = 9;
             // 
             // Main_Menu
             // 

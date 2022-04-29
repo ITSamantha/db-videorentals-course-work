@@ -91,6 +91,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addOrEditFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addOrEditFilm.Designer.cs">
+      <DependentUpon>addOrEditFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddOrEditOneColumn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="addOrEditFilm.resx">
+      <DependentUpon>addOrEditFilm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditOneColumn.resx">
       <DependentUpon>AddOrEditOneColumn.cs</DependentUpon>
     </EmbeddedResource>
