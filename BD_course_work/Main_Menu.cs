@@ -639,9 +639,33 @@ namespace BD_course_work
         public void inserOrUpdatetIntoVideoRental(int val)//Добавление и редактирование Видеопрокатов
         {
             AddOrEditVideoRental add = new AddOrEditVideoRental();
+            if (val == 1)
+            {
+
+                add.title.Text = (string)videoTable.SelectedRows[0].Cells[1].Value;
+                
+                add.districtCB.Text = (string)videoTable.SelectedRows[0].Cells[2].Value;
+
+                add.adress.Text = (string)videoTable.SelectedRows[0].Cells[3].Value;
+                
+                add.propCB.Text = (string)videoTable.SelectedRows[0].Cells[4].Value;
+
+                add.license.Text = (string)videoTable.SelectedRows[0].Cells[6].Value;
+
+                add.number.Text = (string)videoTable.SelectedRows[0].Cells[5].Value;
+
+                add.timeEnd.Text = videoTable.SelectedRows[0].Cells[8].Value.ToString();
+
+                add.timeStart.Text = videoTable.SelectedRows[0].Cells[7].Value.ToString();
+
+                add.amountEmpl.Text = (string)videoTable.SelectedRows[0].Cells[9].Value.ToString();
+
+               add.ownerCB.Text = (string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value);
+            }
 
         m1:
-
+            add.clean();
+            
             add.ShowDialog();
             
             if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty && add.adress.Text != String.Empty)
@@ -716,7 +740,7 @@ namespace BD_course_work
                 {
                     if (ControllerForDB.updateIntoVideoRental((int)videoTable.SelectedRows[0].Cells[0].Value, add.title.Text, add.list[add.districtCB.Text], add.adress.Text, add.prop_list[add.propCB.Text], add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), add.owner_list[add.ownerCB.Text]))
                     {
-                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
                     else
                     {
