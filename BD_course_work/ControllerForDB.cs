@@ -506,9 +506,9 @@ namespace BD_course_work
                 NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
                 n.Open();
-
+                
                 var command = $"insert into video_rental values (default,'{video_name}','{video_id}','{adress}','{prop}','{phone}','{number}','{time_s}','{time_e}','{amount}','{owner_id}' );";
-
+               
                 NpgsqlCommand com = new NpgsqlCommand(command, n);
 
                 com.ExecuteNonQuery();
@@ -524,7 +524,37 @@ namespace BD_course_work
             }
         }
 
-       
+        public static bool updateIntoVideoRental(int id,string video_name, int video_id, string adress, int prop, string phone, string number, string time_s, string time_e, int amount, int owner_id)//Редактирование в Video_Rental
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                var command = $"update video_rental set  video_caption ='{video_name}', " +
+                    $"fk_video_district = '{video_id}', video_adress = '{adress}'," +
+                    $"fk_property_type ='{prop}', video_phone = '{phone}'," +
+                    $"license_number = '{number}',time_start = '{time_s}'," +
+                    $"time_end = '{time_e}',amount_of_employees = '{amount}'," +
+                    $"fk_owner_id = '{owner_id}' where pk_video_rental_id = {id};";
+
+                NpgsqlCommand com = new NpgsqlCommand(command, n);
+
+                com.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
+
         public static bool updateDirectTables(string table,int id,string value)//ФОТО СДЕЛАТЬ ОТДЕЛЬНО!
         {
             NpgsqlConnection c = new NpgsqlConnection(connectionString);
@@ -627,13 +657,13 @@ namespace BD_course_work
             return false;
         }
 
-        public static List<string> selectForComboBox(string table,string whatChoose="")
+        public static Dictionary<string,int> selectForComboBox(string table,string whatChoose="",string id_type="")
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
             n.Open();
 
-            List<string> list = new List<string>();
+            Dictionary<string,int> list = new Dictionary<string,int>();
 
             string textCommand="";
 
@@ -641,16 +671,16 @@ namespace BD_course_work
             {
                 if (table.Equals("owners"))
                 {
-                    textCommand = $"Select owner_first_name, owner_last_name, owner_patronymic from {table} ;";
+                    textCommand = $"Select pk_owner_id,owner_first_name, owner_last_name, owner_patronymic from {table} ;";
                 }
                 if (table.Equals("producers"))
                 {
-                    textCommand = $"Select producer_first_name, producer_last_name, producer_patronymic from {table} ;";
+                    textCommand = $"Select pk_producer_id,producer_first_name, producer_last_name, producer_patronymic from {table} ;";
                 }
             }
             else
             {
-                textCommand = $"Select {whatChoose} from {table} ;";
+                textCommand = $"Select {id_type}, {whatChoose} from {table} ;";
             }
             
             var command = new NpgsqlCommand(textCommand, n);
@@ -661,11 +691,11 @@ namespace BD_course_work
             {
                 if (table.Equals("owners") || table.Equals("owners"))
                 {
-                    list.Add(reader.GetString(1) + " " + reader.GetString(0) + " " + reader.GetString(2));
+                    list.Add(reader.GetString(2) + " " + reader.GetString(1) + " " + reader.GetString(3), reader.GetInt32(0));
 
                     continue;
                 }
-                list.Add(reader.GetString(0));
+                list.Add(reader.GetString(1), reader.GetInt32(0));
             }
             reader.Close();
 

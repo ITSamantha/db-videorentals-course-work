@@ -633,37 +633,118 @@ namespace BD_course_work
 
         private void button30_Click(object sender, EventArgs e)//Добавление видеопроката
         {
+            inserOrUpdatetIntoVideoRental(0);
+        }
+        
+        public void inserOrUpdatetIntoVideoRental(int val)//Добавление и редактирование Видеопрокатов
+        {
             AddOrEditVideoRental add = new AddOrEditVideoRental();
 
-            m1:
+        m1:
 
             add.ShowDialog();
             
-            if (!add.isCanceled && add.isEnabled&& add.title.Text!=String.Empty&& add.adress.Text!=String.Empty && add.number.Text!=String.Empty)
+            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty && add.adress.Text != String.Empty)
             {
-                if (ControllerForDB.insertIntoVideoRental(add.title.Text, (add.districtCB.SelectedIndex + 1), add.adress.Text, (add.propCB.SelectedIndex + 1), add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), (add.ownerCB.SelectedIndex + 1)))
+                try//Проверка времени
                 {
-                    MessageBox.Show("Строка добавлена.", "Оповещение");
+                    int t1 = int.Parse(add.timeStart.Text);
+
+                    int t2 = int.Parse(add.timeEnd.Text);
+
+                    if (t1 < 6 || t2 > 23)
+                    {
+                        MessageBox.Show("Время открытия не ранее 6. Время закрытия не позднее 23.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                    if (t2 - t1 <= 0)
+                    {
+                        MessageBox.Show("Время закрытия должно быть позднее времени открытия.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        goto m1;
+                    }
                 }
-                else
+                catch (Exception )
                 {
-                    if (ControllerForDB.isCanceledDelete) { return; }
-                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    MessageBox.Show("Время открытия или закрытия введено неверно или не введено.", "Error",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
                 }
+
+                if (!add.number.MaskFull)
+                {
+                    MessageBox.Show("Номер телефона введен некорректно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+
+                if (!add.license.MaskFull)
+                {
+                    MessageBox.Show("Номер № лицензии введен некорректно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+                
+                try
+                {
+                    int n = int.Parse(add.amountEmpl.Text);
+
+                    if (n <= 0)
+                    {
+                        throw new Exception();
+                    }
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Количество работников введено некорректно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+                if (val == 0)
+                {
+                    if (ControllerForDB.insertIntoVideoRental(add.title.Text, add.list[add.districtCB.Text], add.adress.Text, add.prop_list[add.propCB.Text], add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), add.owner_list[add.ownerCB.Text]))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete) { return; }
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+                if (val == 1)
+                {
+                    if (ControllerForDB.updateIntoVideoRental((int)videoTable.SelectedRows[0].Cells[0].Value, add.title.Text, add.list[add.districtCB.Text], add.adress.Text, add.prop_list[add.propCB.Text], add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), add.owner_list[add.ownerCB.Text]))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete) { return; }
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+                
             }
             else
             {
-                if (add.isCanceled)
+                if (add.isEnabled)
                 {
-                    return;
+                    if(add.title.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели название.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                    if (add.adress.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели адрес.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
                 }
-                goto m1;
-
-
+                return;
             }
-            
-            
-
         }
 
         //Методы DELETE
@@ -786,6 +867,11 @@ namespace BD_course_work
             updatePeopleTable("owners", 1, (string)ownersTable.SelectedRows[0].Cells[1].Value, (string)ownersTable.SelectedRows[0].Cells[2].Value, ownersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null :(string)ownersTable.SelectedRows[0].Cells[3].Value);
         }
 
+        private void button28_Click(object sender, EventArgs e)//Видеопрокаты
+        {
+            inserOrUpdatetIntoVideoRental(1);
+        }
+
         public void UpdateDirectT(string t,int i,string val)
         {
             AddOrEditOneColumn add = new AddOrEditOneColumn();
@@ -902,6 +988,7 @@ namespace BD_course_work
 
             add.patronymic.Text = "";
         }
+
         
     }
 }

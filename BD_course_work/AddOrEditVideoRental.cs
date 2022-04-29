@@ -35,11 +35,11 @@ namespace BD_course_work
         {//ВЕЗДЕ ОБРАБОТКА ИСКЛЮЧЕНИЙ(СОВПАДЕНИЕ, ПУСТОТА)
             districtCB.Items.Clear();
 
-            list= ControllerForDB.selectForComboBox("district", "district_name");
+            list= ControllerForDB.selectForComboBox("district", "district_name","pk_district_id");
 
-            for (int i = 0; i < list.Count; i++)
+            foreach (var it in list)
             {
-                districtCB.Items.Add(list[i].ToString());
+                districtCB.Items.Add(it.Key);
             }
 
             districtCB.Items.Add("+ Добавить ");
@@ -49,11 +49,11 @@ namespace BD_course_work
         {
             propCB.Items.Clear();
 
-            prop_list = ControllerForDB.selectForComboBox("property_type", "property_type_name");
+            prop_list = ControllerForDB.selectForComboBox("property_type", "property_type_name","pk_property_type_id");
 
-            for (int i = 0; i < prop_list.Count; i++)
+            foreach(var it in prop_list)
             {
-                propCB.Items.Add(prop_list[i].ToString());
+                propCB.Items.Add(it.Key);
             }
 
             propCB.Items.Add("+ Добавить ");
@@ -66,20 +66,20 @@ namespace BD_course_work
 
             owner_list = ControllerForDB.selectForComboBox("owners");
 
-            for (int i = 0; i < owner_list.Count; i++)
+            foreach (var it in owner_list)
             {
-                ownerCB.Items.Add(owner_list[i].ToString());
+                ownerCB.Items.Add(it.Key);
             }
 
             ownerCB.Items.Add("+ Добавить ");
         }
 
 
-        List<string> list;
+        public  Dictionary<string,int> list;
 
-        List<string> prop_list;
+        public  Dictionary<string, int> prop_list;
 
-        List<string> owner_list;
+        public Dictionary<string, int> owner_list;
 
         public bool isCanceled=false;
 

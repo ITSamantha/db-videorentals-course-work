@@ -236,6 +236,7 @@
             this.button28.Size = new System.Drawing.Size(44, 38);
             this.button28.TabIndex = 12;
             this.button28.UseVisualStyleBackColor = false;
+            this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // button29
             // 

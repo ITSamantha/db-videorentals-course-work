@@ -38,8 +38,8 @@
             this.adress1 = new System.Windows.Forms.GroupBox();
             this.adress = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.number = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.license = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.amountEmpl = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -50,7 +50,7 @@
             this.timeEnd = new System.Windows.Forms.MaskedTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.ownerCB = new System.Windows.Forms.ComboBox();
-            this.license = new System.Windows.Forms.MaskedTextBox();
+            this.number = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.adress1.SuspendLayout();
@@ -177,16 +177,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Телефон";
             // 
-            // number
-            // 
-            this.number.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.number.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.number.Location = new System.Drawing.Point(6, 24);
-            this.number.Multiline = true;
-            this.number.Name = "number";
-            this.number.Size = new System.Drawing.Size(369, 37);
-            this.number.TabIndex = 13;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.license);
@@ -197,6 +187,16 @@
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "№ Лицензии";
+            // 
+            // license
+            // 
+            this.license.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.license.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.license.Location = new System.Drawing.Point(6, 30);
+            this.license.Mask = "0000000";
+            this.license.Name = "license";
+            this.license.Size = new System.Drawing.Size(369, 32);
+            this.license.TabIndex = 1;
             // 
             // groupBox5
             // 
@@ -309,15 +309,15 @@
             this.ownerCB.TabIndex = 1;
             this.ownerCB.SelectedIndexChanged += new System.EventHandler(this.ownerCB_SelectedIndexChanged);
             // 
-            // license
+            // number
             // 
-            this.license.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.license.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.license.Location = new System.Drawing.Point(6, 30);
-            this.license.Mask = "0000000";
-            this.license.Name = "license";
-            this.license.Size = new System.Drawing.Size(369, 32);
-            this.license.TabIndex = 1;
+            this.number.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.number.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.number.Location = new System.Drawing.Point(6, 29);
+            this.number.Mask = "(999) 000-0000";
+            this.number.Name = "number";
+            this.number.Size = new System.Drawing.Size(369, 32);
+            this.number.TabIndex = 2;
             // 
             // AddOrEditVideoRental
             // 
@@ -377,7 +377,6 @@
         public System.Windows.Forms.GroupBox adress1;
         public System.Windows.Forms.TextBox adress;
         public System.Windows.Forms.GroupBox groupBox3;
-        public System.Windows.Forms.TextBox number;
         public System.Windows.Forms.GroupBox groupBox4;
         public System.Windows.Forms.GroupBox groupBox5;
         public System.Windows.Forms.TextBox amountEmpl;
@@ -390,5 +389,6 @@
         public System.Windows.Forms.MaskedTextBox timeStart;
         public System.Windows.Forms.MaskedTextBox timeEnd;
         public System.Windows.Forms.MaskedTextBox license;
+        public System.Windows.Forms.MaskedTextBox number;
     }
 }
