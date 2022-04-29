@@ -12,12 +12,22 @@ namespace BD_course_work
 {
     public partial class AddOrEditVideoRental : Form
     {
+        public SortedDictionary<string, int> list;
+
+        public SortedDictionary<string, int> prop_list;
+
+        public SortedDictionary<string, int> owner_list;
+
+        public bool isCanceled = false;
+
+        public bool isEnabled;
+
         public AddOrEditVideoRental()
         {
             InitializeComponent();
 
             clean();
-            //ПРОВЕРКА НА ПУСТОЕ КОЛИЧЕСТВО
+            
             updateDistricts();
 
             updateProp();
@@ -30,61 +40,7 @@ namespace BD_course_work
 
             ownerCB.SelectedIndex = 0;
         }
-
-        public void updateDistricts()
-        {//ВЕЗДЕ ОБРАБОТКА ИСКЛЮЧЕНИЙ(СОВПАДЕНИЕ, ПУСТОТА)
-            districtCB.Items.Clear();
-
-            list= ControllerForDB.selectForComboBox("district", "district_name","pk_district_id");
-
-            foreach (var it in list)
-            {
-                districtCB.Items.Add(it.Key);
-            }
-
-            districtCB.Items.Add("+ Добавить ");
-        }
-
-        public void updateProp()
-        {
-            propCB.Items.Clear();
-
-            prop_list = ControllerForDB.selectForComboBox("property_type", "property_type_name","pk_property_type_id");
-
-            foreach(var it in prop_list)
-            {
-                propCB.Items.Add(it.Key);
-            }
-
-            propCB.Items.Add("+ Добавить ");
-            
-        }
-
-        public void updateOwner()
-        {
-            ownerCB.Items.Clear();
-
-            owner_list = ControllerForDB.selectForComboBox("owners");
-
-            foreach (var it in owner_list)
-            {
-                ownerCB.Items.Add(it.Key);
-            }
-
-            ownerCB.Items.Add("+ Добавить ");
-        }
-
-
-        public  SortedDictionary<string,int> list;
-
-        public  SortedDictionary<string, int> prop_list;
-
-        public SortedDictionary<string, int> owner_list;
-
-        public bool isCanceled=false;
-
-        public bool isEnabled;
-
+        
         private void button2_Click(object sender, EventArgs e)//Cancel
         {
             isCanceled = true;
@@ -140,6 +96,49 @@ namespace BD_course_work
 
                 ownerCB.SelectedIndex = (owner_list.Count - 1);
             }
+        }
+
+        public void updateDistricts()
+        {
+            districtCB.Items.Clear();
+
+            list = ControllerForDB.selectForComboBox("district", "district_name", "pk_district_id");
+
+            foreach (var it in list)
+            {
+                districtCB.Items.Add(it.Key);
+            }
+
+            districtCB.Items.Add("+ Добавить ");
+        }
+
+        public void updateProp()
+        {
+            propCB.Items.Clear();
+
+            prop_list = ControllerForDB.selectForComboBox("property_type", "property_type_name", "pk_property_type_id");
+
+            foreach (var it in prop_list)
+            {
+                propCB.Items.Add(it.Key);
+            }
+
+            propCB.Items.Add("+ Добавить ");
+
+        }
+
+        public void updateOwner()
+        {
+            ownerCB.Items.Clear();
+
+            owner_list = ControllerForDB.selectForComboBox("owners");
+
+            foreach (var it in owner_list)
+            {
+                ownerCB.Items.Add(it.Key);
+            }
+
+            ownerCB.Items.Add("+ Добавить ");
         }
     }
 }

@@ -24,13 +24,6 @@ namespace BD_course_work
             clean();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            isEnabled = true;
-
-            Close();
-        }
-        
         public void clean()
         {
             isEnabled = false;
@@ -38,13 +31,18 @@ namespace BD_course_work
             isCanceled = false;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            isEnabled = true;
+
+            Close();
+        }
+        
         private void button2_Click(object sender, EventArgs e)
         {
             isCanceled = true;
 
             Close();
         }
-
-      
     }
 }

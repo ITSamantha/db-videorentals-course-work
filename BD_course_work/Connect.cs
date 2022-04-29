@@ -12,23 +12,21 @@ namespace BD_course_work
 {
     public partial class Connect : Form
     {
+        static public string status;
+
         public Connect()
         {
             InitializeComponent();
+
             password.UseSystemPasswordChar = true;
+
             password.PasswordChar = '*';
+
             password.Text = "01dr10kv";
+
             login.Text = "postgres";
         }
-
-        static public string status;
         
-        void CClose()
-        {
-            if (status == "running")
-                Close();
-        }
-
         private void button1_Click_1(object sender, EventArgs e)//Вход
         {
             if (Verifying(login.Text, password.Text))
@@ -41,6 +39,11 @@ namespace BD_course_work
       
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         public bool Verifying(string login,string pass)
         {
             if (login == "postgres"&&pass=="01dr10kv")
@@ -50,9 +53,11 @@ namespace BD_course_work
             return false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        void CClose()
         {
+            if (status == "running")
                 Close();
         }
+        
     }
 }

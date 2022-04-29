@@ -14,7 +14,9 @@ namespace BD_course_work
     class ControllerForDB
     {
         public static string connectionString;
-        
+
+        public static bool isCanceledDelete;
+
         //Данные для генерации
         public static readonly string[] tables ={ "cassette_photo", "cassette_quality", "cassettes",
                                            "countries", "deals", "district", "films", "owners",
@@ -341,6 +343,54 @@ namespace BD_course_work
             }
         }
 
+        public static SortedDictionary<string, int> selectForComboBox(string table, string whatChoose = "", string id_type = "")
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            SortedDictionary<string, int> list = new SortedDictionary<string, int>();
+
+            string textCommand = "";
+
+            if (table.Equals("owners") || table.Equals("producers"))
+            {
+                if (table.Equals("owners"))
+                {
+                    textCommand = $"Select pk_owner_id,owner_first_name, owner_last_name, owner_patronymic from {table} ;";
+                }
+                if (table.Equals("producers"))
+                {
+                    textCommand = $"Select pk_producer_id,producer_first_name, producer_last_name, producer_patronymic from {table} ;";
+                }
+            }
+            else
+            {
+                textCommand = $"Select {id_type}, {whatChoose} from {table} ;";
+            }
+
+            var command = new NpgsqlCommand(textCommand, n);
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (table.Equals("owners") || table.Equals("owners"))
+                {
+                    list.Add(reader.GetString(2) + " " + reader.GetString(1) + " " + reader.GetString(3), reader.GetInt32(0));
+
+                    continue;
+                }
+                list.Add(reader.GetString(1), reader.GetInt32(0));
+            }
+
+            reader.Close();
+
+            n.Close();
+
+            return list;
+        }
+
         public static long getAmountOfRows(string table_name)//Количество строк в таблице
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -525,7 +575,6 @@ namespace BD_course_work
                 Console.WriteLine(e);
                 return false;
             }
-            
         }
 
         public static bool insertIntoVideoRental(string video_name,int video_id,string adress,int prop,string phone,string number,string time_s,string time_e,int amount,int owner_id)//Добавление в Video_Rental
@@ -553,6 +602,7 @@ namespace BD_course_work
             }
         }
 
+        //UPDATE-методы
         public static bool updateStudios(string name, int id_country,int studio_id)
         {
             try
@@ -669,9 +719,8 @@ namespace BD_course_work
             
             
         }
-
-        public static bool isCanceledDelete;
-
+        
+        //DELETE-методы
         public static bool deleteById(int id,string table,string id_title)
         {
             DialogResult dialogResult = MessageBox.Show("Вы уверены? В таблицах удалятся все записи, связанные с данной.Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
@@ -709,55 +758,7 @@ namespace BD_course_work
 
             return false;
         }
-
-        public static SortedDictionary<string,int> selectForComboBox(string table,string whatChoose="",string id_type="")
-        {
-            NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-            n.Open();
-
-            SortedDictionary<string,int> list = new SortedDictionary<string,int>();
-
-            string textCommand="";
-
-            if (table.Equals("owners") || table.Equals("producers"))
-            {
-                if (table.Equals("owners"))
-                {
-                    textCommand = $"Select pk_owner_id,owner_first_name, owner_last_name, owner_patronymic from {table} ;";
-                }
-                if (table.Equals("producers"))
-                {
-                    textCommand = $"Select pk_producer_id,producer_first_name, producer_last_name, producer_patronymic from {table} ;";
-                }
-            }
-            else
-            {
-                textCommand = $"Select {id_type}, {whatChoose} from {table} ;";
-            }
-            
-            var command = new NpgsqlCommand(textCommand, n);
-
-            var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (table.Equals("owners") || table.Equals("owners"))
-                {
-                    list.Add(reader.GetString(2) + " " + reader.GetString(1) + " " + reader.GetString(3), reader.GetInt32(0));
-
-                    continue;
-                }
-                list.Add(reader.GetString(1), reader.GetInt32(0));
-            }
-
-            reader.Close();
-
-            n.Close();
-
-            return list;
-        }
-
+        
     }
 
 }

@@ -12,6 +12,12 @@ namespace BD_course_work
 {
     public partial class addOrEditTwoColumns : Form
     {
+        public bool isCanceled = false;
+
+        public bool isEnabled;
+
+        public SortedDictionary<string, int> list;
+
         public addOrEditTwoColumns()
         {
             InitializeComponent();
@@ -21,43 +27,13 @@ namespace BD_course_work
             countryCB.SelectedIndex = 0;
         }
 
-        public bool isCanceled = false;
-
-        public bool isEnabled;
-
-        public SortedDictionary<string, int> list;
-
-        
-
-        public void updateCountry()
-        {
-            countryCB.Items.Clear();
-
-            list = ControllerForDB.selectForComboBox("countries","country_name","pk_country_id");
-
-            foreach (var it in list)
-            {
-                countryCB.Items.Add(it.Key);
-            }
-
-            countryCB.Items.Add("+ Добавить ");
-            
-        }
-
-        private void button2_Click(object sender, EventArgs e)//Cancel
+        private void button2_Click(object sender, EventArgs e)
         {
             isCanceled = true;
 
             Close();
         }
-
-        public void clean()
-        {
-            isEnabled = false;
-
-            isCanceled = false;
-        }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             isEnabled = true;
@@ -75,6 +51,28 @@ namespace BD_course_work
 
                 countryCB.SelectedIndex = (list.Count - 1);
             }
+        }
+
+        public void clean()
+        {
+            isEnabled = false;
+
+            isCanceled = false;
+        }
+
+        public void updateCountry()
+        {
+            countryCB.Items.Clear();
+
+            list = ControllerForDB.selectForComboBox("countries", "country_name", "pk_country_id");
+
+            foreach (var it in list)
+            {
+                countryCB.Items.Add(it.Key);
+            }
+
+            countryCB.Items.Add("+ Добавить ");
+
         }
     }
 }
