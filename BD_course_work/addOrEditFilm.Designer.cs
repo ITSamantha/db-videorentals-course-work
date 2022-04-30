@@ -123,9 +123,11 @@
             // 
             // studioCB
             // 
+            this.studioCB.DropDownHeight = 100;
             this.studioCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.studioCB.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.studioCB.FormattingEnabled = true;
+            this.studioCB.IntegralHeight = false;
             this.studioCB.Location = new System.Drawing.Point(6, 26);
             this.studioCB.Name = "studioCB";
             this.studioCB.Size = new System.Drawing.Size(369, 35);
@@ -145,9 +147,11 @@
             // 
             // producerCB
             // 
+            this.producerCB.DropDownHeight = 100;
             this.producerCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.producerCB.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.producerCB.FormattingEnabled = true;
+            this.producerCB.IntegralHeight = false;
             this.producerCB.Location = new System.Drawing.Point(6, 26);
             this.producerCB.Name = "producerCB";
             this.producerCB.Size = new System.Drawing.Size(369, 35);
@@ -184,7 +188,7 @@
             this.groupBox3.Size = new System.Drawing.Size(182, 75);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Длительность";
+            this.groupBox3.Text = "Длительность(м)";
             // 
             // duration
             // 

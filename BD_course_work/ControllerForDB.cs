@@ -366,7 +366,14 @@ namespace BD_course_work
             }
             else
             {
-                textCommand = $"Select {id_type}, {whatChoose} from {table} ;";
+                if (table.Equals("films"))
+                {
+                    textCommand = $"Select pk_film_id, film_name, film_year from {table} ;";
+                }
+                else
+                {
+                    textCommand = $"Select {id_type}, {whatChoose} from {table} ;";
+                }
             }
 
             var command = new NpgsqlCommand(textCommand, n);
@@ -375,9 +382,15 @@ namespace BD_course_work
 
             while (reader.Read())
             {
-                if (table.Equals("owners") || table.Equals("owners"))
+                if (table.Equals("owners") || table.Equals("producers"))
                 {
                     list.Add(reader.GetString(2) + " " + reader.GetString(1) + " " + reader.GetString(3), reader.GetInt32(0));
+
+                    continue;
+                }
+                if (table.Equals("films"))
+                {
+                    list.Add(reader.GetString(1)+" "+reader.GetString(2), reader.GetInt32(0));
 
                     continue;
                 }
@@ -547,6 +560,81 @@ namespace BD_course_work
             }
         }
 
+        public static bool insertIntoFilms(string film_name, int producer_id,int studio_id,int year,int duration,string info)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand($"insert into films values (default, '{film_name}', {producer_id}, {studio_id}, {year}, {duration}, '{info}');", n);
+
+                com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
+        public static bool insertIntoCassette(int cassette_quality,int cassette_photo)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                //NpgsqlCommand com = new NpgsqlCommand($"insert into cassettes values (default, '{film_name}', {producer_id}, {studio_id}, {year}, {duration}, '{info}');", n);
+
+                //com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+        }
+
+        public static bool insertIntoServicesPrices(int service_id, int video_rental_id, double price)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                var command = $"insert into services_prices values (default, {service_id}, {video_rental_id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}');";
+
+                NpgsqlCommand com = new NpgsqlCommand(command, n);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                n.Close();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
         public static bool insertOrUpdateIntoPeopleTable(string table,string last,string first,string patron,int val,int id=0)
         {
             try
@@ -626,6 +714,58 @@ namespace BD_course_work
             }
         }
 
+        public static bool updateServicesPrices(int id,int service_id, int video_rental_id, double price)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                var command = $"update services_prices set fk_service_id = {service_id}, fk_video_rental = {video_rental_id}, service_price = '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' where pk_service_price_id = {id};";
+
+                NpgsqlCommand com = new NpgsqlCommand(command, n);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
+        public static bool updateFilms(int id,string film_name, int producer_id, int studio_id, int year, int duration, string info)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand($"update films set film_name= '{film_name}',fk_producer_id= {producer_id}, fk_studio_id = {studio_id}, film_year = {year}, film_duration = {duration}, film_info =  '{info}' where pk_film_id ={id};", n);
+
+                com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+        
         public static bool updateIntoVideoRental(int id,string video_name, int video_id, string adress, int prop, string phone, string number, string time_s, string time_e, int amount, int owner_id)//Редактирование в Video_Rental
         {
             try
@@ -807,13 +947,8 @@ namespace BD_course_work
 
                         break;
                     }
-
-
-
-
             }
-
-
+            
             isCanceledDelete = false;
 
             if (dialogResult == DialogResult.Yes)
@@ -847,7 +982,142 @@ namespace BD_course_work
 
             return false;
         }
-        
+
+        public static bool deleteByValue(string value, string table, string string_title)//Не дописан
+        {
+            DialogResult dialogResult = new DialogResult();
+
+            switch (table)
+            {
+                case "cassette_photo":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "cassette_quality":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблице \"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "cassettes":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблице \"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "countries":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Студии\", \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "deals":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "district":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокаты\",\"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "films":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "owners":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокат\",\"Сделки\",\"Услуги и цены\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "producers":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "property_type":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Видеопрокат\",\"Сделки\",\"Услуги и цены\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "services":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "services_prices":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "studios":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Фильмы\",\"Кассеты\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+                case "video_rental":
+                    {
+                        dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        break;
+                    }
+            }
+
+            isCanceledDelete = false;
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                    c.Open();
+
+                    string command = $"delete from {table} where {string_title} = {value};";
+
+                    var command_s = new NpgsqlCommand(command, c);
+                    
+                    var count = command_s.ExecuteNonQuery();
+
+                    command_s.Dispose();
+
+                    c.Close();
+
+                    if (count == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Строка с таким значением не была найдена и удалена.");
+
+                        return false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+
+                    return false;
+                }
+            }
+            isCanceledDelete = true;
+
+            return false;
+        }
+
     }
 
 }

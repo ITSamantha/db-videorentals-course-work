@@ -51,7 +51,7 @@ namespace BD_course_work
         {
             if (studioCB.SelectedIndex == studio_list.Count)
             {
-                Main_Menu.InsertIntoDirectTables("studios");
+                Main_Menu.insertOrUpdateIntoStudios(0);
 
                 updateStudio();
 
@@ -63,7 +63,7 @@ namespace BD_course_work
         {
             if (producerCB.SelectedIndex == producer_list.Count)
             {
-                Main_Menu.InsertIntoDirectTables("producers");
+                Main_Menu.addToPeopleTable("producers");
 
                 updateProducer();
 

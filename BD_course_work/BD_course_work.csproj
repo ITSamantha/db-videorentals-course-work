@@ -103,6 +103,12 @@
     <Compile Include="AddOrEditOneColumn.Designer.cs">
       <DependentUpon>AddOrEditOneColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="addOrEditServicesPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addOrEditServicesPrices.Designer.cs">
+      <DependentUpon>addOrEditServicesPrices.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddOrEditThreeColumns.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,12 @@
       <DependentUpon>Connect.cs</DependentUpon>
     </Compile>
     <Compile Include="ControllerForDB.cs" />
+    <Compile Include="deleteByValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="deleteByValue.Designer.cs">
+      <DependentUpon>deleteByValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Instruments.cs" />
     <Compile Include="Main_Menu.cs">
       <SubType>Form</SubType>
@@ -143,6 +155,9 @@
     <EmbeddedResource Include="AddOrEditOneColumn.resx">
       <DependentUpon>AddOrEditOneColumn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addOrEditServicesPrices.resx">
+      <DependentUpon>addOrEditServicesPrices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddOrEditThreeColumns.resx">
       <DependentUpon>AddOrEditThreeColumns.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Connect.resx">
       <DependentUpon>Connect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="deleteByValue.resx">
+      <DependentUpon>deleteByValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main_Menu.resx">
       <DependentUpon>Main_Menu.cs</DependentUpon>

@@ -512,6 +512,21 @@ namespace BD_course_work
 
         private void button21_Click(object sender, EventArgs e)//Добавление фильма
         {
+            insertOrUpdateIntoFilms(0);
+        }
+
+        private void button24_Click(object sender, EventArgs e)//Добавление кассеты
+        {
+
+        }
+
+        private void button42_Click(object sender, EventArgs e)
+        {
+            insertIntoServicesPrices(0);
+        }
+
+        public void insertIntoCassettes()
+        {
 
         }
 
@@ -546,6 +561,8 @@ namespace BD_course_work
                 ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text, 0);
 
                 ControllerForDB.selectAllFromTablesDirectories(t);
+
+                MessageBox.Show("Строка успешно добавлена.", "Оповещение");
             }
             else
             {
@@ -629,6 +646,11 @@ namespace BD_course_work
             UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
         }
 
+        private void button40_Click(object sender, EventArgs e)
+        {
+            insertIntoServicesPrices(1, (int)servpriceTable.SelectedRows[0].Cells[0].Value, (string)servpriceTable.SelectedRows[0].Cells[2].Value, (string)servpriceTable.SelectedRows[0].Cells[1].Value, servpriceTable.SelectedRows[0].Cells[3].Value.ToString());
+        }
+
         private void editCountry_Click(object sender, EventArgs e)//Страны
         {
             UpdateDirectT("countries", (int)countriesTable.SelectedRows[0].Cells[0].Value, (string)countriesTable.SelectedRows[0].Cells[1].Value);
@@ -667,12 +689,32 @@ namespace BD_course_work
 
         private void button28_Click(object sender, EventArgs e)//Видеопрокаты
         {
-            inserOrUpdatetIntoVideoRental(1);
+            inserOrUpdatetIntoVideoRental(1, (int)videoTable.SelectedRows[0].Cells[0].Value, (string)videoTable.SelectedRows[0].Cells[1].Value, (string)videoTable.SelectedRows[0].Cells[2].Value, (string)videoTable.SelectedRows[0].Cells[3].Value, (string)videoTable.SelectedRows[0].Cells[4].Value,
+                (string)videoTable.SelectedRows[0].Cells[6].Value, (string)videoTable.SelectedRows[0].Cells[5].Value, videoTable.SelectedRows[0].Cells[8].Value.ToString(),
+            videoTable.SelectedRows[0].Cells[7].Value.ToString(), (string)videoTable.SelectedRows[0].Cells[9].Value.ToString(), ((string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value)));
         }
 
         private void button1_Click(object sender, EventArgs e)//Студии
         {
-            insertOrUpdateIntoStudios(1);
+            insertOrUpdateIntoStudios(1, studiosTable.SelectedRows[0].Cells[1].Value.ToString(), (string)studiosTable.SelectedRows[0].Cells[2].Value, (int)studiosTable.SelectedRows[0].Cells[0].Value);
+        }
+
+        private void button19_Click(object sender, EventArgs e)//Фильмы
+        {
+            try
+            {
+                insertOrUpdateIntoFilms(1, filmsTable.SelectedRows[0].Cells[0].Value.ToString(), filmsTable.SelectedRows[0].Cells[1].Value.ToString(), (filmsTable.SelectedRows[0].Cells[2].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[3].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[4].Value.ToString()),
+                filmsTable.SelectedRows[0].Cells[5].Value.ToString(), filmsTable.SelectedRows[0].Cells[6].Value.ToString(), filmsTable.SelectedRows[0].Cells[7].Value.ToString(), filmsTable.SelectedRows[0].Cells[8].Value.ToString());
+            }
+            catch (Exception el)
+            {
+                Console.WriteLine(el);
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)//Кассеты
+        {
+
         }
 
         public void updatePhotoIntoTable()
@@ -820,7 +862,102 @@ namespace BD_course_work
         }
 
         //Совмещенные методы INSERT и UPDATE
-        public void insertOrUpdateIntoStudios(int val)
+
+        public static void insertIntoServicesPrices(int val,int id=0,string service="",string video="",string price="")
+        {
+            addOrEditServicesPrices add = new addOrEditServicesPrices();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить услугу и цену";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать услугу и цену";
+
+                add.button1.Text = "Сохранить";
+            }
+
+            if (val == 1)
+            {
+                add.serviceCB.Text = service;
+
+                add.rentalCB.Text = video;
+
+                add.price.Text = price;
+            }
+
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled && add.price.Text != String.Empty)
+            {
+                if (val == 0)
+                {
+                    try
+                    {
+                        double.Parse(add.price.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Вы ввели цену неверно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    if (ControllerForDB.insertIntoServicesPrices(add.services_list[add.serviceCB.Text], add.video_list[add.rentalCB.Text], double.Parse(add.price.Text)))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+
+                    }
+                }
+                else
+                {
+                    if (ControllerForDB.updateServicesPrices(id, add.services_list[add.serviceCB.Text], add.video_list[add.rentalCB.Text], double.Parse(add.price.Text)))
+                    {
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+            }
+            else
+            {
+                if (add.isEnabled)
+                {
+                    if (add.price.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели цену.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                }
+                return;
+            }
+
+
+        }
+        
+
+        public static void insertOrUpdateIntoStudios(int val,string title="",string country="",int id=0 )
         {
             addOrEditTwoColumns add = new addOrEditTwoColumns();
 
@@ -839,9 +976,9 @@ namespace BD_course_work
 
             if (val == 1)
             {
-                add.title.Text = (string)studiosTable.SelectedRows[0].Cells[1].Value;
+                add.title.Text = title; 
 
-                add.countryCB.Text = (string)studiosTable.SelectedRows[0].Cells[2].Value;
+                add.countryCB.Text = country; 
             }
 
             m1:
@@ -871,7 +1008,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.updateStudios(add.title.Text, add.list[add.countryCB.Text], (int)studiosTable.SelectedRows[0].Cells[0].Value))
+                    if (ControllerForDB.updateStudios(add.title.Text, add.list[add.countryCB.Text], id))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -901,7 +1038,7 @@ namespace BD_course_work
             }
         }
 
-        public void insertOrUpdateIntoFilms(int val)
+        public void insertOrUpdateIntoFilms(int val,string id="",string title="",string producer="", string studio="",string year="",string duration="",string info="")
         {
             addOrEditFilm add = new addOrEditFilm();
 
@@ -917,20 +1054,20 @@ namespace BD_course_work
 
                 add.button1.Text = "Сохранить";
             }
-
+            
             if (val == 1)
             {
-                add.title.Text = (string)studiosTable.SelectedRows[0].Cells[1].Value;
+                add.title.Text =title ;
 
-                add.producerCB.Text = (string)studiosTable.SelectedRows[0].Cells[2].Value;
+                add.producerCB.Text =producer ;
 
-                add.studioCB.Text = (string)studiosTable.SelectedRows[0].Cells[3].Value;
+                add.studioCB.Text = studio;
 
-                add.year.Text = (string)studiosTable.SelectedRows[0].Cells[4].Value;
+                add.year.Text = year;
 
-                add.duration.Text = (string)studiosTable.SelectedRows[0].Cells[5].Value;
+                add.duration.Text = duration;
 
-                add.info.Text = (string)studiosTable.SelectedRows[0].Cells[6].Value;
+                add.info.Text = info;
             }
 
         m1:
@@ -938,12 +1075,25 @@ namespace BD_course_work
             add.clean();
 
             add.ShowDialog();
-
-            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty&&add.year.MaskCompleted&&add.duration.Text!=String.Empty&&add.info.Text!=String.Empty)
+            
+            if (!add.isCanceled && add.isEnabled&& add.title.Text != String.Empty&& add.info.Text != String.Empty)
             {
-                if (val == 0)//Доделать добавление и update фильма
+                if (!add.year.MaskCompleted || int.Parse(add.year.Text) < 1888 || int.Parse(add.year.Text) > 2022)
                 {
-                    if (ControllerForDB.insertIntoStudios(add.title.Text, add.list[add.countryCB.Text]))
+                    MessageBox.Show("Вы не ввели год выпуска или ввели некорректно. Год должен быть не менее 1888 и не более 2022.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+                if (add.duration.Text == String.Empty || int.Parse(add.duration.Text) < 15 || int.Parse(add.duration.Text) > 1000)
+                {
+                    MessageBox.Show("Вы не ввели продолжительность фильма или ввели некорректно. Продолжительность должна быть не менее 15 и не более 1000.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+
+                if (val == 0)
+                {
+                    if (ControllerForDB.insertIntoFilms(add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
                     {
                         MessageBox.Show("Строка добавлена.", "Оповещение");
                     }
@@ -960,7 +1110,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.updateStudios(add.title.Text, add.list[add.countryCB.Text], (int)studiosTable.SelectedRows[0].Cells[0].Value))
+                    if (ControllerForDB.updateFilms(int.Parse(id),add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -985,13 +1135,20 @@ namespace BD_course_work
 
                         goto m1;
                     }
+
+                    if (add.info.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели информацию о фильме.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
                 }
                 return;
             }
 
         }
 
-        public void inserOrUpdatetIntoVideoRental(int val)//Добавление и редактирование "Видеопрокатов"
+        public static void inserOrUpdatetIntoVideoRental(int val,int id=0,string title="",string district="",string adress="", string prop="", string license="", string number="",string timeE="", string timeS="",string amount="",string owner="")//Добавление и редактирование "Видеопрокатов"
         {
             AddOrEditVideoRental add = new AddOrEditVideoRental();
 
@@ -1007,28 +1164,28 @@ namespace BD_course_work
 
                 add.button1.Text = "Сохранить";
             }
-
+            
             if (val == 1)
             {
-                add.title.Text = (string)videoTable.SelectedRows[0].Cells[1].Value;
+                add.title.Text = title;
 
-                add.districtCB.Text = (string)videoTable.SelectedRows[0].Cells[2].Value;
+                add.districtCB.Text = district;
 
-                add.adress.Text = (string)videoTable.SelectedRows[0].Cells[3].Value;
+                add.adress.Text =adress ;
 
-                add.propCB.Text = (string)videoTable.SelectedRows[0].Cells[4].Value;
+                add.propCB.Text = prop;
 
-                add.license.Text = (string)videoTable.SelectedRows[0].Cells[6].Value;
+                add.license.Text = license;
 
-                add.number.Text = (string)videoTable.SelectedRows[0].Cells[5].Value;
+                add.number.Text =number ;
 
-                add.timeEnd.Text = videoTable.SelectedRows[0].Cells[8].Value.ToString();
+                add.timeEnd.Text =timeE ;
 
-                add.timeStart.Text = videoTable.SelectedRows[0].Cells[7].Value.ToString();
+                add.timeStart.Text =timeS ;
 
-                add.amountEmpl.Text = (string)videoTable.SelectedRows[0].Cells[9].Value.ToString();
+                add.amountEmpl.Text = amount;
 
-                add.ownerCB.Text = (string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value);
+                add.ownerCB.Text = owner;
             }
 
             m1:
@@ -1112,7 +1269,7 @@ namespace BD_course_work
                 }
                 if (val == 1)
                 {
-                    if (ControllerForDB.updateIntoVideoRental((int)videoTable.SelectedRows[0].Cells[0].Value, add.title.Text, add.list[add.districtCB.Text], add.adress.Text, add.prop_list[add.propCB.Text], add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), add.owner_list[add.ownerCB.Text]))
+                    if (ControllerForDB.updateIntoVideoRental(id, add.title.Text, add.list[add.districtCB.Text], add.adress.Text, add.prop_list[add.propCB.Text], add.number.Text, add.license.Text, add.timeStart.Text, add.timeEnd.Text, int.Parse(add.amountEmpl.Text), add.owner_list[add.ownerCB.Text]))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
