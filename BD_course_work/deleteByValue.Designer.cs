@@ -32,7 +32,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.mainL1 = new System.Windows.Forms.Label();
             this.GB = new System.Windows.Forms.GroupBox();
-            this.countryTB = new System.Windows.Forms.TextBox();
+            this.valueTB = new System.Windows.Forms.TextBox();
             this.GB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,7 @@
             this.button1.TabIndex = 23;
             this.button1.Text = "Удалить";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // mainL1
             // 
@@ -75,7 +76,7 @@
             // 
             // GB
             // 
-            this.GB.Controls.Add(this.countryTB);
+            this.GB.Controls.Add(this.valueTB);
             this.GB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.GB.Location = new System.Drawing.Point(66, 56);
             this.GB.Name = "GB";
@@ -84,15 +85,15 @@
             this.GB.TabStop = false;
             this.GB.Text = "Логин";
             // 
-            // countryTB
+            // valueTB
             // 
-            this.countryTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.countryTB.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countryTB.Location = new System.Drawing.Point(6, 24);
-            this.countryTB.Multiline = true;
-            this.countryTB.Name = "countryTB";
-            this.countryTB.Size = new System.Drawing.Size(360, 37);
-            this.countryTB.TabIndex = 13;
+            this.valueTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.valueTB.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.valueTB.Location = new System.Drawing.Point(6, 24);
+            this.valueTB.Multiline = true;
+            this.valueTB.Name = "valueTB";
+            this.valueTB.Size = new System.Drawing.Size(360, 37);
+            this.valueTB.TabIndex = 13;
             // 
             // deleteByValue
             // 
@@ -120,6 +121,6 @@
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label mainL1;
         public System.Windows.Forms.GroupBox GB;
-        public System.Windows.Forms.TextBox countryTB;
+        public System.Windows.Forms.TextBox valueTB;
     }
 }

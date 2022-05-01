@@ -1158,7 +1158,7 @@ namespace BD_course_work
 
                     c.Open();
 
-                    string command = $"delete from {table} where {string_title} = {value};";
+                    string command = $"delete from {table} where {string_title} = '{value}';";
 
                     var command_s = new NpgsqlCommand(command, c);
                     

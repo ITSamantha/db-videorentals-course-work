@@ -464,66 +464,92 @@ namespace BD_course_work
         private void addCountry_Click(object sender, EventArgs e)//Добавление страны
         {
             Main_Menu.InsertIntoDirectTables("countries");
+
+            countriesTable.DataSource = ControllerForDB.selectAllFromTablesDirectories("countries");
         }
 
         private void button12_Click(object sender, EventArgs e)//Добавление услуги
         {
             InsertIntoDirectTables("services");
+
+            servicesTable.DataSource = ControllerForDB.selectAllFromTablesDirectories("services");
         }
 
         private void button15_Click(object sender, EventArgs e)//Добавить тип собственности
         {
             InsertIntoDirectTables("property_type");
+
+            propertyTable.DataSource = ControllerForDB.selectAllFromTablesDirectories("property_type");
         }
 
         private void button18_Click(object sender, EventArgs e)//Добавить район
         {
             InsertIntoDirectTables("district");
+
+            districtsTable.DataSource = ControllerForDB.selectAllFromTablesDirectories("district");
         }
 
         private void button33_Click(object sender, EventArgs e)//Добавление качества
         {
             InsertIntoDirectTables("cassette_quality");
+
+            qualityTable.DataSource =ControllerForDB.selectAllFromTablesDirectories("cassette_quality");
         }
 
         private void button39_Click(object sender, EventArgs e)//Добавление картинки
         {
             insertPhotoIntoTable();
+
+            imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
         }
 
         private void button9_Click(object sender, EventArgs e)//Добавление хозяина
         {
             addToPeopleTable("owners");
+
+            ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
         }
 
         private void button6_Click(object sender, EventArgs e)//Добавление режиссера
         {
             addToPeopleTable("producers");
+
+            producersTable.DataSource = ControllerForDB.selectAllFromTablesDirectories("producers");
         }
 
         private void button30_Click(object sender, EventArgs e)//Добавление видеопроката
         {
             inserOrUpdatetIntoVideoRental(0);
+
+            videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
         }
 
         private void button3_Click(object sender, EventArgs e)//Добавление студии
         {
             insertOrUpdateIntoStudios(0);
+
+            studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
         }
 
         private void button21_Click(object sender, EventArgs e)//Добавление фильма
         {
             insertOrUpdateIntoFilms(0);
+
+            filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
         }
 
         private void button24_Click(object sender, EventArgs e)//Добавление кассеты
         {
             insertOrUpdateIntoCassettes(0);
+
+            cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
         }
 
         private void button42_Click(object sender, EventArgs e)
         {
             insertIntoServicesPrices(0);
+
+            servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
         }
 
         public static string path;
@@ -1420,72 +1446,490 @@ namespace BD_course_work
 
         private void button32_Click(object sender, EventArgs e)//Удаление "Качество кассеты"
         {
-            deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
-        }
+            deleteMenu del = new deleteMenu();
 
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
+
+                    qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("cassette_quality", "quality_name");
+                }
+            }
+        }
+        
         private void button41_Click(object sender, EventArgs e)//Удаление "Услуги и цены"
         {
-            deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
+
+                    servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("services_prices", "pk_service_price_id");
+                }
+            }
         }
 
         private void deleteCountry_Click(object sender, EventArgs e)//Удаление "Страны"  
         {
-            deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
+
+                    countriesTable.Rows.Remove(countriesTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("countries", "country_name");
+                }
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)//Удаление "Студии"
         {
-            deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
+
+                    studiosTable.Rows.Remove(studiosTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("studios", "studio_name");
+                }
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)//Удаление "Режиссеры"
         {
-            deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
+
+                    producersTable.Rows.Remove(producersTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("producers", "studio_name");//ДОДУМАТЬ КАК!
+                }
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)//Удаление "Хозяины"
         {
-            deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
+
+                    ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("owners", "studio_name");//ДОДУМАТЬ КАК!
+                }
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)//Удаление "Услуги"
         {
-            deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id");
+
+                    servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("services", "service_name");
+                }
+            }
+
         }
 
         private void button14_Click(object sender, EventArgs e)//Удаление"Тип собственности"
         {
-            deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
+
+                    propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("property_type", "property_type_name");
+                }
+            }
         }
 
         private void button17_Click(object sender, EventArgs e)//Удаление "Районы"
         {
-            deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
+
+                    districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("district", "district_name");
+                }
+            }
         }
 
         private void button20_Click(object sender, EventArgs e)//Удаление "Фильмы"
         {
-            deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
+
+                    filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("films", "film_name");
+                }
+            }
         }
 
         private void button23_Click(object sender, EventArgs e)//Удаление "Кассеты"
         {
-            deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
+
+                    cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("cassettes", "pk_cassette_id");
+                }
+            }
         }
 
         private void button26_Click(object sender, EventArgs e)//Удаление "Сделки"
         {
-            deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
+
+                    ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("deals", "pk_deal_id");
+                }
+            }
         }
 
         private void button29_Click(object sender, EventArgs e)//Удаление "Видеопрокаты"
         {
-            deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
+
+                    videoTable.Rows.Remove(videoTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("video_rental", "video_caption");
+                }
+            }
         }
 
         private void button38_Click(object sender, EventArgs e)
         {
-            deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
+            deleteMenu del = new deleteMenu();
+
+            del.clean();
+
+            del.ShowDialog();
+
+            if (!del.isCanceled)
+            {
+                if (del.isDeleteStr)
+                {
+                    deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
+
+                    imagesTable.Rows.Remove(imagesTable.SelectedRows[0]);
+                }
+                if (del.isDeleteManyStr)
+                {
+
+                }
+                if (del.isDeleteValue)
+                {
+                    deleteByValue("cassette_photo", "pk_photo_id");
+                }
+            }
+        }
+
+        public void deleteByValue(string table, string what_change)
+        {
+            deleteByValue del = new deleteByValue();
+
+            switch (table)
+            {
+                case "cassette_photo":
+                    {
+                        del.GB.Text = "Введите ID фото";
+                        del.mainL1.Text = "ID фото";
+                        break;
+                    }
+                case "cassette_quality":
+                    {
+                        del.GB.Text = "Введите качество";
+                        del.mainL1.Text = "Качество";
+                        break;
+                    }
+                case "cassettes":
+                    {
+                        del.GB.Text = "Введите ID кассеты";
+                        del.mainL1.Text = "ID кассеты";
+                        break;
+                    }
+                case "countries":
+                    {
+                        del.GB.Text = "Введите страну";
+                        del.mainL1.Text = "ID страны";
+                        break;
+                    }
+                case "deals":
+                    {
+                        del.GB.Text = "Введите ID сделки";
+                        del.mainL1.Text = "ID сделки";
+                        break;
+                    }
+                case "district":
+                    {
+                        del.GB.Text = "Введите район";
+                        del.mainL1.Text = "Район";
+                        break;
+                    }
+                case "films":
+                    {
+                        del.GB.Text = "Введите фильм";//Подумать над годом!
+                        del.mainL1.Text = "Фильм";
+                        break;
+                    }
+                case "owners":
+                case "producers":
+                    {
+                        del.GB.Text = "Введите ФИО(через пробел)";
+                        del.mainL1.Text = "ФИО";
+                        break;
+                    }
+                case "property_type":
+                    {
+                        del.GB.Text = "Введите тип собственности";
+                        del.mainL1.Text = "Тип собственности";
+                        break;
+                    }
+                case "services":
+                    {
+                        del.GB.Text = "Введите услугу";
+                        del.mainL1.Text = "Услуга";
+                        break;
+                    }
+                case "services_prices":
+                    {
+                        del.GB.Text = "Введите ID услуги и цены";//Спросить!
+                        del.mainL1.Text = "ID услуги и цены";
+                        break;
+                    }
+                case "studios":
+                    {
+                        del.GB.Text = "Введите студию";//Спросить!
+                        del.mainL1.Text = "Студия";
+                        break;
+                    }
+                case "video_rental":
+                    {
+                        del.GB.Text = "Введите название видеопроката";//Спросить!
+                        del.mainL1.Text = "Название";
+                        break;
+                    }
+            }
+        del:
+
+            del.ShowDialog();
+
+            if (!del.isCanceled && del.isEnabled && del.valueTB.Text != String.Empty)
+            {
+                if (ControllerForDB.deleteByValue(del.valueTB.Text, table, what_change))
+                {
+                    MessageBox.Show($"Строка со значением \"{del.valueTB.Text}\" удалена из таблицы.", "Оповещение");
+                }
+            }
+            else
+            {
+                if (del.isEnabled)
+                {
+                    MessageBox.Show("Вы не ввели значение.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    goto del;
+                }
+                return;
+            }
         }
 
         public void deleteRowById(int index,string table,string id_value)//Функция удаления с выводом информации
