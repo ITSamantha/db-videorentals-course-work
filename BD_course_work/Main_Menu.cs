@@ -680,7 +680,7 @@ namespace BD_course_work
 
         private void button37_Click(object sender, EventArgs e)//Редактирование фото
         {
-            updatePhotoIntoTable((int)imagesTable.SelectedRows[0].Cells[0].Value);
+            updatePhotoIntoTable();
         }
 
         private void button4_Click(object sender, EventArgs e)//Режиссеры
@@ -724,11 +724,10 @@ namespace BD_course_work
                 insertOrUpdateIntoCassettes(1, cassettesTable.SelectedRows[0].Cells[1].Value.ToString(),
                                             cassettesTable.SelectedRows[0].Cells[2].Value == DBNull.Value ? null : (byte[])cassettesTable.SelectedRows[0].Cells[2].Value,
                                             cassettesTable.SelectedRows[0].Cells[3].Value.ToString(), cassettesTable.SelectedRows[0].Cells[4].Value.ToString(),
-                                            cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()),
-                                            (int)imagesTable.SelectedRows[0].Cells[0].Value);
+                                            cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
         }
 
-        public  static bool updatePhotoIntoTable(int id)
+        public void updatePhotoIntoTable()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -736,26 +735,22 @@ namespace BD_course_work
 
             if (openFileDialog.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
             {
-                return false;
+                return;
             }
 
-            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, id)!=0)
+            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value)!=0)
             {
                 MessageBox.Show("Фото обновлено.", "Оповещение");
-
-                return true;
             }
             else
             {
                 if (ControllerForDB.isCanceledDelete)
                 {
-                    return false;
+                    return;
                 }
 
                 MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
             }
-
-            return false;
         }
 
         public void UpdateDirectT(string t, int i, string val)
@@ -1052,7 +1047,7 @@ namespace BD_course_work
             }
         }
 
-        public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b=null,string price="", string demand="",string film="" ,int id = 0,int photo_id=0)
+        public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b=null,string price="", string demand="",string film="" ,int id = 0)
         {
             addOrEditCassettes add = new addOrEditCassettes();
 
@@ -1104,8 +1099,6 @@ namespace BD_course_work
                 }
 
                 if (val == 0) {
-
-                    insertPhotoIntoTable();
                     
                     if (ControllerForDB.insertIntoCassette(add.quality_list[add.qualityCB.Text],pic_id, double.Parse(add.priceTB.Text),bool.Parse(add.demandCB.Text=="Да"?"true":"false"),add.film_list[add.filmCB.Text]))
                     {
@@ -1124,8 +1117,6 @@ namespace BD_course_work
                 }
                 else
                 {
-                    updatePhotoIntoTable(photo_id);
-                    
                     if (ControllerForDB.updateCassette(id, add.quality_list[add.qualityCB.Text], pic_id, double.Parse(add.priceTB.Text), bool.Parse(add.demandCB.Text == "Да" ? "true" : "false"), add.film_list[add.filmCB.Text]))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");

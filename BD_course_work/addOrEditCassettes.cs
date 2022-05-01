@@ -126,9 +126,14 @@ namespace BD_course_work
 
         private void photoPB_Click(object sender, EventArgs e)
         {
+            if (!Main_Menu.insertPhotoIntoTable())
+            {
+                return;
+            }
+
             added_photo.Add(Main_Menu.pic_id);
 
-            if (Main_Menu.path != String.Empty)
+            if (!string.IsNullOrEmpty(Main_Menu.path))
             {
                 photoPB.Image = Image.FromFile(Main_Menu.path);
             }
