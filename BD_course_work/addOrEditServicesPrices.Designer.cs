@@ -115,9 +115,11 @@
             // 
             // rentalCB
             // 
+            this.rentalCB.DropDownHeight = 100;
             this.rentalCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rentalCB.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.rentalCB.FormattingEnabled = true;
+            this.rentalCB.IntegralHeight = false;
             this.rentalCB.Location = new System.Drawing.Point(6, 26);
             this.rentalCB.Name = "rentalCB";
             this.rentalCB.Size = new System.Drawing.Size(369, 35);
@@ -137,9 +139,11 @@
             // 
             // serviceCB
             // 
+            this.serviceCB.DropDownHeight = 100;
             this.serviceCB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.serviceCB.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.serviceCB.FormattingEnabled = true;
+            this.serviceCB.IntegralHeight = false;
             this.serviceCB.Location = new System.Drawing.Point(6, 26);
             this.serviceCB.Name = "serviceCB";
             this.serviceCB.Size = new System.Drawing.Size(369, 35);

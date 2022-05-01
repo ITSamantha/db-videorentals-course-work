@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BD_course_work.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -517,7 +518,7 @@ namespace BD_course_work
 
         private void button24_Click(object sender, EventArgs e)//Добавление кассеты
         {
-
+            insertOrUpdateIntoCassettes(0);
         }
 
         private void button42_Click(object sender, EventArgs e)
@@ -525,23 +526,28 @@ namespace BD_course_work
             insertIntoServicesPrices(0);
         }
 
-        public void insertIntoCassettes()
-        {
+        public static string path;
 
-        }
+        public static int  pic_id=0;
 
-        public void insertPhotoIntoTable()//Добавление фото в таблицу
+        public static bool insertPhotoIntoTable()//Добавление фото в таблицу
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            pic_id = 0;
+
+            OpenFileDialog openFileDialog= new OpenFileDialog();
 
             openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG;*.JPEG)|*.BMP;*.JPG;*.PNG;*.JPEG|All files (*.*)|*.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
             {
-                return;
+                return false;
             }
 
-            ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName,0);
+            path = openFileDialog.FileName;
+
+            pic_id = ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName,0);
+
+            return true;
         }
         
         public static void addToPeopleTable(string t)
@@ -646,9 +652,10 @@ namespace BD_course_work
             UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
         }
 
-        private void button40_Click(object sender, EventArgs e)
+        private void button40_Click(object sender, EventArgs e)//Кассеты
         {
-            insertIntoServicesPrices(1, (int)servpriceTable.SelectedRows[0].Cells[0].Value, (string)servpriceTable.SelectedRows[0].Cells[2].Value, (string)servpriceTable.SelectedRows[0].Cells[1].Value, servpriceTable.SelectedRows[0].Cells[3].Value.ToString());
+            insertIntoServicesPrices(1, (int)servpriceTable.SelectedRows[0].Cells[0].Value, servpriceTable.SelectedRows[0].Cells[2].Value.ToString(), 
+                servpriceTable.SelectedRows[0].Cells[1].Value.ToString(), servpriceTable.SelectedRows[0].Cells[3].Value.ToString());
         }
 
         private void editCountry_Click(object sender, EventArgs e)//Страны
@@ -673,7 +680,7 @@ namespace BD_course_work
 
         private void button37_Click(object sender, EventArgs e)//Редактирование фото
         {
-            updatePhotoIntoTable();
+            updatePhotoIntoTable((int)imagesTable.SelectedRows[0].Cells[0].Value);
         }
 
         private void button4_Click(object sender, EventArgs e)//Режиссеры
@@ -714,10 +721,14 @@ namespace BD_course_work
 
         private void button22_Click(object sender, EventArgs e)//Кассеты
         {
-
+                insertOrUpdateIntoCassettes(1, cassettesTable.SelectedRows[0].Cells[1].Value.ToString(),
+                                            cassettesTable.SelectedRows[0].Cells[2].Value == DBNull.Value ? null : (byte[])cassettesTable.SelectedRows[0].Cells[2].Value,
+                                            cassettesTable.SelectedRows[0].Cells[3].Value.ToString(), cassettesTable.SelectedRows[0].Cells[4].Value.ToString(),
+                                            cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()),
+                                            (int)imagesTable.SelectedRows[0].Cells[0].Value);
         }
 
-        public void updatePhotoIntoTable()
+        public  static bool updatePhotoIntoTable(int id)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
@@ -725,22 +736,26 @@ namespace BD_course_work
 
             if (openFileDialog.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
             {
-                return;
+                return false;
             }
 
-            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value))
+            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, id)!=0)
             {
                 MessageBox.Show("Фото обновлено.", "Оповещение");
+
+                return true;
             }
             else
             {
                 if (ControllerForDB.isCanceledDelete)
                 {
-                    return;
+                    return false;
                 }
 
                 MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
             }
+
+            return false;
         }
 
         public void UpdateDirectT(string t, int i, string val)
@@ -956,7 +971,6 @@ namespace BD_course_work
 
         }
         
-
         public static void insertOrUpdateIntoStudios(int val,string title="",string country="",int id=0 )
         {
             addOrEditTwoColumns add = new addOrEditTwoColumns();
@@ -1038,7 +1052,111 @@ namespace BD_course_work
             }
         }
 
-        public void insertOrUpdateIntoFilms(int val,string id="",string title="",string producer="", string studio="",string year="",string duration="",string info="")
+        public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b=null,string price="", string demand="",string film="" ,int id = 0,int photo_id=0)
+        {
+            addOrEditCassettes add = new addOrEditCassettes();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить кассету";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать кассету";
+
+                add.button1.Text = "Сохранить";
+            }
+
+            if (val == 1)
+            {
+                add.qualityCB.Text =quality;
+
+                add.filmCB.Text = film;
+
+                add.demandCB.Text = demand;
+
+                add.priceTB.Text = price;
+
+                add.photoPB.Image = b == null ? Resources.add_photo : Instruments.convertBIntoImage(b);
+
+               //if()
+            }
+
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled && add.priceTB.Text!=String.Empty)
+            {
+                try
+                {
+                    double.Parse(add.priceTB.Text);
+                }
+                catch (Exception )
+                {
+                    MessageBox.Show("Вы не ввели цену или ввели некорректно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    goto m1;
+                }
+
+                if (val == 0) {
+
+                    insertPhotoIntoTable();
+                    
+                    if (ControllerForDB.insertIntoCassette(add.quality_list[add.qualityCB.Text],pic_id, double.Parse(add.priceTB.Text),bool.Parse(add.demandCB.Text=="Да"?"true":"false"),add.film_list[add.filmCB.Text]))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+
+                    }
+                }
+                else
+                {
+                    updatePhotoIntoTable(photo_id);
+                    
+                    if (ControllerForDB.updateCassette(id, add.quality_list[add.qualityCB.Text], pic_id, double.Parse(add.priceTB.Text), bool.Parse(add.demandCB.Text == "Да" ? "true" : "false"), add.film_list[add.filmCB.Text]))
+                    {
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+            }
+            else
+            {
+                if (add.isEnabled)
+                {
+                    if (add.priceTB.Text == String.Empty)
+                    {
+                        MessageBox.Show("Вы не ввели цену.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                }
+                return;
+            }
+        }
+
+        public static void insertOrUpdateIntoFilms(int val,string id="",string title="",string producer="", string studio="",string year="",string duration="",string info="")
         {
             addOrEditFilm add = new addOrEditFilm();
 

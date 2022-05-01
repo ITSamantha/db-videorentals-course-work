@@ -124,39 +124,55 @@ namespace BD_course_work
             }
         }
         
-        public static bool insertOrUpdatePhoto(string path,int val,int id=0)
+        public static int insertOrUpdatePhoto(string path,int val,int id=0)
         {
+            int id1=0;
+
             try
             {
                 NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
                 n.Open();
 
-                string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );" : $"Update cassette_photo set photo=@Image where pk_photo_id={id};";
+                NpgsqlCommand com = new NpgsqlCommand();
 
-                NpgsqlCommand com = new NpgsqlCommand(command, n);
+                if (path == ""){
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, null ) returning pk_photo_id;" : $"Update cassette_photo set photo=null where pk_photo_id={id} returning pk_photo_id;";
 
-                NpgsqlParameter parameter = com.CreateParameter();
+                    com = new NpgsqlCommand(command, n);
+                    
+                    id1 = (int)com.ExecuteScalar();
+                }
+                else
+                {
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image ) returning pk_photo_id;" : $"Update cassette_photo set photo=@Image where pk_photo_id={id} returning pk_photo_id;";
 
-                parameter.ParameterName = "@Image";
+                    com = new NpgsqlCommand(command, n);
 
-                parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
+                    NpgsqlParameter parameter = com.CreateParameter();
 
-                parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
+                    parameter.ParameterName = "@Image";
 
-                com.Parameters.Add(parameter);
+                    parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
 
-                com.ExecuteNonQuery();
+                    parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
 
+                    com.Parameters.Add(parameter);
+
+                    id1 = (int)com.ExecuteScalar();
+                }
+                
                 com.Dispose();
 
                 n.Close();
 
-                return true;
+                return id1;
             }
             catch(Exception e)
             {
-                return false;
+                Console.Write(e);
+
+                return 0 ;//Тут еще подумать!!!
             }
             
         }
@@ -390,7 +406,7 @@ namespace BD_course_work
                 }
                 if (table.Equals("films"))
                 {
-                    list.Add(reader.GetString(1)+" "+reader.GetString(2), reader.GetInt32(0));
+                    list.Add(reader.GetString(1)+" "+reader.GetInt32(2), reader.GetInt32(0));
 
                     continue;
                 }
@@ -584,7 +600,41 @@ namespace BD_course_work
             }
         }
 
-        public static bool insertIntoCassette(int cassette_quality,int cassette_photo)
+        public static bool insertIntoCassette(int cassette_quality,int cassette_photo,double price,bool demand,int film_id)
+        {
+            NpgsqlCommand com= new NpgsqlCommand();
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                if (cassette_photo == 0)
+                {
+                    int id= insertOrUpdatePhoto("", 0);
+
+                    com = new NpgsqlCommand($"insert into cassettes values (default, '{cassette_quality}', {id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
+                }
+                else
+                {
+                    com = new NpgsqlCommand($"insert into cassettes values (default, '{cassette_quality}', {cassette_photo}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
+                }
+                
+                com.ExecuteNonQuery();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+
+                return false;
+            }
+        }
+
+        public static bool updateCassette(int id,int cassette_quality, int cassette_photo, double price, bool demand, int film_id)
         {
             try
             {
@@ -592,9 +642,9 @@ namespace BD_course_work
 
                 n.Open();
 
-                //NpgsqlCommand com = new NpgsqlCommand($"insert into cassettes values (default, '{film_name}', {producer_id}, {studio_id}, {year}, {duration}, '{info}');", n);
+                NpgsqlCommand com = new NpgsqlCommand($"update cassettes set fk_cassette_quality = '{cassette_quality}',fk_cassette_photo = {cassette_photo},cassette_price =  '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', cassette_demand = '{demand}',fk_film_id =  {film_id} where pk_cassette_id={id};", n);
 
-                //com.ExecuteNonQuery();
+                com.ExecuteNonQuery();
 
                 n.Close();
 
@@ -604,7 +654,6 @@ namespace BD_course_work
             {
                 return false;
             }
-
         }
 
         public static bool insertIntoServicesPrices(int service_id, int video_rental_id, double price)
@@ -981,6 +1030,30 @@ namespace BD_course_work
             isCanceledDelete = true;
 
             return false;
+        }
+
+        public static bool deletePhoto(int id)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                var command = new NpgsqlCommand($"update cassette_photo set photo = null where pk_photo_id={id}", n);
+
+                command.ExecuteNonQuery();
+
+                n.Close();
+
+                command.Dispose();
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public static bool deleteByValue(string value, string table, string string_title)//Не дописан
