@@ -143,6 +143,8 @@ namespace BD_course_work
         {
             photoPB.Image = Resources.add_photo;
 
+            Main_Menu.path = "";
+
             if (Main_Menu.pic_id != 0)
             {
                 ControllerForDB.deletePhoto(Main_Menu.pic_id);

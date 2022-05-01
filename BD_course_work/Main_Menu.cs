@@ -545,8 +545,8 @@ namespace BD_course_work
 
             path = openFileDialog.FileName;
 
-            pic_id = ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName,0);
-
+            pic_id = ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 0);
+            
             return true;
         }
         
@@ -677,7 +677,7 @@ namespace BD_course_work
         {
             UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
         }
-
+        
         private void button37_Click(object sender, EventArgs e)//Редактирование фото
         {
             updatePhotoIntoTable();
@@ -738,7 +738,7 @@ namespace BD_course_work
                 return;
             }
 
-            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value)!=0)
+            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value) !=0)
             {
                 MessageBox.Show("Фото обновлено.", "Оповещение");
             }
@@ -1046,7 +1046,7 @@ namespace BD_course_work
                 return;
             }
         }
-
+        
         public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b=null,string price="", string demand="",string film="" ,int id = 0)
         {
             addOrEditCassettes add = new addOrEditCassettes();
@@ -1056,12 +1056,14 @@ namespace BD_course_work
                 add.mainL1.Text = "Добавить кассету";
 
                 add.button1.Text = "Добавить";
+                
             }
             else
             {
                 add.mainL1.Text = "Редактировать кассету";
 
                 add.button1.Text = "Сохранить";
+                
             }
 
             if (val == 1)
@@ -1468,7 +1470,7 @@ namespace BD_course_work
 
         private void button23_Click(object sender, EventArgs e)//Удаление "Кассеты"
         {
-            deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");
+            deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
         }
 
         private void button26_Click(object sender, EventArgs e)//Удаление "Сделки"
