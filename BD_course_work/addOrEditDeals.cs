@@ -138,8 +138,11 @@ namespace BD_course_work
             {
                 serviceCB.Items.Add(it.Key);
             }
+        }
 
-            serviceCB.Items.Add("+ Добавить ");
+        public void updatePriceAndRecipe()
+        {
+            //priceTB.Text=
         }
 
        

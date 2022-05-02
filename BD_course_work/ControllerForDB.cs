@@ -124,58 +124,6 @@ namespace BD_course_work
             }
         }
         
-        public static int insertOrUpdatePhoto(string path,int val,int id=0)
-        {
-            int id1=0;
-
-            try
-            {
-                NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-                n.Open();
-
-                NpgsqlCommand com = new NpgsqlCommand();
-
-                if (path == ""){
-                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, null ) returning pk_photo_id;" : $"Update cassette_photo set photo=null where pk_photo_id={id} returning pk_photo_id;";
-
-                    com = new NpgsqlCommand(command, n);
-                    
-                    id1 = (int)com.ExecuteScalar();
-                }
-                else
-                {
-                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image ) returning pk_photo_id;" : $"Update cassette_photo set photo=@Image where pk_photo_id={id} returning pk_photo_id;";
-
-                    com = new NpgsqlCommand(command, n);
-
-                    NpgsqlParameter parameter = com.CreateParameter();
-
-                    parameter.ParameterName = "@Image";
-
-                    parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
-
-                    parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
-
-                    com.Parameters.Add(parameter);
-
-                    id1 = (int)com.ExecuteScalar();
-                }
-                
-                com.Dispose();
-
-                n.Close();
-
-                return id1;
-            }
-            catch(Exception e)
-            {
-                Console.Write(e);
-
-                return 0 ;//Тут еще подумать!!!
-            }
-            
-        }
         public static void generateServicesPrices()//Генерация services_prices
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -569,7 +517,96 @@ namespace BD_course_work
         
         //INSERT-методы
 
-            //public static bool insertOrUpdateInto
+        public static bool insertOrUpdateIntoDeals(int val,int cassette_id, string date,int service_price,double price,int id=0)
+        {
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                string command = "";
+
+                if (val == 0)
+                {
+                    command = $"insert into deals values (default,{cassette_id}, '{"Квитанция выдана: "+date+". К оплате: "+price+". Спасибо, что выбрали нас!"}', '{date}', {service_price},'{price});";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                }
+                else
+                {
+                    command = $"update deals set fk_cassete_id = {cassette_id}, recipe_deal = '{"Квитанция выдана: "+date+".К оплате: "+price+".Спасибо, что выбрали нас!"}', deal_date = '{date}', fk_service_price = {service_price},general_price = '{price}' where pk_deal_id={id};";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                }
+
+                var com = new NpgsqlCommand(command, n);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                n.Close();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+
+        public static int insertOrUpdatePhoto(string path, int val, int id = 0)
+        {
+            int id1 = 0;
+
+            try
+            {
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand();
+
+                if (path == "")
+                {
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, null ) returning pk_photo_id;" : $"Update cassette_photo set photo=null where pk_photo_id={id} returning pk_photo_id;";
+
+                    com = new NpgsqlCommand(command, n);
+
+                    id1 = (int)com.ExecuteScalar();
+                }
+                else
+                {
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image ) returning pk_photo_id;" : $"Update cassette_photo set photo=@Image where pk_photo_id={id} returning pk_photo_id;";
+
+                    com = new NpgsqlCommand(command, n);
+
+                    NpgsqlParameter parameter = com.CreateParameter();
+
+                    parameter.ParameterName = "@Image";
+
+                    parameter.NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Bytea;
+
+                    parameter.Value = Instruments.convertImageIntoB(Image.FromFile(path));
+
+                    com.Parameters.Add(parameter);
+
+                    id1 = (int)com.ExecuteScalar();
+                }
+
+                com.Dispose();
+
+                n.Close();
+
+                return id1;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+
+                return 0;//Тут еще подумать!!!
+            }
+
+        }
+
         public static void insertIntoDirectTable(string table,string vary)//Вставка в справочники
         {
             NpgsqlConnection c = new NpgsqlConnection(connectionString);
@@ -609,6 +646,22 @@ namespace BD_course_work
 
                 return false;
             }
+        }
+
+        public static int selectByVideoAndService(int video,int service)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand($"select pk_service_price_id from services_prices where fk_service_id={service} and fk_video_rental = {video};", n);
+
+            int r = (int)com.ExecuteScalar();
+
+            n.Close();
+
+            return r;
+
         }
 
         public static bool insertIntoFilms(string film_name, int producer_id,int studio_id,int year,int duration,string info)
@@ -1236,6 +1289,62 @@ namespace BD_course_work
             isCanceledDelete = true;
 
             return false;
+        }
+
+        public static DataTable searchStudio(string search,string filter)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = "";
+
+            if (filter != "")
+            {
+                if (search != "")
+                {
+
+                    com = $"select * from studios_view where studio_name='{search}' and country_name='{filter}'";
+                }
+                else
+                {
+
+                    com = $"select * from studios_view where country_name='{filter}'";
+                }
+            }
+            else
+            {
+                if (search != "")
+                {
+
+                    com = $"select * from studios_view where studio_name='{search}';";
+                }
+                else
+                {
+
+                    com = $"select * from studios_view;";
+                }
+            }
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            DataTable dt = new DataTable();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+            
         }
 
     }

@@ -265,7 +265,6 @@
         public System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.ComboBox idCB;
         public System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DateTimePicker dateCB;
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.ComboBox rentalCB;
         public System.Windows.Forms.GroupBox groupBox4;
@@ -276,5 +275,6 @@
         public System.Windows.Forms.TextBox recipeTB;
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.DateTimePicker dateCB;
     }
 }

@@ -211,7 +211,6 @@ namespace BD_course_work
 
                 studiosTable.Columns[2].HeaderText = "Страна";
             }
-
             label3.Text += ControllerForDB.amount;
         }
 
@@ -555,7 +554,7 @@ namespace BD_course_work
 
         private void button27_Click(object sender, EventArgs e)
         {
-            //insertIntoDeals(0);
+            insertOrUpdateIntoDeals(0);
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
         }
@@ -787,6 +786,13 @@ namespace BD_course_work
                                             cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
 
             cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            insertOrUpdateIntoDeals(1, int.Parse(ordersTable.SelectedRows[0].Cells[2].Value.ToString()), ordersTable.SelectedRows[0].Cells[4].Value.ToString(),
+                ordersTable.SelectedRows[0].Cells[5].Value.ToString(), ordersTable.SelectedRows[0].Cells[1].Value.ToString(), ordersTable.SelectedRows[0].Cells[6].Value.ToString(),
+                float.Parse(ordersTable.SelectedRows[0].Cells[7].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
         }
 
         public void updatePhotoIntoTable()
@@ -1027,7 +1033,88 @@ namespace BD_course_work
 
 
         }
-        
+
+        public static void insertOrUpdateIntoDeals(int val,int cassette_id=0,string recipe_deal="", string deal_date="",string video="",string service="",float price=0,int id=0)
+        {
+            addOrEditDeals add = new addOrEditDeals();
+
+            if (val == 0)
+            {
+                add.mainL1.Text = "Добавить сделку";
+
+                add.button1.Text = "Добавить";
+            }
+            else
+            {
+                add.mainL1.Text = "Редактировать сделку";
+
+                add.button1.Text = "Сохранить";
+            }
+
+            if (val == 1)
+            {
+                add.idCB.Text = cassette_id.ToString();
+
+                add.recipeTB.Text = recipe_deal;
+
+                add.dateCB.Text = deal_date;
+
+                add.rentalCB.Text = video;
+
+                add.serviceCB.Text = service;
+
+                add.priceTB.Text = price.ToString();
+            }
+
+            m1:
+
+                add.clean();
+
+                add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled && add.priceTB.Text != String.Empty&& add.recipeTB.Text!=String.Empty)
+            {
+                if (val == 0)
+                {
+                    if (ControllerForDB.insertOrUpdateIntoDeals(0, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text)))
+                    {
+                        MessageBox.Show("Строка добавлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+
+                    }
+                }
+                else
+                {
+                    if (ControllerForDB.insertOrUpdateIntoDeals(1, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text),id))
+                    {
+                        MessageBox.Show("Строка обновлена.", "Оповещение");
+                    }
+                    else
+                    {
+                        if (ControllerForDB.isCanceledDelete)
+                        {
+                            return;
+                        }
+
+                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
         public static void insertOrUpdateIntoStudios(int val,string title="",string country="",int id=0 )
         {
             addOrEditTwoColumns add = new addOrEditTwoColumns();
@@ -2405,7 +2492,32 @@ namespace BD_course_work
             }
             return false;
         }
+        //Поиск и фильтр
+        private void button43_Click(object sender, EventArgs e)//Студии
+        {
+            SearchAndFilterStudio d = new SearchAndFilterStudio();
 
-        
+            d.ShowDialog();
+
+            if (!d.isCanceled && d.isEnabled)
+            {
+                studiosTable.DataSource=ControllerForDB.searchStudio(d.search.Text, d.countryCB.Text);
+
+               if (studiosTable.RowCount!=0)
+                {
+                    studiosTable.Columns[0].HeaderText = "ID";
+
+                    studiosTable.Columns[1].HeaderText = "Студия";
+
+                    studiosTable.Columns[2].HeaderText = "Страна";
+                }
+
+                MessageBox.Show("Результаты поиска в таблице.", "Оповещение");
+
+                if (!label3.Text.Equals(strAmount)) { label3.Text = strAmount; }
+
+                label3.Text += studiosTable.RowCount;
+            }
+        }
     }
 }

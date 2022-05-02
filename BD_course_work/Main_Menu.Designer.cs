@@ -137,6 +137,7 @@
             this.ordersB = new System.Windows.Forms.Button();
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
+            this.button43 = new System.Windows.Forms.Button();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -332,6 +333,7 @@
             this.button25.Size = new System.Drawing.Size(44, 38);
             this.button25.TabIndex = 10;
             this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
             // 
             // button26
             // 
@@ -937,6 +939,7 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.button43);
             this.tabPage9.Controls.Add(this.studiosTable);
             this.tabPage9.Controls.Add(this.label3);
             this.tabPage9.Controls.Add(this.button1);
@@ -1686,6 +1689,20 @@
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
             // 
+            // button43
+            // 
+            this.button43.BackColor = System.Drawing.Color.White;
+            this.button43.FlatAppearance.BorderSize = 0;
+            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button43.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button43.Image = ((System.Drawing.Image)(resources.GetObject("button43.Image")));
+            this.button43.Location = new System.Drawing.Point(704, 3);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(44, 38);
+            this.button43.TabIndex = 10;
+            this.button43.UseVisualStyleBackColor = false;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1858,6 +1875,7 @@
         private System.Windows.Forms.Button button42;
         public System.Windows.Forms.DataGridView cassettesTable;
         public System.Windows.Forms.DataGridView studiosTable;
+        private System.Windows.Forms.Button button43;
     }
 }
 
