@@ -21,7 +21,8 @@ namespace BD_course_work
 
         public bool isDeleteValue = false;
 
-
+        public bool isDeleteSelectedRows = false;
+        
         public deleteMenu()
         {
             InitializeComponent();
@@ -60,6 +61,13 @@ namespace BD_course_work
         }
 
         private void deleteManyStr_Click(object sender, EventArgs e)
+        {
+            isDeleteSelectedRows = true;
+            
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             isDeleteManyStr = true;
 

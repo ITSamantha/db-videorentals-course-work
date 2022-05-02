@@ -359,6 +359,7 @@
             this.button27.Size = new System.Drawing.Size(44, 38);
             this.button27.TabIndex = 8;
             this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // tabPage2
             // 
