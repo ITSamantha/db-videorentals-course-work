@@ -165,7 +165,7 @@ namespace BD_course_work
                 qualityTable.Columns[1].HeaderText = "Качество";
             }
 
-            label13.Text += ControllerForDB.amount;
+            label13.Text += qualityTable.RowCount;
         }
         
         private void countriesB_Click(object sender, EventArgs e)//Таблица "Страны"
@@ -282,7 +282,7 @@ namespace BD_course_work
                 propertyTable.Columns[1].HeaderText = "Тип собственности";
             }
 
-            label7.Text += ControllerForDB.amount;
+            label7.Text += propertyTable.RowCount;
         }
 
         private void districtB_Click(object sender, EventArgs e)//Таблица "Район"
@@ -523,6 +523,17 @@ namespace BD_course_work
 
             servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
 
+            if (servpriceTable.RowCount != 0)
+            {
+                servpriceTable.Columns[0].HeaderText = "ID";
+
+                servpriceTable.Columns[1].HeaderText = "Видеопрокат";
+
+                servpriceTable.Columns[2].HeaderText = "Услуга";
+
+                servpriceTable.Columns[3].HeaderText = "Цена";
+            }
+
             label15.Text = "Количество полей:" + servpriceTable.RowCount;
         }
 
@@ -664,117 +675,212 @@ namespace BD_course_work
         //Методы UPDATE
         private void button31_Click(object sender, EventArgs e)//Качество
         {
-            UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
+            if (qualityTable.RowCount != 0)
+            {
+                UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
 
-            qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
+                qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button40_Click(object sender, EventArgs e)//Услуги и цены
         {
-            insertIntoServicesPrices(1, (int)servpriceTable.SelectedRows[0].Cells[0].Value, servpriceTable.SelectedRows[0].Cells[2].Value.ToString(), 
+            if (servpriceTable.RowCount != 0)
+            {
+                insertIntoServicesPrices(1, (int)servpriceTable.SelectedRows[0].Cells[0].Value, servpriceTable.SelectedRows[0].Cells[2].Value.ToString(),
                 servpriceTable.SelectedRows[0].Cells[1].Value.ToString(), servpriceTable.SelectedRows[0].Cells[3].Value.ToString());
 
-            servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
+                servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void editCountry_Click(object sender, EventArgs e)//Страны
         {
-            UpdateDirectT("countries", (int)countriesTable.SelectedRows[0].Cells[0].Value, (string)countriesTable.SelectedRows[0].Cells[1].Value);
+            if (countriesTable.RowCount != 0)
+            {
+                UpdateDirectT("countries", (int)countriesTable.SelectedRows[0].Cells[0].Value, (string)countriesTable.SelectedRows[0].Cells[1].Value);
 
-            countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
+                countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)//Услуги
         {
-            UpdateDirectT("services", (int)servicesTable.SelectedRows[0].Cells[0].Value, (string)servicesTable.SelectedRows[0].Cells[1].Value);
+            if (servicesTable.RowCount != 0)
+            {
+                UpdateDirectT("services", (int)servicesTable.SelectedRows[0].Cells[0].Value, (string)servicesTable.SelectedRows[0].Cells[1].Value);
 
-            servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
+                servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button13_Click(object sender, EventArgs e)//Тип собственности
         {
-            UpdateDirectT("property_type", (int)propertyTable.SelectedRows[0].Cells[0].Value, (string)propertyTable.SelectedRows[0].Cells[1].Value);
+            if (propertyTable.RowCount != 0)
+            {
+                UpdateDirectT("property_type", (int)propertyTable.SelectedRows[0].Cells[0].Value, (string)propertyTable.SelectedRows[0].Cells[1].Value);
 
-            propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
+                propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
+
         }
 
         private void button16_Click(object sender, EventArgs e)//Районы
         {
-            UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
+            if (districtsTable.RowCount != 0)
+            {
+                UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
 
-            districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("districts");
+                districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("districts");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
         
         private void button37_Click(object sender, EventArgs e)//Редактирование фото
         {
-            updatePhotoIntoTable();
+            if (imagesTable.RowCount != 0)
+            {
+                updatePhotoIntoTable();
 
-            imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+                imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)//Режиссеры
         {
-            updatePeopleTable("producers", 1, (string)producersTable.SelectedRows[0].Cells[1].Value, (string)producersTable.SelectedRows[0].Cells[2].Value, producersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null : 
+            if (producersTable.RowCount != 0)
+            {
+                updatePeopleTable("producers", 1, (string)producersTable.SelectedRows[0].Cells[1].Value, (string)producersTable.SelectedRows[0].Cells[2].Value, producersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null :
                 (string)producersTable.SelectedRows[0].Cells[3].Value);
 
-            producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
+                producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)//Хозяины
         {
-            updatePeopleTable("owners", 1, (string)ownersTable.SelectedRows[0].Cells[1].Value, (string)ownersTable.SelectedRows[0].Cells[2].Value, 
+            if (ownersTable.RowCount != 0)
+            {
+                updatePeopleTable("owners", 1, (string)ownersTable.SelectedRows[0].Cells[1].Value, (string)ownersTable.SelectedRows[0].Cells[2].Value,
                 ownersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null : (string)ownersTable.SelectedRows[0].Cells[3].Value);
 
-            ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+                ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button28_Click(object sender, EventArgs e)//Видеопрокаты
         {
-            inserOrUpdatetIntoVideoRental(1, (int)videoTable.SelectedRows[0].Cells[0].Value, (string)videoTable.SelectedRows[0].Cells[1].Value, (string)videoTable.SelectedRows[0].Cells[2].Value, (string)videoTable.SelectedRows[0].Cells[3].Value, (string)videoTable.SelectedRows[0].Cells[4].Value,
+            if (videoTable.RowCount != 0)
+            {
+                inserOrUpdatetIntoVideoRental(1, (int)videoTable.SelectedRows[0].Cells[0].Value, (string)videoTable.SelectedRows[0].Cells[1].Value, (string)videoTable.SelectedRows[0].Cells[2].Value, (string)videoTable.SelectedRows[0].Cells[3].Value, (string)videoTable.SelectedRows[0].Cells[4].Value,
                 (string)videoTable.SelectedRows[0].Cells[6].Value, (string)videoTable.SelectedRows[0].Cells[5].Value, videoTable.SelectedRows[0].Cells[8].Value.ToString(),
-            videoTable.SelectedRows[0].Cells[7].Value.ToString(), (string)videoTable.SelectedRows[0].Cells[9].Value.ToString(), ((string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value)));
+                videoTable.SelectedRows[0].Cells[7].Value.ToString(), (string)videoTable.SelectedRows[0].Cells[9].Value.ToString(), ((string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value)));
 
-            videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
+                videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)//Студии
         {
-            insertOrUpdateIntoStudios(1, studiosTable.SelectedRows[0].Cells[1].Value.ToString(), (string)studiosTable.SelectedRows[0].Cells[2].Value, 
+            if (studiosTable.RowCount != 0)
+            {
+                insertOrUpdateIntoStudios(1, studiosTable.SelectedRows[0].Cells[1].Value.ToString(), (string)studiosTable.SelectedRows[0].Cells[2].Value,
                 (int)studiosTable.SelectedRows[0].Cells[0].Value);
 
-            studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
+                studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button19_Click(object sender, EventArgs e)//Фильмы
         {
-            try
+            if (filmsTable.RowCount != 0)
             {
                 insertOrUpdateIntoFilms(1, filmsTable.SelectedRows[0].Cells[0].Value.ToString(), filmsTable.SelectedRows[0].Cells[1].Value.ToString(), (filmsTable.SelectedRows[0].Cells[2].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[3].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[4].Value.ToString()),
                 filmsTable.SelectedRows[0].Cells[5].Value.ToString(), filmsTable.SelectedRows[0].Cells[6].Value.ToString(), filmsTable.SelectedRows[0].Cells[7].Value.ToString(), filmsTable.SelectedRows[0].Cells[8].Value.ToString());
 
                 filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
             }
-            catch (Exception el)
+            else
             {
-                Console.WriteLine(el);
+                MessageBox.Show("Таблица пуста.", "Оповещение");
             }
+
         }
 
         private void button22_Click(object sender, EventArgs e)//Кассеты
         {
+            if (cassettesTable.RowCount != 0)
+            {
                 insertOrUpdateIntoCassettes(1, cassettesTable.SelectedRows[0].Cells[1].Value.ToString(),
-                                            cassettesTable.SelectedRows[0].Cells[2].Value == DBNull.Value ? null : (byte[])cassettesTable.SelectedRows[0].Cells[2].Value,
-                                            cassettesTable.SelectedRows[0].Cells[3].Value.ToString(), cassettesTable.SelectedRows[0].Cells[4].Value.ToString(),
-                                            cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
+                                               cassettesTable.SelectedRows[0].Cells[2].Value == DBNull.Value ? null : (byte[])cassettesTable.SelectedRows[0].Cells[2].Value,
+                                               cassettesTable.SelectedRows[0].Cells[3].Value.ToString(), cassettesTable.SelectedRows[0].Cells[4].Value.ToString(),
+                                               cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
 
-            cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+                cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         private void button25_Click(object sender, EventArgs e)
         {
-            insertOrUpdateIntoDeals(1, int.Parse(ordersTable.SelectedRows[0].Cells[2].Value.ToString()), ordersTable.SelectedRows[0].Cells[4].Value.ToString(),
-                ordersTable.SelectedRows[0].Cells[5].Value.ToString(), ordersTable.SelectedRows[0].Cells[1].Value.ToString(), ordersTable.SelectedRows[0].Cells[6].Value.ToString(),
-                float.Parse(ordersTable.SelectedRows[0].Cells[7].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
+            if (ordersTable.RowCount != 0)
+            {
+                insertOrUpdateIntoDeals(1, int.Parse(ordersTable.SelectedRows[0].Cells[2].Value.ToString()), ordersTable.SelectedRows[0].Cells[4].Value.ToString(),
+                   ordersTable.SelectedRows[0].Cells[5].Value.ToString(), ordersTable.SelectedRows[0].Cells[1].Value.ToString(), ordersTable.SelectedRows[0].Cells[6].Value.ToString(),
+                   float.Parse(ordersTable.SelectedRows[0].Cells[7].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
+
+                ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
+            }
+            else
+            {
+                MessageBox.Show("Таблица пуста.", "Оповещение");
+            }
         }
 
         public void updatePhotoIntoTable()
@@ -1554,87 +1660,96 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (qualityTable.RowCount != 0)
                 {
-                    deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
-
-                    qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (qualityTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = qualityTable.RowCount;
+                        deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
 
-                        int N = qualityTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (qualityTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)qualityTable.Rows[(i - 1)].Cells[0].Value, "cassette_quality", "pk_quality_id", i == N ? true : false))
+                            int i = qualityTable.RowCount;
+
+                            int N = qualityTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)qualityTable.Rows[(i - 1)].Cells[0].Value, "cassette_quality", "pk_quality_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            qualityTable.DataSource = empty;
-                        }
+                                qualityTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("cassette_quality", "quality_name");
+
+                        qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("cassette_quality", "quality_name");
-
-                    qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (qualityTable.SelectedRows.Count >1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i= qualityTable.SelectedRows.Count;
-
-                        int N = qualityTable.SelectedRows.Count;
-
-                        while (i!= 0)
+                        if (qualityTable.SelectedRows.Count > 1)
                         {
-                                if(deleteRowsById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id", i == N ? true : false))
+                            int i = qualityTable.SelectedRows.Count;
+
+                            int N = qualityTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id", i == N ? true : false))
                                 {
                                     qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }                          
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.", "Оповещение");
+                }
+                label13.Text = "Количество полей:" + qualityTable.RowCount;
             }
+            
         }
         
         private void button41_Click(object sender, EventArgs e)//Удаление "Услуги и цены"
@@ -1647,85 +1762,91 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (servpriceTable.RowCount != 0)
                 {
-                    deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
-
-                    servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (servpriceTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = servpriceTable.RowCount;
+                        deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
 
-                        int N = servpriceTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (servpriceTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)servpriceTable.Rows[(i - 1)].Cells[0].Value, "services_prices", "pk_service_price_id", i == N ? true : false))
+                            int i = servpriceTable.RowCount;
+
+                            int N = servpriceTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)servpriceTable.Rows[(i - 1)].Cells[0].Value, "services_prices", "pk_service_price_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            servpriceTable.DataSource = empty;
-                        }
+                                servpriceTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("services_prices", "pk_service_price_id");
+
+                        servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("services_prices", "pk_service_price_id");
-
-                    servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (servpriceTable.SelectedRows.Count >1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = servpriceTable.SelectedRows.Count;
-
-                        int N = servpriceTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (servpriceTable.SelectedRows.Count > 1)
                         {
-                                if(deleteRowsById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id", i == N ? true : false))
+                            int i = servpriceTable.SelectedRows.Count;
+
+                            int N = servpriceTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id", i == N ? true : false))
                                 {
                                     servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
                 label15.Text = "Количество полей:" + servpriceTable.RowCount;
             }
@@ -1741,86 +1862,94 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (countriesTable.RowCount != 0)
                 {
-                    deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
-
-                    countriesTable.Rows.Remove(countriesTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (countriesTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = countriesTable.RowCount;
+                        deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
 
-                        int N = countriesTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        countriesTable.Rows.Remove(countriesTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (countriesTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)countriesTable.Rows[(i - 1)].Cells[0].Value, "countries", "pk_country_id", i == N ? true : false))
+                            int i = countriesTable.RowCount;
+
+                            int N = countriesTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)countriesTable.Rows[(i - 1)].Cells[0].Value, "countries", "pk_country_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            countriesTable.DataSource = empty;
-                        }
+                                countriesTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("countries", "country_name");
+
+                        countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("countries", "country_name");
-
-                    countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (countriesTable.SelectedRows.Count > 1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = countriesTable.SelectedRows.Count;
-
-                        int N = countriesTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (countriesTable.SelectedRows.Count > 1)
                         {
-                                if(deleteRowsById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id", i == N ? true : false))
+                            int i = countriesTable.SelectedRows.Count;
+
+                            int N = countriesTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id", i == N ? true : false))
                                 {
                                     countriesTable.Rows.Remove(countriesTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label2.Text = "Количество полей:" + countriesTable.RowCount;
             }
         }
 
@@ -1834,86 +1963,94 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (studiosTable.RowCount != 0)
                 {
-                    deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
-
-                    studiosTable.Rows.Remove(studiosTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (studiosTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = studiosTable.RowCount;
+                        deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
 
-                        int N = studiosTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        studiosTable.Rows.Remove(studiosTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (studiosTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)studiosTable.Rows[(i - 1)].Cells[0].Value, "studios", "pk_studio_id", i == N ? true : false))
+                            int i = studiosTable.RowCount;
+
+                            int N = studiosTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)studiosTable.Rows[(i - 1)].Cells[0].Value, "studios", "pk_studio_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            studiosTable.DataSource = empty;
-                        }
+                                studiosTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("studios", "studio_name");
+
+                        studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("studios", "studio_name");
-
-                    studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (studiosTable.SelectedRows.Count > 1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = studiosTable.SelectedRows.Count;
-
-                        int N = studiosTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (studiosTable.SelectedRows.Count > 1)
                         {
-                            if(deleteRowsById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id", i == N ? true : false))
+                            int i = studiosTable.SelectedRows.Count;
+
+                            int N = studiosTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id", i == N ? true : false))
                                 {
                                     studiosTable.Rows.Remove(studiosTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label3.Text = "Количество полей:" + studiosTable.RowCount;
             }
         }
 
@@ -1927,86 +2064,94 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (producersTable.RowCount != 0)
                 {
-                    deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
-
-                    producersTable.Rows.Remove(producersTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (producersTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = producersTable.RowCount;
+                        deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
 
-                        int N = producersTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        producersTable.Rows.Remove(producersTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (producersTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)producersTable.Rows[(i - 1)].Cells[0].Value, "producers", "pk_producer_id", i == N ? true : false))
+                            int i = producersTable.RowCount;
+
+                            int N = producersTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)producersTable.Rows[(i - 1)].Cells[0].Value, "producers", "pk_producer_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            producersTable.DataSource = empty;
-                        }
+                                producersTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("producers", "studio_name");//ДОДУМАТЬ КАК!
+
+                        producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("producers", "studio_name");//ДОДУМАТЬ КАК!
-
-                    producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (producersTable.SelectedRows.Count > 1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = producersTable.SelectedRows.Count;
-
-                        int N = producersTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (producersTable.SelectedRows.Count > 1)
                         {
+                            int i = producersTable.SelectedRows.Count;
+
+                            int N = producersTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
                                 if (deleteRowsById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id", i == N ? true : false))
                                 {
                                     producersTable.Rows.Remove(producersTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label4.Text = "Количество полей:" + producersTable.RowCount;
             }
         }
 
@@ -2020,85 +2165,93 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (ownersTable.RowCount != 0)
                 {
-                    deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
-
-                    ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (ownersTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = ownersTable.RowCount;
+                        deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
 
-                        int N = ownersTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (ownersTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)ownersTable.Rows[(i - 1)].Cells[0].Value, "owners", "pk_owner_id", i == N ? true : false))
+                            int i = ownersTable.RowCount;
+
+                            int N = ownersTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)ownersTable.Rows[(i - 1)].Cells[0].Value, "owners", "pk_owner_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            ownersTable.DataSource = empty;
-                        }
-
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("owners", "studio_name");//ДОДУМАТЬ КАК!
-
-                    ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (ownersTable.SelectedRows.Count > 1)
-                    {
-                        int i = ownersTable.SelectedRows.Count;
-
-                        int N = ownersTable.SelectedRows.Count;
-
-                        while ( i!=0)
-                        {
-                            if(deleteRowsById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id", i == N ? true : false))
+                            if (count == N)
                             {
-                                ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                ownersTable.DataSource = empty;
                             }
-                            i--;
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("owners", "studio_name");//ДОДУМАТЬ КАК!
+
+                        ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (ownersTable.SelectedRows.Count > 1)
+                        {
+                            int i = ownersTable.SelectedRows.Count;
+
+                            int N = ownersTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id", i == N ? true : false))
+                                {
+                                    ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label5.Text = "Количество полей:" + ownersTable.RowCount;
             }
         }
 
@@ -2112,85 +2265,93 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (servicesTable.RowCount != 0)
                 {
-                    deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services_view", "pk_service_id");
-
-                    servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (servicesTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = servicesTable.RowCount;
+                        deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services_view", "pk_service_id");
 
-                        int N = servicesTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (servicesTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)servicesTable.Rows[(i - 1)].Cells[0].Value, "services_view", "pk_service_id", i == N ? true : false))
+                            int i = servicesTable.RowCount;
+
+                            int N = servicesTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)servicesTable.Rows[(i - 1)].Cells[0].Value, "services_view", "pk_service_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            servicesTable.DataSource = empty;
-                        }
-
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("services", "service_name");
-
-                    servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (servicesTable.SelectedRows.Count > 1)
-                    {
-                        int i = servicesTable.SelectedRows.Count;
-
-                        int N = servicesTable.SelectedRows.Count;
-
-                        while (i!=0)
-                        {
-                            if(deleteRowsById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id", i == N ? true : false))
+                            if (count == N)
                             {
-                                servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                servicesTable.DataSource = empty;
                             }
-                            i--;
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("services", "service_name");
+
+                        servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (servicesTable.SelectedRows.Count > 1)
+                        {
+                            int i = servicesTable.SelectedRows.Count;
+
+                            int N = servicesTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id", i == N ? true : false))
+                                {
+                                    servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label6.Text = "Количество полей:" + servicesTable.RowCount;
             }
         }
 
@@ -2204,85 +2365,93 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (propertyTable.RowCount != 0)
                 {
-                    deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
-
-                    propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (propertyTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = propertyTable.RowCount;
+                        deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
 
-                        int N = propertyTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (propertyTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)propertyTable.Rows[(i - 1)].Cells[0].Value, "property_type", "pk_property_type_id", i == N ? true : false))
+                            int i = propertyTable.RowCount;
+
+                            int N = propertyTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)propertyTable.Rows[(i - 1)].Cells[0].Value, "property_type", "pk_property_type_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            propertyTable.DataSource = empty;
-                        }
-
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("property_type", "property_type_name");
-
-                    propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (propertyTable.SelectedRows.Count > 1)
-                    {
-                        int i = propertyTable.SelectedRows.Count;
-
-                        int N = propertyTable.SelectedRows.Count;
-
-                        while ( i!=0)
-                        {
-                            if(deleteRowsById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id", i == N ? true : false))
+                            if (count == N)
                             {
-                                propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                propertyTable.DataSource = empty;
                             }
-                            i--;
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("property_type", "property_type_name");
+
+                        propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (propertyTable.SelectedRows.Count > 1)
+                        {
+                            int i = propertyTable.SelectedRows.Count;
+
+                            int N = propertyTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id", i == N ? true : false))
+                                {
+                                    propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label7.Text = "Количество полей:" + propertyTable.RowCount;
             }
         }
 
@@ -2296,85 +2465,93 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (districtsTable.RowCount != 0)
                 {
-                    deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
-
-                    districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (districtsTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = districtsTable.RowCount;
+                        deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
 
-                        int N = districtsTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (districtsTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)districtsTable.Rows[(i - 1)].Cells[0].Value, "district", "pk_district_id", i == N ? true : false))
+                            int i = districtsTable.RowCount;
+
+                            int N = districtsTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)districtsTable.Rows[(i - 1)].Cells[0].Value, "district", "pk_district_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            districtsTable.DataSource = empty;
-                        }
-
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("district", "district_name");
-
-                    districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (districtsTable.SelectedRows.Count > 1)
-                    {
-                        int i = districtsTable.SelectedRows.Count;
-
-                        int N = districtsTable.SelectedRows.Count;
-                        
-                        while ( i!=0)
-                        {
-                            if(deleteRowsById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id", i == N ? true : false))
+                            if (count == N)
                             {
-                                districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                districtsTable.DataSource = empty;
                             }
-                            i--;
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("district", "district_name");
+
+                        districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (districtsTable.SelectedRows.Count > 1)
+                        {
+                            int i = districtsTable.SelectedRows.Count;
+
+                            int N = districtsTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id", i == N ? true : false))
+                                {
+                                    districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label8.Text = "Количество полей:" + districtsTable.RowCount;
             }
         }
 
@@ -2388,85 +2565,93 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (filmsTable.RowCount != 0)
                 {
-                    deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
-
-                    filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (filmsTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = filmsTable.RowCount;
+                        deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
 
-                        int N = filmsTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (filmsTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)filmsTable.Rows[(i - 1)].Cells[0].Value, "films", "pk_film_id", i == N ? true : false))
+                            int i = filmsTable.RowCount;
+
+                            int N = filmsTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)filmsTable.Rows[(i - 1)].Cells[0].Value, "films", "pk_film_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            filmsTable.DataSource = empty;
-                        }
-
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("films", "film_name");
-
-                    filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (filmsTable.SelectedRows.Count > 1)
-                    {
-                        int i = filmsTable.SelectedRows.Count;
-
-                        int N = filmsTable.SelectedRows.Count;
-
-                        while (i!=0)
-                        {
-                            if(deleteRowsById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id",i==N? true:false))
+                            if (count == N)
                             {
-                                filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                filmsTable.DataSource = empty;
                             }
-                            i--;
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("films", "film_name");
+
+                        filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (filmsTable.SelectedRows.Count > 1)
+                        {
+                            int i = filmsTable.SelectedRows.Count;
+
+                            int N = filmsTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id", i == N ? true : false))
+                                {
+                                    filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label9.Text = "Количество полей:" + filmsTable.RowCount;
             }
         }
 
@@ -2480,84 +2665,92 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (cassettesTable.RowCount != 0)
                 {
-                    deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
-
-                    cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (cassettesTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = cassettesTable.RowCount;
+                        deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
 
-                        int N = cassettesTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (cassettesTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)cassettesTable.Rows[(i - 1)].Cells[0].Value, "cassettes", "pk_cassette_id", i == N ? true : false))
+                            int i = cassettesTable.RowCount;
+
+                            int N = cassettesTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)cassettesTable.Rows[(i - 1)].Cells[0].Value, "cassettes", "pk_cassette_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
-
-                            cassettesTable.DataSource = empty;
-                        }
-                        if (!ControllerForDB.isCanceledDelete)
-                        {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
-                    }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("cassettes", "pk_cassette_id");
-
-                    cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (cassettesTable.SelectedRows.Count > 1)
-                    {
-                        int i = cassettesTable.SelectedRows.Count;
-
-                        int N = cassettesTable.SelectedRows.Count;
-
-                        while ( i!=0)
-                        {
-                            if(deleteRowsById((int)cassettesTable.SelectedRows[0].Cells[0].Value, "cassettes", "pk_cassette_id", i == N ? true : false))
+                            if (count == N)
                             {
-                                cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
+                                ArrayList empty = new ArrayList();
+
+                                cassettesTable.DataSource = empty;
                             }
-                            i--;
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
+                        deleteByValue("cassettes", "pk_cassette_id");
+
+                        cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+                    }
+                    if (del.isDeleteSelectedRows)
+                    {
+                        if (cassettesTable.SelectedRows.Count > 1)
+                        {
+                            int i = cassettesTable.SelectedRows.Count;
+
+                            int N = cassettesTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)cassettesTable.SelectedRows[0].Cells[0].Value, "cassettes", "pk_cassette_id", i == N ? true : false))
+                                {
+                                    cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
+                                }
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label10.Text = "Количество полей:" + cassettesTable.RowCount;
             }
         }
 
@@ -2571,86 +2764,94 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (ordersTable.RowCount != 0)
                 {
-                    deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
-
-                    ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (ordersTable.RowCount !=0)
+                    if (del.isDeleteStr)
                     {
-                        int i = ordersTable.RowCount;
+                        deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
 
-                        int N = ordersTable.RowCount;
-
-                        int count= 0;
-                        
-                        while (i != 0)
+                        ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (ordersTable.RowCount != 0)
                         {
-                          if (deleteRowsById((int)ordersTable.Rows[(i-1)].Cells[0].Value, "deals", "pk_deal_id", i == N ? true : false))
-                          {
-                                if (count == 0)
+                            int i = ordersTable.RowCount;
+
+                            int N = ordersTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)ordersTable.Rows[(i - 1)].Cells[0].Value, "deals", "pk_deal_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                            //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
-                          }
-                          i--;
-                       }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                                i--;
+                            }
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            ordersTable.DataSource = empty;
+                                ordersTable.DataSource = empty;
+                            }
+
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                            
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("deals", "pk_deal_id");
+
+                        ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("deals", "pk_deal_id");
-
-                    ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (ordersTable.SelectedRows.Count > 1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = ordersTable.SelectedRows.Count;
-
-                        int N = ordersTable.SelectedRows.Count;
-
-                        while (i !=0)
+                        if (ordersTable.SelectedRows.Count > 1)
                         {
-                                if(deleteRowsById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id", i==N?true:false))
+                            int i = ordersTable.SelectedRows.Count;
+
+                            int N = ordersTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id", i == N ? true : false))
                                 {
                                     ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label11.Text = "Количество полей:" +ordersTable.RowCount;
             }
         }
 
@@ -2664,84 +2865,92 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (videoTable.RowCount != 0)
                 {
-                    deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
-
-                    videoTable.Rows.Remove(videoTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (videoTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = videoTable.RowCount;
+                        deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
 
-                        int N = videoTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        videoTable.Rows.Remove(videoTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (videoTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)videoTable.Rows[(i - 1)].Cells[0].Value, "video_rental", "pk_video_rental_id", i == N ? true : false))
+                            int i = videoTable.RowCount;
+
+                            int N = videoTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)videoTable.Rows[(i - 1)].Cells[0].Value, "video_rental", "pk_video_rental_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
                                 }
-                                count++;
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            videoTable.DataSource = empty;
+                                videoTable.DataSource = empty;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("video_rental", "video_caption");
+
+                        videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("video_rental", "video_caption");
-
-                    videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (videoTable.SelectedRows.Count > 1)
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = videoTable.SelectedRows.Count;
-
-                        int N = videoTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (videoTable.SelectedRows.Count > 1)
                         {
-                                if(deleteRowsById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id",i==N? true:false))
+                            int i = videoTable.SelectedRows.Count;
+
+                            int N = videoTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id", i == N ? true : false))
                                 {
-                                    videoTable.Rows.Remove(videoTable.SelectedRows[0]); 
+                                    videoTable.Rows.Remove(videoTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
+                            return;
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
-                        return;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                label12.Text = "Количество полей:" + videoTable.RowCount;
             }
         }
 
@@ -2755,88 +2964,97 @@ namespace BD_course_work
 
             if (!del.isCanceled)
             {
-                if (del.isDeleteStr)
+                if (imagesTable.RowCount != 0)
                 {
-                    deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
-
-                    imagesTable.Rows.Remove(imagesTable.SelectedRows[0]);
-                }
-                if (del.isDeleteManyStr)
-                {
-                    if (imagesTable.RowCount != 0)
+                    if (del.isDeleteStr)
                     {
-                        int i = imagesTable.RowCount;
+                        deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
 
-                        int N = imagesTable.RowCount;
-
-                        int count = 0;
-
-                        while (i != 0)
+                        imagesTable.Rows.Remove(imagesTable.SelectedRows[0]);
+                    }
+                    if (del.isDeleteManyStr)
+                    {
+                        if (imagesTable.RowCount != 0)
                         {
-                            if (deleteRowsById((int)imagesTable.Rows[(i - 1)].Cells[0].Value, "cassette_photo", "pk_photo_id", i == N ? true : false))
+                            int i = imagesTable.RowCount;
+
+                            int N = imagesTable.RowCount;
+
+                            int count = 0;
+
+                            while (i != 0)
                             {
-                                if (count == 0)
+                                if (deleteRowsById((int)imagesTable.Rows[(i - 1)].Cells[0].Value, "cassette_photo", "pk_photo_id", i == N ? true : false))
                                 {
-                                    MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    if (count == 0)
+                                    {
+                                        MessageBox.Show("Удаление начинается.", "Оповещение");
+                                    }
+                                    count++;
+                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
-                                count++;
-                                //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
+                                i--;
                             }
-                            i--;
-                        }
-                        if (count == N)
-                        {
-                            ArrayList empty = new ArrayList();
+                            if (count == N)
+                            {
+                                ArrayList empty = new ArrayList();
 
-                            imagesTable.DataSource = empty;
-                        }
+                                imagesTable.DataSource = empty;
+                            }
 
-                        if (!ControllerForDB.isCanceledDelete)
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
+                        }
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            MessageBox.Show("Таблица пуста.", "Оповещение");
+                            return;
                         }
                     }
-                    else
+                    if (del.isDeleteValue)
                     {
-                        MessageBox.Show("Таблица пуста.", "Оповещение");
-                        return;
+                        deleteByValue("cassette_photo", "pk_photo_id");
+
+                        imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
                     }
-                }
-                if (del.isDeleteValue)
-                {
-                    deleteByValue("cassette_photo", "pk_photo_id");
-
-                    imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
-                }
-                if (del.isDeleteSelectedRows)
-                {
-                    if (imagesTable.SelectedRows.Count > 1)//Может !=0? Но всегда будет минимум одна выделенная
+                    if (del.isDeleteSelectedRows)
                     {
-                        int i = imagesTable.SelectedRows.Count;
-
-                        int N = imagesTable.SelectedRows.Count;
-
-                        while ( i!=0)
+                        if (imagesTable.SelectedRows.Count > 1)//Может !=0? Но всегда будет минимум одна выделенная
                         {
-                                if(deleteRowsById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id", i==N?true:false))
+                            int i = imagesTable.SelectedRows.Count;
+
+                            int N = imagesTable.SelectedRows.Count;
+
+                            while (i != 0)
+                            {
+                                if (deleteRowsById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id", i == N ? true : false))
                                 {
                                     imagesTable.Rows.Remove(imagesTable.SelectedRows[0]);
                                 }
-                            i--;
+                                i--;
+                            }
+                            if (!ControllerForDB.isCanceledDelete)
+                            {
+                                MessageBox.Show($"Строки успешно удалены.", "Оповещение");
+                            }
                         }
-                        if (!ControllerForDB.isCanceledDelete)
+                        else
                         {
-                            MessageBox.Show($"Строки успешно удалены.", "Оповещение");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Строки не выделены.", "Оповещение");
+                            MessageBox.Show("Строки не выделены.", "Оповещение");
 
-                        return;
+                            return;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Таблица пуста.", "Оповещение");
+                }
+                label14.Text = "Количество полей:" + imagesTable.RowCount;
             }
+            
         }
 
         public void deleteByValue(string table, string what_change)
@@ -3208,6 +3426,171 @@ namespace BD_course_work
                 return;
             }
             label15.Text = "Количество полей: " + servpriceTable.RowCount;
+        }
+
+        private void button54_Click(object sender, EventArgs e)//Поиск "Качество"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск качества";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "Качество";
+            
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                qualityTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text,"quality_view","quality_name");
+
+                if (qualityTable.RowCount != 0)
+                {
+                    qualityTable.Columns[0].HeaderText = "ID";
+
+                    qualityTable.Columns[1].HeaderText = "Качество";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label13.Text = "Количество полей:"+qualityTable.RowCount;
+        }
+
+        private void button53_Click(object sender, EventArgs e)//Поиск "Страны"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск страны";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "Страна";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                countriesTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "countries_view", "country_name");
+
+                if (countriesTable.RowCount != 0)
+                {
+                    countriesTable.Columns[0].HeaderText = "ID";
+
+                    countriesTable.Columns[1].HeaderText = "Страна";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label2.Text = "Количество полей:" + countriesTable.RowCount;
+        }
+
+        private void button51_Click(object sender, EventArgs e)//Поиск "Услуги"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск услуги";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "Услуга";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                servicesTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "services_view", "service_name");
+
+                if (servicesTable.RowCount != 0)
+                {
+                    servicesTable.Columns[0].HeaderText = "ID";
+
+                    servicesTable.Columns[1].HeaderText = "Услуга";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label6.Text = "Количество полей:" + servicesTable.RowCount;
+        }
+
+        private void button50_Click(object sender, EventArgs e)//Поиск "Тип собственности"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск типа собственности";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "Тип собственности";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                propertyTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "property_view", "property_type_name");
+
+                if (propertyTable.RowCount != 0)
+                {
+                    propertyTable.Columns[0].HeaderText = "ID";
+
+                    propertyTable.Columns[1].HeaderText = "Тип собственности";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label7.Text = "Количество полей:" + propertyTable.RowCount;
+        }
+
+        private void button49_Click(object sender, EventArgs e)//Поиск "Районы"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск района";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "Район";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                districtsTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "district_view", "district_name");
+
+                if (districtsTable.RowCount != 0)
+                {
+                    districtsTable.Columns[0].HeaderText = "ID";
+
+                    districtsTable.Columns[1].HeaderText = "Район";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label8.Text = "Количество полей:" + districtsTable.RowCount;
         }
     }
 }

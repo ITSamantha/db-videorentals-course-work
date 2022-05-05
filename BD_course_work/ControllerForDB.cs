@@ -128,21 +128,10 @@ namespace BD_course_work
         {
             if (getAmountOfRows("services_prices") == 0)
             {
-                NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-                n.Open();
-
                 string command = "Insert into services_prices values";
 
                 long counter = 1;
-
-                /*if (getAmountOfRows("services_prices") != 0)
-                {
-                    NpgsqlCommand c = new NpgsqlCommand("select max(pk_service_price_id) from services_prices;", n);
-
-                    counter = long.Parse(c.ExecuteScalar().ToString()) + 1;
-                }*/
-
+                
                 List<int> services = getSmthForList("services", "pk_service_id");
 
                 List<int> video_rentals = getSmthForList("video_rental", "pk_video_rental_id");
@@ -157,24 +146,26 @@ namespace BD_course_work
                     {
                         if (i == (services.Count - 1) && j == (video_rentals.Count - 1))
                         {
-                            command += $"( {counter}, {services[i]}, {video_rentals[j]} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' );";
+                            command += $"(null, {services[i]}, {video_rentals[j]} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' );";
                             break;
                         }
-                        command += $"( {counter}, {services[i]}, {video_rentals[j]}  ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ),";
+                        command += $"( null, {services[i]}, {video_rentals[j]}  ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ),";
                         n1 += 0.03f;
                         counter++;
                     }
                 }
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
 
                 var command_sql = new NpgsqlCommand(command, n);
 
-                NpgsqlDataReader reader = command_sql.ExecuteReader();
-
-                reader.Close();
+                command_sql.ExecuteNonQuery();
 
                 command_sql.Dispose();
 
                 n.Close();
+               
             }
             else
             {
@@ -814,7 +805,7 @@ namespace BD_course_work
 
                 c.Open();
 
-                string command = $"insert into {table}  values (default,'{vary}');";
+                string command = $"insert into {table}  values (null,'{vary}');";
 
                 var command_s = new NpgsqlCommand(command, c);
 
@@ -1620,6 +1611,40 @@ namespace BD_course_work
 
         }
 
+        public static DataTable searchDictionary(string whatFind,string table,string key)//Поиск в словарях
+        {
+            DataTable dt = new DataTable();
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = $"select * from {table} ";
+
+            if (whatFind != String.Empty)
+            {
+                com += $" where {key} ='{whatFind}'";
+            }
+            
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+        }
+
+        
         /*public static bool deleteAllFromtable(string table)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
