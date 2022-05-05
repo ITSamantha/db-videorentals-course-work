@@ -1644,6 +1644,228 @@ namespace BD_course_work
             return dt;
         }
 
+        public static DataTable searchPeopleTable(string table,string last,string first,string patron)
+        {
+            DataTable dt = new DataTable();
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = "";
+
+            if (table == "producers")
+            {
+                com = $"select * from producers_view ";
+
+                if (last != "")
+                {
+                    com += $" where producer_last_name ='{last}' ";
+                }
+                if (first != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and producer_first_name ='{first}' ";
+                    }
+                    else
+                    {
+                        com += $" where producer_first_name ='{first}' ";
+                    }
+                }
+                if (patron != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and producer_patronymic ='{patron}' ";
+                    }
+                    else
+                    {
+                        com += $" where producer_patronymic ='{patron}' ";
+                    }
+                }
+            }
+            else
+            {
+                com = $"select * from owners_view ";
+
+                if (last != "")
+                {
+                    com += $" where owner_last_name ='{last}' ";
+                }
+                if (first != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and owner_first_name ='{first}' ";
+                    }
+                    else
+                    {
+                        com += $" where owner_first_name ='{first}' ";
+                    }
+                }
+                if (patron != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and owner_patronymic ='{patron}' ";
+                    }
+                    else
+                    {
+                        com += $" where owner_patronymic ='{patron}' ";
+                    }
+                }
+            }
+            
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+        }
+
+        public static DataTable searchFilms(string film_name,string studio,string last,string first,string patron,string year1,string year2,string info,string dur1,string dur2)
+        {
+            DataTable dt = new DataTable();
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = "select * from films_view ";
+
+            if (film_name != String.Empty)
+            {
+                com += $" where film_name='{film_name}' ";
+            }
+            if(studio != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and studio_name ='{studio}' ";
+                }
+                else
+                {
+                    com += $" where studio_name ='{studio}' ";
+                }
+            }
+            if (info != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and film_info ='{info}' ";
+                }
+                else
+                {
+                    com += $" where film_info ='{info}' ";
+                }
+            }
+            if (last != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and producer_last_name ='{last}' ";
+                }
+                else
+                {
+                    com += $" where producer_last_name ='{last}' ";
+                }
+            }
+            if (first != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and producer_first_name ='{first}' ";
+                }
+                else
+                {
+                    com += $" where producer_first_name ='{first}' ";
+                }
+            }
+            if (patron != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and producer_patronymic ='{patron}' ";
+                }
+                else
+                {
+                    com += $" where producer_patronymic ='{patron}' ";
+                }
+            }
+            if (year1 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and film_year >='{year1}' ";
+                }
+                else
+                {
+                    com += $" where film_year >='{year1}' ";
+                }
+            }
+            if (year2 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and film_year <='{year2}' ";
+                }
+                else
+                {
+                    com += $" where film_year <='{year2}' ";
+                }
+            }
+            if (dur1 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and film_duration >='{dur1}' ";
+                }
+                else
+                {
+                    com += $" where film_duration >='{dur1}' ";
+                }
+            }
+            if (dur2 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and film_duration <='{dur2}' ";
+                }
+                else
+                {
+                    com += $" where film_duration <='{dur2}' ";
+                }
+            }
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+        }
+
         
         /*public static bool deleteAllFromtable(string table)
         {

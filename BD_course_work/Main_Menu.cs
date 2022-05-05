@@ -134,8 +134,6 @@ namespace BD_course_work
 
         private void button35_Click(object sender, EventArgs e)//Таблица "Картинки"
         {
-            if (!label14.Text.Equals(strAmount)) { label14.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Images;
 
             imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
@@ -147,7 +145,7 @@ namespace BD_course_work
                 imagesTable.Columns[1].HeaderText = "Фото";
             }
 
-            label14.Text += ControllerForDB.amount;
+            label14.Text =strAmount+ imagesTable.RowCount;
         }
 
         private void button34_Click(object sender, EventArgs e)//Таблица "Качество кассеты"
@@ -224,7 +222,7 @@ namespace BD_course_work
                 producersTable.Columns[3].HeaderText = "Отчество";
             }
 
-            label4.Text += ControllerForDB.amount;
+            label4.Text += producersTable.RowCount;
         }
 
         private void ownersB_Click(object sender, EventArgs e)//Таблица"Хозяины"
@@ -3591,6 +3589,250 @@ namespace BD_course_work
             }
 
             label8.Text = "Количество полей:" + districtsTable.RowCount;
+        }
+
+        private void button55_Click(object sender, EventArgs e)//Поиск "Фото"
+        {
+            AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+            add.mainL1.Text = "Поиск фото по ID";
+
+            add.button1.Text = "Поиск";
+
+            add.groupBox1.Text = "ID";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                imagesTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "images_view", "pk_photo_id");
+
+                if (imagesTable.RowCount != 0)
+                {
+                    imagesTable.Columns[0].HeaderText = "ID";
+
+                    imagesTable.Columns[1].HeaderText = "Фото";
+                }
+
+            }
+            else
+            {
+                return;
+            }
+
+            label14.Text ="Количество полей:"+ imagesTable.RowCount;
+        }
+
+        private void button44_Click(object sender, EventArgs e)//Поиск "Режиссеры"
+        {
+            AddOrEditThreeColumns add = new AddOrEditThreeColumns();
+                
+            add.mainL2.Text = "Поиск режиссера";
+
+            add.button1.Text = "Поиск";
+           
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                producersTable.DataSource = ControllerForDB.searchPeopleTable("producers", add.fam.Text, add.name.Text, add.patronymic.Text);
+
+                if (producersTable.RowCount != 0)
+                {
+                    producersTable.Columns[0].HeaderText = "ID";
+
+                    producersTable.Columns[1].HeaderText = "Имя";
+
+                    producersTable.Columns[2].HeaderText = "Фамилия";
+
+                    producersTable.Columns[3].HeaderText = "Отчество";
+                }
+            }
+            else
+            {
+                return;
+            }
+            
+            label4.Text = "Количество полей:"+producersTable.RowCount;
+        }
+
+        private void button52_Click(object sender, EventArgs e)//Поиск "Хоязева"
+        {
+            AddOrEditThreeColumns add = new AddOrEditThreeColumns();
+
+            add.mainL2.Text = "Поиск хозяина";
+
+            add.button1.Text = "Поиск";
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+                ownersTable.DataSource = ControllerForDB.searchPeopleTable("owners", add.fam.Text, add.name.Text, add.patronymic.Text);
+
+                if (ownersTable.RowCount != 0)
+                {
+                    ownersTable.Columns[0].HeaderText = "ID";
+
+                    ownersTable.Columns[1].HeaderText = "Имя";
+
+                    ownersTable.Columns[2].HeaderText = "Фамилия";
+
+                    ownersTable.Columns[3].HeaderText = "Отчество";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label5.Text = "Количество полей:" + ownersTable.RowCount;
+        }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            addOrEditFilm add = new addOrEditFilm();
+
+            add.button1.Text = "Поиск";
+
+            add.mainL1.Text = "Поиск фильма";
+
+            add.duration.Hide();
+
+            add.year.Hide();
+
+            add.year1.Visible= add.year2.Visible = true;
+
+            add.dur1.Visible = add.dur2.Visible = true;
+
+            add.producerCB.SelectedIndex = add.studioCB.SelectedIndex = -1;
+
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            if (add.dur1.Text != String.Empty)
+            {
+                try
+                {
+                    int.Parse(add.dur1.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Продолжительность фильма введена некорректно.");
+                    goto m1;
+                }
+            }
+            if (add.dur2.Text != String.Empty)
+            {
+                try
+                {
+                    int.Parse(add.dur2.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Продолжительность фильма введена некорректно.");
+                    goto m1;
+                }
+            }
+            if ((add.year1.Text.Length > 0 && add.year1.Text.Length < 4)||(add.year2.Text.Length > 0 && add.year2.Text.Length < 4))
+            {
+                MessageBox.Show("Некорректный ввод года.", "Error");
+
+                goto m1;
+            }
+
+            List<string> str = new List<string>(3);
+
+            if (add.producerCB.Text!="")
+            {
+                str = add.producerCB.Text.Split(' ').ToList<string>();
+
+                if (str.Count==1)
+                {
+                    str.Add("");
+
+                    str.Add("");
+                }
+
+                if (str.Count == 2)
+                {
+                    str.Add("");
+                }
+            }
+            else
+            {
+                str.Add("");
+
+                str.Add("");
+
+                str.Add("");
+            }
+            int? m1=null, m2=null;
+            try
+            {
+                m1 = int.Parse(add.dur1.Text);
+            }
+            catch (Exception)
+            {
+            }
+
+            try
+            {
+                m2=int.Parse(add.dur2.Text);
+            }
+            catch (Exception)
+            {
+            }
+            if (m1 != null && m2 != null)
+            {
+                if ((int.Parse(add.dur1.Text) - int.Parse(add.dur2.Text)) < 0)
+                {
+                    MessageBox.Show("Длительность 2 должна быть больше длительности 1.", "Error");
+
+                    goto m1;
+                }
+            }
+            
+            if (!add.isCanceled && add.isEnabled)
+            {
+                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text,add.studioCB.Text,str[0],str[1],str[2],add.year1.Text, add.year2.Text,add.info.Text,add.dur1.Text,add.dur2.Text);
+
+                if (filmsTable.RowCount != 0)
+                {
+                    filmsTable.Columns[0].HeaderText = "ID";
+
+                    filmsTable.Columns[1].HeaderText = "Название";
+
+                    filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
+
+                    filmsTable.Columns[3].HeaderText = "Имя режиссера";
+
+                    filmsTable.Columns[4].HeaderText = "Отчество режиссера";
+
+                    filmsTable.Columns[5].HeaderText = "Студия";
+
+                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+
+                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+
+                    filmsTable.Columns[8].HeaderText = "Информация";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label9.Text = "Количество полей:" + filmsTable.RowCount;
         }
     }
 }

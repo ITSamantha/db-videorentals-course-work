@@ -171,7 +171,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Label mainL2;
         public System.Windows.Forms.GroupBox groupBox1;
@@ -180,5 +179,6 @@
         public System.Windows.Forms.TextBox name;
         public System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.TextBox patronymic;
+        public System.Windows.Forms.Button button1;
     }
 }

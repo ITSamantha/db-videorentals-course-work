@@ -43,6 +43,10 @@
             this.duration = new System.Windows.Forms.TextBox();
             this.adress1 = new System.Windows.Forms.GroupBox();
             this.info = new System.Windows.Forms.TextBox();
+            this.year1 = new System.Windows.Forms.MaskedTextBox();
+            this.year2 = new System.Windows.Forms.MaskedTextBox();
+            this.dur1 = new System.Windows.Forms.TextBox();
+            this.dur2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.studio.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -160,6 +164,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.year2);
+            this.groupBox4.Controls.Add(this.year1);
             this.groupBox4.Controls.Add(this.year);
             this.groupBox4.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(406, 61);
@@ -181,6 +187,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.dur2);
+            this.groupBox3.Controls.Add(this.dur1);
             this.groupBox3.Controls.Add(this.duration);
             this.groupBox3.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(605, 61);
@@ -220,6 +228,50 @@
             this.info.Name = "info";
             this.info.Size = new System.Drawing.Size(369, 136);
             this.info.TabIndex = 13;
+            // 
+            // year1
+            // 
+            this.year1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.year1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.year1.Location = new System.Drawing.Point(6, 30);
+            this.year1.Mask = "0000";
+            this.year1.Name = "year1";
+            this.year1.Size = new System.Drawing.Size(71, 32);
+            this.year1.TabIndex = 31;
+            this.year1.Visible = false;
+            // 
+            // year2
+            // 
+            this.year2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.year2.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.year2.Location = new System.Drawing.Point(100, 30);
+            this.year2.Mask = "0000";
+            this.year2.Name = "year2";
+            this.year2.Size = new System.Drawing.Size(74, 32);
+            this.year2.TabIndex = 32;
+            this.year2.Visible = false;
+            // 
+            // dur1
+            // 
+            this.dur1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dur1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dur1.Location = new System.Drawing.Point(6, 24);
+            this.dur1.Multiline = true;
+            this.dur1.Name = "dur1";
+            this.dur1.Size = new System.Drawing.Size(79, 37);
+            this.dur1.TabIndex = 14;
+            this.dur1.Visible = false;
+            // 
+            // dur2
+            // 
+            this.dur2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dur2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.dur2.Location = new System.Drawing.Point(97, 25);
+            this.dur2.Multiline = true;
+            this.dur2.Name = "dur2";
+            this.dur2.Size = new System.Drawing.Size(79, 37);
+            this.dur2.TabIndex = 15;
+            this.dur2.Visible = false;
             // 
             // addOrEditFilm
             // 
@@ -271,5 +323,9 @@
         public System.Windows.Forms.TextBox duration;
         public System.Windows.Forms.GroupBox adress1;
         public System.Windows.Forms.TextBox info;
+        public System.Windows.Forms.MaskedTextBox year2;
+        public System.Windows.Forms.MaskedTextBox year1;
+        public System.Windows.Forms.TextBox dur2;
+        public System.Windows.Forms.TextBox dur1;
     }
 }
