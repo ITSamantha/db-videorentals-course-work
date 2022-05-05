@@ -47,12 +47,21 @@
             this.year2 = new System.Windows.Forms.MaskedTextBox();
             this.dur1 = new System.Windows.Forms.TextBox();
             this.dur2 = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.fam = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.patron = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.studio.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.adress1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainL1
@@ -273,12 +282,81 @@
             this.dur2.TabIndex = 15;
             this.dur2.Visible = false;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.fam);
+            this.groupBox5.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox5.Location = new System.Drawing.Point(12, 257);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(381, 75);
+            this.groupBox5.TabIndex = 25;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Фамилия режиссера";
+            this.groupBox5.Visible = false;
+            // 
+            // fam
+            // 
+            this.fam.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.fam.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fam.Location = new System.Drawing.Point(6, 24);
+            this.fam.Multiline = true;
+            this.fam.Name = "fam";
+            this.fam.Size = new System.Drawing.Size(369, 37);
+            this.fam.TabIndex = 13;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.name);
+            this.groupBox6.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox6.Location = new System.Drawing.Point(406, 158);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(381, 75);
+            this.groupBox6.TabIndex = 26;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Имя режиссера";
+            this.groupBox6.Visible = false;
+            // 
+            // name
+            // 
+            this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.name.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.name.Location = new System.Drawing.Point(6, 24);
+            this.name.Multiline = true;
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(369, 37);
+            this.name.TabIndex = 13;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.patron);
+            this.groupBox7.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox7.Location = new System.Drawing.Point(406, 257);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(381, 75);
+            this.groupBox7.TabIndex = 27;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Отчество режиссера";
+            this.groupBox7.Visible = false;
+            // 
+            // patron
+            // 
+            this.patron.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.patron.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patron.Location = new System.Drawing.Point(6, 24);
+            this.patron.Multiline = true;
+            this.patron.Name = "patron";
+            this.patron.Size = new System.Drawing.Size(369, 37);
+            this.patron.TabIndex = 13;
+            // 
             // addOrEditFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(799, 414);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.adress1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox4);
@@ -302,6 +380,12 @@
             this.groupBox3.PerformLayout();
             this.adress1.ResumeLayout(false);
             this.adress1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -327,5 +411,11 @@
         public System.Windows.Forms.MaskedTextBox year1;
         public System.Windows.Forms.TextBox dur2;
         public System.Windows.Forms.TextBox dur1;
+        public System.Windows.Forms.GroupBox groupBox7;
+        public System.Windows.Forms.TextBox patron;
+        public System.Windows.Forms.GroupBox groupBox5;
+        public System.Windows.Forms.TextBox fam;
+        public System.Windows.Forms.GroupBox groupBox6;
+        public System.Windows.Forms.TextBox name;
     }
 }

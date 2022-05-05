@@ -3707,27 +3707,34 @@ namespace BD_course_work
 
             add.year.Hide();
 
-            add.year1.Visible= add.year2.Visible = true;
+            add.adress1.Hide();
 
-            add.dur1.Visible = add.dur2.Visible = true;
+            add.year1.Visible= add.year2.Visible =add.dur1.Visible = add.dur2.Visible = true;
+            
+            add.groupBox5.Visible = add.groupBox6.Visible = add.groupBox7.Visible=  true;
+            
+            add.groupBox2.Hide();
 
-            add.producerCB.SelectedIndex = add.studioCB.SelectedIndex = -1;
+            add.studioCB.SelectedIndex = -1;
 
-        m1:
+            m1:
 
             add.clean();
 
             add.ShowDialog();
 
+            int? n1 = null, n2 = null;
+
             if (add.dur1.Text != String.Empty)
             {
                 try
                 {
-                    int.Parse(add.dur1.Text);
+                    n1=int.Parse(add.dur1.Text);
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Продолжительность фильма введена некорректно.");
+
                     goto m1;
                 }
             }
@@ -3735,7 +3742,7 @@ namespace BD_course_work
             {
                 try
                 {
-                    int.Parse(add.dur2.Text);
+                    n2=int.Parse(add.dur2.Text);
                 }
                 catch (Exception)
                 {
@@ -3749,34 +3756,9 @@ namespace BD_course_work
 
                 goto m1;
             }
-
-            List<string> str = new List<string>(3);
-
-            if (add.producerCB.Text!="")
-            {
-                str = add.producerCB.Text.Split(' ').ToList<string>();
-
-                if (str.Count==1)
-                {
-                    str.Add("");
-
-                    str.Add("");
-                }
-
-                if (str.Count == 2)
-                {
-                    str.Add("");
-                }
-            }
-            else
-            {
-                str.Add("");
-
-                str.Add("");
-
-                str.Add("");
-            }
+            
             int? m1=null, m2=null;
+
             try
             {
                 m1 = int.Parse(add.dur1.Text);
@@ -3792,11 +3774,21 @@ namespace BD_course_work
             catch (Exception)
             {
             }
+
             if (m1 != null && m2 != null)
             {
-                if ((int.Parse(add.dur1.Text) - int.Parse(add.dur2.Text)) < 0)
+                if ((m2 - m1) < 0)
                 {
                     MessageBox.Show("Длительность 2 должна быть больше длительности 1.", "Error");
+
+                    goto m1;
+                }
+            }
+            if (n1 != null && n2 != null)
+            {
+                if (n2 - n1 < 0)
+                {
+                    MessageBox.Show("Год 2 должен быть больше года 1.", "Error");
 
                     goto m1;
                 }
@@ -3804,7 +3796,7 @@ namespace BD_course_work
             
             if (!add.isCanceled && add.isEnabled)
             {
-                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text,add.studioCB.Text,str[0],str[1],str[2],add.year1.Text, add.year2.Text,add.info.Text,add.dur1.Text,add.dur2.Text);
+                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text,add.studioCB.Text,add.fam.Text,add.name.Text,add.patron.Text,add.year1.Text, add.year2.Text,add.info.Text,add.dur1.Text,add.dur2.Text);
 
                 if (filmsTable.RowCount != 0)
                 {
