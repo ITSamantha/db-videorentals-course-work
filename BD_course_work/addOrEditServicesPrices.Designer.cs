@@ -37,9 +37,13 @@
             this.rentalCB = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.serviceCB = new System.Windows.Forms.ComboBox();
+            this.priceS = new System.Windows.Forms.GroupBox();
+            this.more = new System.Windows.Forms.TextBox();
+            this.less = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.priceS.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainL1
@@ -150,12 +154,46 @@
             this.serviceCB.TabIndex = 1;
             this.serviceCB.SelectedIndexChanged += new System.EventHandler(this.serviceCB_SelectedIndexChanged);
             // 
+            // priceS
+            // 
+            this.priceS.Controls.Add(this.less);
+            this.priceS.Controls.Add(this.more);
+            this.priceS.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.priceS.Location = new System.Drawing.Point(85, 209);
+            this.priceS.Name = "priceS";
+            this.priceS.Size = new System.Drawing.Size(377, 75);
+            this.priceS.TabIndex = 24;
+            this.priceS.TabStop = false;
+            this.priceS.Text = "Цена услуги";
+            this.priceS.Visible = false;
+            // 
+            // more
+            // 
+            this.more.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.more.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.more.Location = new System.Drawing.Point(6, 24);
+            this.more.Multiline = true;
+            this.more.Name = "more";
+            this.more.Size = new System.Drawing.Size(168, 37);
+            this.more.TabIndex = 13;
+            // 
+            // less
+            // 
+            this.less.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.less.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.less.Location = new System.Drawing.Point(202, 24);
+            this.less.Multiline = true;
+            this.less.Name = "less";
+            this.less.Size = new System.Drawing.Size(169, 37);
+            this.less.TabIndex = 14;
+            // 
             // addOrEditServicesPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(536, 338);
+            this.Controls.Add(this.priceS);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox1);
@@ -170,6 +208,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.priceS.ResumeLayout(false);
+            this.priceS.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -185,5 +225,8 @@
         public System.Windows.Forms.ComboBox rentalCB;
         public System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.ComboBox serviceCB;
+        public System.Windows.Forms.GroupBox priceS;
+        public System.Windows.Forms.TextBox less;
+        public System.Windows.Forms.TextBox more;
     }
 }

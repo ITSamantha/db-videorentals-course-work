@@ -136,6 +136,7 @@
             this.Controls.Add(this.mainL1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SearchAndFilterStudio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchAndFilter";
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();

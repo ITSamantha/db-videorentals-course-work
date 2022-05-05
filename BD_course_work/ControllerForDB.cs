@@ -126,53 +126,61 @@ namespace BD_course_work
         
         public static void generateServicesPrices()//Генерация services_prices
         {
-            NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-            n.Open();
-
-            string command = "Insert into services_prices values";
-
-            int counter = 1;
-
-            double n1 = 0.01f;
-
-            Random r = new Random();
-
-            for (int i = 1; i < getAmountOfRows("services_prices"); i++)
+            if (getAmountOfRows("services_prices") == 0)
             {
-                for (int j = 1; j < getAmountOfRows("video_rental"); j++)
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                string command = "Insert into services_prices values";
+
+                long counter = 1;
+
+                /*if (getAmountOfRows("services_prices") != 0)
                 {
-                    if (i == 5 && j == 40)
+                    NpgsqlCommand c = new NpgsqlCommand("select max(pk_service_price_id) from services_prices;", n);
+
+                    counter = long.Parse(c.ExecuteScalar().ToString()) + 1;
+                }*/
+
+                List<int> services = getSmthForList("services", "pk_service_id");
+
+                List<int> video_rentals = getSmthForList("video_rental", "pk_video_rental_id");
+
+                double n1 = 0.01f;
+
+                Random r = new Random();
+
+                for (int i = 0; i < services.Count; i++)
+                {
+                    for (int j = 0; j < video_rentals.Count; j++)
                     {
-                        command += $"( {counter}, {i}, {j} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' );";
-                        break;
+                        if (i == (services.Count - 1) && j == (video_rentals.Count - 1))
+                        {
+                            command += $"( {counter}, {services[i]}, {video_rentals[j]} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' );";
+                            break;
+                        }
+                        command += $"( {counter}, {services[i]}, {video_rentals[j]}  ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ),";
+                        n1 += 0.03f;
+                        counter++;
                     }
-                    command += $"( {counter}, {i}, {j} ,'{(Math.Round(r.Next(10, 300) + n1, 2)).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ),";
-                    n1 += 0.03f;
-                    counter++;
                 }
+
+                var command_sql = new NpgsqlCommand(command, n);
+
+                NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+                reader.Close();
+
+                command_sql.Dispose();
+
+                n.Close();
             }
-
-            var command_sql = new NpgsqlCommand(command, n);
-
-            NpgsqlDataReader reader = command_sql.ExecuteReader();
-
-            reader.Close();
-
-            command_sql.Dispose();
-
-            n.Close();
-
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
         }
-
-        /*public void generate*/
-
-        /*public static bool deleteAllInTable(string table)
-        {
-
-        }*/
-
-        //public static int N=10001;
 
         public static void generateOrders(int N)//ПОЧЕМУ-ТО ДОБАВЛЯЕТСЯ ВРЕМЯ
         {
@@ -186,15 +194,24 @@ namespace BD_course_work
 
                 Random r = new Random();
 
-                var count_serv = (int)getAmountOfRows("services_prices");
+                List<int> cassettes = getSmthForList("cassettes", "pk_cassette_id");
 
-                var count_cassettes = (int)getAmountOfRows("cassettes");
+                List<int> services_prices = getSmthForList("services_prices", "pk_service_price_id");
+
+                int deals_count=1;
+
+                if (getAmountOfRows("deals") != 0)
+                {
+                    NpgsqlCommand c = new NpgsqlCommand("select max(deals.pk_deal_id) from deals;", n);
+
+                    deals_count = (int)c.ExecuteScalar() + 1;
+                }
 
                 for (int i = 1; i < N; i++)
                 {
-                    var cassette_id = r.Next(1, count_cassettes);
+                    var cassette_id = cassettes[r.Next(0, (cassettes.Count-1))];
 
-                    var service_id = (int)r.Next(1, count_serv);
+                    var service_id = services_prices[r.Next(0, (services_prices.Count-1))];
                     
                     var price = (double)selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + (double)selectSmthById(cassette_id, "cassettes", "cassette_price", "pk_cassette_id");
 
@@ -207,19 +224,23 @@ namespace BD_course_work
                     if (date.Day < 10) { d += $"0{date.Day}"; }
                     else { d += $"{date.Day}"; }
 
-                    if (count_serv != 0 && count_cassettes != 0)
+                    if (services_prices.Count != 0 && cassettes.Count != 0)
                     {
                         if (i == ( N-1))
                         {
-                            command.Append($"( {i}, {cassette_id} , ");
+                            command.Append($"( {deals_count}, {cassette_id} , ");
 
                             command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ); ");
 
+                            deals_count++;
+
                             break;
                         }
-                        command.Append($"( {i}, {cassette_id} , ");
+                        command.Append($"( {deals_count}, {cassette_id} , ");
 
                         command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ), ");
+
+                        deals_count++;
                     }
 
                 }
@@ -242,7 +263,185 @@ namespace BD_course_work
 
                 return;
             }
-            
+        }
+
+        public static void generatePropType()
+        {
+            if (getAmountOfRows("property_type") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into property_type values ";
+
+                for(int i = 0; i < prop_type.Length; i++)
+                {
+                    if(i== prop_type.Length - 1)
+                    {
+                        command += $"({i + 1}, '{prop_type[i]}'); ";break;
+                    }
+                    command+=$"({i+1}, '{prop_type[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.","Error");
+            }
+        }
+
+        public static void generateCountries()
+        {
+            if (getAmountOfRows("countries") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into countries values ";
+
+                for (int i = 0; i < countries.Length; i++)
+                {
+                    if (i == countries.Length - 1)
+                    {
+                        command += $"({i + 1}, '{countries[i]}'); "; break;
+                    }
+                    command += $"({i + 1}, '{countries[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static void generateDistricts()
+        {
+            if (getAmountOfRows("district") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into district values ";
+
+                for (int i = 0; i < districts.Length; i++)
+                {
+                    if (i == districts.Length - 1)
+                    {
+                        command += $"({i + 1}, '{districts[i]}'); "; break;
+                    }
+                    command += $"({i + 1}, '{districts[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static void generateServices()
+        {
+            if (getAmountOfRows("services") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into services_view values ";
+
+                for (int i = 0; i < services.Length; i++)
+                {
+                    if (i == services.Length - 1)
+                    {
+                        command += $"({i + 1}, '{services[i]}'); "; break;
+                    }
+                    command += $"({i + 1}, '{services[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static void generateQuality()
+        {
+            if (getAmountOfRows("cassette_quality") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into cassette_quality values ";
+
+                for (int i = 0; i < cassette_quality.Length; i++)
+                {
+                    if (i == cassette_quality.Length - 1)
+                    {
+                        command += $"({i + 1}, '{cassette_quality[i]}'); "; break;
+                    }
+                    command += $"({i + 1}, '{cassette_quality[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static List<int> getSmthForList(string table,string id_type)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            var list = new List<int>();
+
+            var command = new NpgsqlCommand($"Select {id_type} from {table};", n);
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                list.Add(reader.GetInt32(0));
+            }
+
+            reader.Close();
+
+            n.Close();
+
+            return list;
         }
 
         //SELECT-методы
@@ -607,21 +806,30 @@ namespace BD_course_work
 
         }
 
-        public static void insertIntoDirectTable(string table,string vary)//Вставка в справочники
+        public static bool insertIntoDirectTable(string table,string vary)//Вставка в справочники
         {
-            NpgsqlConnection c = new NpgsqlConnection(connectionString);
+            try
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
 
-            c.Open();
-            
-            string command = $"insert into {table}  values (default,'{vary}');";
-           
-            var command_s = new NpgsqlCommand(command, c);
-            
-            var cq=command_s.ExecuteNonQuery();
+                c.Open();
 
-            command_s.Dispose();
-            
-            c.Close();
+                string command = $"insert into {table}  values (default,'{vary}');";
+
+                var command_s = new NpgsqlCommand(command, c);
+
+                var cq = command_s.ExecuteNonQuery();
+
+                command_s.Dispose();
+
+                c.Close();
+
+                return true;
+            }
+            catch(Npgsql.PostgresException e)
+            {
+                return false;
+            }
         }
 
         public static bool insertIntoStudios(string name,int id_country)
@@ -821,6 +1029,8 @@ namespace BD_course_work
             catch(Exception e)
             {
                 Console.WriteLine(e);
+
+                MessageBox.Show("Строка не добавлена. Возможно, лицензия или номер телефона не уникальны.");
 
                 return false;
             }
@@ -1291,38 +1501,32 @@ namespace BD_course_work
             return false;
         }
 
+        //Методы поиска SEARCH
         public static DataTable searchStudio(string search,string filter)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
             n.Open();
 
-            string com = "";
+            string com = $"select * from studios_view ";
 
             if (filter != "")
             {
                 if (search != "")
                 {
 
-                    com = $"select * from studios_view where studio_name='{search}' and country_name='{filter}'";
+                    com += $" where studio_name='{search}' and country_name='{filter}'";
                 }
                 else
                 {
-
-                    com = $"select * from studios_view where country_name='{filter}'";
+                    com += $" where country_name='{filter}'";
                 }
             }
             else
             {
                 if (search != "")
                 {
-
-                    com = $"select * from studios_view where studio_name='{search}';";
-                }
-                else
-                {
-
-                    com = $"select * from studios_view;";
+                    com += $" where studio_name='{search}';";
                 }
             }
 
@@ -1346,6 +1550,83 @@ namespace BD_course_work
             return dt;
             
         }
+
+        public static DataTable searchServicesPrices(string video,string service,string more,string less)
+        {
+            DataTable dt = new DataTable();
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = $"select * from service_price_view ";
+
+            if (video != "")
+            {
+                com += $" where video_caption ='{video}' ";
+            }
+            if (service != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and service_name ='{service}' ";
+                }
+                else
+                {
+                    com += $" where service_name ='{service}' ";
+                }
+            }
+            if (more != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and service_price >='{double.Parse(more).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ";
+                }
+                else
+                {
+                    com += $" where service_price >='{double.Parse(more).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ";
+                }
+            }
+            if (less != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and service_price <='{double.Parse(less).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ";
+                }
+                else
+                {
+                    com += $" where service_price <='{double.Parse(less).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' ";
+                }
+            }
+
+            com += " order by service_price ASC;";
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+            
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+            
+            n.Close();
+
+            return dt;
+
+        }
+
+        /*public static bool deleteAllFromtable(string table)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+        }*/
 
     }
 

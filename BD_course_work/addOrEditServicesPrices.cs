@@ -58,7 +58,7 @@ namespace BD_course_work
         {
             if (serviceCB.SelectedIndex == services_list.Count)
             {
-                Main_Menu.InsertIntoDirectTables("services");
+                Main_Menu.InsertIntoDirectTables("services_view");
 
                 updateService();
 
