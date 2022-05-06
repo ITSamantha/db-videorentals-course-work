@@ -3382,7 +3382,9 @@ namespace BD_course_work
 
             add.adress1.Hide();
 
-            add.timeStart1.Visible = add.timeStart2.Visible = add.fam.Visible = add.nam.Visible = add.groupBox10.Visible = true;
+            add.amountEmpl.Hide();
+
+            add.timeStart1.Visible = add.timeStart2.Visible = add.fam.Visible = add.nam.Visible = add.groupBox10.Visible=add.amountEmpl1.Visible=add.amountEmpl2.Visible = true;
 
             add.timeEnd1.Visible = add.timeEnd2.Visible = true;
 
@@ -3469,11 +3471,11 @@ namespace BD_course_work
                     }
                 }
 
-                if (add.amountEmpl.Text != String.Empty)
+                if (add.amountEmpl1.Text != String.Empty)
                 {
                     try
                     {
-                        m2 = int.Parse(add.amountEmpl.Text);
+                        m1 = int.Parse(add.amountEmpl1.Text);
                     }
                     catch (Exception)
                     {
@@ -3481,7 +3483,32 @@ namespace BD_course_work
                         goto m1;
                     }
                 }
-                videoTable.DataSource = ControllerForDB.searchVideoRental(add.title.Text, add.timeStart1.Text, add.timeStart2.Text, add.timeEnd1.Text, add.timeEnd2.Text, add.name.Text, add.family.Text, add.patron.Text, add.districtCB.Text, add.propCB.Text, add.number.Text, add.license.Text, add.amountEmpl.Text);
+
+                if (add.amountEmpl2.Text != String.Empty)
+                {
+                    try
+                    {
+                        m1 = int.Parse(add.amountEmpl2.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Количество работников введено некорректно.");
+                        goto m1;
+                    }
+                }
+
+                if (m1 != null && m2 != null)
+                {
+                    if ((m2 - m1) < 0)
+                    {
+                        MessageBox.Show("Количество работников 2 должно быть больше количества работников 1.", "Error");
+
+                        goto m1;
+                    }
+                }
+
+                videoTable.DataSource = ControllerForDB.searchVideoRental(add.title.Text, add.timeStart1.Text, add.timeStart2.Text, add.timeEnd1.Text, add.timeEnd2.Text, add.name.Text, add.family.Text, add.patron.Text,
+                    add.districtCB.Text, add.propCB.Text, add.number.Text, add.license.Text, add.amountEmpl1.Text, add.amountEmpl2.Text);
 
                 if (videoTable.RowCount != 0)
                 {

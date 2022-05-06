@@ -61,6 +61,8 @@
             this.name = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.patron = new System.Windows.Forms.TextBox();
+            this.amountEmpl1 = new System.Windows.Forms.TextBox();
+            this.amountEmpl2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.adress1.SuspendLayout();
@@ -222,6 +224,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.amountEmpl2);
+            this.groupBox5.Controls.Add(this.amountEmpl1);
             this.groupBox5.Controls.Add(this.amountEmpl);
             this.groupBox5.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox5.Location = new System.Drawing.Point(448, 380);
@@ -445,6 +449,28 @@
             this.patron.Size = new System.Drawing.Size(369, 37);
             this.patron.TabIndex = 13;
             // 
+            // amountEmpl1
+            // 
+            this.amountEmpl1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.amountEmpl1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountEmpl1.Location = new System.Drawing.Point(6, 24);
+            this.amountEmpl1.Multiline = true;
+            this.amountEmpl1.Name = "amountEmpl1";
+            this.amountEmpl1.Size = new System.Drawing.Size(178, 37);
+            this.amountEmpl1.TabIndex = 14;
+            this.amountEmpl1.Visible = false;
+            // 
+            // amountEmpl2
+            // 
+            this.amountEmpl2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.amountEmpl2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountEmpl2.Location = new System.Drawing.Point(205, 24);
+            this.amountEmpl2.Multiline = true;
+            this.amountEmpl2.Name = "amountEmpl2";
+            this.amountEmpl2.Size = new System.Drawing.Size(176, 37);
+            this.amountEmpl2.TabIndex = 15;
+            this.amountEmpl2.Visible = false;
+            // 
             // AddOrEditVideoRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -535,5 +561,7 @@
         public System.Windows.Forms.TextBox patron;
         public System.Windows.Forms.GroupBox fam;
         public System.Windows.Forms.TextBox family;
+        public System.Windows.Forms.TextBox amountEmpl2;
+        public System.Windows.Forms.TextBox amountEmpl1;
     }
 }

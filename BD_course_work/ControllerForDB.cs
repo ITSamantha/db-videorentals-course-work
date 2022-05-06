@@ -1867,7 +1867,7 @@ namespace BD_course_work
         }
 
         public static DataTable searchVideoRental(string name,string time_s1, string time_s2, string time_e1, string time_e2,string first,string last,
-            string patron,string district,string type_prop,string number,string license,string amount_empl)
+            string patron,string district,string type_prop,string number,string license,string amount_empl1,string amount_empl2)
         {
             DataTable dt = new DataTable();
 
@@ -2016,15 +2016,27 @@ namespace BD_course_work
                 }
             }
 
-            if (amount_empl != String.Empty)//ТОЖЕ ПОПРАВИТЬ
+            if (amount_empl1 != String.Empty)
             {
                 if (com.Contains("where"))
                 {
-                    com += $" and amount_of_employees = '{amount_empl}' ";
+                    com += $" and amount_of_employees >= '{amount_empl1}' ";
                 }
                 else
                 {
-                    com += $" where amount_of_employees = '{amount_empl}' ";
+                    com += $" where amount_of_employees >= '{amount_empl1}' ";
+                }
+            }
+
+            if (amount_empl2 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and amount_of_employees <= '{amount_empl2}' ";
+                }
+                else
+                {
+                    com += $" where amount_of_employees <= '{amount_empl2}' ";
                 }
             }
 
