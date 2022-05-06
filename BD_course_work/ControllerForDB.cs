@@ -1866,6 +1866,186 @@ namespace BD_course_work
             return dt;
         }
 
+        public static DataTable searchVideoRental(string name,string time_s1, string time_s2, string time_e1, string time_e2,string first,string last,
+            string patron,string district,string type_prop,string number,string license,string amount_empl)
+        {
+            DataTable dt = new DataTable();
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = "select * from rental_view ";
+
+            if (name != String.Empty)
+            {
+                com += $" where video_caption = '{name}' ";
+            }
+            /*if (adress != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and video_adress = '{adress}' ";
+                }
+                else
+                {
+                    com += $" where video_adress = '{adress}' ";
+                }
+            }*/
+            if (time_s1 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and time_start >= '{time_s1}' ";
+                }
+                else
+                {
+                    com += $" where time_start >= '{time_s1}' ";
+                }
+            }
+            if (time_s2 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and time_start <= '{time_s2}' ";
+                }
+                else
+                {
+                    com += $" where time_start <= '{time_s2}' ";
+                }
+            }
+            if (time_e1 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and time_end >= '{time_e1}' ";
+                }
+                else
+                {
+                    com += $" where time_end >= '{time_e1}' ";
+                }
+            }
+            if (time_e2 != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and time_end <= '{time_e2}' ";
+                }
+                else
+                {
+                    com += $" where time_end <= '{time_e2}' ";
+                }
+            }
+            if (first != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and owner_first_name = '{first}' ";
+                }
+                else
+                {
+                    com += $" where owner_first_name = '{first}' ";
+                }
+            }
+            if (last != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and owner_last_name = '{last}' ";
+                }
+                else
+                {
+                    com += $" where owner_last_name = '{last}' ";
+                }
+            }
+            if (patron != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and owner_patronymic = '{patron}' ";
+                }
+                else
+                {
+                    com += $" where owner_patronymic = '{patron}' ";
+                }
+            }
+            
+            if (district != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and district_name = '{district}' ";
+                }
+                else
+                {
+                    com += $" where district_name = '{district}' ";
+                }
+            }
+
+            if (type_prop != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and property_type_name = '{type_prop}' ";
+                }
+                else
+                {
+                    com += $" where property_type_name = '{type_prop}' ";
+                }
+            }
+            if (number != "(   )    -")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and video_phone = '{number}' ";
+                }
+                else
+                {
+                    com += $" where video_phone = '{number}' ";
+                }
+            }
+            if (license != String.Empty)
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and license_number = '{license}' ";
+                }
+                else
+                {
+                    com += $" where license_number = '{license}' ";
+                }
+            }
+
+            if (amount_empl != String.Empty)//ТОЖЕ ПОПРАВИТЬ
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and amount_of_employees = '{amount_empl}' ";
+                }
+                else
+                {
+                    com += $" where amount_of_employees = '{amount_empl}' ";
+                }
+            }
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+        }
+
         
         /*public static bool deleteAllFromtable(string table)
         {

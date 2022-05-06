@@ -51,6 +51,16 @@
             this.timeEnd = new System.Windows.Forms.MaskedTextBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.ownerCB = new System.Windows.Forms.ComboBox();
+            this.timeStart1 = new System.Windows.Forms.MaskedTextBox();
+            this.timeStart2 = new System.Windows.Forms.MaskedTextBox();
+            this.timeEnd1 = new System.Windows.Forms.MaskedTextBox();
+            this.timeEnd2 = new System.Windows.Forms.MaskedTextBox();
+            this.fam = new System.Windows.Forms.GroupBox();
+            this.family = new System.Windows.Forms.TextBox();
+            this.nam = new System.Windows.Forms.GroupBox();
+            this.name = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.patron = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.adress1.SuspendLayout();
@@ -61,6 +71,9 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.fam.SuspendLayout();
+            this.nam.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainL1
@@ -252,6 +265,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.timeStart2);
+            this.groupBox7.Controls.Add(this.timeStart1);
             this.groupBox7.Controls.Add(this.timeStart);
             this.groupBox7.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox7.Location = new System.Drawing.Point(25, 299);
@@ -273,6 +288,8 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.timeEnd2);
+            this.groupBox8.Controls.Add(this.timeEnd1);
             this.groupBox8.Controls.Add(this.timeEnd);
             this.groupBox8.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox8.Location = new System.Drawing.Point(228, 299);
@@ -318,12 +335,125 @@
             this.ownerCB.TabIndex = 1;
             this.ownerCB.SelectedIndexChanged += new System.EventHandler(this.ownerCB_SelectedIndexChanged);
             // 
+            // timeStart1
+            // 
+            this.timeStart1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.timeStart1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeStart1.Location = new System.Drawing.Point(6, 30);
+            this.timeStart1.Mask = "00";
+            this.timeStart1.Name = "timeStart1";
+            this.timeStart1.Size = new System.Drawing.Size(72, 28);
+            this.timeStart1.TabIndex = 28;
+            this.timeStart1.Visible = false;
+            // 
+            // timeStart2
+            // 
+            this.timeStart2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.timeStart2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeStart2.Location = new System.Drawing.Point(100, 30);
+            this.timeStart2.Mask = "00";
+            this.timeStart2.Name = "timeStart2";
+            this.timeStart2.Size = new System.Drawing.Size(72, 28);
+            this.timeStart2.TabIndex = 29;
+            this.timeStart2.Visible = false;
+            // 
+            // timeEnd1
+            // 
+            this.timeEnd1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.timeEnd1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeEnd1.Location = new System.Drawing.Point(6, 30);
+            this.timeEnd1.Mask = "00";
+            this.timeEnd1.Name = "timeEnd1";
+            this.timeEnd1.Size = new System.Drawing.Size(63, 28);
+            this.timeEnd1.TabIndex = 28;
+            this.timeEnd1.Visible = false;
+            // 
+            // timeEnd2
+            // 
+            this.timeEnd2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.timeEnd2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.timeEnd2.Location = new System.Drawing.Point(99, 30);
+            this.timeEnd2.Mask = "00";
+            this.timeEnd2.Name = "timeEnd2";
+            this.timeEnd2.Size = new System.Drawing.Size(73, 28);
+            this.timeEnd2.TabIndex = 29;
+            this.timeEnd2.Visible = false;
+            // 
+            // fam
+            // 
+            this.fam.Controls.Add(this.family);
+            this.fam.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fam.Location = new System.Drawing.Point(25, 137);
+            this.fam.Name = "fam";
+            this.fam.Size = new System.Drawing.Size(381, 75);
+            this.fam.TabIndex = 24;
+            this.fam.TabStop = false;
+            this.fam.Text = "Фамилия хозяина";
+            this.fam.Visible = false;
+            // 
+            // family
+            // 
+            this.family.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.family.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.family.Location = new System.Drawing.Point(6, 24);
+            this.family.Multiline = true;
+            this.family.Name = "family";
+            this.family.Size = new System.Drawing.Size(369, 37);
+            this.family.TabIndex = 13;
+            // 
+            // nam
+            // 
+            this.nam.Controls.Add(this.name);
+            this.nam.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nam.Location = new System.Drawing.Point(25, 218);
+            this.nam.Name = "nam";
+            this.nam.Size = new System.Drawing.Size(381, 75);
+            this.nam.TabIndex = 25;
+            this.nam.TabStop = false;
+            this.nam.Text = "Имя хозяина";
+            this.nam.Visible = false;
+            // 
+            // name
+            // 
+            this.name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.name.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.name.Location = new System.Drawing.Point(6, 24);
+            this.name.Multiline = true;
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(369, 37);
+            this.name.TabIndex = 13;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.patron);
+            this.groupBox10.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox10.Location = new System.Drawing.Point(25, 374);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(381, 75);
+            this.groupBox10.TabIndex = 26;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Отчество хозяина";
+            this.groupBox10.Visible = false;
+            // 
+            // patron
+            // 
+            this.patron.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.patron.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.patron.Location = new System.Drawing.Point(6, 24);
+            this.patron.Multiline = true;
+            this.patron.Name = "patron";
+            this.patron.Size = new System.Drawing.Size(369, 37);
+            this.patron.TabIndex = 13;
+            // 
             // AddOrEditVideoRental
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(859, 519);
+            this.Controls.Add(this.groupBox10);
+            this.Controls.Add(this.nam);
+            this.Controls.Add(this.fam);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -360,6 +490,12 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
+            this.fam.ResumeLayout(false);
+            this.fam.PerformLayout();
+            this.nam.ResumeLayout(false);
+            this.nam.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +525,15 @@
         public System.Windows.Forms.MaskedTextBox license;
         public System.Windows.Forms.MaskedTextBox number;
         public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.MaskedTextBox timeStart2;
+        public System.Windows.Forms.MaskedTextBox timeStart1;
+        public System.Windows.Forms.MaskedTextBox timeEnd2;
+        public System.Windows.Forms.MaskedTextBox timeEnd1;
+        public System.Windows.Forms.GroupBox nam;
+        public System.Windows.Forms.TextBox name;
+        public System.Windows.Forms.GroupBox groupBox10;
+        public System.Windows.Forms.TextBox patron;
+        public System.Windows.Forms.GroupBox fam;
+        public System.Windows.Forms.TextBox family;
     }
 }

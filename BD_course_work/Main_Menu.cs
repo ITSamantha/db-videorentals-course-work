@@ -17,8 +17,8 @@ namespace BD_course_work
     {
 
         bool isCollapsed = true;
-        
-        public string connectionStringDB= "Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ";
+
+        public string connectionStringDB = "Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ";
 
         public DataTable dt;
 
@@ -26,7 +26,7 @@ namespace BD_course_work
 
         enum Pages
         {
-            VideoRental=0,
+            VideoRental = 0,
             Orders,
             Cassettes,
             Films,
@@ -49,14 +49,14 @@ namespace BD_course_work
             Form_Initialization();
 
             ControllerForDB.Connection(connectionStringDB);//Тест соединения
-            
+
         }
 
         private void Close_App_Button_Click(object sender, EventArgs e)
         {
             Close();
         }
-        
+
         public void Form_Initialization()
         {
             //label1.BackColor=Color.FromArgb(30,40,79);
@@ -68,7 +68,7 @@ namespace BD_course_work
             Instruments.SetRoundedShape(Query, Instruments.radius);
 
             Instruments.SetRoundedShape(Exit, Instruments.radius);
-            
+
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -108,7 +108,7 @@ namespace BD_course_work
                 }
             }
         }
-        
+
         //Заполнение таблиц данными SELECT-методы
 
         private void button36_Click(object sender, EventArgs e)//Таблица "Услуги и цены"
@@ -117,7 +117,7 @@ namespace BD_course_work
             mainControl.SelectedIndex = (int)Pages.ServPrice;
 
             servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
-            
+
             if (servpriceTable.RowCount != 0)
             {
                 servpriceTable.Columns[0].HeaderText = "ID";
@@ -129,7 +129,7 @@ namespace BD_course_work
                 servpriceTable.Columns[3].HeaderText = "Цена";
             }
 
-            label15.Text = "Количество полей:"+ servpriceTable.RowCount;
+            label15.Text = "Количество полей:" + servpriceTable.RowCount;
         }
 
         private void button35_Click(object sender, EventArgs e)//Таблица "Картинки"
@@ -138,14 +138,14 @@ namespace BD_course_work
 
             imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
 
-            if (imagesTable.RowCount!=0)
+            if (imagesTable.RowCount != 0)
             {
                 imagesTable.Columns[0].HeaderText = "ID";
 
                 imagesTable.Columns[1].HeaderText = "Фото";
             }
 
-            label14.Text =strAmount+ imagesTable.RowCount;
+            label14.Text = strAmount + imagesTable.RowCount;
         }
 
         private void button34_Click(object sender, EventArgs e)//Таблица "Качество кассеты"
@@ -153,11 +153,11 @@ namespace BD_course_work
             if (!label13.Text.Equals(strAmount)) { label13.Text = strAmount; }
 
             mainControl.SelectedIndex = (int)Pages.Quality;
-            
+
             qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
 
             if (qualityTable.RowCount != 0)
-            { 
+            {
                 qualityTable.Columns[0].HeaderText = "ID";
 
                 qualityTable.Columns[1].HeaderText = "Качество";
@@ -165,7 +165,7 @@ namespace BD_course_work
 
             label13.Text += qualityTable.RowCount;
         }
-        
+
         private void countriesB_Click(object sender, EventArgs e)//Таблица "Страны"
         {
             if (!label2.Text.Equals(strAmount)) { label2.Text = strAmount; }
@@ -174,7 +174,7 @@ namespace BD_course_work
 
             countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
 
-            if (countriesTable.RowCount!=0)
+            if (countriesTable.RowCount != 0)
             {
                 countriesTable.Columns[0].HeaderText = "ID";
 
@@ -211,7 +211,7 @@ namespace BD_course_work
 
             producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
 
-            if (producersTable.RowCount!=0)
+            if (producersTable.RowCount != 0)
             {
                 producersTable.Columns[0].HeaderText = "ID";
 
@@ -233,7 +233,7 @@ namespace BD_course_work
 
             ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
 
-            if (ownersTable.RowCount!=0)
+            if (ownersTable.RowCount != 0)
             {
                 ownersTable.Columns[0].HeaderText = "ID";
 
@@ -273,7 +273,7 @@ namespace BD_course_work
 
             propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
 
-            if (propertyTable.RowCount!= 0)
+            if (propertyTable.RowCount != 0)
             {
                 propertyTable.Columns[0].HeaderText = "ID";
 
@@ -291,7 +291,7 @@ namespace BD_course_work
 
             districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
 
-            if (districtsTable.RowCount!=0)
+            if (districtsTable.RowCount != 0)
             {
                 districtsTable.Columns[0].HeaderText = "ID";
 
@@ -309,7 +309,7 @@ namespace BD_course_work
 
             filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
 
-            if (filmsTable.RowCount!=0)
+            if (filmsTable.RowCount != 0)
             {
                 filmsTable.Columns[0].HeaderText = "ID";
 
@@ -341,7 +341,7 @@ namespace BD_course_work
 
             cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
 
-            if (cassettesTable.RowCount!=0)
+            if (cassettesTable.RowCount != 0)
             {
                 cassettesTable.Columns[0].HeaderText = "ID";
 
@@ -367,7 +367,7 @@ namespace BD_course_work
 
             videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
 
-            if (videoTable.RowCount!=0)
+            if (videoTable.RowCount != 0)
             {
                 videoTable.Columns[0].HeaderText = "ID";
 
@@ -396,7 +396,7 @@ namespace BD_course_work
                 videoTable.Columns[12].HeaderText = "Отчество хозяина";
             }
 
-            label12.Text += ControllerForDB.amount;
+            label12.Text = strAmount + videoTable.RowCount;
         }
 
         private void ordersB_Click(object sender, EventArgs e)//Таблица "Сделки"
@@ -407,16 +407,16 @@ namespace BD_course_work
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
-            if (ordersTable.RowCount!=0)
+            if (ordersTable.RowCount != 0)
             {
                 ordersTable.Columns[0].HeaderText = "ID";
 
                 ordersTable.Columns[1].HeaderText = "Видеопрокат";
-                
+
                 ordersTable.Columns[2].HeaderText = "ID кассеты";
 
                 ordersTable.Columns[3].HeaderText = "Фильм";
-                
+
                 ordersTable.Columns[4].HeaderText = "Квитанция";
 
                 ordersTable.Columns[5].HeaderText = "Дата заказа";
@@ -462,7 +462,7 @@ namespace BD_course_work
         {
             InsertIntoDirectTables("cassette_quality");
 
-            qualityTable.DataSource =ControllerForDB.selectAllFromMainTables("cassette_quality");
+            qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
         }
 
         private void button39_Click(object sender, EventArgs e)//Добавление картинки
@@ -544,13 +544,13 @@ namespace BD_course_work
 
         public static string path;
 
-        public static int  pic_id=0;
+        public static int pic_id = 0;
 
         public static bool insertPhotoIntoTable()//Добавление фото в таблицу
         {
             pic_id = 0;
 
-            OpenFileDialog openFileDialog= new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Filter = "Image Files(*.BMP;*.JPG;*.PNG;*.JPEG)|*.BMP;*.JPG;*.PNG;*.JPEG|All files (*.*)|*.*";
 
@@ -562,19 +562,19 @@ namespace BD_course_work
             path = openFileDialog.FileName;
 
             pic_id = ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 0);
-            
+
             MessageBox.Show("Фото добавлено.", "Оповещение");
-           
+
             return true;
         }
-        
+
         public static void addToPeopleTable(string t)
         {
             AddOrEditThreeColumns add = new AddOrEditThreeColumns();
 
             add.mainL2.Text = t == "owners" ? "Добавить хозяина" : "Добавить режиссера";
 
-            m1:
+        m1:
 
             add.clean();
 
@@ -638,7 +638,7 @@ namespace BD_course_work
                     }
             }
 
-            m1:
+        m1:
 
             add.clean();
 
@@ -646,7 +646,7 @@ namespace BD_course_work
 
             if (add.countryTB.Text != String.Empty && !add.isCanceled && add.isEnabled)
             {
-                if(ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text))
+                if (ControllerForDB.insertIntoDirectTable(t, add.countryTB.Text))
                 {
                     MessageBox.Show("Строка добавлена.", "Оповещение");
                 }
@@ -756,7 +756,7 @@ namespace BD_course_work
                 MessageBox.Show("Таблица пуста.", "Оповещение");
             }
         }
-        
+
         private void button37_Click(object sender, EventArgs e)//Редактирование фото
         {
             if (imagesTable.RowCount != 0)
@@ -892,7 +892,7 @@ namespace BD_course_work
                 return;
             }
 
-            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value) !=0)
+            if (ControllerForDB.insertOrUpdatePhoto(openFileDialog.FileName, 1, (int)imagesTable.SelectedRows[0].Cells[0].Value) != 0)
             {
                 MessageBox.Show("Фото обновлено.", "Оповещение");
             }
@@ -946,7 +946,7 @@ namespace BD_course_work
             }
             add.clean();
 
-            m1:
+        m1:
 
             add.countryTB.Text = val;
 
@@ -987,7 +987,7 @@ namespace BD_course_work
 
             add.clean();
 
-            m1:
+        m1:
 
             add.fam.Text = l;
 
@@ -1027,7 +1027,7 @@ namespace BD_course_work
 
         //Совмещенные методы INSERT и UPDATE
 
-        public static void insertIntoServicesPrices(int val,int id=0,string service="",string video="",string price="")
+        public static void insertIntoServicesPrices(int val, int id = 0, string service = "", string video = "", string price = "")
         {
             addOrEditServicesPrices add = new addOrEditServicesPrices();
 
@@ -1115,7 +1115,7 @@ namespace BD_course_work
             }
         }
 
-        public static void insertOrUpdateIntoDeals(int val,int cassette_id=0,string recipe_deal="", string deal_date="",string video="",string service="",float price=0,int id=0)
+        public static void insertOrUpdateIntoDeals(int val, int cassette_id = 0, string recipe_deal = "", string deal_date = "", string video = "", string service = "", float price = 0, int id = 0)
         {
             addOrEditDeals add = new addOrEditDeals();
 
@@ -1147,13 +1147,13 @@ namespace BD_course_work
                 add.priceTB.Text = price.ToString();
             }
 
-            m1:
+        m1:
 
-                add.clean();
+            add.clean();
 
-                add.ShowDialog();
+            add.ShowDialog();
 
-            if (!add.isCanceled && add.isEnabled && add.priceTB.Text != String.Empty&& add.recipeTB.Text!=String.Empty)
+            if (!add.isCanceled && add.isEnabled && add.priceTB.Text != String.Empty && add.recipeTB.Text != String.Empty)
             {
                 if (val == 0)
                 {
@@ -1174,7 +1174,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.insertOrUpdateIntoDeals(1, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text),id))
+                    if (ControllerForDB.insertOrUpdateIntoDeals(1, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text), id))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -1196,7 +1196,7 @@ namespace BD_course_work
 
         }
 
-        public static void insertOrUpdateIntoStudios(int val,string title="",string country="",int id=0 )
+        public static void insertOrUpdateIntoStudios(int val, string title = "", string country = "", int id = 0)
         {
             addOrEditTwoColumns add = new addOrEditTwoColumns();
 
@@ -1215,12 +1215,12 @@ namespace BD_course_work
 
             if (val == 1)
             {
-                add.title.Text = title; 
+                add.title.Text = title;
 
-                add.countryCB.Text = country; 
+                add.countryCB.Text = country;
             }
 
-            m1:
+        m1:
 
             add.clean();
 
@@ -1276,8 +1276,8 @@ namespace BD_course_work
                 return;
             }
         }
-        
-        public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b=null,string price="", string demand="",string film="" ,int id = 0)
+
+        public static void insertOrUpdateIntoCassettes(int val, string quality = "", byte[] b = null, string price = "", string demand = "", string film = "", int id = 0)
         {
             addOrEditCassettes add = new addOrEditCassettes();
 
@@ -1286,19 +1286,19 @@ namespace BD_course_work
                 add.mainL1.Text = "Добавить кассету";
 
                 add.button1.Text = "Добавить";
-                
+
             }
             else
             {
                 add.mainL1.Text = "Редактировать кассету";
 
                 add.button1.Text = "Сохранить";
-                
+
             }
 
             if (val == 1)
             {
-                add.qualityCB.Text =quality;
+                add.qualityCB.Text = quality;
 
                 add.filmCB.Text = film;
 
@@ -1308,7 +1308,7 @@ namespace BD_course_work
 
                 add.photoPB.Image = b == null ? Resources.add_photo : Instruments.convertBIntoImage(b);
 
-               //if()
+                //if()
             }
 
         m1:
@@ -1317,22 +1317,23 @@ namespace BD_course_work
 
             add.ShowDialog();
 
-            if (!add.isCanceled && add.isEnabled && add.priceTB.Text!=String.Empty)
+            if (!add.isCanceled && add.isEnabled && add.priceTB.Text != String.Empty)
             {
                 try
                 {
                     double.Parse(add.priceTB.Text);
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     MessageBox.Show("Вы не ввели цену или ввели некорректно.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     goto m1;
                 }
 
-                if (val == 0) {
-                    
-                    if (ControllerForDB.insertIntoCassette(add.quality_list[add.qualityCB.Text],pic_id, double.Parse(add.priceTB.Text),bool.Parse(add.demandCB.Text=="Да"?"true":"false"),add.film_list[add.filmCB.Text]))
+                if (val == 0)
+                {
+
+                    if (ControllerForDB.insertIntoCassette(add.quality_list[add.qualityCB.Text], pic_id, double.Parse(add.priceTB.Text), bool.Parse(add.demandCB.Text == "Да" ? "true" : "false"), add.film_list[add.filmCB.Text]))
                     {
                         MessageBox.Show("Строка добавлена.", "Оповещение");
                     }
@@ -1379,7 +1380,7 @@ namespace BD_course_work
             }
         }
 
-        public static void insertOrUpdateIntoFilms(int val,string id="",string title="",string producer="", string studio="",string year="",string duration="",string info="")
+        public static void insertOrUpdateIntoFilms(int val, string id = "", string title = "", string producer = "", string studio = "", string year = "", string duration = "", string info = "")
         {
             addOrEditFilm add = new addOrEditFilm();
 
@@ -1395,12 +1396,12 @@ namespace BD_course_work
 
                 add.button1.Text = "Сохранить";
             }
-            
+
             if (val == 1)
             {
-                add.title.Text =title ;
+                add.title.Text = title;
 
-                add.producerCB.Text =producer ;
+                add.producerCB.Text = producer;
 
                 add.studioCB.Text = studio;
 
@@ -1416,8 +1417,8 @@ namespace BD_course_work
             add.clean();
 
             add.ShowDialog();
-            
-            if (!add.isCanceled && add.isEnabled&& add.title.Text != String.Empty&& add.info.Text != String.Empty)
+
+            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty && add.info.Text != String.Empty)
             {
                 if (!add.year.MaskCompleted || int.Parse(add.year.Text) < 1888 || int.Parse(add.year.Text) > 2022)
                 {
@@ -1451,7 +1452,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.updateFilms(int.Parse(id),add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
+                    if (ControllerForDB.updateFilms(int.Parse(id), add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -1489,7 +1490,7 @@ namespace BD_course_work
 
         }
 
-        public static void inserOrUpdatetIntoVideoRental(int val,int id=0,string title="",string district="",string adress="", string prop="", string license="", string number="",string timeE="", string timeS="",string amount="",string owner="")//Добавление и редактирование "Видеопрокатов"
+        public static void inserOrUpdatetIntoVideoRental(int val, int id = 0, string title = "", string district = "", string adress = "", string prop = "", string license = "", string number = "", string timeE = "", string timeS = "", string amount = "", string owner = "")//Добавление и редактирование "Видеопрокатов"
         {
             AddOrEditVideoRental add = new AddOrEditVideoRental();
 
@@ -1505,31 +1506,31 @@ namespace BD_course_work
 
                 add.button1.Text = "Сохранить";
             }
-            
+
             if (val == 1)
             {
                 add.title.Text = title;
 
                 add.districtCB.Text = district;
 
-                add.adress.Text =adress ;
+                add.adress.Text = adress;
 
                 add.propCB.Text = prop;
 
                 add.license.Text = license;
 
-                add.number.Text =number ;
+                add.number.Text = number;
 
-                add.timeEnd.Text =timeE ;
+                add.timeEnd.Text = timeE;
 
-                add.timeStart.Text =timeS ;
+                add.timeStart.Text = timeS;
 
                 add.amountEmpl.Text = amount;
 
                 add.ownerCB.Text = owner;
             }
 
-            m1:
+        m1:
 
             add.clean();
 
@@ -1645,7 +1646,7 @@ namespace BD_course_work
                 return;
             }
         }
-        
+
         //Методы удаления из таблиц DELETE-методы
 
         private void button32_Click(object sender, EventArgs e)//Удаление "Качество кассеты"
@@ -1747,9 +1748,9 @@ namespace BD_course_work
                 }
                 label13.Text = "Количество полей:" + qualityTable.RowCount;
             }
-            
+
         }
-        
+
         private void button41_Click(object sender, EventArgs e)//Удаление "Услуги и цены"
         {
             deleteMenu del = new deleteMenu();
@@ -2849,7 +2850,7 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
-                label11.Text = "Количество полей:" +ordersTable.RowCount;
+                label11.Text = "Количество полей:" + ordersTable.RowCount;
             }
         }
 
@@ -3052,7 +3053,7 @@ namespace BD_course_work
                 }
                 label14.Text = "Количество полей:" + imagesTable.RowCount;
             }
-            
+
         }
 
         public void deleteByValue(string table, string what_change)
@@ -3163,9 +3164,9 @@ namespace BD_course_work
             }
         }
 
-        public void deleteRowById(int index,string table,string id_value)//Функция удаления с выводом информации
+        public void deleteRowById(int index, string table, string id_value)//Функция удаления с выводом информации
         {
-            if (ControllerForDB.deleteById(index, table, id_value,true))
+            if (ControllerForDB.deleteById(index, table, id_value, true))
             {
                 MessageBox.Show("Строка удалена.", "Оповещение");
             }
@@ -3180,9 +3181,9 @@ namespace BD_course_work
             }
         }
 
-        public bool deleteRowsById(int index, string table, string id_value,bool isM)//Функция удаления без вывода информации
+        public bool deleteRowsById(int index, string table, string id_value, bool isM)//Функция удаления без вывода информации
         {
-            if (ControllerForDB.deleteById(index, table, id_value,isM))
+            if (ControllerForDB.deleteById(index, table, id_value, isM))
             {
                 return true;
             }
@@ -3190,7 +3191,7 @@ namespace BD_course_work
             {
                 if (ControllerForDB.isCanceledDelete)
                 {
-                    return false; 
+                    return false;
                 }
             }
             return false;
@@ -3204,9 +3205,9 @@ namespace BD_course_work
 
             if (!d.isCanceled && d.isEnabled)
             {
-                studiosTable.DataSource=ControllerForDB.searchStudio(d.search.Text, d.countryCB.Text);
+                studiosTable.DataSource = ControllerForDB.searchStudio(d.search.Text, d.countryCB.Text);
 
-               if (studiosTable.RowCount!=0)
+                if (studiosTable.RowCount != 0)
                 {
                     studiosTable.Columns[0].HeaderText = "ID";
 
@@ -3230,7 +3231,7 @@ namespace BD_course_work
             if (!label11.Text.Equals(strAmount)) { label11.Text = strAmount; }
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
-            
+
             if (ordersTable.RowCount != 0)
             {
                 ordersTable.Columns[0].HeaderText = "ID";
@@ -3256,7 +3257,7 @@ namespace BD_course_work
         private void button58_Click(object sender, EventArgs e)
         {
             ControllerForDB.generateServicesPrices();
-            
+
             servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
 
             if (servpriceTable.RowCount != 0)
@@ -3295,7 +3296,7 @@ namespace BD_course_work
             ControllerForDB.generateCountries();
 
             if (!label2.Text.Equals(strAmount)) { label2.Text = strAmount; }
-            
+
             countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
 
             if (countriesTable.RowCount != 0)
@@ -3313,7 +3314,7 @@ namespace BD_course_work
             ControllerForDB.generateDistricts();//СДЕЛАТЬ BOOL!
 
             if (!label8.Text.Equals(strAmount)) { label8.Text = strAmount; }
-            
+
             districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
 
             if (districtsTable.RowCount != 0)
@@ -3331,7 +3332,7 @@ namespace BD_course_work
             ControllerForDB.generateServices();
 
             if (!label6.Text.Equals(strAmount)) { label6.Text = strAmount; }
-            
+
             servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
 
             if (servicesTable.RowCount != 0)
@@ -3350,7 +3351,7 @@ namespace BD_course_work
             ControllerForDB.generateQuality();
 
             if (!label13.Text.Equals(strAmount)) { label13.Text = strAmount; }
-            
+
             qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
 
             if (qualityTable.RowCount != 0)
@@ -3363,10 +3364,162 @@ namespace BD_course_work
             label13.Text += ControllerForDB.amount;
         }
 
-        private void button45_Click(object sender, EventArgs e)
+        private void button45_Click(object sender, EventArgs e)//Поиск "Видеопрокаты"
         {
+            AddOrEditVideoRental add = new AddOrEditVideoRental();
 
+            add.mainL1.Text = "Поиск видеопроката";
+
+            add.button1.Text = "Поиск";
+
+            add.districtCB.SelectedIndex = add.propCB.SelectedIndex = -1;
+
+            add.timeStart.Hide();
+
+            add.timeEnd.Hide();
+
+            add.groupBox9.Hide();
+
+            add.adress1.Hide();
+
+            add.timeStart1.Visible = add.timeStart2.Visible = add.fam.Visible = add.nam.Visible = add.groupBox10.Visible = true;
+
+            add.timeEnd1.Visible = add.timeEnd2.Visible = true;
+
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            int? n1 = null, n2 = null;
+
+            if (!add.isCanceled && add.isEnabled)
+            {
+
+                if (add.timeStart1.Text != String.Empty)
+                {
+                    try
+                    {
+                        n1 = int.Parse(add.timeStart1.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Время начала работы видеопроката введено некорректно.");
+
+                        goto m1;
+                    }
+                }
+                if (add.timeStart2.Text != String.Empty)
+                {
+                    try
+                    {
+                        n2 = int.Parse(add.timeStart2.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Время начала работы видеопроката введено некорректно.");
+                        goto m1;
+                    }
+                }
+
+                int? m1 = null, m2 = null;
+
+                if (add.timeEnd2.Text != String.Empty)
+                {
+                    try
+                    {
+                        m2 = int.Parse(add.timeEnd2.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Время окончания работы видеопроката введено некорректно.");
+                        goto m1;
+                    }
+                }
+
+                if (add.timeEnd1.Text != String.Empty)
+                {
+                    try
+                    {
+                        m1 = int.Parse(add.timeEnd1.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Время окончания работы видеопроката введено некорректно.");
+                        goto m1;
+                    }
+                }
+                if (n1 != null && n2 != null)
+                {
+                    if ((n2 - n1) < 0)
+                    {
+                        MessageBox.Show("Время открытия 2 должно быть больше времени открытия 1.", "Error");
+
+                        goto m1;
+                    }
+                }
+                if (m1 != null && m2 != null)
+                {
+                    if (m2 - m1 < 0)
+                    {
+                        MessageBox.Show("Время открытия 2 должно быть больше времени открытия 1.", "Error");
+
+                        goto m1;
+                    }
+                }
+
+                if (add.amountEmpl.Text != String.Empty)
+                {
+                    try
+                    {
+                        m2 = int.Parse(add.amountEmpl.Text);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Количество работников введено некорректно.");
+                        goto m1;
+                    }
+                }
+                videoTable.DataSource = ControllerForDB.searchVideoRental(add.title.Text, add.timeStart1.Text, add.timeStart2.Text, add.timeEnd1.Text, add.timeEnd2.Text, add.name.Text, add.family.Text, add.patron.Text, add.districtCB.Text, add.propCB.Text, add.number.Text, add.license.Text, add.amountEmpl.Text);
+
+                if (videoTable.RowCount != 0)
+                {
+                    videoTable.Columns[0].HeaderText = "ID";
+
+                    videoTable.Columns[1].HeaderText = "Название видеопроката";
+
+                    videoTable.Columns[2].HeaderText = "Район";
+
+                    videoTable.Columns[3].HeaderText = "Адрес";
+
+                    videoTable.Columns[4].HeaderText = "Тип собственности";
+
+                    videoTable.Columns[5].HeaderText = "Телефон";
+
+                    videoTable.Columns[6].HeaderText = "№ Лицензии";
+
+                    videoTable.Columns[7].HeaderText = "Начало работы";
+
+                    videoTable.Columns[8].HeaderText = "Конец работы";
+
+                    videoTable.Columns[9].HeaderText = "Количество работников";
+
+                    videoTable.Columns[10].HeaderText = "Фамилия хозяина";
+
+                    videoTable.Columns[11].HeaderText = "Имя хозяина";
+
+                    videoTable.Columns[12].HeaderText = "Отчество хозяина";
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label12.Text = strAmount + videoTable.RowCount;
         }
+
 
         private void button56_Click(object sender, EventArgs e)//Поиск "Услуги и цены"
         {
@@ -3379,16 +3532,16 @@ namespace BD_course_work
             add.groupBox1.Hide();
 
             add.priceS.Visible = true;
-            
-            add.rentalCB.SelectedIndex=add.serviceCB.SelectedIndex = -1;
-            
-            m1:
+
+            add.rentalCB.SelectedIndex = add.serviceCB.SelectedIndex = -1;
+
+        m1:
 
             add.clean();
 
             add.ShowDialog();
 
-            if (!add.isCanceled && add.isEnabled )
+            if (!add.isCanceled && add.isEnabled)
             {
                 if (add.more.Text != String.Empty)
                 {
@@ -3406,7 +3559,7 @@ namespace BD_course_work
                         goto m1;
                     }
                 }
-                servpriceTable.DataSource = ControllerForDB.searchServicesPrices(add.rentalCB.Text, add.serviceCB.Text, add.more.Text,add.less.Text);
+                servpriceTable.DataSource = ControllerForDB.searchServicesPrices(add.rentalCB.Text, add.serviceCB.Text, add.more.Text, add.less.Text);
 
                 if (servpriceTable.RowCount != 0)
                 {
@@ -3435,14 +3588,14 @@ namespace BD_course_work
             add.button1.Text = "Поиск";
 
             add.groupBox1.Text = "Качество";
-            
+
             add.clean();
 
             add.ShowDialog();
 
             if (!add.isCanceled && add.isEnabled)
             {
-                qualityTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text,"quality_view","quality_name");
+                qualityTable.DataSource = ControllerForDB.searchDictionary(add.countryTB.Text, "quality_view", "quality_name");
 
                 if (qualityTable.RowCount != 0)
                 {
@@ -3456,7 +3609,7 @@ namespace BD_course_work
                 return;
             }
 
-            label13.Text = "Количество полей:"+qualityTable.RowCount;
+            label13.Text = "Количество полей:" + qualityTable.RowCount;
         }
 
         private void button53_Click(object sender, EventArgs e)//Поиск "Страны"
@@ -3622,17 +3775,17 @@ namespace BD_course_work
                 return;
             }
 
-            label14.Text ="Количество полей:"+ imagesTable.RowCount;
+            label14.Text = "Количество полей:" + imagesTable.RowCount;
         }
 
         private void button44_Click(object sender, EventArgs e)//Поиск "Режиссеры"
         {
             AddOrEditThreeColumns add = new AddOrEditThreeColumns();
-                
+
             add.mainL2.Text = "Поиск режиссера";
 
             add.button1.Text = "Поиск";
-           
+
             add.clean();
 
             add.ShowDialog();
@@ -3656,8 +3809,8 @@ namespace BD_course_work
             {
                 return;
             }
-            
-            label4.Text = "Количество полей:"+producersTable.RowCount;
+
+            label4.Text = "Количество полей:" + producersTable.RowCount;
         }
 
         private void button52_Click(object sender, EventArgs e)//Поиск "Хоязева"
@@ -3709,15 +3862,15 @@ namespace BD_course_work
 
             add.adress1.Hide();
 
-            add.year1.Visible= add.year2.Visible =add.dur1.Visible = add.dur2.Visible = true;
-            
-            add.groupBox5.Visible = add.groupBox6.Visible = add.groupBox7.Visible=  true;
-            
+            add.year1.Visible = add.year2.Visible = add.dur1.Visible = add.dur2.Visible = true;
+
+            add.groupBox5.Visible = add.groupBox6.Visible = add.groupBox7.Visible = true;
+
             add.groupBox2.Hide();
 
             add.studioCB.SelectedIndex = -1;
 
-            m1:
+        m1:
 
             add.clean();
 
@@ -3729,7 +3882,7 @@ namespace BD_course_work
             {
                 try
                 {
-                    n1=int.Parse(add.dur1.Text);
+                    n1 = int.Parse(add.dur1.Text);
                 }
                 catch (Exception)
                 {
@@ -3742,7 +3895,7 @@ namespace BD_course_work
             {
                 try
                 {
-                    n2=int.Parse(add.dur2.Text);
+                    n2 = int.Parse(add.dur2.Text);
                 }
                 catch (Exception)
                 {
@@ -3750,53 +3903,63 @@ namespace BD_course_work
                     goto m1;
                 }
             }
-            if ((add.year1.Text.Length > 0 && add.year1.Text.Length < 4)||(add.year2.Text.Length > 0 && add.year2.Text.Length < 4))
+            if ((add.year1.Text.Length > 0 && add.year1.Text.Length < 4) || (add.year2.Text.Length > 0 && add.year2.Text.Length < 4))
             {
                 MessageBox.Show("Некорректный ввод года.", "Error");
 
                 goto m1;
             }
-            
-            int? m1=null, m2=null;
 
-            try
-            {
-                m1 = int.Parse(add.dur1.Text);
-            }
-            catch (Exception)
-            {
-            }
+            int? m1 = null, m2 = null;
 
-            try
+            if (add.year2.Text != String.Empty)
             {
-                m2=int.Parse(add.dur2.Text);
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    m2 = int.Parse(add.year2.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Год введен некорректно.");
+                    goto m1;
+                }
             }
 
-            if (m1 != null && m2 != null)
+            if (add.year1.Text != String.Empty)
             {
-                if ((m2 - m1) < 0)
+                try
+                {
+                    m1 = int.Parse(add.year1.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Год введен некорректно.");
+                    goto m1;
+                }
+            }
+
+            if (n1 != null && n2 != null)
+            {
+                if ((n2 - n1) < 0)
                 {
                     MessageBox.Show("Длительность 2 должна быть больше длительности 1.", "Error");
 
                     goto m1;
                 }
             }
-            if (n1 != null && n2 != null)
+            if (m1 != null && m2 != null)
             {
-                if (n2 - n1 < 0)
+                if (m2 - m1 < 0)
                 {
                     MessageBox.Show("Год 2 должен быть больше года 1.", "Error");
 
                     goto m1;
                 }
             }
-            
+
             if (!add.isCanceled && add.isEnabled)
             {
-                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text,add.studioCB.Text,add.fam.Text,add.name.Text,add.patron.Text,add.year1.Text, add.year2.Text,add.info.Text,add.dur1.Text,add.dur2.Text);
+                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text, add.studioCB.Text, add.fam.Text, add.name.Text, add.patron.Text, add.year1.Text, add.year2.Text, add.info.Text, add.dur1.Text, add.dur2.Text);
 
                 if (filmsTable.RowCount != 0)
                 {
@@ -3826,5 +3989,6 @@ namespace BD_course_work
 
             label9.Text = "Количество полей:" + filmsTable.RowCount;
         }
+
     }
 }
