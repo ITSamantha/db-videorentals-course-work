@@ -104,7 +104,7 @@ namespace BD_course_work
 
                 n.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("Insert into cassette_photo (pk_photo_id,photo) values (default, @Image );", n);
+                NpgsqlCommand com = new NpgsqlCommand("Insert into cassette_photo (pk_photo_id,photo) values (null, @Image );", n);
                 
                 NpgsqlParameter parameter = com.CreateParameter();
 
@@ -394,9 +394,9 @@ namespace BD_course_work
                 {
                     if (i == cassette_quality.Length - 1)
                     {
-                        command += $"({i + 1}, '{cassette_quality[i]}'); "; break;
+                        command += $" (null, '{cassette_quality[i]}'); "; break;
                     }
-                    command += $"({i + 1}, '{cassette_quality[i]}'), ";
+                    command += $" (null, '{cassette_quality[i]}'), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -1193,8 +1193,7 @@ namespace BD_course_work
                 return false;
             }
         }
-        
-        //DELETE-методы
+
         public static bool deleteById(int id,string table,string id_title,bool isMessage)
         {
             DialogResult dialogResult= new DialogResult();
@@ -1313,8 +1312,7 @@ namespace BD_course_work
                     string command = $"delete from {table} where {id_title} = {id};";//Подумать над каскадным удалением, не удаляет, когда используется во внешнем ключе
 
                     var command_s = new NpgsqlCommand(command, c);
-
-
+                    
                     command_s.ExecuteNonQuery();
 
                     command_s.Dispose();
@@ -1326,6 +1324,14 @@ namespace BD_course_work
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
+
+                    if (table == "cassette_photo")
+                    {
+                        deletePhoto(id);
+
+                        return true;
+                    }
+
                     return false;
                 }
             }
@@ -1348,6 +1354,7 @@ namespace BD_course_work
                 n.Close();
 
                 command.Dispose();
+                
 
                 return true;
             }

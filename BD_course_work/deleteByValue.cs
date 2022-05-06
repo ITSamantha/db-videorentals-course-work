@@ -42,7 +42,5 @@ namespace BD_course_work
 
             Close();
         }
-
-        
     }
 }

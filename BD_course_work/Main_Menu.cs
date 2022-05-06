@@ -150,7 +150,6 @@ namespace BD_course_work
 
         private void button34_Click(object sender, EventArgs e)//Таблица "Качество кассеты"
         {
-            if (!label13.Text.Equals(strAmount)) { label13.Text = strAmount; }
 
             mainControl.SelectedIndex = (int)Pages.Quality;
 
@@ -163,13 +162,11 @@ namespace BD_course_work
                 qualityTable.Columns[1].HeaderText = "Качество";
             }
 
-            label13.Text += qualityTable.RowCount;
+            label13.Text =strAmount+ qualityTable.RowCount;
         }
 
         private void countriesB_Click(object sender, EventArgs e)//Таблица "Страны"
         {
-            if (!label2.Text.Equals(strAmount)) { label2.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Countries;
 
             countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
@@ -181,7 +178,7 @@ namespace BD_course_work
                 countriesTable.Columns[1].HeaderText = "Страна";
             }
 
-            label2.Text += ControllerForDB.amount;
+            label2.Text = strAmount + countriesTable.RowCount;
         }
 
         private void studiosB_Click(object sender, EventArgs e)//Таблица "Студии"
@@ -401,8 +398,6 @@ namespace BD_course_work
 
         private void ordersB_Click(object sender, EventArgs e)//Таблица "Сделки"
         {
-            if (!label11.Text.Equals(strAmount)) { label11.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Orders;
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
@@ -435,6 +430,15 @@ namespace BD_course_work
             Main_Menu.InsertIntoDirectTables("countries");
 
             countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
+
+            if (countriesTable.RowCount != 0)
+            {
+                countriesTable.Columns[0].HeaderText = "ID";
+
+                countriesTable.Columns[1].HeaderText = "Страна";
+            }
+
+            label2.Text = strAmount + countriesTable.RowCount;
         }
 
         private void button12_Click(object sender, EventArgs e)//Добавление услуги
@@ -463,6 +467,15 @@ namespace BD_course_work
             InsertIntoDirectTables("cassette_quality");
 
             qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
+
+            if (qualityTable.RowCount != 0)
+            {
+                qualityTable.Columns[0].HeaderText = "ID";
+
+                qualityTable.Columns[1].HeaderText = "Качество";
+            }
+
+            label13.Text = strAmount + qualityTable.RowCount;
         }
 
         private void button39_Click(object sender, EventArgs e)//Добавление картинки
@@ -470,6 +483,15 @@ namespace BD_course_work
             if (insertPhotoIntoTable())
             {
                 imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+
+                if (imagesTable.RowCount != 0)
+                {
+                    imagesTable.Columns[0].HeaderText = "ID";
+
+                    imagesTable.Columns[1].HeaderText = "Фото";
+                }
+
+                label14.Text = strAmount + imagesTable.RowCount;
             }
         }
 
@@ -1663,14 +1685,13 @@ namespace BD_course_work
                 {
                     if (del.isDeleteStr)
                     {
-                        deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id");
-
-                        qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
+                        if(deleteRowById((int)qualityTable.SelectedRows[0].Cells[0].Value, "cassette_quality", "pk_quality_id"))
+                        {
+                            qualityTable.Rows.Remove(qualityTable.SelectedRows[0]);
+                        }
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (qualityTable.RowCount != 0)
-                        {
                             int i = qualityTable.RowCount;
 
                             int N = qualityTable.RowCount;
@@ -1686,7 +1707,6 @@ namespace BD_course_work
                                         MessageBox.Show("Удаление начинается.", "Оповещение");
                                     }
                                     count++;
-                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
                                 i--;
                             }
@@ -1701,12 +1721,6 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
@@ -1765,14 +1779,13 @@ namespace BD_course_work
                 {
                     if (del.isDeleteStr)
                     {
-                        deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
-
-                        servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
+                        if (deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id"))
+                        {
+                            servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
+                        }
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (servpriceTable.RowCount != 0)
-                        {
                             int i = servpriceTable.RowCount;
 
                             int N = servpriceTable.RowCount;
@@ -1803,12 +1816,6 @@ namespace BD_course_work
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
                         }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
-                    }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("services_prices", "pk_service_price_id");
@@ -1847,6 +1854,7 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+
                 label15.Text = "Количество полей:" + servpriceTable.RowCount;
             }
         }
@@ -2968,13 +2976,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)imagesTable.SelectedRows[0].Cells[0].Value, "cassette_photo", "pk_photo_id");
-
-                        imagesTable.Rows.Remove(imagesTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (imagesTable.RowCount != 0)
-                        {
                             int i = imagesTable.RowCount;
 
                             int N = imagesTable.RowCount;
@@ -3005,18 +3009,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("cassette_photo", "pk_photo_id");
-
-                        imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -3051,6 +3047,8 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.", "Оповещение");
                 }
+                imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+
                 label14.Text = "Количество полей:" + imagesTable.RowCount;
             }
 
@@ -3164,21 +3162,24 @@ namespace BD_course_work
             }
         }
 
-        public void deleteRowById(int index, string table, string id_value)//Функция удаления с выводом информации
+        public bool deleteRowById(int index, string table, string id_value)//Функция удаления с выводом информации
         {
             if (ControllerForDB.deleteById(index, table, id_value, true))
             {
                 MessageBox.Show("Строка удалена.", "Оповещение");
+
+                return true;
             }
             else
             {
                 if (ControllerForDB.isCanceledDelete)
                 {
-                    return;
+                    return false;
                 }
 
                 MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
             }
+            return false;
         }
 
         public bool deleteRowsById(int index, string table, string id_value, bool isM)//Функция удаления без вывода информации
@@ -3350,8 +3351,6 @@ namespace BD_course_work
 
             ControllerForDB.generateQuality();
 
-            if (!label13.Text.Equals(strAmount)) { label13.Text = strAmount; }
-
             qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
 
             if (qualityTable.RowCount != 0)
@@ -3361,7 +3360,7 @@ namespace BD_course_work
                 qualityTable.Columns[1].HeaderText = "Качество";
             }
 
-            label13.Text += ControllerForDB.amount;
+            label13.Text =strAmount+ qualityTable.RowCount;
         }
 
         private void button45_Click(object sender, EventArgs e)//Поиск "Видеопрокаты"
@@ -4017,5 +4016,22 @@ namespace BD_course_work
             label9.Text = "Количество полей:" + filmsTable.RowCount;
         }
 
+        private void button64_Click(object sender, EventArgs e)//Генерация "Фото"
+        {
+            if (imagesTable.RowCount == 0)
+            {
+                ControllerForDB.generatePics(100);
+
+                imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+
+                if (imagesTable.RowCount != 0)
+                {
+                    imagesTable.Columns[0].HeaderText = "ID";
+
+                    imagesTable.Columns[1].HeaderText = "Фото";
+                }
+            }
+            label14.Text = strAmount + imagesTable.RowCount;
+        }
     }
 }
