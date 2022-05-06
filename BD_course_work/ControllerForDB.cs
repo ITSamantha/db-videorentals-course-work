@@ -36,7 +36,7 @@ namespace BD_course_work
         public static string[] studios = { "PrismaStudio" , "WowStudio" , "Paramount Pictures" , "20th Century Fox" ,
                                 "Columbia Pictures" , "BestFilms" , "Warner Bros." , "Bad Robot Productions" , "Constantin Film" ,
                                 "Lucasfilm" , "Original Film" , "Netflix" , "Millennium Films" , "Walt Disney Pictures" , "Pathé" ,
-                                "Nobis assumenda quis" , "Est sunt" };
+                                "Nobis assumenda quis" , "Est sunt","Филььмец!", "Фильм?!", "ЛюблюКино!" };
 
         public static string[] films = { "Достучаться до небес", "Зелёная миля", "Сила воли", "Никогда не сдавайся", "Прислуга", "Форрест Гамп", "Человек паук",
                                   "Великий Гэтсби", "Мемуары Гейши", "Жизнь Пи", "Цветок пустыни", "Три метра над уровнем моря", "Четыре метра над уровнем моря",
@@ -44,7 +44,7 @@ namespace BD_course_work
 
         public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда", "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm" };
 
-        public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патиция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
+        public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патриция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
 
         public static string[] female_last_names = { "Савельева", "Барашкина", "Лисицына", "Шубина", "Яковлева", "Елисеева", "Блохина", "Мартова", "Бурова", "Емельянова", "Пушкина", "Баранова", "Вишнякова", "Чернель", "Дубова" };
 
@@ -122,6 +122,61 @@ namespace BD_course_work
 
                 n.Close();
             }
+        }
+
+        public static void generatePeople(int value,int num)
+        {
+                if (value==0&&getAmountOfRows("producers") != 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать.", "Error");
+
+                    return;
+                }
+                if (value==1&&getAmountOfRows("owners") != 0)
+                {
+                        MessageBox.Show("Невозможно сгенерировать.", "Error");
+
+                        return;
+                }
+            
+                NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+                n.Open();
+
+                Random r = new Random();
+
+                StringBuilder s = new StringBuilder($"insert into { (value == 0 ? "producers" : "owners") } values ");
+
+                for (int i = 0; i < num; i++)
+                {
+                    if (r.Next(0, 2) == 0)
+                    {
+                        if (i == (num - 1))
+                        {
+                            s.Append($" (null,'{male_names[r.Next(0, male_names.Length)]}','{male_last_names[r.Next(0, male_last_names.Length)]}','{male_patron[r.Next(0, male_patron.Length)]}' ); ");
+                        }
+                        else { s.Append($" (null,'{male_names[r.Next(0, male_names.Length)]}','{male_last_names[r.Next(0, male_last_names.Length)]}','{male_patron[r.Next(0, male_patron.Length)]}' ), "); }
+                    }
+                    else
+                    {
+                        if (i == (num - 1))
+                        {
+                            s.Append($" (null,'{female_names[r.Next(0, female_names.Length)]}','{female_last_names[r.Next(0, female_last_names.Length)]}','{female_patron[r.Next(0, female_patron.Length)]}' ); ");
+                        }
+                        else
+                        {
+                            s.Append($" (null,'{female_names[r.Next(0, female_names.Length)]}','{female_last_names[r.Next(0, female_last_names.Length)]}','{female_patron[r.Next(0, female_patron.Length)]}' ), ");
+                        }
+                    }
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(s.ToString(), n);
+            
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                n.Close();
         }
         
         public static void generateServicesPrices()//Генерация services_prices
@@ -301,9 +356,9 @@ namespace BD_course_work
                 {
                     if (i == countries.Length - 1)
                     {
-                        command += $"({i + 1}, '{countries[i]}'); "; break;
+                        command += $"(null, '{countries[i]}'); "; break;
                     }
-                    command += $"({i + 1}, '{countries[i]}'), ";
+                    command += $"(null, '{countries[i]}'), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -397,6 +452,52 @@ namespace BD_course_work
                         command += $" (null, '{cassette_quality[i]}'); "; break;
                     }
                     command += $" (null, '{cassette_quality[i]}'), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static void generateStudios()
+        {
+            if (getAmountOfRows("studios") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                List<int> ids = new List<int>();
+
+                c.Open();
+
+                var command = $"insert into studios values ";
+
+                if (getAmountOfRows("countries")==0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Страны\" пуста.", "Error");
+
+                    return;
+                }
+                else
+                {
+                    ids = getSmthForList("countries", "pk_country_id");
+                }
+
+                Random r = new Random();
+
+                for (int i = 0; i < studios.Length; i++)
+                {
+                    if (i == studios.Length - 1)
+                    {
+                        command += $" (null, '{studios[i]}','{ids[r.Next(0,ids.Count)]}' ) ; "; break;
+                    }
+                    command += $" (null, '{studios[i]}','{ids[r.Next(0, ids.Count)]}' ), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -719,7 +820,7 @@ namespace BD_course_work
 
                 if (val == 0)
                 {
-                    command = $"insert into deals values (default,{cassette_id}, '{"Квитанция выдана: "+date+". К оплате: "+price+". Спасибо, что выбрали нас!"}', '{date}', {service_price},'{price});";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                    command = $"insert into deals values (null,{cassette_id}, '{"Квитанция выдана: "+date+". К оплате: "+price+". Спасибо, что выбрали нас!"}', '{date}', {service_price},'{price});";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
                 }
                 else
                 {
@@ -757,7 +858,7 @@ namespace BD_course_work
 
                 if (path == "")
                 {
-                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, null ) returning pk_photo_id;" : $"Update cassette_photo set photo=null where pk_photo_id={id} returning pk_photo_id;";
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (null, null ) returning pk_photo_id;" : $"Update cassette_photo set photo=null where pk_photo_id={id} returning pk_photo_id;";
 
                     com = new NpgsqlCommand(command, n);
 
@@ -765,7 +866,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (default, @Image ) returning pk_photo_id;" : $"Update cassette_photo set photo=@Image where pk_photo_id={id} returning pk_photo_id;";
+                    string command = val == 0 ? "Insert into cassette_photo (pk_photo_id,photo) values (null, @Image ) returning pk_photo_id;" : $"Update cassette_photo set photo=@Image where pk_photo_id={id} returning pk_photo_id;";
 
                     com = new NpgsqlCommand(command, n);
 
@@ -831,7 +932,7 @@ namespace BD_course_work
 
                 n.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand($"insert into studios values (default, '{name}', {id_country});", n);
+                NpgsqlCommand com = new NpgsqlCommand($"insert into studios values (null, '{name}', {id_country});", n);
 
                 com.ExecuteNonQuery();
 
@@ -842,6 +943,8 @@ namespace BD_course_work
             catch(Exception e)
             {
                 Console.WriteLine(e);
+
+                isCanceledDelete = false;
 
                 return false;
             }
@@ -871,7 +974,7 @@ namespace BD_course_work
 
                 n.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand($"insert into films values (default, '{film_name}', {producer_id}, {studio_id}, {year}, {duration}, '{info}');", n);
+                NpgsqlCommand com = new NpgsqlCommand($"insert into films values (null, '{film_name}', {producer_id}, {studio_id}, {year}, {duration}, '{info}');", n);
 
                 com.ExecuteNonQuery();
 
@@ -900,11 +1003,11 @@ namespace BD_course_work
                 {
                     int id= insertOrUpdatePhoto("", 0);
 
-                    com = new NpgsqlCommand($"insert into cassettes values (default, '{cassette_quality}', {id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
+                    com = new NpgsqlCommand($"insert into cassettes values (null, '{cassette_quality}', {id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
                 }
                 else
                 {
-                    com = new NpgsqlCommand($"insert into cassettes values (default, '{cassette_quality}', {cassette_photo}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
+                    com = new NpgsqlCommand($"insert into cassettes values (null, '{cassette_quality}', {cassette_photo}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', '{demand}', {film_id});", n);
                 }
                 
                 com.ExecuteNonQuery();
@@ -951,7 +1054,7 @@ namespace BD_course_work
 
                 n.Open();
 
-                var command = $"insert into services_prices values (default, {service_id}, {video_rental_id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}');";
+                var command = $"insert into services_prices values (null, {service_id}, {video_rental_id}, '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}');";
 
                 NpgsqlCommand com = new NpgsqlCommand(command, n);
 
@@ -979,7 +1082,7 @@ namespace BD_course_work
 
                 c.Open();
 
-                string command = val == 0 ? $"insert into {table}  values (default,'{first}','{last}','{patron}');" :
+                string command = val == 0 ? $"insert into {table}  values (null,'{first}','{last}','{patron}');" :
                     (table.Equals("owners") ? $"update {table}  set owner_first_name = '{first}', owner_last_name = '{last}', owner_patronymic = '{patron}' where pk_owner_id={id};" :
                     $"update {table}  set producer_first_name = '{first}', producer_last_name = '{last}', producer_patronymic = '{patron}' where pk_producer_id={id};");
 
@@ -996,6 +1099,7 @@ namespace BD_course_work
             catch(Exception e)
             {
                 Console.WriteLine(e);
+
                 return false;
             }
         }
@@ -1008,7 +1112,7 @@ namespace BD_course_work
 
                 n.Open();
                 
-                var command = $"insert into video_rental values (default,'{video_name}','{video_id}','{adress}','{prop}','{phone}','{number}','{time_s}','{time_e}','{amount}','{owner_id}' );";
+                var command = $"insert into video_rental values (null,'{video_name}','{video_id}','{adress}','{prop}','{phone}','{number}','{time_s}','{time_e}','{amount}','{owner_id}' );";
                
                 NpgsqlCommand com = new NpgsqlCommand(command, n);
 
@@ -1364,7 +1468,7 @@ namespace BD_course_work
             }
         }
 
-        public static bool deleteByValue(string value, string table, string string_title)//Не дописан
+        public static bool deleteByValue(string value, string table, string string_title,string last="",string patron="")//Не дописан
         {
             DialogResult dialogResult = new DialogResult();
 
@@ -1466,7 +1570,23 @@ namespace BD_course_work
 
                     c.Open();
 
-                    string command = $"delete from {table} where {string_title} = '{value}';";
+                    string command= "";
+
+                    if(table.Equals("producers")|| table.Equals("owners"))
+                    {
+                        if (table.Equals("producers"))
+                        {
+                            command = $"delete from {table} where producer_first_name='{value}' and producer_last_name='{last}' and producer_patronymic ='{patron}' ";
+                        }
+                        if (table.Equals("owners"))
+                        {
+                            command = $"delete from {table} where owner_first_name='{value}' and owner_last_name='{last}' and owner_patronymic ='{patron}' ";
+                        }
+                    }
+                    else
+                    {
+                        command = $"delete from {table} where {string_title} = '{value}';";
+                    }
 
                     var command_s = new NpgsqlCommand(command, c);
                     

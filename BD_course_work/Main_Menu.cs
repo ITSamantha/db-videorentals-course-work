@@ -129,7 +129,7 @@ namespace BD_course_work
                 servpriceTable.Columns[3].HeaderText = "Цена";
             }
 
-            label15.Text = "Количество полей:" + servpriceTable.RowCount;
+            label15.Text = strAmount + servpriceTable.RowCount;
         }
 
         private void button35_Click(object sender, EventArgs e)//Таблица "Картинки"
@@ -183,8 +183,6 @@ namespace BD_course_work
 
         private void studiosB_Click(object sender, EventArgs e)//Таблица "Студии"
         {
-            if (!label3.Text.Equals(strAmount)) { label3.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Studios;
 
             studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
@@ -197,13 +195,11 @@ namespace BD_course_work
 
                 studiosTable.Columns[2].HeaderText = "Страна";
             }
-            label3.Text += ControllerForDB.amount;
+            label3.Text = strAmount + studiosTable.RowCount;
         }
 
         private void producersB_Click(object sender, EventArgs e)//Таблица "Режиссеры"
         {
-            if (!label4.Text.Equals(strAmount)) { label4.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Producers;
 
             producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
@@ -219,13 +215,11 @@ namespace BD_course_work
                 producersTable.Columns[3].HeaderText = "Отчество";
             }
 
-            label4.Text += producersTable.RowCount;
+            label4.Text = strAmount + producersTable.RowCount;
         }
 
         private void ownersB_Click(object sender, EventArgs e)//Таблица"Хозяины"
         {
-            if (!label5.Text.Equals(strAmount)) { label5.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Owners;
 
             ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
@@ -241,13 +235,11 @@ namespace BD_course_work
                 ownersTable.Columns[3].HeaderText = "Отчество";
             }
 
-            label5.Text += ControllerForDB.amount;
+            label5.Text = strAmount + ownersTable.RowCount;
         }
 
         private void servicesB_Click(object sender, EventArgs e)//Таблица "Услуги"
         {
-            if (!label6.Text.Equals(strAmount)) { label6.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Services;
 
             servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
@@ -259,13 +251,11 @@ namespace BD_course_work
                 servicesTable.Columns[1].HeaderText = "Услуга";
             }
 
-            label6.Text += ControllerForDB.amount;
+            label6.Text = strAmount + servicesTable.RowCount;
         }
 
         private void proptypeB_Click(object sender, EventArgs e)//Таблица "Тип_собственности"
         {
-            if (!label7.Text.Equals(strAmount)) { label7.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Property;
 
             propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
@@ -277,13 +267,11 @@ namespace BD_course_work
                 propertyTable.Columns[1].HeaderText = "Тип собственности";
             }
 
-            label7.Text += propertyTable.RowCount;
+            label7.Text = strAmount + propertyTable.RowCount;
         }
 
         private void districtB_Click(object sender, EventArgs e)//Таблица "Район"
         {
-            if (!label8.Text.Equals(strAmount)) { label8.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Districts;
 
             districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
@@ -295,13 +283,11 @@ namespace BD_course_work
                 districtsTable.Columns[1].HeaderText = "Район";
             }
 
-            label8.Text += ControllerForDB.amount;
+            label8.Text = strAmount + districtsTable.RowCount;
         }
 
         private void filmsB_Click(object sender, EventArgs e)//Таблица "Фильмы"
         {
-            if (!label9.Text.Equals(strAmount)) { label9.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Films;
 
             filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
@@ -327,13 +313,11 @@ namespace BD_course_work
                 filmsTable.Columns[8].HeaderText = "Информация";
             }
 
-            label9.Text += ControllerForDB.amount;
+            label9.Text = strAmount + filmsTable.RowCount;
         }
 
         private void cassettesB_Click(object sender, EventArgs e)//Таблица "Кассеты"
         {
-            if (!label10.Text.Equals(strAmount)) { label10.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.Cassettes;
 
             cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
@@ -353,13 +337,11 @@ namespace BD_course_work
                 cassettesTable.Columns[5].HeaderText = "Фильм";
             }
 
-            label10.Text += ControllerForDB.amount;
+            label10.Text = strAmount + cassettesTable.RowCount;
         }
 
         private void videorentalB_Click(object sender, EventArgs e)//Таблица "Видеопрокаты"
         {
-            if (!label12.Text.Equals(strAmount)) { label12.Text = strAmount; }
-
             mainControl.SelectedIndex = (int)Pages.VideoRental;
 
             videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
@@ -402,7 +384,7 @@ namespace BD_course_work
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
-            if (ordersTable.RowCount != 0)
+            if (ordersTable.RowCount !=0)
             {
                 ordersTable.Columns[0].HeaderText = "ID";
 
@@ -421,7 +403,7 @@ namespace BD_course_work
                 ordersTable.Columns[7].HeaderText = "Цена";
             }
 
-            label11.Text += ControllerForDB.amount;
+            label11.Text = strAmount + ordersTable.RowCount;
         }
 
         //Добавление в таблицу INSERT-методы
@@ -431,7 +413,7 @@ namespace BD_course_work
 
             countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
 
-            if (countriesTable.RowCount != 0)
+            if (countriesTable.RowCount == 1)
             {
                 countriesTable.Columns[0].HeaderText = "ID";
 
@@ -446,6 +428,15 @@ namespace BD_course_work
             InsertIntoDirectTables("services_view");
 
             servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
+
+            if (servicesTable.RowCount == 1)
+            {
+                servicesTable.Columns[0].HeaderText = "ID";
+
+                servicesTable.Columns[1].HeaderText = "Услуга";
+            }
+
+            label6.Text = strAmount + servicesTable.RowCount;
         }
 
         private void button15_Click(object sender, EventArgs e)//Добавить тип собственности
@@ -453,6 +444,15 @@ namespace BD_course_work
             InsertIntoDirectTables("property_type");
 
             propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
+
+            if (propertyTable.RowCount == 1)
+            {
+                propertyTable.Columns[0].HeaderText = "ID";
+
+                propertyTable.Columns[1].HeaderText = "Тип собственности";
+            }
+
+            label7.Text = strAmount + propertyTable.RowCount;
         }
 
         private void button18_Click(object sender, EventArgs e)//Добавить район
@@ -460,6 +460,15 @@ namespace BD_course_work
             InsertIntoDirectTables("district");
 
             districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
+
+            if (districtsTable.RowCount == 1)
+            {
+                districtsTable.Columns[0].HeaderText = "ID";
+
+                districtsTable.Columns[1].HeaderText = "Район";
+            }
+
+            label8.Text = strAmount + districtsTable.RowCount;
         }
 
         private void button33_Click(object sender, EventArgs e)//Добавление качества
@@ -468,7 +477,7 @@ namespace BD_course_work
 
             qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
 
-            if (qualityTable.RowCount != 0)
+            if (qualityTable.RowCount ==1)
             {
                 qualityTable.Columns[0].HeaderText = "ID";
 
@@ -484,7 +493,7 @@ namespace BD_course_work
             {
                 imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
 
-                if (imagesTable.RowCount != 0)
+                if (imagesTable.RowCount == 1)
                 {
                     imagesTable.Columns[0].HeaderText = "ID";
 
@@ -500,6 +509,19 @@ namespace BD_course_work
             addToPeopleTable("owners");
 
             ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+
+            if (ownersTable.RowCount == 1)
+            {
+                ownersTable.Columns[0].HeaderText = "ID";
+
+                ownersTable.Columns[1].HeaderText = "Имя";
+
+                ownersTable.Columns[2].HeaderText = "Фамилия";
+
+                ownersTable.Columns[3].HeaderText = "Отчество";
+            }
+
+            label5.Text = strAmount + ownersTable.RowCount;
         }
 
         private void button6_Click(object sender, EventArgs e)//Добавление режиссера
@@ -507,6 +529,19 @@ namespace BD_course_work
             addToPeopleTable("producers");
 
             producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
+
+            if (producersTable.RowCount == 1)
+            {
+                producersTable.Columns[0].HeaderText = "ID";
+
+                producersTable.Columns[1].HeaderText = "Имя";
+
+                producersTable.Columns[2].HeaderText = "Фамилия";
+
+                producersTable.Columns[3].HeaderText = "Отчество";
+            }
+
+            label4.Text = strAmount + producersTable.RowCount;
         }
 
         private void button30_Click(object sender, EventArgs e)//Добавление видеопроката
@@ -514,6 +549,37 @@ namespace BD_course_work
             inserOrUpdatetIntoVideoRental(0);
 
             videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
+
+            if (videoTable.RowCount == 1)
+            {
+                videoTable.Columns[0].HeaderText = "ID";
+
+                videoTable.Columns[1].HeaderText = "Название видеопроката";
+
+                videoTable.Columns[2].HeaderText = "Район";
+
+                videoTable.Columns[3].HeaderText = "Адрес";
+
+                videoTable.Columns[4].HeaderText = "Тип собственности";
+
+                videoTable.Columns[5].HeaderText = "Телефон";
+
+                videoTable.Columns[6].HeaderText = "№ Лицензии";
+
+                videoTable.Columns[7].HeaderText = "Начало работы";
+
+                videoTable.Columns[8].HeaderText = "Конец работы";
+
+                videoTable.Columns[9].HeaderText = "Количество работников";
+
+                videoTable.Columns[10].HeaderText = "Фамилия хозяина";
+
+                videoTable.Columns[11].HeaderText = "Имя хозяина";
+
+                videoTable.Columns[12].HeaderText = "Отчество хозяина";
+            }
+
+            label12.Text = strAmount + videoTable.RowCount;
         }
 
         private void button3_Click(object sender, EventArgs e)//Добавление студии
@@ -521,6 +587,16 @@ namespace BD_course_work
             insertOrUpdateIntoStudios(0);
 
             studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
+
+            if (studiosTable.RowCount == 1)
+            {
+                studiosTable.Columns[0].HeaderText = "ID";
+
+                studiosTable.Columns[1].HeaderText = "Студия";
+
+                studiosTable.Columns[2].HeaderText = "Страна";
+            }
+            label3.Text = strAmount + studiosTable.RowCount;
         }
 
         private void button21_Click(object sender, EventArgs e)//Добавление фильма
@@ -528,6 +604,29 @@ namespace BD_course_work
             insertOrUpdateIntoFilms(0);
 
             filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
+
+            if (filmsTable.RowCount == 1)
+            {
+                filmsTable.Columns[0].HeaderText = "ID";
+
+                filmsTable.Columns[1].HeaderText = "Название";
+
+                filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
+
+                filmsTable.Columns[3].HeaderText = "Имя режиссера";
+
+                filmsTable.Columns[4].HeaderText = "Отчество режиссера";
+
+                filmsTable.Columns[5].HeaderText = "Студия";
+
+                filmsTable.Columns[6].HeaderText = "Год выпуска";
+
+                filmsTable.Columns[7].HeaderText = "Продолжительность";
+
+                filmsTable.Columns[8].HeaderText = "Информация";
+            }
+
+            label9.Text = strAmount + filmsTable.RowCount;
         }
 
         private void button24_Click(object sender, EventArgs e)//Добавление кассеты
@@ -535,6 +634,23 @@ namespace BD_course_work
             insertOrUpdateIntoCassettes(0);
 
             cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+
+            if (cassettesTable.RowCount == 1)
+            {
+                cassettesTable.Columns[0].HeaderText = "ID";
+
+                cassettesTable.Columns[1].HeaderText = "Качество кассеты";
+
+                cassettesTable.Columns[2].HeaderText = "Фото";
+
+                cassettesTable.Columns[3].HeaderText = "Цена кассеты";
+
+                cassettesTable.Columns[4].HeaderText = "Спрос";
+
+                cassettesTable.Columns[5].HeaderText = "Фильм";
+            }
+
+            label10.Text = strAmount + cassettesTable.RowCount;
         }
 
         private void button42_Click(object sender, EventArgs e)
@@ -543,7 +659,7 @@ namespace BD_course_work
 
             servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
 
-            if (servpriceTable.RowCount != 0)
+            if (servpriceTable.RowCount ==1)
             {
                 servpriceTable.Columns[0].HeaderText = "ID";
 
@@ -562,6 +678,27 @@ namespace BD_course_work
             insertOrUpdateIntoDeals(0);
 
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
+
+            if (ordersTable.RowCount ==1)
+            {
+                ordersTable.Columns[0].HeaderText = "ID";
+
+                ordersTable.Columns[1].HeaderText = "Видеопрокат";
+
+                ordersTable.Columns[2].HeaderText = "ID кассеты";
+
+                ordersTable.Columns[3].HeaderText = "Фильм";
+
+                ordersTable.Columns[4].HeaderText = "Квитанция";
+
+                ordersTable.Columns[5].HeaderText = "Дата заказа";
+
+                ordersTable.Columns[6].HeaderText = "Услуга";
+
+                ordersTable.Columns[7].HeaderText = "Цена";
+            }
+
+            label11.Text = strAmount + ordersTable.RowCount;
         }
 
         public static string path;
@@ -604,11 +741,16 @@ namespace BD_course_work
 
             if (add.fam.Text != String.Empty && add.name.Text != String.Empty && !add.isCanceled && add.isEnabled)
             {
-                ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text, 0);
+                if(ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.fam.Text, add.name.Text, add.patronymic.Text, 0))
+                {
+                    ControllerForDB.selectAllFromMainTables(t);
 
-                ControllerForDB.selectAllFromMainTables(t);
-
-                MessageBox.Show("Строка успешно добавлена.", "Оповещение");
+                    MessageBox.Show("Строка успешно добавлена.", "Оповещение");
+                }
+                else
+                {
+                    MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -1102,7 +1244,7 @@ namespace BD_course_work
                     }
                     else
                     {
-                        MessageBox.Show("Такая строка уже существует.", "Оповещение");
+                        MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -1263,7 +1405,7 @@ namespace BD_course_work
                             return;
                         }
 
-                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                        MessageBox.Show("Такая строка уже существует.", "Оповещение",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
                     }
                 }
@@ -1725,8 +1867,6 @@ namespace BD_course_work
                     if (del.isDeleteValue)
                     {
                         deleteByValue("cassette_quality", "quality_name");
-
-                        qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -1755,11 +1895,13 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
                 }
                 else
                 {
                     MessageBox.Show("Таблица пуста.", "Оповещение");
                 }
+
                 label13.Text = "Количество полей:" + qualityTable.RowCount;
             }
 
@@ -1779,10 +1921,7 @@ namespace BD_course_work
                 {
                     if (del.isDeleteStr)
                     {
-                        if (deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id"))
-                        {
-                            servpriceTable.Rows.Remove(servpriceTable.SelectedRows[0]);
-                        }
+                        deleteRowById((int)servpriceTable.SelectedRows[0].Cells[0].Value, "services_prices", "pk_service_price_id");
                     }
                     if (del.isDeleteManyStr)
                     {
@@ -1819,8 +1958,6 @@ namespace BD_course_work
                     if (del.isDeleteValue)
                     {
                         deleteByValue("services_prices", "pk_service_price_id");
-
-                        servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -1849,6 +1986,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
                 }
                 else
                 {
@@ -1874,13 +2012,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)countriesTable.SelectedRows[0].Cells[0].Value, "countries", "pk_country_id");
-
-                        countriesTable.Rows.Remove(countriesTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (countriesTable.RowCount != 0)
-                        {
                             int i = countriesTable.RowCount;
 
                             int N = countriesTable.RowCount;
@@ -1911,18 +2045,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("countries", "country_name");
-
-                        countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -1951,11 +2077,13 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
                 }
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+
                 label2.Text = "Количество полей:" + countriesTable.RowCount;
             }
         }
@@ -1975,13 +2103,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)studiosTable.SelectedRows[0].Cells[0].Value, "studios", "pk_studio_id");
-
-                        studiosTable.Rows.Remove(studiosTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (studiosTable.RowCount != 0)
-                        {
                             int i = studiosTable.RowCount;
 
                             int N = studiosTable.RowCount;
@@ -2012,18 +2136,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("studios", "studio_name");
-
-                        studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2052,6 +2168,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
                 }
                 else
                 {
@@ -2076,13 +2193,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)producersTable.SelectedRows[0].Cells[0].Value, "producers", "pk_producer_id");
-
-                        producersTable.Rows.Remove(producersTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (producersTable.RowCount != 0)
-                        {
                             int i = producersTable.RowCount;
 
                             int N = producersTable.RowCount;
@@ -2098,7 +2211,6 @@ namespace BD_course_work
                                         MessageBox.Show("Удаление начинается.", "Оповещение");
                                     }
                                     count++;
-                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
                                 i--;
                             }
@@ -2113,18 +2225,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("producers", "studio_name");//ДОДУМАТЬ КАК!
-
-                        producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2153,6 +2257,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
                 }
                 else
                 {
@@ -2177,13 +2282,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)ownersTable.SelectedRows[0].Cells[0].Value, "owners", "pk_owner_id");
-
-                        ownersTable.Rows.Remove(ownersTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (ownersTable.RowCount != 0)
-                        {
                             int i = ownersTable.RowCount;
 
                             int N = ownersTable.RowCount;
@@ -2213,18 +2314,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("owners", "studio_name");//ДОДУМАТЬ КАК!
-
-                        ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2253,6 +2346,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
                 }
                 else
                 {
@@ -2277,13 +2371,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services_view", "pk_service_id");
-
-                        servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (servicesTable.RowCount != 0)
-                        {
                             int i = servicesTable.RowCount;
 
                             int N = servicesTable.RowCount;
@@ -2313,18 +2403,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("services", "service_name");
-
-                        servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2353,6 +2435,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
                 }
                 else
                 {
@@ -2377,13 +2460,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)propertyTable.SelectedRows[0].Cells[0].Value, "property_type", "pk_property_type_id");
-
-                        propertyTable.Rows.Remove(propertyTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (propertyTable.RowCount != 0)
-                        {
                             int i = propertyTable.RowCount;
 
                             int N = propertyTable.RowCount;
@@ -2413,18 +2492,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("property_type", "property_type_name");
-
-                        propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2453,6 +2524,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
                 }
                 else
                 {
@@ -2477,13 +2549,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)districtsTable.SelectedRows[0].Cells[0].Value, "district", "pk_district_id");
-
-                        districtsTable.Rows.Remove(districtsTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (districtsTable.RowCount != 0)
-                        {
                             int i = districtsTable.RowCount;
 
                             int N = districtsTable.RowCount;
@@ -2513,18 +2581,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("district", "district_name");
-
-                        districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2553,6 +2613,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
                 }
                 else
                 {
@@ -2577,13 +2638,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)filmsTable.SelectedRows[0].Cells[0].Value, "films", "pk_film_id");
-
-                        filmsTable.Rows.Remove(filmsTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (filmsTable.RowCount != 0)
-                        {
                             int i = filmsTable.RowCount;
 
                             int N = filmsTable.RowCount;
@@ -2613,18 +2670,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("films", "film_name");
-
-                        filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2653,6 +2702,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
                 }
                 else
                 {
@@ -2677,13 +2727,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById(int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()), "cassettes", "pk_cassette_id");//ПЕРЕДЕЛАТЬ!
-
-                        cassettesTable.Rows.Remove(cassettesTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (cassettesTable.RowCount != 0)
-                        {
                             int i = cassettesTable.RowCount;
 
                             int N = cassettesTable.RowCount;
@@ -2712,18 +2758,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("cassettes", "pk_cassette_id");
-
-                        cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2752,6 +2790,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
                 }
                 else
                 {
@@ -2776,13 +2815,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)ordersTable.SelectedRows[0].Cells[0].Value, "deals", "pk_deal_id");
-
-                        ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (ordersTable.RowCount != 0)
-                        {
                             int i = ordersTable.RowCount;
 
                             int N = ordersTable.RowCount;
@@ -2798,7 +2833,6 @@ namespace BD_course_work
                                         MessageBox.Show("Удаление начинается.", "Оповещение");
                                     }
                                     count++;
-                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
                                 i--;
                             }
@@ -2813,18 +2847,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("deals", "pk_deal_id");
-
-                        ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2853,6 +2879,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
                 }
                 else
                 {
@@ -2877,13 +2904,9 @@ namespace BD_course_work
                     if (del.isDeleteStr)
                     {
                         deleteRowById((int)videoTable.SelectedRows[0].Cells[0].Value, "video_rental", "pk_video_rental_id");
-
-                        videoTable.Rows.Remove(videoTable.SelectedRows[0]);
                     }
                     if (del.isDeleteManyStr)
                     {
-                        if (videoTable.RowCount != 0)
-                        {
                             int i = videoTable.RowCount;
 
                             int N = videoTable.RowCount;
@@ -2912,18 +2935,10 @@ namespace BD_course_work
                             {
                                 MessageBox.Show($"Строки успешно удалены.", "Оповещение");
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Таблица пуста.", "Оповещение");
-                            return;
-                        }
                     }
                     if (del.isDeleteValue)
                     {
                         deleteByValue("video_rental", "video_caption");
-
-                        videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
                     }
                     if (del.isDeleteSelectedRows)
                     {
@@ -2952,6 +2967,7 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
                 }
                 else
                 {
@@ -2994,7 +3010,6 @@ namespace BD_course_work
                                         MessageBox.Show("Удаление начинается.", "Оповещение");
                                     }
                                     count++;
-                                    //ordersTable.Rows.Remove(ordersTable.SelectedRows[0]);
                                 }
                                 i--;
                             }
@@ -3042,12 +3057,12 @@ namespace BD_course_work
                             return;
                         }
                     }
+                    imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
                 }
                 else
                 {
                     MessageBox.Show("Таблица пуста.", "Оповещение");
                 }
-                imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
 
                 label14.Text = "Количество полей:" + imagesTable.RowCount;
             }
@@ -3057,6 +3072,8 @@ namespace BD_course_work
         public void deleteByValue(string table, string what_change)
         {
             deleteByValue del = new deleteByValue();
+
+            AddOrEditThreeColumns add = new AddOrEditThreeColumns();
 
             switch (table)
             {
@@ -3105,8 +3122,8 @@ namespace BD_course_work
                 case "owners":
                 case "producers":
                     {
-                        del.GB.Text = "Введите ФИО(через пробел)";
-                        del.mainL1.Text = "ФИО";
+                        add.mainL2.Text = "Удаление по значению";
+                        add.button1.Text = "Удалить";
                         break;
                     }
                 case "property_type":
@@ -3141,25 +3158,49 @@ namespace BD_course_work
                     }
             }
         del:
-
-            del.ShowDialog();
-
-            if (!del.isCanceled && del.isEnabled && del.valueTB.Text != String.Empty)
+            if(table.Equals("producers")|| table.Equals("owners"))
             {
-                if (ControllerForDB.deleteByValue(del.valueTB.Text, table, what_change))
+                add.ShowDialog();
+
+                if (!add.isCanceled && add.isEnabled && add.fam.Text != String.Empty&& add.name.Text != String.Empty)
                 {
-                    MessageBox.Show($"Строка со значением \"{del.valueTB.Text}\" удалена из таблицы.", "Оповещение");
+                    if (ControllerForDB.deleteByValue(add.name.Text, table, what_change,add.fam.Text,add.patronymic.Text))
+                    {
+                        MessageBox.Show($"Строка удалена из таблицы.", "Оповещение");
+                    }
+                }
+                else
+                {
+                    if (del.isEnabled)
+                    {
+                        MessageBox.Show("Вы не ввели фамилию или имя.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        goto del;
+                    }
+                    return;
                 }
             }
             else
             {
-                if (del.isEnabled)
+                del.ShowDialog();
+
+                if (!del.isCanceled && del.isEnabled && del.valueTB.Text != String.Empty)
                 {
-                    MessageBox.Show("Вы не ввели значение.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    goto del;
+                    if (ControllerForDB.deleteByValue(del.valueTB.Text, table, what_change))
+                    {
+                        MessageBox.Show($"Строка со значением \"{del.valueTB.Text}\" удалена из таблицы.", "Оповещение");
+                    }
                 }
-                return;
+                else
+                {
+                    if (del.isEnabled)
+                    {
+                        MessageBox.Show("Вы не ввели значение.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        goto del;
+                    }
+                    return;
+                }
             }
+            
         }
 
         public bool deleteRowById(int index, string table, string id_value)//Функция удаления с выводом информации
@@ -4032,6 +4073,70 @@ namespace BD_course_work
                 }
             }
             label14.Text = strAmount + imagesTable.RowCount;
+        }
+
+        private void button65_Click(object sender, EventArgs e)//Генерация "Студия"
+        {
+            if (studiosTable.RowCount == 0)
+            {
+                ControllerForDB.generateStudios();
+
+                studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
+
+                if (studiosTable.RowCount !=0)
+                {
+                    studiosTable.Columns[0].HeaderText = "ID";
+
+                    studiosTable.Columns[1].HeaderText = "Студия";
+
+                    studiosTable.Columns[2].HeaderText = "Страна";
+                }
+            }
+            label3.Text = strAmount + studiosTable.RowCount;
+        }
+
+        private void button66_Click(object sender, EventArgs e)//Генерация "Режиссеры"
+        {
+            if (producersTable.RowCount==0)
+            {
+                ControllerForDB.generatePeople(0, 20);
+
+                producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
+
+                if (producersTable.RowCount != 0)
+                {
+                    producersTable.Columns[0].HeaderText = "ID";
+
+                    producersTable.Columns[1].HeaderText = "Имя";
+
+                    producersTable.Columns[2].HeaderText = "Фамилия";
+
+                    producersTable.Columns[3].HeaderText = "Отчество";
+                }
+            }
+            label4.Text = strAmount + producersTable.RowCount;
+        }
+
+        private void button67_Click(object sender, EventArgs e)
+        {
+            if (ownersTable.RowCount == 0)
+            {
+                ControllerForDB.generatePeople(1, 20);
+
+                ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+
+                if (ownersTable.RowCount == 1)
+                {
+                    ownersTable.Columns[0].HeaderText = "ID";
+
+                    ownersTable.Columns[1].HeaderText = "Имя";
+
+                    ownersTable.Columns[2].HeaderText = "Фамилия";
+
+                    ownersTable.Columns[3].HeaderText = "Отчество";
+                }
+            }
+            label5.Text = strAmount + ownersTable.RowCount;
         }
     }
 }

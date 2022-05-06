@@ -160,6 +160,9 @@
             this.tables = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button64 = new System.Windows.Forms.Button();
+            this.button65 = new System.Windows.Forms.Button();
+            this.button66 = new System.Windows.Forms.Button();
+            this.button67 = new System.Windows.Forms.Button();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -964,6 +967,7 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button67);
             this.tabPage7.Controls.Add(this.button52);
             this.tabPage7.Controls.Add(this.label5);
             this.tabPage7.Controls.Add(this.ownersTable);
@@ -1061,6 +1065,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.button66);
             this.tabPage8.Controls.Add(this.button44);
             this.tabPage8.Controls.Add(this.label4);
             this.tabPage8.Controls.Add(this.producersTable);
@@ -1158,6 +1163,7 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.button65);
             this.tabPage9.Controls.Add(this.button43);
             this.tabPage9.Controls.Add(this.studiosTable);
             this.tabPage9.Controls.Add(this.label3);
@@ -2046,6 +2052,51 @@
             this.button64.UseVisualStyleBackColor = false;
             this.button64.Click += new System.EventHandler(this.button64_Click);
             // 
+            // button65
+            // 
+            this.button65.BackColor = System.Drawing.Color.White;
+            this.button65.FlatAppearance.BorderSize = 0;
+            this.button65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button65.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button65.Image = ((System.Drawing.Image)(resources.GetObject("button65.Image")));
+            this.button65.Location = new System.Drawing.Point(666, 3);
+            this.button65.Name = "button65";
+            this.button65.Size = new System.Drawing.Size(44, 38);
+            this.button65.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.button65, "Генерация");
+            this.button65.UseVisualStyleBackColor = false;
+            this.button65.Click += new System.EventHandler(this.button65_Click);
+            // 
+            // button66
+            // 
+            this.button66.BackColor = System.Drawing.Color.White;
+            this.button66.FlatAppearance.BorderSize = 0;
+            this.button66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button66.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button66.Image = ((System.Drawing.Image)(resources.GetObject("button66.Image")));
+            this.button66.Location = new System.Drawing.Point(664, 3);
+            this.button66.Name = "button66";
+            this.button66.Size = new System.Drawing.Size(44, 38);
+            this.button66.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.button66, "Генерация");
+            this.button66.UseVisualStyleBackColor = false;
+            this.button66.Click += new System.EventHandler(this.button66_Click);
+            // 
+            // button67
+            // 
+            this.button67.BackColor = System.Drawing.Color.White;
+            this.button67.FlatAppearance.BorderSize = 0;
+            this.button67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button67.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button67.Image = ((System.Drawing.Image)(resources.GetObject("button67.Image")));
+            this.button67.Location = new System.Drawing.Point(652, 3);
+            this.button67.Name = "button67";
+            this.button67.Size = new System.Drawing.Size(44, 38);
+            this.button67.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.button67, "Генерация");
+            this.button67.UseVisualStyleBackColor = false;
+            this.button67.Click += new System.EventHandler(this.button67_Click);
+            // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2241,6 +2292,9 @@
         private System.Windows.Forms.Button button62;
         private System.Windows.Forms.Button button63;
         private System.Windows.Forms.Button button64;
+        private System.Windows.Forms.Button button65;
+        private System.Windows.Forms.Button button66;
+        private System.Windows.Forms.Button button67;
     }
 }
 
