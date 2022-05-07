@@ -784,7 +784,7 @@ namespace BD_course_work
                     }
                 case "property_type":
                     {
-                        add.mainL1.Text = "Добавить тип \nсобственности";
+                        add.mainL1.Text = "Добавить тип собственности";
                         add.groupBox1.Text = "Тип собственности";
                         break;
                     }
@@ -842,6 +842,8 @@ namespace BD_course_work
                 UpdateDirectT("cassette_quality", (int)qualityTable.SelectedRows[0].Cells[0].Value, (string)qualityTable.SelectedRows[0].Cells[1].Value);
 
                 qualityTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_quality");
+
+                label13.Text = strAmount + qualityTable.RowCount;
             }
             else
             {
@@ -857,6 +859,8 @@ namespace BD_course_work
                 servpriceTable.SelectedRows[0].Cells[1].Value.ToString(), servpriceTable.SelectedRows[0].Cells[3].Value.ToString());
 
                 servpriceTable.DataSource = ControllerForDB.selectAllFromMainTables("services_prices");
+
+                label15.Text = "Количество полей:" + servpriceTable.RowCount;
             }
             else
             {
@@ -871,6 +875,8 @@ namespace BD_course_work
                 UpdateDirectT("countries", (int)countriesTable.SelectedRows[0].Cells[0].Value, (string)countriesTable.SelectedRows[0].Cells[1].Value);
 
                 countriesTable.DataSource = ControllerForDB.selectAllFromMainTables("countries");
+
+                label2.Text = strAmount + countriesTable.RowCount;
             }
             else
             {
@@ -885,6 +891,8 @@ namespace BD_course_work
                 UpdateDirectT("services", (int)servicesTable.SelectedRows[0].Cells[0].Value, (string)servicesTable.SelectedRows[0].Cells[1].Value);
 
                 servicesTable.DataSource = ControllerForDB.selectAllFromMainTables("services");
+
+                label6.Text = strAmount + servicesTable.RowCount;
             }
             else
             {
@@ -899,6 +907,8 @@ namespace BD_course_work
                 UpdateDirectT("property_type", (int)propertyTable.SelectedRows[0].Cells[0].Value, (string)propertyTable.SelectedRows[0].Cells[1].Value);
 
                 propertyTable.DataSource = ControllerForDB.selectAllFromMainTables("property_type");
+
+                label7.Text = strAmount + propertyTable.RowCount;
             }
             else
             {
@@ -913,7 +923,9 @@ namespace BD_course_work
             {
                 UpdateDirectT("district", (int)districtsTable.SelectedRows[0].Cells[0].Value, (string)districtsTable.SelectedRows[0].Cells[1].Value);
 
-                districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("districts");
+                districtsTable.DataSource = ControllerForDB.selectAllFromMainTables("district");
+
+                label8.Text = strAmount + districtsTable.RowCount;
             }
             else
             {
@@ -928,6 +940,8 @@ namespace BD_course_work
                 updatePhotoIntoTable();
 
                 imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
+
+                label14.Text = strAmount + imagesTable.RowCount;
             }
             else
             {
@@ -943,6 +957,8 @@ namespace BD_course_work
                 (string)producersTable.SelectedRows[0].Cells[3].Value);
 
                 producersTable.DataSource = ControllerForDB.selectAllFromMainTables("producers");
+                
+                label4.Text = strAmount + producersTable.RowCount;
             }
             else
             {
@@ -958,6 +974,8 @@ namespace BD_course_work
                 ownersTable.SelectedRows[0].Cells[3].Value == DBNull.Value ? null : (string)ownersTable.SelectedRows[0].Cells[3].Value);
 
                 ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
+
+                label5.Text = strAmount + ownersTable.RowCount;
             }
             else
             {
@@ -974,6 +992,8 @@ namespace BD_course_work
                 videoTable.SelectedRows[0].Cells[7].Value.ToString(), (string)videoTable.SelectedRows[0].Cells[9].Value.ToString(), ((string)videoTable.SelectedRows[0].Cells[10].Value + " " + (string)(videoTable.SelectedRows[0].Cells[11].Value) + " " + (string)(videoTable.SelectedRows[0].Cells[12].Value)));
 
                 videoTable.DataSource = ControllerForDB.selectAllFromMainTables("video_rental");
+
+                label12.Text = strAmount + videoTable.RowCount;
             }
             else
             {
@@ -989,6 +1009,8 @@ namespace BD_course_work
                 (int)studiosTable.SelectedRows[0].Cells[0].Value);
 
                 studiosTable.DataSource = ControllerForDB.selectAllFromMainTables("studios");
+
+                label3.Text = strAmount + studiosTable.RowCount;
             }
             else
             {
@@ -1004,6 +1026,8 @@ namespace BD_course_work
                 filmsTable.SelectedRows[0].Cells[5].Value.ToString(), filmsTable.SelectedRows[0].Cells[6].Value.ToString(), filmsTable.SelectedRows[0].Cells[7].Value.ToString(), filmsTable.SelectedRows[0].Cells[8].Value.ToString());
 
                 filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
+
+                label9.Text = strAmount + filmsTable.RowCount;
             }
             else
             {
@@ -1022,6 +1046,8 @@ namespace BD_course_work
                                                cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
 
                 cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
+
+                label10.Text = strAmount + cassettesTable.RowCount;
             }
             else
             {
@@ -1038,6 +1064,8 @@ namespace BD_course_work
                    float.Parse(ordersTable.SelectedRows[0].Cells[7].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
 
                 ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
+
+                label11.Text = strAmount + ordersTable.RowCount;
             }
             else
             {
@@ -1067,7 +1095,7 @@ namespace BD_course_work
                     return;
                 }
 
-                MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1129,7 +1157,7 @@ namespace BD_course_work
                         return;
                     }
 
-                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -1150,12 +1178,13 @@ namespace BD_course_work
             add.mainL2.Text = t == "owners" ? "Редактировать хозяина" : "Редактировать режиссера";
 
             add.clean();
+            
 
         m1:
 
-            add.fam.Text = l;
+            add.fam.Text = f;
 
-            add.name.Text = f;
+            add.name.Text = l;
 
             add.patronymic.Text = patr;
 
@@ -1163,7 +1192,7 @@ namespace BD_course_work
 
             if (add.fam.Text != String.Empty && add.name.Text != String.Empty && !add.isCanceled && add.isEnabled)
             {
-                if (ControllerForDB.insertOrUpdateIntoPeopleTable(t, add.name.Text, add.fam.Text, add.patronymic.Text, 1, t.Equals("owners") ? (int)ownersTable.SelectedRows[0].Cells[0].Value : (int)producersTable.SelectedRows[0].Cells[0].Value))
+                if (ControllerForDB.insertOrUpdateIntoPeopleTable(t,  add.fam.Text, add.name.Text, add.patronymic.Text, 1, t.Equals("owners") ? (int)ownersTable.SelectedRows[0].Cells[0].Value : (int)producersTable.SelectedRows[0].Cells[0].Value))
                 {
                     MessageBox.Show("Строка обновлена.", "Оповещение");
                 }
@@ -1173,8 +1202,7 @@ namespace BD_course_work
                     {
                         return;
                     }
-
-                    MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                    MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -1259,8 +1287,6 @@ namespace BD_course_work
                         {
                             return;
                         }
-
-                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
                     }
                 }
             }
@@ -1590,9 +1616,18 @@ namespace BD_course_work
 
                     goto m1;
                 }
-                if (add.duration.Text == String.Empty || int.Parse(add.duration.Text) < 15 || int.Parse(add.duration.Text) > 1000)
+                try
                 {
-                    MessageBox.Show("Вы не ввели продолжительность фильма или ввели некорректно. Продолжительность должна быть не менее 15 и не более 1000.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (add.duration.Text == String.Empty || int.Parse(add.duration.Text) < 15 || int.Parse(add.duration.Text) > 1000)
+                    {
+                        MessageBox.Show("Вы не ввели продолжительность фильма или ввели некорректно. Продолжительность должна быть не менее 15 и не более 1000.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        goto m1;
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Некорректный ввод продолжительности.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     goto m1;
                 }
@@ -1610,7 +1645,7 @@ namespace BD_course_work
                             return;
                         }
 
-                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                        MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
                 }
@@ -1901,7 +1936,12 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.", "Оповещение");
                 }
+                if (qualityTable.RowCount !=0)
+                {
+                    qualityTable.Columns[0].HeaderText = "ID";
 
+                    qualityTable.Columns[1].HeaderText = "Качество";
+                }
                 label13.Text = "Количество полей:" + qualityTable.RowCount;
             }
 
@@ -1992,7 +2032,16 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (servpriceTable.RowCount !=0)
+                {
+                    servpriceTable.Columns[0].HeaderText = "ID";
 
+                    servpriceTable.Columns[1].HeaderText = "Видеопрокат";
+
+                    servpriceTable.Columns[2].HeaderText = "Услуга";
+
+                    servpriceTable.Columns[3].HeaderText = "Цена";
+                }
                 label15.Text = "Количество полей:" + servpriceTable.RowCount;
             }
         }
@@ -2083,7 +2132,12 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (countriesTable.RowCount!=0)
+                {
+                    countriesTable.Columns[0].HeaderText = "ID";
 
+                    countriesTable.Columns[1].HeaderText = "Страна";
+                }
                 label2.Text = "Количество полей:" + countriesTable.RowCount;
             }
         }
@@ -2174,6 +2228,14 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (studiosTable.RowCount !=0)
+                {
+                    studiosTable.Columns[0].HeaderText = "ID";
+
+                    studiosTable.Columns[1].HeaderText = "Студия";
+
+                    studiosTable.Columns[2].HeaderText = "Страна";
+                }
                 label3.Text = "Количество полей:" + studiosTable.RowCount;
             }
         }
@@ -2262,6 +2324,16 @@ namespace BD_course_work
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                if (producersTable.RowCount !=0)
+                {
+                    producersTable.Columns[0].HeaderText = "ID";
+
+                    producersTable.Columns[1].HeaderText = "Имя";
+
+                    producersTable.Columns[2].HeaderText = "Фамилия";
+
+                    producersTable.Columns[3].HeaderText = "Отчество";
                 }
                 label4.Text = "Количество полей:" + producersTable.RowCount;
             }
@@ -2352,6 +2424,16 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (ownersTable.RowCount !=0)
+                {
+                    ownersTable.Columns[0].HeaderText = "ID";
+
+                    ownersTable.Columns[1].HeaderText = "Имя";
+
+                    ownersTable.Columns[2].HeaderText = "Фамилия";
+
+                    ownersTable.Columns[3].HeaderText = "Отчество";
+                }
                 label5.Text = "Количество полей:" + ownersTable.RowCount;
             }
         }
@@ -2382,7 +2464,7 @@ namespace BD_course_work
 
                             while (i != 0)
                             {
-                                if (deleteRowsById((int)servicesTable.Rows[(i - 1)].Cells[0].Value, "services_view", "pk_service_id", i == N ? true : false))
+                                if (deleteRowsById((int)servicesTable.Rows[(i-1)].Cells[0].Value, "services_view", "pk_service_id", i == N ? true : false))
                                 {
                                     if (count == 0)
                                     {
@@ -2418,7 +2500,7 @@ namespace BD_course_work
 
                             while (i != 0)
                             {
-                                if (deleteRowsById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services", "pk_service_id", i == N ? true : false))
+                                if (deleteRowsById((int)servicesTable.SelectedRows[0].Cells[0].Value, "services_view", "pk_service_id", i == N ? true : false))
                                 {
                                     servicesTable.Rows.Remove(servicesTable.SelectedRows[0]);
                                 }
@@ -2440,6 +2522,12 @@ namespace BD_course_work
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                if (servicesTable.RowCount !=0)
+                {
+                    servicesTable.Columns[0].HeaderText = "ID";
+
+                    servicesTable.Columns[1].HeaderText = "Услуга";
                 }
                 label6.Text = "Количество полей:" + servicesTable.RowCount;
             }
@@ -2530,6 +2618,12 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (propertyTable.RowCount !=0)
+                {
+                    propertyTable.Columns[0].HeaderText = "ID";
+
+                    propertyTable.Columns[1].HeaderText = "Тип собственности";
+                }
                 label7.Text = "Количество полей:" + propertyTable.RowCount;
             }
         }
@@ -2618,6 +2712,12 @@ namespace BD_course_work
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                if (districtsTable.RowCount !=0)
+                {
+                    districtsTable.Columns[0].HeaderText = "ID";
+
+                    districtsTable.Columns[1].HeaderText = "Район";
                 }
                 label8.Text = "Количество полей:" + districtsTable.RowCount;
             }
@@ -2708,6 +2808,26 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (filmsTable.RowCount !=0)
+                {
+                    filmsTable.Columns[0].HeaderText = "ID";
+
+                    filmsTable.Columns[1].HeaderText = "Название";
+
+                    filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
+
+                    filmsTable.Columns[3].HeaderText = "Имя режиссера";
+
+                    filmsTable.Columns[4].HeaderText = "Отчество режиссера";
+
+                    filmsTable.Columns[5].HeaderText = "Студия";
+
+                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+
+                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+
+                    filmsTable.Columns[8].HeaderText = "Информация";
+                }
                 label9.Text = "Количество полей:" + filmsTable.RowCount;
             }
         }
@@ -2795,6 +2915,20 @@ namespace BD_course_work
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                if (cassettesTable.RowCount!=0)
+                {
+                    cassettesTable.Columns[0].HeaderText = "ID";
+
+                    cassettesTable.Columns[1].HeaderText = "Качество кассеты";
+
+                    cassettesTable.Columns[2].HeaderText = "Фото";
+
+                    cassettesTable.Columns[3].HeaderText = "Цена кассеты";
+
+                    cassettesTable.Columns[4].HeaderText = "Спрос";
+
+                    cassettesTable.Columns[5].HeaderText = "Фильм";
                 }
                 label10.Text = "Количество полей:" + cassettesTable.RowCount;
             }
@@ -2885,6 +3019,24 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
                 }
+                if (ordersTable.RowCount !=0)
+                {
+                    ordersTable.Columns[0].HeaderText = "ID";
+
+                    ordersTable.Columns[1].HeaderText = "Видеопрокат";
+
+                    ordersTable.Columns[2].HeaderText = "ID кассеты";
+
+                    ordersTable.Columns[3].HeaderText = "Фильм";
+
+                    ordersTable.Columns[4].HeaderText = "Квитанция";
+
+                    ordersTable.Columns[5].HeaderText = "Дата заказа";
+
+                    ordersTable.Columns[6].HeaderText = "Услуга";
+
+                    ordersTable.Columns[7].HeaderText = "Цена";
+                }
                 label11.Text = "Количество полей:" + ordersTable.RowCount;
             }
         }
@@ -2972,6 +3124,34 @@ namespace BD_course_work
                 else
                 {
                     MessageBox.Show("Таблица пуста.Нечего удалять.", "Оповещение");
+                }
+                if (videoTable.RowCount!=0)
+                {
+                    videoTable.Columns[0].HeaderText = "ID";
+
+                    videoTable.Columns[1].HeaderText = "Название видеопроката";
+
+                    videoTable.Columns[2].HeaderText = "Район";
+
+                    videoTable.Columns[3].HeaderText = "Адрес";
+
+                    videoTable.Columns[4].HeaderText = "Тип собственности";
+
+                    videoTable.Columns[5].HeaderText = "Телефон";
+
+                    videoTable.Columns[6].HeaderText = "№ Лицензии";
+
+                    videoTable.Columns[7].HeaderText = "Начало работы";
+
+                    videoTable.Columns[8].HeaderText = "Конец работы";
+
+                    videoTable.Columns[9].HeaderText = "Количество работников";
+
+                    videoTable.Columns[10].HeaderText = "Фамилия хозяина";
+
+                    videoTable.Columns[11].HeaderText = "Имя хозяина";
+
+                    videoTable.Columns[12].HeaderText = "Отчество хозяина";
                 }
                 label12.Text = "Количество полей:" + videoTable.RowCount;
             }
@@ -3063,7 +3243,12 @@ namespace BD_course_work
                 {
                     MessageBox.Show("Таблица пуста.", "Оповещение");
                 }
+                if (imagesTable.RowCount !=0)
+                {
+                    imagesTable.Columns[0].HeaderText = "ID";
 
+                    imagesTable.Columns[1].HeaderText = "Фото";
+                }
                 label14.Text = "Количество полей:" + imagesTable.RowCount;
             }
 
@@ -3166,7 +3351,7 @@ namespace BD_course_work
                 {
                     if (ControllerForDB.deleteByValue(add.name.Text, table, what_change,add.fam.Text,add.patronymic.Text))
                     {
-                        MessageBox.Show($"Строка удалена из таблицы.", "Оповещение");
+                            MessageBox.Show($"Строка удалена из таблицы.", "Оповещение");
                     }
                 }
                 else
@@ -3187,7 +3372,10 @@ namespace BD_course_work
                 {
                     if (ControllerForDB.deleteByValue(del.valueTB.Text, table, what_change))
                     {
-                        MessageBox.Show($"Строка со значением \"{del.valueTB.Text}\" удалена из таблицы.", "Оповещение");
+                        if (table != "films")
+                        {
+                            MessageBox.Show($"Строка со значением \"{del.valueTB.Text}\" удалена из таблицы.", "Оповещение");
+                        }
                     }
                 }
                 else
@@ -4125,7 +4313,7 @@ namespace BD_course_work
 
                 ownersTable.DataSource = ControllerForDB.selectAllFromMainTables("owners");
 
-                if (ownersTable.RowCount == 1)
+                if (ownersTable.RowCount !=0)
                 {
                     ownersTable.Columns[0].HeaderText = "ID";
 
@@ -4137,6 +4325,38 @@ namespace BD_course_work
                 }
             }
             label5.Text = strAmount + ownersTable.RowCount;
+        }
+
+        private void button68_Click(object sender, EventArgs e)//Генерация "Фильмы"
+        {
+            if (filmsTable.RowCount == 0)
+            {
+                ControllerForDB.filmGeneration(40);
+
+                filmsTable.DataSource= ControllerForDB.selectAllFromMainTables("films");
+
+                if (filmsTable.RowCount !=0)
+                {
+                    filmsTable.Columns[0].HeaderText = "ID";
+
+                    filmsTable.Columns[1].HeaderText = "Название";
+
+                    filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
+
+                    filmsTable.Columns[3].HeaderText = "Имя режиссера";
+
+                    filmsTable.Columns[4].HeaderText = "Отчество режиссера";
+
+                    filmsTable.Columns[5].HeaderText = "Студия";
+
+                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+
+                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+
+                    filmsTable.Columns[8].HeaderText = "Информация";
+                }
+            }
+            label9.Text = strAmount + filmsTable.RowCount;
         }
     }
 }

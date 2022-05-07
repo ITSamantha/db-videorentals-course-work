@@ -41,7 +41,7 @@ namespace BD_course_work
         public static string[] films = { "Достучаться до небес", "Зелёная миля", "Сила воли", "Никогда не сдавайся", "Прислуга", "Форрест Гамп", "Человек паук",
                                   "Великий Гэтсби", "Мемуары Гейши", "Жизнь Пи", "Цветок пустыни", "Три метра над уровнем моря", "Четыре метра над уровнем моря",
                                   "Жизнь Пи=3.14", "Криминальное некриминальное", "Куда приводит ПИ", "Жизнь математика в 3D", "Век Адалин", "Амели" };
-
+        public static string[] film_info = {"Это самый крутой фильм!", "Этот фильм стоит посмотреть каждому!", "Ты должен посмотреть этот фильм!" };
         public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда", "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm" };
 
         public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патриция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
@@ -325,9 +325,9 @@ namespace BD_course_work
                 {
                     if(i== prop_type.Length - 1)
                     {
-                        command += $"({i + 1}, '{prop_type[i]}'); ";break;
+                        command += $"(null, '{prop_type[i]}'); ";break;
                     }
-                    command+=$"({i+1}, '{prop_type[i]}'), ";
+                    command+=$"(null, '{prop_type[i]}'), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -387,9 +387,9 @@ namespace BD_course_work
                 {
                     if (i == districts.Length - 1)
                     {
-                        command += $"({i + 1}, '{districts[i]}'); "; break;
+                        command += $"(null, '{districts[i]}'); "; break;
                     }
-                    command += $"({i + 1}, '{districts[i]}'), ";
+                    command += $"(null, '{districts[i]}'), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -418,9 +418,9 @@ namespace BD_course_work
                 {
                     if (i == services.Length - 1)
                     {
-                        command += $"({i + 1}, '{services[i]}'); "; break;
+                        command += $"(null, '{services[i]}'); "; break;
                     }
-                    command += $"({i + 1}, '{services[i]}'), ";
+                    command += $"(null, '{services[i]}'), ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -512,6 +512,63 @@ namespace BD_course_work
             }
         }
 
+        public static void filmGeneration(int num)
+        {
+            if (getAmountOfRows("films") == 0)
+            {
+                List<int> ids1 = new List<int>();
+
+                List<int> ids2 = new List<int>();
+
+                if (getAmountOfRows("studios") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать.Таблица \"Студии\" пуста.", "Error");
+                    return;
+                }
+                else
+                {
+                    ids1 = getSmthForList("studios", "pk_studio_id");
+                }
+                if (getAmountOfRows("producers") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать.Таблица \"Режиссеры\" пуста.", "Error");
+                    return;
+                }
+                else
+                {
+                    ids2 = getSmthForList("producers", "pk_producer_id");
+                }
+
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+                
+                c.Open();
+
+                var command = $"insert into films values ";
+                
+                Random r = new Random();
+
+                for (int i = 0; i < num; i++)
+                {
+                    if (i == (num - 1))
+                    {
+                        command += $" (null,'{films[r.Next(0,films.Length)]}','{ids2[r.Next(0, ids2.Count)]}','{ids1[r.Next(0, ids1.Count)]}','{r.Next(1888,2023)}','{r.Next(30, 401)}','{film_info[r.Next(0,3)]}' ) ; "; break;
+                    }
+                    command += $" (null,'{films[r.Next(0, films.Length)]}','{ids2[r.Next(0, ids2.Count)]}','{ids1[r.Next(0, ids1.Count)]}','{r.Next(1888, 2023)}','{r.Next(30, 401)}','{film_info[r.Next(0, 3)]}' ), ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+
+        }
+
         public static List<int> getSmthForList(string table,string id_type)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -567,7 +624,7 @@ namespace BD_course_work
 
             string textCommand = "";
 
-            if (table.Equals("owners") || table.Equals("producers")||(table.Equals("!services_prices")))
+            if (table.Equals("owners") || table.Equals("producers"))
             {
                 if (table.Equals("owners"))
                 {
@@ -580,9 +637,16 @@ namespace BD_course_work
             }
             else
             {
-                if (table.Equals("films"))
+                if (table.Equals("films")||table.Equals("studios"))
                 {
-                    textCommand = $"Select pk_film_id, film_name, film_year from {table} ;";
+                    if(table.Equals("studios"))
+                    {
+                        textCommand = $"Select pk_studio_id, studio_name, a.country_name from {table} inner join countries a on studios.fk_studio_country=a.pk_country_id ;";
+                    }
+                    else
+                    {
+                        textCommand = $"Select pk_film_id, film_name, film_year from {table} ;";
+                    }  
                 }
                 else
                 {
@@ -614,6 +678,11 @@ namespace BD_course_work
 
                     continue;
                 }
+                if (table.Equals("studios"))
+                {
+                    list.Add(reader.GetString(1)+","+reader.GetString(2), reader.GetInt32(0));
+                    continue;
+                }
                 list.Add(reader.GetString(1), reader.GetInt32(0));
             }
 
@@ -623,6 +692,8 @@ namespace BD_course_work
 
             return list;
         }
+
+        
 
         public static SortedDictionary<string, int> selectForComboBoxDeals(int id2)
         {
@@ -986,6 +1057,8 @@ namespace BD_course_work
             {
                 Console.WriteLine(e);
 
+                isCanceledDelete = false;
+
                 return false;
             }
         }
@@ -1099,6 +1172,8 @@ namespace BD_course_work
             catch(Exception e)
             {
                 Console.WriteLine(e);
+
+                isCanceledDelete = false;
 
                 return false;
             }
@@ -1294,6 +1369,7 @@ namespace BD_course_work
             }
             catch(Exception e)
             {
+                isCanceledDelete = false;
                 return false;
             }
         }
@@ -1366,7 +1442,7 @@ namespace BD_course_work
 
                             break;
                         }
-                    case "services":
+                    case "services_view":
                         {
                             dialogResult = MessageBox.Show("Вы уверены? В таблицах \"Услуги и цены\",\"Сделки\" будут удалены записи, связанные с данной строкой. Это действие нельзя будет отменить.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
@@ -1596,8 +1672,9 @@ namespace BD_course_work
 
                     c.Close();
 
-                    if (count == 1)
+                    if (count >= 1)
                     {
+                        MessageBox.Show($"Удалено {count} строк.", "Оповещение");
                         return true;
                     }
                     else
