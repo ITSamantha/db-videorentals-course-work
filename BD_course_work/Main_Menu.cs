@@ -306,11 +306,13 @@ namespace BD_course_work
 
                 filmsTable.Columns[5].HeaderText = "Студия";
 
-                filmsTable.Columns[6].HeaderText = "Год выпуска";
+                filmsTable.Columns[6].HeaderText = "Страна студии";
 
-                filmsTable.Columns[7].HeaderText = "Продолжительность";
+                filmsTable.Columns[7].HeaderText = "Год выпуска";
 
-                filmsTable.Columns[8].HeaderText = "Информация";
+                filmsTable.Columns[8].HeaderText = "Продолжительность";
+
+                filmsTable.Columns[9].HeaderText = "Информация";
             }
 
             label9.Text = strAmount + filmsTable.RowCount;
@@ -619,11 +621,13 @@ namespace BD_course_work
 
                 filmsTable.Columns[5].HeaderText = "Студия";
 
-                filmsTable.Columns[6].HeaderText = "Год выпуска";
+                filmsTable.Columns[6].HeaderText = "Страна студии";
 
-                filmsTable.Columns[7].HeaderText = "Продолжительность";
+                filmsTable.Columns[7].HeaderText = "Год выпуска";
 
-                filmsTable.Columns[8].HeaderText = "Информация";
+                filmsTable.Columns[8].HeaderText = "Продолжительность";
+
+                filmsTable.Columns[9].HeaderText = "Информация";
             }
 
             label9.Text = strAmount + filmsTable.RowCount;
@@ -1023,7 +1027,7 @@ namespace BD_course_work
             if (filmsTable.RowCount != 0)
             {
                 insertOrUpdateIntoFilms(1, filmsTable.SelectedRows[0].Cells[0].Value.ToString(), filmsTable.SelectedRows[0].Cells[1].Value.ToString(), (filmsTable.SelectedRows[0].Cells[2].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[3].Value.ToString() + " " + filmsTable.SelectedRows[0].Cells[4].Value.ToString()),
-                filmsTable.SelectedRows[0].Cells[5].Value.ToString(), filmsTable.SelectedRows[0].Cells[6].Value.ToString(), filmsTable.SelectedRows[0].Cells[7].Value.ToString(), filmsTable.SelectedRows[0].Cells[8].Value.ToString());
+                filmsTable.SelectedRows[0].Cells[5].Value.ToString()+","+ filmsTable.SelectedRows[0].Cells[6].Value.ToString(), filmsTable.SelectedRows[0].Cells[7].Value.ToString(), filmsTable.SelectedRows[0].Cells[8].Value.ToString(), filmsTable.SelectedRows[0].Cells[9].Value.ToString());
 
                 filmsTable.DataSource = ControllerForDB.selectAllFromMainTables("films");
 
@@ -2822,11 +2826,13 @@ namespace BD_course_work
 
                     filmsTable.Columns[5].HeaderText = "Студия";
 
-                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+                    filmsTable.Columns[6].HeaderText = "Страна студии";
 
-                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+                    filmsTable.Columns[7].HeaderText = "Год выпуска";
 
-                    filmsTable.Columns[8].HeaderText = "Информация";
+                    filmsTable.Columns[8].HeaderText = "Продолжительность";
+
+                    filmsTable.Columns[9].HeaderText = "Информация";
                 }
                 label9.Text = "Количество полей:" + filmsTable.RowCount;
             }
@@ -4214,27 +4220,38 @@ namespace BD_course_work
 
             if (!add.isCanceled && add.isEnabled)
             {
-                filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text, add.studioCB.Text, add.fam.Text, add.name.Text, add.patron.Text, add.year1.Text, add.year2.Text, add.info.Text, add.dur1.Text, add.dur2.Text);
-
-                if (filmsTable.RowCount != 0)
+                try
                 {
-                    filmsTable.Columns[0].HeaderText = "ID";
+                    filmsTable.DataSource = ControllerForDB.searchFilms(add.title.Text, add.studioCB.Text == "" ? "" : add.studio_list[add.studioCB.Text].ToString(), add.fam.Text, add.name.Text, add.patron.Text, add.year1.Text, add.year2.Text, add.info.Text, add.dur1.Text, add.dur2.Text);
 
-                    filmsTable.Columns[1].HeaderText = "Название";
+                    if (filmsTable.RowCount != 0)
+                    {
+                        filmsTable.Columns[0].HeaderText = "ID";
 
-                    filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
+                        filmsTable.Columns[1].HeaderText = "Название";
 
-                    filmsTable.Columns[3].HeaderText = "Имя режиссера";
+                        filmsTable.Columns[2].HeaderText = "Фамилия режиссера";
 
-                    filmsTable.Columns[4].HeaderText = "Отчество режиссера";
+                        filmsTable.Columns[3].HeaderText = "Имя режиссера";
 
-                    filmsTable.Columns[5].HeaderText = "Студия";
+                        filmsTable.Columns[4].HeaderText = "Отчество режиссера";
 
-                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+                        filmsTable.Columns[5].HeaderText = "Студия";
 
-                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+                        filmsTable.Columns[6].HeaderText = "Страна студии";
 
-                    filmsTable.Columns[8].HeaderText = "Информация";
+                        filmsTable.Columns[7].HeaderText = "Год выпуска";
+
+                        filmsTable.Columns[8].HeaderText = "Продолжительность";
+
+                        filmsTable.Columns[9].HeaderText = "Информация";
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Такой студии не существует!","Error");
+
+                    return;
                 }
             }
             else
@@ -4349,11 +4366,13 @@ namespace BD_course_work
 
                     filmsTable.Columns[5].HeaderText = "Студия";
 
-                    filmsTable.Columns[6].HeaderText = "Год выпуска";
+                    filmsTable.Columns[6].HeaderText = "Страна студии";
 
-                    filmsTable.Columns[7].HeaderText = "Продолжительность";
+                    filmsTable.Columns[7].HeaderText = "Год выпуска";
 
-                    filmsTable.Columns[8].HeaderText = "Информация";
+                    filmsTable.Columns[8].HeaderText = "Продолжительность";
+
+                    filmsTable.Columns[9].HeaderText = "Информация";
                 }
             }
             label9.Text = strAmount + filmsTable.RowCount;

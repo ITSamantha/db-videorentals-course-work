@@ -1947,7 +1947,9 @@ namespace BD_course_work
 
             n.Open();
 
-            string com = "select * from films_view ";
+            string com = "select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name,a.film_year,a.film_duration,a.film_info from films a " +
+                                $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
+                                $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id";
 
             if (film_name != String.Empty)
             {
@@ -1957,11 +1959,11 @@ namespace BD_course_work
             {
                 if (com.Contains("where"))
                 {
-                    com += $" and studio_name ='{studio}' ";
+                    com += $" and fk_studio_id ='{studio}' ";
                 }
                 else
                 {
-                    com += $" where studio_name ='{studio}' ";
+                    com += $" where fk_studio_id ='{studio}' ";
                 }
             }
             if (info != String.Empty)
