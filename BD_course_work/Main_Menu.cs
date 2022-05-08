@@ -4607,7 +4607,7 @@ namespace BD_course_work
                     {
                         if (queryData.RowCount != 0)
                         {
-                            queryData.Columns[0].HeaderText = "ID видеопроката";
+                            queryData.Columns[0].HeaderText = "ID Видеопроката";
 
                             queryData.Columns[1].HeaderText = "Видеопрокат";
 
@@ -4622,8 +4622,68 @@ namespace BD_course_work
 
                         break;
                     }
-                
-                    
+
+                case 5:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID видеопроката";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Район";
+
+                            queryData.Columns[3].HeaderText = "Адрес";
+
+                            queryData.Columns[4].HeaderText = "Тип собственности";
+
+                            queryData.Columns[5].HeaderText = "Телефон";
+
+                            queryData.Columns[6].HeaderText = "№ Лицензии";
+
+                            queryData.Columns[7].HeaderText = "Наибольший заработок";
+                        }
+
+                        break;
+                    }
+                case 6:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Заработок";
+                        }
+
+                        break;
+                    }
+                case 7:
+                case 8:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID сделки";
+
+                            queryData.Columns[1].HeaderText = "ID кассеты";
+
+                            queryData.Columns[2].HeaderText = "Фильм";
+
+                            queryData.Columns[3].HeaderText = "Год фильма";
+
+                            queryData.Columns[4].HeaderText = "Спрос кассеты";
+
+                            queryData.Columns[5].HeaderText = "Квитанция";
+
+                            queryData.Columns[6].HeaderText = "Дата сделки";
+
+                            queryData.Columns[7].HeaderText = "Цена";
+                        }
+                        break;
+                    }
+
+
             }
             label16.Text = strAmount + queryData.RowCount;
         }

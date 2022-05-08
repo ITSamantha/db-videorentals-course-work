@@ -2581,7 +2581,8 @@ namespace BD_course_work
                         break;
                     }
                 case 4:
-                    {
+                    {   //Итоговый запрос с условием на группы
+                        //Вывод видеопрокатов, среднее всех цен сделок которых превышает 1200
                         com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,avg(a.general_price) from deals a " +
                             $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
@@ -2591,7 +2592,58 @@ namespace BD_course_work
                             $"HAVING avg(a.general_price) > 1200";
                         break;
                     }
-                
+                case 5:
+                    {
+                        //Запрос на запросе по принципу итогового запроса
+                        //Вывод информации о видеопрокате, который совершил сделку с максимальной ценой.
+                        com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name, " +
+                            $"c.video_phone, c.license_number,a.general_price from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            $"WHERE a.general_price = (select max(general_price) from deals) " +
+                            $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name,a.general_price";
+                        break;
+                    }
+                case 6:
+                    {
+                        //Запрос с использованием объединения
+                        //Вывод выручки видеопрокатов со сделок и суммарная выручка видеопрокатов
+                        com = $"(select c.pk_video_rental_id,c.video_caption,avg(a.general_price) from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            $"GROUP BY c.pk_video_rental_id,c.video_caption " +
+                            $"ORDER BY avg(a.general_price) ASC ) " +
+                            $"UNION " +
+                            $"(SELECT CAST(null AS int) AS pk_video_rental_id, " +
+                            $"'Общий заработок' AS video_caption, SUM(general_price) AS avg " +
+                            $"from deals GROUP BY pk_video_rental_id, video_caption)";
+                        break;
+                    }
+                case 7:
+                    {
+                        com = $" SELECT pk_deal_id,cassettes.pk_cassette_id,films.film_name,films.film_year,cassettes.cassette_demand, " +
+                            $"deals.recipe_deal,deals.deal_date,deals.general_price from deals " +
+                            $"inner join cassettes on cassettes.pk_cassette_id = deals.fk_cassete_id " +
+                            $"inner join films on films.pk_film_id = cassettes.fk_film_id " +
+                            $"where deals.fk_cassete_id IN(SELECT cassettes.pk_cassette_id from " +
+                            $"cassettes where cassettes.cassette_demand = false)";
+
+                        break;
+                    }
+                case 8:
+                    {
+                        com = $" SELECT pk_deal_id,cassettes.pk_cassette_id,films.film_name,films.film_year,cassettes.cassette_demand, " +
+                            $"deals.recipe_deal,deals.deal_date,deals.general_price from deals " +
+                            $"inner join cassettes on cassettes.pk_cassette_id = deals.fk_cassete_id " +
+                            $"inner join films on films.pk_film_id = cassettes.fk_film_id " +
+                            $"where deals.fk_cassete_id NOT IN(SELECT cassettes.pk_cassette_id from " +
+                            $"cassettes where cassettes.cassette_demand = false)";
+
+                        break;
+                    }
+
             }
 
             NpgsqlCommand command = new NpgsqlCommand(com, n);
