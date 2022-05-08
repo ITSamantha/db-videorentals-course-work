@@ -4682,6 +4682,24 @@ namespace BD_course_work
                         }
                         break;
                     }
+                case 9:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID кассеты";
+
+                            queryData.Columns[1].HeaderText = "Спрос кассеты";
+
+                            queryData.Columns[2].HeaderText = "Качество кассеты";
+
+                            queryData.Columns[3].HeaderText = "Фото кассеты";
+
+                            queryData.Columns[4].HeaderText = "Цена кассеты";
+
+                            queryData.Columns[5].HeaderText = "Фото";
+                        }
+                        break;
+                    }
 
 
             }

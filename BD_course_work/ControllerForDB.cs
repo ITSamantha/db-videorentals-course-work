@@ -2623,6 +2623,8 @@ namespace BD_course_work
                     }
                 case 7:
                     {
+                        //Запрос с подзапросом IN
+                        //Вывод сделок, кассеты которых не пользовались спросом
                         com = $" SELECT pk_deal_id,cassettes.pk_cassette_id,films.film_name,films.film_year,cassettes.cassette_demand, " +
                             $"deals.recipe_deal,deals.deal_date,deals.general_price from deals " +
                             $"inner join cassettes on cassettes.pk_cassette_id = deals.fk_cassete_id " +
@@ -2634,6 +2636,8 @@ namespace BD_course_work
                     }
                 case 8:
                     {
+                        //Запрос с подзапросом NOT IN
+                        //вывод сделок, кассеты которых пользовались спросом
                         com = $" SELECT pk_deal_id,cassettes.pk_cassette_id,films.film_name,films.film_year,cassettes.cassette_demand, " +
                             $"deals.recipe_deal,deals.deal_date,deals.general_price from deals " +
                             $"inner join cassettes on cassettes.pk_cassette_id = deals.fk_cassete_id " +
@@ -2643,7 +2647,16 @@ namespace BD_course_work
 
                         break;
                     }
-
+                case 9:
+                    {
+                        com = $"SELECT pk_cassette_id, cassette_demand, cassette_quality.quality_name,cassette_photo.photo,cassette_price, " +
+                            $"CASE WHEN cassette_price <= 500 then(select film_name from films where pk_film_id = cassettes.fk_film_id ) " +
+                            $"else 'Слишком дорого...!' end as film_name " +
+                            $"from cassettes " +
+                            $"inner join cassette_quality on cassettes.fk_cassette_quality = cassette_quality.pk_quality_id " +
+                            $"inner join cassette_photo on cassettes.fk_cassette_photo = cassette_photo.pk_photo_id";
+                        break;
+                    }
             }
 
             NpgsqlCommand command = new NpgsqlCommand(com, n);
