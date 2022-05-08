@@ -21,7 +21,9 @@ namespace BD_course_work
         public SortedDictionary<string, int> rental_list;
 
         public SortedDictionary<string, int> services_list;
-        
+
+        public SortedDictionary<string, int> films_list;
+
         public addOrEditDeals()
         {
             InitializeComponent();
@@ -30,11 +32,17 @@ namespace BD_course_work
 
             updateRental();
 
+            clean();
+
             rentalCB.SelectedIndex = 0;
 
             updateService();
+
+            clean();
             
             serviceCB.SelectedIndex = 0;
+
+            clean();
 
             idCB.SelectedIndex = 0;
             
@@ -43,6 +51,11 @@ namespace BD_course_work
             dateCB.MinDate = new DateTime(2000, 01, 01);
 
             updatePriceAndRecipe();
+
+            updateFilms();
+
+            filmCB.SelectedIndex = 0;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -122,6 +135,19 @@ namespace BD_course_work
             isServ = true;
         }
 
+        public void updateFilms()
+        {
+            filmCB.Items.Clear();
+
+            films_list = ControllerForDB.selectForComboBox("films", "film_name", "pk_film_id");
+
+            foreach (var it in films_list)
+            {
+                filmCB.Items.Add(it.Key);
+            }
+            
+        }
+
         public void updateCassettes()
         {
             idCB.Items.Clear();
@@ -163,7 +189,7 @@ namespace BD_course_work
             }
 
             serviceCB.SelectedIndex = 0;
-
+            
         }
         public static int service_id;
 

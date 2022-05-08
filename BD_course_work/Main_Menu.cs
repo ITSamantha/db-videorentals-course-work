@@ -39,7 +39,8 @@ namespace BD_course_work
             Countries,
             Quality,
             Images,
-            ServPrice
+            ServPrice,
+            Query
         }
 
         public Main_Menu()
@@ -1340,13 +1341,10 @@ namespace BD_course_work
 
                 add.priceTB.Text = price.ToString();
             }
-
+            
         m1:
-
-            add.clean();
-
             add.ShowDialog();
-
+            
             if (!add.isCanceled && add.isEnabled && add.priceTB.Text != String.Empty && add.recipeTB.Text != String.Empty)
             {
                 if (val == 0)
@@ -1354,6 +1352,7 @@ namespace BD_course_work
                     if (ControllerForDB.insertOrUpdateIntoDeals(0, int.Parse(add.idCB.Text), add.recipeTB.Text, add.dateCB.Text, ControllerForDB.getServicePriceID(add.rental_list[add.rentalCB.Text], add.services_list[add.serviceCB.Text]), double.Parse(add.priceTB.Text)))
                     {
                         MessageBox.Show("Строка добавлена.", "Оповещение");
+
                     }
                     else
                     {
@@ -1376,15 +1375,20 @@ namespace BD_course_work
                     {
                         if (ControllerForDB.isCanceledDelete)
                         {
+                            add.clean();
+
                             return;
                         }
 
                         MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
                     }
                 }
+                add.clean();
             }
             else
             {
+                add.clean();
+
                 return;
             }
 
@@ -1611,7 +1615,7 @@ namespace BD_course_work
 
             add.ShowDialog();
 
-            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty && add.info.Text != String.Empty)
+            if (!add.isCanceled && add.isEnabled && add.title.Text != String.Empty )
             {
                 if (!add.year.MaskCompleted || int.Parse(add.year.Text) < 1888 || int.Parse(add.year.Text) > 2022)
                 {
@@ -1637,7 +1641,7 @@ namespace BD_course_work
 
                 if (val == 0)
                 {
-                    if (ControllerForDB.insertIntoFilms(add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
+                    if (ControllerForDB.insertIntoFilms(add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text==String.Empty?null: add.info.Text))
                     {
                         MessageBox.Show("Строка добавлена.", "Оповещение");
                     }
@@ -1654,7 +1658,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.updateFilms(int.Parse(id), add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text))
+                    if (ControllerForDB.updateFilms(int.Parse(id), add.title.Text, add.producer_list[(string)add.producerCB.Text], add.studio_list[(string)add.studioCB.Text], int.Parse(add.year.Text), int.Parse(add.duration.Text), add.info.Text == String.Empty ? null : add.info.Text))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -1676,13 +1680,6 @@ namespace BD_course_work
                     if (add.title.Text == String.Empty)
                     {
                         MessageBox.Show("Вы не ввели название.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                        goto m1;
-                    }
-
-                    if (add.info.Text == String.Empty)
-                    {
-                        MessageBox.Show("Вы не ввели информацию о фильме.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                         goto m1;
                     }
@@ -4378,7 +4375,7 @@ namespace BD_course_work
         {
             if (cassettesTable.RowCount == 0)
             {
-                ControllerForDB.generateCassettes(20);
+                ControllerForDB.generateCassettes(100);
 
                 cassettesTable.DataSource= ControllerForDB.selectAllFromMainTables("cassettes");
 
@@ -4438,6 +4435,197 @@ namespace BD_course_work
                 }
             }
             label12.Text = strAmount + videoTable.RowCount;
+        }
+
+        private void button71_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = new DialogResult();
+
+            dialogResult = MessageBox.Show("Вы уверены, что хотите сгенерировать все записи?.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("Генерация запущена.", "Оповещение");
+
+                ControllerForDB.generateCountries();
+
+                ControllerForDB.generateDistricts();
+
+                ControllerForDB.generatePeople(0, 20);
+
+                ControllerForDB.generatePeople(1, 20);
+
+                ControllerForDB.generateQuality();
+
+                ControllerForDB.generateServices();
+
+                ControllerForDB.generatePropType();
+
+                ControllerForDB.generateStudios();
+
+                ControllerForDB.generatePics(100);
+
+                ControllerForDB.filmGeneration(40);
+
+                ControllerForDB.generateVideoRental();
+                
+                ControllerForDB.generateServicesPrices();
+
+                ControllerForDB.generateCassettes(100);
+
+                ControllerForDB.generateOrders(10001);
+                
+            }
+        }
+
+        private void button72_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = new DialogResult();
+
+            dialogResult = MessageBox.Show("Вы уверены? Данные из всех таблиц будут безвозвратно удалены.", "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show("Удаление запущено.", "Оповещение");
+
+                ControllerForDB.deleteAllFromTable("countries");
+
+                ControllerForDB.deleteAllFromTable("producers");
+
+                ControllerForDB.deleteAllFromTable("owners");
+
+                ControllerForDB.deleteAllFromTable("films");
+
+                ControllerForDB.deleteAllFromTable("property_type");
+
+                ControllerForDB.deleteAllFromTable("district");
+
+                ControllerForDB.deleteAllFromTable("cassette_quality");
+
+                ControllerForDB.deleteAllFromTable("services");
+
+                MessageBox.Show("Удаление успешно окончено.", "Оповещение");
+            }
+        }
+
+        private void button46_Click(object sender, EventArgs e)//Поиск "Сделки"
+        {
+            addOrEditDeals add = new addOrEditDeals();
+
+            add.mainL1.Text = "Поиск сделки";
+
+            add.button1.Text = "Поиск";
+
+            add.dateCB.Hide();
+
+            add.groupBox6.Hide();
+
+            add.priceTB.Hide();
+
+            add.date1.Visible = add.date2.Visible = add.groupBox7.Visible=add.textBox1.Visible= add.textBox2.Visible=true;
+
+            add.clean();
+            add.idCB.SelectedIndex = -1;
+
+            add.clean();
+            add.rentalCB.SelectedIndex = -1;
+
+            add.clean();
+            add.serviceCB.SelectedIndex = -1;
+            
+            add.filmCB.SelectedIndex = -1;
+
+            add.ShowDialog();
+
+            
+        }
+
+        private void Query_Click(object sender, EventArgs e)
+        {
+            mainControl.SelectedIndex = (int)Pages.Query;
+        }
+
+        private void queryCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            queryData.DataSource = ControllerForDB.startQuery(queryCB.SelectedIndex);
+
+            switch (queryCB.SelectedIndex)
+            {
+                case 0:
+                case 1:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID";
+
+                            queryData.Columns[1].HeaderText = "Название";
+
+                            queryData.Columns[2].HeaderText = "Год выпуска";
+
+                            queryData.Columns[3].HeaderText = "Продолжительность";
+
+                            queryData.Columns[4].HeaderText = "Информация";
+                            
+                            queryData.Columns[5].HeaderText = "Фамилия режиссера";
+
+                            queryData.Columns[6].HeaderText = "Студия";
+
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Количество сделок";
+                        }
+                        break;
+                    }
+                case 3:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "Всего кассет";
+
+                            queryData.Columns[1].HeaderText = "Превосходного качества";
+
+                            queryData.Columns[2].HeaderText = "Хорошего качества";
+
+                            queryData.Columns[3].HeaderText = "Нормального качества";
+
+                            queryData.Columns[4].HeaderText = "Плохого качества";
+
+                            queryData.Columns[5].HeaderText = "Ужасного качества";
+                        }
+                        break;
+                    }
+                case 4:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID видеопроката";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Район";
+
+                            queryData.Columns[3].HeaderText = "Адрес";
+
+                            queryData.Columns[4].HeaderText = "Тип собственности";
+
+                            queryData.Columns[5].HeaderText = "Средний заработок";
+                        }
+
+                        break;
+                    }
+                
+                    
+            }
+            label16.Text = strAmount + queryData.RowCount;
         }
     }
 }

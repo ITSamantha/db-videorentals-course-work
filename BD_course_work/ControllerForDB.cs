@@ -237,7 +237,7 @@ namespace BD_course_work
 
         public static void generateOrders(int N)//ПОЧЕМУ-ТО ДОБАВЛЯЕТСЯ ВРЕМЯ
         {
-            if (getAmountOfRows("deals") != 0)
+            if (getAmountOfRows("deals") == 0)
             {
                 if (getAmountOfRows("services_prices") == 0)
                 {
@@ -633,15 +633,15 @@ namespace BD_course_work
 
                 Random r = new Random();
 
-                double f = 0.01f;
+                double f = 0.9f;
                 
                 for (int i = 0; i < num; i++)
                 {
                     if (i == (num - 1))
                     {
-                        command += $" (null,'{ids1[r.Next(0,ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100,300)+f),2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0,2)==0? "false":"true")}','{ids2[r.Next(0,ids2.Count)]}' ) ; "; break;
+                        command += $" (null,'{ids1[r.Next(0,ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100,2000)+f),2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0,2)==0? "false":"true")}','{ids2[r.Next(0,ids2.Count)]}' ) ; "; break;
                     }
-                    command += $" (null,'{ids1[r.Next(0, ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100, 300) + f), 2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0, 2) == 0 ? "false" : "true")}','{ids2[r.Next(0, ids2.Count)]}' ),  ";
+                    command += $" (null,'{ids1[r.Next(0, ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100, 2000) + (double)Math.Round(r.NextDouble(),2)),2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0, 2) == 0 ? "false" : "true")}','{ids2[r.Next(0, ids2.Count)]}' ),  ";
                 }
 
                 NpgsqlCommand com = new NpgsqlCommand(command, c);
@@ -938,9 +938,10 @@ namespace BD_course_work
                     case "films":
                         {
                             command = "select * from films_view;";
-                            /*"select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name, d.country_name,a.film_year,a.film_duration,a.film_info from films a " +
-                            $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
-                            $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id " +
+                            /*command=$"select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic," +
+                            "c.studio_name, d.country_name,a.film_year,a.film_duration,a.film_info from films a " +
+                            $"inner join producers b on a.fk_producer_id=b.pk_producer_id " +
+                            $"inner join studios c on a.fk_studio_id=c.pk_studio_id " +
                             $"inner join countries d ON c.fk_studio_country = d.pk_country_id;";*/
                             break;
                         }
@@ -956,12 +957,12 @@ namespace BD_course_work
                     case "video_rental":
                         {
                             command = "select * from rental_view;";
-                            /*$"select a.pk_video_rental_id,a.video_caption,b.district_name,a.video_adress," +
+                            /*command=$"select a.pk_video_rental_id,a.video_caption,b.district_name,a.video_adress," +
                             $"c.property_type_name,a.video_phone,a.license_number,a.time_start,a.time_end," +
-                            $"a.amount_of_employees,d.owner_last_name,d.owner_first_name,d.owner_patronymic from {table_name} a " +
-                            $"left join {tables[5]} b on a.fk_video_district=b.pk_district_id " +//left join
-                            $"left join {tables[9]} c on a.fk_property_type=c.pk_property_type_id " +
-                            $"left join {tables[7]} d on a.fk_owner_id=d.pk_owner_id";*/
+                            $"a.amount_of_employees,d.owner_last_name,d.owner_first_name,d.owner_patronymic from video_rental a " +
+                            $"inner join district b on a.fk_video_district=b.pk_district_id " +
+                            $"inner join property_type c on a.fk_property_type=c.pk_property_type_id " +
+                            $"inner join owners d on a.fk_owner_id=d.pk_owner_id ORDER BY pk_video_rental_id ASC;";*/
                             break;
                         }
 
@@ -977,10 +978,12 @@ namespace BD_course_work
                     case"deals":
                         {
                             command = "select * from deals_view;";
-                            /*$"select a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,a.recipe_deal,a.deal_date,e.service_name,a.general_price from " +
-                            $"{table_name} a inner join services_prices b on a.fk_service_price=b.pk_service_price_id inner join cassettes c on a.fk_cassete_id=c.pk_cassette_id " +
-                            $"inner join films d on c.fk_film_id=d.pk_film_id inner join services e on b.fk_service_id=e.pk_service_id inner join video_rental f on b.fk_video_rental = f.pk_video_rental_id;"; 
-                           //+ $"a inner join cassettes on a.fk_cassette_id=b.*/
+                            /*command = $" SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,a.recipe_deal," +
+                                $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
+                                $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
+                                $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
+                                $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
+                                $"ON b.fk_video_rental = f.pk_video_rental_id; ";*/
                             break;
                         }
                     case "cassette_photo":
@@ -1073,7 +1076,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    command = $"update deals set fk_cassete_id = {cassette_id}, recipe_deal = '{recipe}', deal_date = '{date}::date', fk_service_price = {service_price},general_price = '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en - US"))}' where pk_deal_id={id};";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                    command = $"update deals set fk_cassete_id = {cassette_id}, recipe_deal = '{recipe}', deal_date = '{date}'::date, fk_service_price = {service_price},general_price = '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}' where pk_deal_id={id};";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
                 }
 
                 var com = new NpgsqlCommand(command, n);
@@ -1880,6 +1883,21 @@ namespace BD_course_work
             return false;
         }
 
+        public static void deleteAllFromTable(string table)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            var command = new NpgsqlCommand($"delete from {table}", n);
+
+            command.ExecuteNonQuery();
+
+            command.Dispose();
+
+            n.Close();
+        }
+
         //Методы поиска SEARCH
         public static DataTable searchStudio(string search,string filter)
         {
@@ -1928,6 +1946,35 @@ namespace BD_course_work
 
             return dt;
             
+        }
+
+        public static DataTable searchDeals()
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            string com = $"select * from studios_view ";
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            DataTable dt = new DataTable();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+
         }
 
         public static DataTable searchServicesPrices(string video,string service,string more,string less)
@@ -2135,7 +2182,7 @@ namespace BD_course_work
                                 $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
                                 $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id " +
                                 $"inner join countries d ON c.fk_studio_country = d.pk_country_id ";
-
+            
             if (film_name != String.Empty)
             {
                 com += $" where film_name='{film_name}' ";
@@ -2239,20 +2286,29 @@ namespace BD_course_work
                     com += $" where film_duration <='{dur2}' ";
                 }
             }
+            
             var command_sql = new NpgsqlCommand(com, n);
 
-            NpgsqlDataReader reader = command_sql.ExecuteReader();
-
-            if (reader.HasRows)
+            try
             {
-                dt.Load(reader);
+                NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                command_sql.Dispose();
+
+                reader.Close();
+
+                n.Close();
             }
-
-            command_sql.Dispose();
-
-            reader.Close();
-
-            n.Close();
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
 
             return dt;
         }
@@ -2467,6 +2523,98 @@ namespace BD_course_work
             n.Close();
 
             return dt;
+        }
+
+        public static DataTable startQuery(int num)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            DataTable dt = new DataTable();
+
+            string com = "";
+
+            switch (num)
+            {
+                case 0:
+                    {
+                        //Левое внешнее соединение. Вывод фильмов, у которых отсутствует кассета.
+                        com = $"select distinct a.pk_film_id,a.film_name,a.film_year,a.film_duration,a.film_info,e.producer_last_name,c.studio_name from films a " +
+                              $"inner join producers e on a.fk_producer_id=e.pk_producer_id " +
+                              $"inner join studios c on a.fk_studio_id=c.pk_studio_id "+
+                              $"LEFT JOIN cassettes b on b.fk_film_id=a.pk_film_id where b.pk_cassette_id IS NULL;";
+
+                        break;
+                    }
+                case 1:
+                    {
+                        //Правое внешнее соединение. Вывод фильмов, у которых есть кассета.
+                        com = $"select distinct b.pk_film_id,b.film_name,b.film_year,b.film_duration,b.film_info,e.producer_last_name,c.studio_name from cassettes a " +
+                              $"RIGHT JOIN films b on a.fk_film_id=b.pk_film_id " +
+                              $"inner join producers e on b.fk_producer_id=e.pk_producer_id " +
+                              $"inner join studios c on b.fk_studio_id=c.pk_studio_id " +
+                              $"where a.pk_cassette_id IS NOT NULL";
+
+                        break;
+                    }
+                case 2:
+                    {
+                        //Итоговый запрос без условия. Количество сделок каждого видеопроката
+                        com = $"select c.pk_video_rental_id, c.video_caption,count(a.pk_deal_id) from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id group by c.pk_video_rental_id,c.video_caption " +
+                            $"ORDER BY count ASC; ";
+
+                        break;
+                    }
+                case 3:
+                    {
+                        //Итоговый запрос без условия с итоговыми данными вида: «всего», «в том числе». 
+                        //Количество кассет, в том числе кассет превосходного, хорошего, нормального, плохого, ужасного качества.
+                        com = $"select count(pk_cassette_id),count(CASE WHEN b.quality_name = 'Превосходное' THEN b.pk_quality_id END), " +
+                              $" count(CASE WHEN b.quality_name = 'Хорошее' THEN b.pk_quality_id END) ," +
+                              $" count(CASE WHEN b.quality_name = 'Нормальное' THEN b.pk_quality_id END), " +
+                              $" count(CASE WHEN b.quality_name = 'Плохое' THEN b.pk_quality_id END), " +
+                              $" count(CASE WHEN b.quality_name = 'Ужасное' THEN b.pk_quality_id END) " +
+                              $" from cassettes a INNER JOIN cassette_quality b on a.fk_cassette_quality = b.pk_quality_id";
+                        break;
+                    }
+                case 4:
+                    {
+                        com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,avg(a.general_price) from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
+                            $"HAVING avg(a.general_price) > 1200";
+                        break;
+                    }
+                
+            }
+
+            NpgsqlCommand command = new NpgsqlCommand(com, n);
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+
+
+
         }
 
         

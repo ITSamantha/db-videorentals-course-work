@@ -144,6 +144,9 @@
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.queryCB = new System.Windows.Forms.ComboBox();
+            this.queryData = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Exit = new System.Windows.Forms.Button();
@@ -166,9 +169,9 @@
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.queryCB = new System.Windows.Forms.ComboBox();
+            this.button71 = new System.Windows.Forms.Button();
+            this.button72 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -198,10 +201,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.imagesTable)).BeginInit();
             this.serpricePage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).BeginInit();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.queryData)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabPage11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -391,6 +394,7 @@
             this.button46.Size = new System.Drawing.Size(44, 38);
             this.button46.TabIndex = 13;
             this.button46.UseVisualStyleBackColor = false;
+            this.button46.Click += new System.EventHandler(this.button46_Click);
             // 
             // label11
             // 
@@ -1817,6 +1821,54 @@
             this.button42.UseVisualStyleBackColor = false;
             this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.label16);
+            this.tabPage11.Controls.Add(this.queryCB);
+            this.tabPage11.Controls.Add(this.queryData);
+            this.tabPage11.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tabPage11.Location = new System.Drawing.Point(4, 27);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(923, 579);
+            this.tabPage11.TabIndex = 14;
+            this.tabPage11.Text = "queryPage";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // queryCB
+            // 
+            this.queryCB.DropDownHeight = 100;
+            this.queryCB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.queryCB.FormattingEnabled = true;
+            this.queryCB.IntegralHeight = false;
+            this.queryCB.Items.AddRange(new object[] {
+            "Вывод фильмов, у которых отсутствует кассета(левое внешнее)",
+            "Вывод фильмов, у которых есть кассета(правое внешнее)",
+            "Вывод количества сделок каждого видеопроката(итоговый без условия)",
+            "Количество кассет, в том числе кассет превосходного, хорошего, нормального, плохо" +
+                "го, ужасного качества.",
+            "Вывод видеопрокатов, среднее всех цен сделок которых превышает 1200"});
+            this.queryCB.Location = new System.Drawing.Point(224, 7);
+            this.queryCB.Name = "queryCB";
+            this.queryCB.Size = new System.Drawing.Size(691, 29);
+            this.queryCB.TabIndex = 18;
+            this.queryCB.SelectedIndexChanged += new System.EventHandler(this.queryCB_SelectedIndexChanged);
+            // 
+            // queryData
+            // 
+            this.queryData.AllowUserToAddRows = false;
+            this.queryData.AllowUserToDeleteRows = false;
+            this.queryData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.queryData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.queryData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.queryData.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.queryData.Location = new System.Drawing.Point(19, 49);
+            this.queryData.Name = "queryData";
+            this.queryData.ReadOnly = true;
+            this.queryData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.queryData.Size = new System.Drawing.Size(883, 524);
+            this.queryData.TabIndex = 17;
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -1835,6 +1887,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.button72);
+            this.panel2.Controls.Add(this.button71);
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Controls.Add(this.Query);
             this.panel2.Controls.Add(this.Excel);
@@ -1850,11 +1904,11 @@
             this.Exit.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Exit.FlatAppearance.BorderSize = 0;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Exit.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Exit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Exit.Location = new System.Drawing.Point(0, 555);
+            this.Exit.Location = new System.Drawing.Point(0, 574);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(270, 38);
+            this.Exit.Size = new System.Drawing.Size(270, 36);
             this.Exit.TabIndex = 21;
             this.Exit.Text = "Выход";
             this.Exit.UseVisualStyleBackColor = false;
@@ -1866,13 +1920,14 @@
             this.Query.Dock = System.Windows.Forms.DockStyle.Top;
             this.Query.FlatAppearance.BorderSize = 0;
             this.Query.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Query.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Query.Location = new System.Drawing.Point(0, 76);
+            this.Query.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Query.Location = new System.Drawing.Point(0, 62);
             this.Query.Name = "Query";
-            this.Query.Size = new System.Drawing.Size(270, 38);
+            this.Query.Size = new System.Drawing.Size(270, 30);
             this.Query.TabIndex = 19;
             this.Query.Text = "Запросы";
             this.Query.UseVisualStyleBackColor = false;
+            this.Query.Click += new System.EventHandler(this.Query_Click);
             // 
             // Excel
             // 
@@ -1880,10 +1935,10 @@
             this.Excel.Dock = System.Windows.Forms.DockStyle.Top;
             this.Excel.FlatAppearance.BorderSize = 0;
             this.Excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Excel.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Excel.Location = new System.Drawing.Point(0, 38);
+            this.Excel.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Excel.Location = new System.Drawing.Point(0, 32);
             this.Excel.Name = "Excel";
-            this.Excel.Size = new System.Drawing.Size(270, 38);
+            this.Excel.Size = new System.Drawing.Size(270, 30);
             this.Excel.TabIndex = 18;
             this.Excel.Text = "Отчеты";
             this.Excel.UseVisualStyleBackColor = false;
@@ -1907,10 +1962,10 @@
             this.panel1.Controls.Add(this.tables);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.MaximumSize = new System.Drawing.Size(270, 470);
-            this.panel1.MinimumSize = new System.Drawing.Size(270, 38);
+            this.panel1.MaximumSize = new System.Drawing.Size(270, 410);
+            this.panel1.MinimumSize = new System.Drawing.Size(270, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 38);
+            this.panel1.Size = new System.Drawing.Size(270, 32);
             this.panel1.TabIndex = 17;
             // 
             // button36
@@ -1919,11 +1974,11 @@
             this.button36.Dock = System.Windows.Forms.DockStyle.Top;
             this.button36.FlatAppearance.BorderSize = 0;
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button36.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button36.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button36.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button36.Location = new System.Drawing.Point(0, 438);
+            this.button36.Location = new System.Drawing.Point(0, 383);
             this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(270, 34);
+            this.button36.Size = new System.Drawing.Size(270, 28);
             this.button36.TabIndex = 26;
             this.button36.Text = "Услуги и цены";
             this.button36.UseVisualStyleBackColor = false;
@@ -1935,11 +1990,11 @@
             this.button35.Dock = System.Windows.Forms.DockStyle.Top;
             this.button35.FlatAppearance.BorderSize = 0;
             this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button35.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button35.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button35.Location = new System.Drawing.Point(0, 404);
+            this.button35.Location = new System.Drawing.Point(0, 355);
             this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(270, 34);
+            this.button35.Size = new System.Drawing.Size(270, 28);
             this.button35.TabIndex = 25;
             this.button35.Text = "Фото кассеты";
             this.button35.UseVisualStyleBackColor = false;
@@ -1951,11 +2006,11 @@
             this.button34.Dock = System.Windows.Forms.DockStyle.Top;
             this.button34.FlatAppearance.BorderSize = 0;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button34.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button34.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button34.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button34.Location = new System.Drawing.Point(0, 370);
+            this.button34.Location = new System.Drawing.Point(0, 327);
             this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(270, 34);
+            this.button34.Size = new System.Drawing.Size(270, 28);
             this.button34.TabIndex = 24;
             this.button34.Text = "Качество кассеты";
             this.button34.UseVisualStyleBackColor = false;
@@ -1967,11 +2022,11 @@
             this.countriesB.Dock = System.Windows.Forms.DockStyle.Top;
             this.countriesB.FlatAppearance.BorderSize = 0;
             this.countriesB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.countriesB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countriesB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.countriesB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.countriesB.Location = new System.Drawing.Point(0, 336);
+            this.countriesB.Location = new System.Drawing.Point(0, 299);
             this.countriesB.Name = "countriesB";
-            this.countriesB.Size = new System.Drawing.Size(270, 34);
+            this.countriesB.Size = new System.Drawing.Size(270, 28);
             this.countriesB.TabIndex = 23;
             this.countriesB.Text = "Страны";
             this.countriesB.UseVisualStyleBackColor = false;
@@ -1983,9 +2038,9 @@
             this.studiosB.Dock = System.Windows.Forms.DockStyle.Top;
             this.studiosB.FlatAppearance.BorderSize = 0;
             this.studiosB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.studiosB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studiosB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.studiosB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.studiosB.Location = new System.Drawing.Point(0, 306);
+            this.studiosB.Location = new System.Drawing.Point(0, 269);
             this.studiosB.Name = "studiosB";
             this.studiosB.Size = new System.Drawing.Size(270, 30);
             this.studiosB.TabIndex = 22;
@@ -1999,11 +2054,11 @@
             this.producersB.Dock = System.Windows.Forms.DockStyle.Top;
             this.producersB.FlatAppearance.BorderSize = 0;
             this.producersB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.producersB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.producersB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.producersB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.producersB.Location = new System.Drawing.Point(0, 278);
+            this.producersB.Location = new System.Drawing.Point(0, 240);
             this.producersB.Name = "producersB";
-            this.producersB.Size = new System.Drawing.Size(270, 28);
+            this.producersB.Size = new System.Drawing.Size(270, 29);
             this.producersB.TabIndex = 21;
             this.producersB.Text = "Режиссеры";
             this.producersB.UseVisualStyleBackColor = false;
@@ -2015,9 +2070,9 @@
             this.ownersB.Dock = System.Windows.Forms.DockStyle.Top;
             this.ownersB.FlatAppearance.BorderSize = 0;
             this.ownersB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ownersB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ownersB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ownersB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ownersB.Location = new System.Drawing.Point(0, 248);
+            this.ownersB.Location = new System.Drawing.Point(0, 210);
             this.ownersB.Name = "ownersB";
             this.ownersB.Size = new System.Drawing.Size(270, 30);
             this.ownersB.TabIndex = 20;
@@ -2031,11 +2086,11 @@
             this.servicesB.Dock = System.Windows.Forms.DockStyle.Top;
             this.servicesB.FlatAppearance.BorderSize = 0;
             this.servicesB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.servicesB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.servicesB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.servicesB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.servicesB.Location = new System.Drawing.Point(0, 218);
+            this.servicesB.Location = new System.Drawing.Point(0, 182);
             this.servicesB.Name = "servicesB";
-            this.servicesB.Size = new System.Drawing.Size(270, 30);
+            this.servicesB.Size = new System.Drawing.Size(270, 28);
             this.servicesB.TabIndex = 19;
             this.servicesB.Text = "Услуги";
             this.servicesB.UseVisualStyleBackColor = false;
@@ -2047,11 +2102,11 @@
             this.proptypeB.Dock = System.Windows.Forms.DockStyle.Top;
             this.proptypeB.FlatAppearance.BorderSize = 0;
             this.proptypeB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.proptypeB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.proptypeB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.proptypeB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.proptypeB.Location = new System.Drawing.Point(0, 188);
+            this.proptypeB.Location = new System.Drawing.Point(0, 158);
             this.proptypeB.Name = "proptypeB";
-            this.proptypeB.Size = new System.Drawing.Size(270, 30);
+            this.proptypeB.Size = new System.Drawing.Size(270, 24);
             this.proptypeB.TabIndex = 18;
             this.proptypeB.Text = "Типы собственности";
             this.proptypeB.UseVisualStyleBackColor = false;
@@ -2063,11 +2118,11 @@
             this.districtB.Dock = System.Windows.Forms.DockStyle.Top;
             this.districtB.FlatAppearance.BorderSize = 0;
             this.districtB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.districtB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.districtB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.districtB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.districtB.Location = new System.Drawing.Point(0, 158);
+            this.districtB.Location = new System.Drawing.Point(0, 134);
             this.districtB.Name = "districtB";
-            this.districtB.Size = new System.Drawing.Size(270, 30);
+            this.districtB.Size = new System.Drawing.Size(270, 24);
             this.districtB.TabIndex = 17;
             this.districtB.Text = "Районы";
             this.districtB.UseVisualStyleBackColor = false;
@@ -2079,11 +2134,11 @@
             this.filmsB.Dock = System.Windows.Forms.DockStyle.Top;
             this.filmsB.FlatAppearance.BorderSize = 0;
             this.filmsB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filmsB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.filmsB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.filmsB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.filmsB.Location = new System.Drawing.Point(0, 128);
+            this.filmsB.Location = new System.Drawing.Point(0, 110);
             this.filmsB.Name = "filmsB";
-            this.filmsB.Size = new System.Drawing.Size(270, 30);
+            this.filmsB.Size = new System.Drawing.Size(270, 24);
             this.filmsB.TabIndex = 16;
             this.filmsB.Text = "Фильмы";
             this.filmsB.UseVisualStyleBackColor = false;
@@ -2095,11 +2150,11 @@
             this.cassettesB.Dock = System.Windows.Forms.DockStyle.Top;
             this.cassettesB.FlatAppearance.BorderSize = 0;
             this.cassettesB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cassettesB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cassettesB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cassettesB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cassettesB.Location = new System.Drawing.Point(0, 98);
+            this.cassettesB.Location = new System.Drawing.Point(0, 86);
             this.cassettesB.Name = "cassettesB";
-            this.cassettesB.Size = new System.Drawing.Size(270, 30);
+            this.cassettesB.Size = new System.Drawing.Size(270, 24);
             this.cassettesB.TabIndex = 15;
             this.cassettesB.Text = "Кассеты";
             this.cassettesB.UseVisualStyleBackColor = false;
@@ -2111,11 +2166,11 @@
             this.ordersB.Dock = System.Windows.Forms.DockStyle.Top;
             this.ordersB.FlatAppearance.BorderSize = 0;
             this.ordersB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ordersB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ordersB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ordersB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ordersB.Location = new System.Drawing.Point(0, 68);
+            this.ordersB.Location = new System.Drawing.Point(0, 62);
             this.ordersB.Name = "ordersB";
-            this.ordersB.Size = new System.Drawing.Size(270, 30);
+            this.ordersB.Size = new System.Drawing.Size(270, 24);
             this.ordersB.TabIndex = 14;
             this.ordersB.Text = "Сделки";
             this.ordersB.UseVisualStyleBackColor = false;
@@ -2127,9 +2182,9 @@
             this.videorentalB.Dock = System.Windows.Forms.DockStyle.Top;
             this.videorentalB.FlatAppearance.BorderSize = 0;
             this.videorentalB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.videorentalB.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.videorentalB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.videorentalB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.videorentalB.Location = new System.Drawing.Point(0, 38);
+            this.videorentalB.Location = new System.Drawing.Point(0, 32);
             this.videorentalB.Name = "videorentalB";
             this.videorentalB.Size = new System.Drawing.Size(270, 30);
             this.videorentalB.TabIndex = 13;
@@ -2143,62 +2198,56 @@
             this.tables.Dock = System.Windows.Forms.DockStyle.Top;
             this.tables.FlatAppearance.BorderSize = 0;
             this.tables.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.tables.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tables.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tables.Image = global::BD_course_work.Properties.Resources.expand;
             this.tables.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tables.Location = new System.Drawing.Point(0, 0);
             this.tables.Name = "tables";
-            this.tables.Size = new System.Drawing.Size(270, 38);
+            this.tables.Size = new System.Drawing.Size(270, 32);
             this.tables.TabIndex = 12;
             this.tables.Text = "Таблицы";
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
             // 
-            // tabPage11
+            // button71
             // 
-            this.tabPage11.Controls.Add(this.queryCB);
-            this.tabPage11.Controls.Add(this.dataGridView1);
-            this.tabPage11.Location = new System.Drawing.Point(4, 27);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(923, 579);
-            this.tabPage11.TabIndex = 14;
-            this.tabPage11.Text = "queryPage";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            this.button71.BackColor = System.Drawing.Color.Transparent;
+            this.button71.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button71.FlatAppearance.BorderSize = 0;
+            this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button71.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button71.Location = new System.Drawing.Point(0, 92);
+            this.button71.Name = "button71";
+            this.button71.Size = new System.Drawing.Size(270, 30);
+            this.button71.TabIndex = 22;
+            this.button71.Text = "Сгенерировать всё";
+            this.button71.UseVisualStyleBackColor = false;
+            this.button71.Click += new System.EventHandler(this.button71_Click);
             // 
-            // dataGridView1
+            // button72
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dataGridView1.Location = new System.Drawing.Point(19, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(883, 524);
-            this.dataGridView1.TabIndex = 17;
+            this.button72.BackColor = System.Drawing.Color.Transparent;
+            this.button72.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button72.FlatAppearance.BorderSize = 0;
+            this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button72.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button72.Location = new System.Drawing.Point(0, 122);
+            this.button72.Name = "button72";
+            this.button72.Size = new System.Drawing.Size(270, 30);
+            this.button72.TabIndex = 23;
+            this.button72.Text = "Удалить все данные";
+            this.button72.UseVisualStyleBackColor = false;
+            this.button72.Click += new System.EventHandler(this.button72_Click);
             // 
-            // queryCB
+            // label16
             // 
-            this.queryCB.DropDownHeight = 100;
-            this.queryCB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.queryCB.FormattingEnabled = true;
-            this.queryCB.IntegralHeight = false;
-            this.queryCB.Items.AddRange(new object[] {
-            "1.Cимметричное внутреннее соединение с условием отбора по внешнему ключу",
-            "2.Cимметричное внутреннее соединение с условием отбора по внешнему ключу",
-            "3.Cимметричное внутреннее соединение с условием отбора по дате",
-            "4.Cимметричное внутреннее соединение с условием отбора по дате",
-            "5.Симметричное внутреннее соединение без условия ",
-            "6.Симметричное внутреннее соединение без условия ",
-            "7.Симметричное внутреннее соединение без условия "});
-            this.queryCB.Location = new System.Drawing.Point(66, 11);
-            this.queryCB.Name = "queryCB";
-            this.queryCB.Size = new System.Drawing.Size(794, 29);
-            this.queryCB.TabIndex = 18;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(3, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 21);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Количество полей:";
             // 
             // Main_Menu
             // 
@@ -2258,10 +2307,11 @@
             this.serpricePage.ResumeLayout(false);
             this.serpricePage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).EndInit();
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.queryData)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tabPage11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2405,7 +2455,10 @@
         private System.Windows.Forms.Button button70;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.ComboBox queryCB;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView queryData;
+        private System.Windows.Forms.Button button71;
+        private System.Windows.Forms.Button button72;
+        private System.Windows.Forms.Label label16;
     }
 }
 
