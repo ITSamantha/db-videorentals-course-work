@@ -507,6 +507,7 @@
             this.button47.Size = new System.Drawing.Size(44, 38);
             this.button47.TabIndex = 14;
             this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
             // cassettesTable
             // 
@@ -1852,8 +1853,9 @@
             "Вывод выручки видеопрокатов со сделок и суммарная выручка видеопрокатов",
             "Вывод сделок, кассеты которых не пользовались спросом",
             "Вывод сделок, кассеты которых пользовались спросом",
-            "Вывести инф-ю о кассетах, стоимость которых менее 500, иначе вывести «Слишком дор" +
-                "ого…»"});
+            "Вывести фильмы кассет, стоимость которых менее 500, иначе в поле «Фильм» вывести " +
+                "«Слишком дорого…!»",
+            "Вывести информацию о кассетах, чьи стоимости ниже средней цены кассеты"});
             this.queryCB.Location = new System.Drawing.Point(224, 7);
             this.queryCB.Name = "queryCB";
             this.queryCB.Size = new System.Drawing.Size(691, 29);

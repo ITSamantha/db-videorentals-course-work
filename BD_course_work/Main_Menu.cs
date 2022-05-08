@@ -4696,7 +4696,27 @@ namespace BD_course_work
 
                             queryData.Columns[4].HeaderText = "Цена кассеты";
 
+                            queryData.Columns[5].HeaderText = "Фильм";
+                        }
+                        break;
+                    }
+                case 10:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID кассеты";
+
+                            queryData.Columns[1].HeaderText = "Фильм";
+
+                            queryData.Columns[2].HeaderText = "Год фильма";
+
+                            queryData.Columns[3].HeaderText = "Спрос кассеты";
+
+                            queryData.Columns[4].HeaderText = "Качество";
+
                             queryData.Columns[5].HeaderText = "Фото";
+
+                            queryData.Columns[6].HeaderText = "Цена";
                         }
                         break;
                     }
@@ -4704,6 +4724,102 @@ namespace BD_course_work
 
             }
             label16.Text = strAmount + queryData.RowCount;
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            addOrEditCassettes add = new addOrEditCassettes();
+
+            add.button1.Text = "Поиск";
+
+            add.mainL1.Text = "Поиск кассеты";
+
+            add.groupBox2.Hide();
+
+            add.priceTB.Hide();
+            
+            add.textBox1.Visible = add.textBox2.Visible= true;
+
+            add.demandCB.SelectedIndex=add.filmCB.SelectedIndex=add.qualityCB.SelectedIndex = -1;
+            
+        m1:
+
+            add.clean();
+
+            add.ShowDialog();
+
+            double? n1 = null, n2 = null;
+
+            if (add.textBox1.Text != String.Empty)
+            {
+                try
+                {
+                    n1 =double.Parse(add.textBox1.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Цена введена некорректно.");
+
+                    goto m1;
+                }
+            }
+            if (add.textBox2.Text != String.Empty)
+            {
+                try
+                {
+                    n2 = int.Parse(add.textBox2.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Цена введена некорректно.");
+                    goto m1;
+                }
+            }
+           
+            if (n1 != null && n2 != null)
+            {
+                if ((n2 - n1) < 0)
+                {
+                    MessageBox.Show("Цена 2 должна быть больше цены 1.", "Error");
+
+                    goto m1;
+                }
+            }
+            
+            if (!add.isCanceled && add.isEnabled)
+            {
+                try
+                {
+                    cassettesTable.DataSource = ControllerForDB.searchCassettes(add.qualityCB.Text, add.textBox1.Text, add.textBox2.Text, add.demandCB.Text == "Да" ? "true" : add.demandCB.Text == "Нет" ? "false" : "", add.filmCB.Text==""?"":add.film_list[add.filmCB.Text].ToString());
+
+                    if (cassettesTable.RowCount != 0)
+                    {
+                        cassettesTable.Columns[0].HeaderText = "ID кассеты";
+
+                        cassettesTable.Columns[1].HeaderText = "Качество";
+
+                        cassettesTable.Columns[2].HeaderText = "Фото";
+
+                        cassettesTable.Columns[3].HeaderText = "Цена";
+
+                        cassettesTable.Columns[4].HeaderText = "Спрос";
+
+                        cassettesTable.Columns[5].HeaderText = "Название фильма";
+
+                        cassettesTable.Columns[6].HeaderText = "Год фильма";
+                    }
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            label10.Text = "Количество полей:" + cassettesTable.RowCount;
         }
     }
 }

@@ -34,20 +34,22 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.priceTB = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.photoPB = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.qualityCB = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.filmCB = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.demandCB = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.photoPB = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.photoPB)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.photoPB)).BeginInit();
             this.SuspendLayout();
             // 
             // mainL1
@@ -90,6 +92,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.priceTB);
             this.groupBox1.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(390, 137);
@@ -120,6 +124,31 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Фото";
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Garamond", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(246, 236);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(92, 28);
+            this.button3.TabIndex = 30;
+            this.button3.Text = "Удалить";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // photoPB
+            // 
+            this.photoPB.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.photoPB.Image = global::BD_course_work.Properties.Resources.add_photo;
+            this.photoPB.Location = new System.Drawing.Point(6, 25);
+            this.photoPB.Name = "photoPB";
+            this.photoPB.Size = new System.Drawing.Size(331, 205);
+            this.photoPB.TabIndex = 0;
+            this.photoPB.TabStop = false;
+            this.photoPB.Click += new System.EventHandler(this.photoPB_Click);
             // 
             // groupBox6
             // 
@@ -195,30 +224,27 @@
             this.demandCB.Size = new System.Drawing.Size(333, 35);
             this.demandCB.TabIndex = 1;
             // 
-            // button3
+            // textBox1
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Garamond", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(246, 236);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 28);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(7, 24);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(159, 37);
+            this.textBox1.TabIndex = 14;
+            this.textBox1.Visible = false;
             // 
-            // photoPB
+            // textBox2
             // 
-            this.photoPB.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.photoPB.Image = global::BD_course_work.Properties.Resources.add_photo;
-            this.photoPB.Location = new System.Drawing.Point(6, 25);
-            this.photoPB.Name = "photoPB";
-            this.photoPB.Size = new System.Drawing.Size(331, 205);
-            this.photoPB.TabIndex = 0;
-            this.photoPB.TabStop = false;
-            this.photoPB.Click += new System.EventHandler(this.photoPB_Click);
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(179, 24);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(159, 37);
+            this.textBox2.TabIndex = 15;
+            this.textBox2.Visible = false;
             // 
             // addOrEditCassettes
             // 
@@ -241,10 +267,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.photoPB)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.photoPB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,5 +291,7 @@
         public System.Windows.Forms.GroupBox groupBox4;
         public System.Windows.Forms.ComboBox demandCB;
         public System.Windows.Forms.PictureBox photoPB;
+        public System.Windows.Forms.TextBox textBox2;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }

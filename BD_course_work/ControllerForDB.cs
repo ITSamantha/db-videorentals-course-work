@@ -829,7 +829,7 @@ namespace BD_course_work
                 }
                 if (table.Equals("films"))
                 {
-                    list.Add(reader.GetString(1)+" "+reader.GetInt32(2), reader.GetInt32(0));
+                    list.Add(reader.GetString(1)+","+reader.GetInt32(2), reader.GetInt32(0));
 
                     continue;
                 }
@@ -1290,8 +1290,8 @@ namespace BD_course_work
 
                 n.Open();
 
-                com = new NpgsqlCommand($"update cassettes set fk_cassette_quality = '{cassette_quality}',fk_cassette_photo = {cassette_photo},cassette_price =  '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', cassette_demand = '{demand}',fk_film_id =  {film_id} where pk_cassette_id={id};", n);
-                
+                com = new NpgsqlCommand($"update cassettes set fk_cassette_quality = '{cassette_quality}',cassette_price =  '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', cassette_demand = '{demand}',fk_film_id =  {film_id} where pk_cassette_id={id};", n);
+                //fk_cassette_photo = {cassette_photo},
                 com.ExecuteNonQuery();
 
                 n.Close();
@@ -1899,6 +1899,95 @@ namespace BD_course_work
         }
 
         //Методы поиска SEARCH
+
+        public static DataTable searchCassettes(string quality,string pr1,string pr2,string demand,string film_name)
+        {
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            DataTable dt = new DataTable();
+
+            string com = $"select a.pk_cassette_id,b.quality_name,c.photo,a.cassette_price,a.cassette_demand,d.film_name,d.film_year from cassettes a " +
+                                $"inner join {tables[1]} b on a.fk_cassette_quality=b.pk_quality_id " +
+                                $"inner join {tables[0]} c on a.fk_cassette_photo= c.pk_photo_id " +
+                                $"inner join {tables[6]} d on a.fk_film_id=d.pk_film_id ";
+
+            if (quality != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and b.quality_name ='{quality}' ";
+                }
+                else
+                {
+                    com += $" where b.quality_name ='{quality}' ";
+                }
+            }
+            if (pr1 != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and a.cassette_price >='{pr1}' ";
+                }
+                else
+                {
+                    com += $" where a.cassette_price >='{pr1}'";
+                }
+            }
+            if (pr2 != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and a.cassette_price <='{pr2}' ";
+                }
+                else
+                {
+                    com += $" where a.cassette_price <='{pr2}'";
+                }
+            }
+            if (demand != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and a.cassette_demand ={demand} ";
+                }
+                else
+                {
+                    com += $" where a.cassette_demand ={demand} ";
+                }
+            }
+            if (film_name != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and d.pk_film_id ='{film_name}' ";
+                }
+                else
+                {
+                    com += $" where d.pk_film_id ='{film_name}' ";
+                }
+            }
+
+            var command_sql = new NpgsqlCommand(com, n);
+
+            NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                dt.Load(reader);
+            }
+
+            command_sql.Dispose();
+
+            reader.Close();
+
+            n.Close();
+
+            return dt;
+
+
+        }
         public static DataTable searchStudio(string search,string filter)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -2649,12 +2738,31 @@ namespace BD_course_work
                     }
                 case 9:
                     {
+                        //Запрос с подзапросом CASE
+                        //Вывести фильмы кассет, стоимость которых менее 500, иначе в поле «Фильм» вывести «Слишком дорого…!».
                         com = $"SELECT pk_cassette_id, cassette_demand, cassette_quality.quality_name,cassette_photo.photo,cassette_price, " +
                             $"CASE WHEN cassette_price <= 500 then(select film_name from films where pk_film_id = cassettes.fk_film_id ) " +
                             $"else 'Слишком дорого...!' end as film_name " +
                             $"from cassettes " +
                             $"inner join cassette_quality on cassettes.fk_cassette_quality = cassette_quality.pk_quality_id " +
                             $"inner join cassette_photo on cassettes.fk_cassette_photo = cassette_photo.pk_photo_id";
+                        break;
+                    }
+                case 10:
+                    {
+                        //Запрос с подзапросом с операцией над итоговыми данными
+                        //Вывести информацию о кассетах, чьи стоимости ниже средней цены кассеты.
+                        com = $"SELECT pk_cassette_id,films.film_name,films.film_year,cassette_demand,cassette_quality.quality_name," +
+                              $"cassette_photo.photo,cassettes.cassette_price from cassettes " +
+                              $"inner join cassette_quality on cassettes.fk_cassette_quality = cassette_quality.pk_quality_id " +
+                              $"inner join cassette_photo on cassettes.fk_cassette_photo = cassette_photo.pk_photo_id " +
+                              $"inner join films on films.pk_film_id = fk_film_id " +
+                              $"where cassette_price <= (select avg(cassette_price) from cassettes)";
+                        break;
+                    }
+                case 11:
+                    {
+
                         break;
                     }
             }
