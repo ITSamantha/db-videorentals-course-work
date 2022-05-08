@@ -108,6 +108,7 @@
             this.dateCB.Name = "dateCB";
             this.dateCB.Size = new System.Drawing.Size(321, 35);
             this.dateCB.TabIndex = 0;
+            this.dateCB.ValueChanged += new System.EventHandler(this.dateCB_ValueChanged);
             // 
             // groupBox2
             // 
@@ -193,11 +194,13 @@
             // 
             // recipeTB
             // 
+            this.recipeTB.BackColor = System.Drawing.Color.White;
             this.recipeTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.recipeTB.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.recipeTB.Location = new System.Drawing.Point(6, 24);
             this.recipeTB.Multiline = true;
             this.recipeTB.Name = "recipeTB";
+            this.recipeTB.ReadOnly = true;
             this.recipeTB.Size = new System.Drawing.Size(332, 199);
             this.recipeTB.TabIndex = 13;
             // 

@@ -41,8 +41,13 @@ namespace BD_course_work
         public static string[] films = { "Достучаться до небес", "Зелёная миля", "Сила воли", "Никогда не сдавайся", "Прислуга", "Форрест Гамп", "Человек паук",
                                   "Великий Гэтсби", "Мемуары Гейши", "Жизнь Пи", "Цветок пустыни", "Три метра над уровнем моря", "Четыре метра над уровнем моря",
                                   "Жизнь Пи=3.14", "Криминальное некриминальное", "Куда приводит ПИ", "Жизнь математика в 3D", "Век Адалин", "Амели" };
+
         public static string[] film_info = {"Это самый крутой фильм!", "Этот фильм стоит посмотреть каждому!", "Ты должен посмотреть этот фильм!" };
-        public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда", "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm" };
+
+        public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда",
+            "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm","ПосмотриФильм", "ПоттерДом", "ПодПопкорн","Бублик", "Integer",
+            "Видеопросмотр"};
+
 
         public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патриция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
 
@@ -55,6 +60,8 @@ namespace BD_course_work
         public static string[] male_last_names = { "Савельев", "Барашкин", "Лисицын", "Шубин", "Яковлев", "Елисеев", "Блохин", "Мартов", "Буров", "Емельянов", "Пушкин", "Баранов", "Вишняков", "Чернель", "Дубов" };
 
         public static string[] male_patron = { "Александрович", "Романович", "Аркадьевич", "Владимирович" };
+
+        public static string[] streets = { "Пушкина", "Колотушкина", "Матвеева", "Лаптева", "Дурова", "Макарова", "Бабкина", "Барашкина" };
 
         public static long amount;
 
@@ -230,84 +237,83 @@ namespace BD_course_work
 
         public static void generateOrders(int N)//ПОЧЕМУ-ТО ДОБАВЛЯЕТСЯ ВРЕМЯ
         {
-            try
+            if (getAmountOfRows("deals") != 0)
             {
-                NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-                n.Open();
-
-                StringBuilder command = new StringBuilder("Insert into deals values");
-
-                Random r = new Random();
-
-                List<int> cassettes = getSmthForList("cassettes", "pk_cassette_id");
-
-                List<int> services_prices = getSmthForList("services_prices", "pk_service_price_id");
-
-                int deals_count=1;
-
-                if (getAmountOfRows("deals") != 0)
+                if (getAmountOfRows("services_prices") == 0)
                 {
-                    NpgsqlCommand c = new NpgsqlCommand("select max(deals.pk_deal_id) from deals;", n);
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Услуги и цены\" пуста.", "Error");
 
-                    deals_count = (int)c.ExecuteScalar() + 1;
+                    return;
                 }
-
-                for (int i = 1; i < N; i++)
+                if (getAmountOfRows("cassettes") == 0)
                 {
-                    var cassette_id = cassettes[r.Next(0, (cassettes.Count-1))];
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Кассеты\" пуста.", "Error");
 
-                    var service_id = services_prices[r.Next(0, (services_prices.Count-1))];
-                    
-                    var price = (double)selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + (double)selectSmthById(cassette_id, "cassettes", "cassette_price", "pk_cassette_id");
+                    return;
+                }
+                try
+                {
+                    NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
-                    DateTime date = new DateTime(r.Next(2000, 2021), r.Next(1, 12),r.Next(1, 28));
+                    n.Open();
 
-                    var d = $"{date.Year}-";
+                    StringBuilder command = new StringBuilder("Insert into deals values");
 
-                    if (date.Month < 10){ d += $"0{date.Month}-";}
-                    else{d += $"{date.Month}-";}
-                    if (date.Day < 10) { d += $"0{date.Day}"; }
-                    else { d += $"{date.Day}"; }
+                    Random r = new Random();
 
-                    if (services_prices.Count != 0 && cassettes.Count != 0)
+                    List<int> cassettes = getSmthForList("cassettes", "pk_cassette_id");
+
+                    List<int> services_prices = getSmthForList("services_prices", "pk_service_price_id");
+
+                    for (int i = 1; i < N; i++)
                     {
-                        if (i == ( N-1))
+                        var cassette_id = cassettes[r.Next(0, (cassettes.Count - 1))];
+
+                        var service_id = services_prices[r.Next(0, (services_prices.Count - 1))];
+
+                        var price = (double)selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + (double)selectSmthById(cassette_id, "cassettes", "cassette_price", "pk_cassette_id");
+
+                        DateTime date = new DateTime(r.Next(2000, 2021), r.Next(1, 12), r.Next(1, 28));
+
+                        if (services_prices.Count != 0 && cassettes.Count != 0)
                         {
-                            command.Append($"( {deals_count}, {cassette_id} , ");
+                            if (i == (N - 1))
+                            {
+                                command.Append($"( null, {cassette_id} , ");
 
-                            command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ); ");
+                                command.Append($"'Квитанция выдана {date.ToShortDateString()}.\n Цена: {price}.\nСпасибо за посещение видеопроката!',  '{date.ToShortDateString()}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ); ");
 
-                            deals_count++;
+                                break;
+                            }
+                            command.Append($"( null, {cassette_id} , ");
 
-                            break;
+                            command.Append($"'Квитанция выдана {date.ToShortDateString()}.\n Цена: {price}.\nСпасибо за посещение видеопроката!',  '{date.ToShortDateString()}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ), ");
                         }
-                        command.Append($"( {deals_count}, {cassette_id} , ");
 
-                        command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ), ");
-
-                        deals_count++;
                     }
 
+                    var command_sql = new NpgsqlCommand(command.ToString(), n);
+
+                    NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+                    reader.Close();
+
+                    command_sql.Dispose();
+
+                    n.Close();
+
+                    MessageBox.Show("Успешно сгенерировано.", "Оповещение");
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
 
-                var command_sql = new NpgsqlCommand(command.ToString(), n);
-
-                NpgsqlDataReader reader = command_sql.ExecuteReader();
-
-                reader.Close();
-
-                command_sql.Dispose();
-
-                n.Close();
-
-                MessageBox.Show("Успешно сгенерировано.","Оповещение");
+                    return;
+                }
             }
-            catch(Exception e)
+            else
             {
-                Console.WriteLine(e);
-
-                return;
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
             }
         }
 
@@ -569,6 +575,161 @@ namespace BD_course_work
 
         }
 
+        public static void generateCassettes(int num)
+        {
+            if (getAmountOfRows("cassettes") == 0)
+            {
+                List<int> ids1 = new List<int>();//Качество
+
+                List<int> ids2 = new List<int>();//Фильмы
+
+                List<int> photos = new List<int>();//Фото
+
+                if (getAmountOfRows("cassette_quality") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать.Таблица \"Качество кассеты\" пуста.", "Error");
+                    return;
+                }
+                else
+                {
+                    ids1 = getSmthForList("cassette_quality", "pk_quality_id");
+                }
+                if (getAmountOfRows("films") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать.Таблица \"Фильмы\" пуста.", "Error");
+                    return;
+                }
+                else
+                {
+                    ids2 = getSmthForList("films", "pk_film_id");
+                }
+                if (getAmountOfRows("cassette_photo") == 0)
+                {
+                    MessageBox.Show("Таблица \"Фото кассеты\" пуста.Запущена генерация фото.", "Error");
+
+                    generatePics(num);
+
+                    photos = getSmthForList("cassette_photo", "pk_photo_id");
+
+                }
+                else
+                {
+                    if(getAmountOfRows("cassette_photo") >= num)
+                    {
+                        photos = getSmthForList("cassette_photo", "pk_photo_id");
+                    }
+                    else
+                    {
+                        MessageBox.Show("В таблице \"Фото\" не достаточно фото для генерации.", "Error");
+                        return;
+                    }
+                }
+
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                c.Open();
+
+                var command = $"insert into cassettes values ";
+
+                Random r = new Random();
+
+                double f = 0.01f;
+                
+                for (int i = 0; i < num; i++)
+                {
+                    if (i == (num - 1))
+                    {
+                        command += $" (null,'{ids1[r.Next(0,ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100,300)+f),2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0,2)==0? "false":"true")}','{ids2[r.Next(0,ids2.Count)]}' ) ; "; break;
+                    }
+                    command += $" (null,'{ids1[r.Next(0, ids1.Count)]}',{photos[i]},'{Math.Round((double)(r.Next(100, 300) + f), 2).ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}','{(r.Next(0, 2) == 0 ? "false" : "true")}','{ids2[r.Next(0, ids2.Count)]}' ),  ";
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+
+        public static void generateVideoRental()
+        {
+            if (getAmountOfRows("video_rental") == 0)
+            {
+                NpgsqlConnection c = new NpgsqlConnection(connectionString);
+
+                List<int> ids = new List<int>();//Районы
+
+                List<int> ids1 = new List<int>();//Тип собственности
+
+                List<int> ids2 = new List<int>();//Тип собственности
+
+                c.Open();
+
+                var command = $"insert into video_rental values ";
+
+                if (getAmountOfRows("district") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Районы\" пуста.", "Error");
+
+                    return;
+                }
+                else
+                {
+                    ids = getSmthForList("district", "pk_district_id");
+                }
+                if (getAmountOfRows("property_type") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Тип собственности\" пуста.", "Error");
+
+                    return;
+                }
+                else
+                {
+                    ids1 = getSmthForList("property_type", "pk_property_type_id");
+                }
+                if (getAmountOfRows("owners") == 0)
+                {
+                    MessageBox.Show("Невозможно сгенерировать, таблица \"Хозяева\" пуста.", "Error");
+
+                    return;
+                }
+                else
+                {
+                    ids2 = getSmthForList("owners", "pk_owner_id");
+                }
+                
+                Random r = new Random();
+
+                for (int i = 0; i < video_rentals.Length; i++)
+                {
+                    if (i == video_rentals.Length - 1)
+                    {
+                        command += $" (null, '{video_rentals[i]}','{ids[r.Next(0,ids.Count)]}','{"Ул."+streets[r.Next(0,streets.Length)]+",д."+r.Next(1,100)}'," +
+                            $" '{ids1[r.Next(0,ids1.Count)]}','(071) {r.Next(100,1000)}-{r.Next(1000,10000)}', '{r.Next(1000000,10000000)}', '{r.Next(6,13)}', '{r.Next(13,23)}'," +
+                            $" '{r.Next(1,100)}', '{ids2[r.Next(0,ids2.Count)]}' ) ; "; break;
+                    }
+                    command += $" (null, '{video_rentals[i]}','{ids[r.Next(0, ids.Count)]}','{"Ул." + streets[r.Next(0, streets.Length)] + ",д." + r.Next(1, 100)}'," +
+                            $" '{ids1[r.Next(0, ids1.Count)]}','(071) {r.Next(100, 1000)}-{r.Next(1000, 10000)}', '{r.Next(1000000, 10000000)}', '{r.Next(6, 13)}', '{r.Next(13, 23)}'," +
+                            $" '{r.Next(1, 100)}', '{ids2[r.Next(0, ids2.Count)]}' ) , "; ;
+                }
+
+                NpgsqlCommand com = new NpgsqlCommand(command, c);
+
+                com.ExecuteNonQuery();
+
+                c.Close();
+            }
+            else
+            {
+                MessageBox.Show("Невозможно сгенерировать.", "Error");
+            }
+        }
+        
         public static List<int> getSmthForList(string table,string id_type)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -674,7 +835,7 @@ namespace BD_course_work
                 }
                 if (table.Equals("cassettes"))
                 {
-                    list.Add(reader.GetInt32(1).ToString(), reader.GetInt32(0));
+                    list.Add(reader.GetDouble(1).ToString(), reader.GetInt32(0));
 
                     continue;
                 }
@@ -693,7 +854,23 @@ namespace BD_course_work
             return list;
         }
 
-        
+        public static int getServicePriceID(int video, int service)
+        {
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand($"select pk_service_price_id from services_prices where fk_service_id={service} and fk_video_rental={video} ;", n);
+
+            var count = (int)com.ExecuteScalar();
+
+            com.Dispose();
+
+            n.Close();
+            
+            return count;
+        }
 
         public static SortedDictionary<string, int> selectForComboBoxDeals(int id2)
         {
@@ -761,9 +938,10 @@ namespace BD_course_work
                     case "films":
                         {
                             command = "select * from films_view;";
-                                /*$"select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name,a.film_year,a.film_duration,a.film_info from {table_name} a " +
-                                $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
-                                $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id";*/
+                            /*"select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name, d.country_name,a.film_year,a.film_duration,a.film_info from films a " +
+                            $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
+                            $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id " +
+                            $"inner join countries d ON c.fk_studio_country = d.pk_country_id;";*/
                             break;
                         }
                     case "cassettes":
@@ -879,7 +1057,7 @@ namespace BD_course_work
         
         //INSERT-методы
 
-        public static bool insertOrUpdateIntoDeals(int val,int cassette_id, string date,int service_price,double price,int id=0)
+        public static bool insertOrUpdateIntoDeals(int val,int cassette_id,string recipe, string date,int service_price,double price,int id=0)
         {
             try
             {
@@ -891,11 +1069,11 @@ namespace BD_course_work
 
                 if (val == 0)
                 {
-                    command = $"insert into deals values (null,{cassette_id}, '{"Квитанция выдана: "+date+". К оплате: "+price+". Спасибо, что выбрали нас!"}', '{date}', {service_price},'{price});";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                    command = $"insert into deals values (null,{cassette_id}, '{recipe}', '{date}'::date, {service_price},'{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}');";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
                 }
                 else
                 {
-                    command = $"update deals set fk_cassete_id = {cassette_id}, recipe_deal = '{"Квитанция выдана: "+date+".К оплате: "+price+".Спасибо, что выбрали нас!"}', deal_date = '{date}', fk_service_price = {service_price},general_price = '{price}' where pk_deal_id={id};";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
+                    command = $"update deals set fk_cassete_id = {cassette_id}, recipe_deal = '{recipe}', deal_date = '{date}::date', fk_service_price = {service_price},general_price = '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en - US"))}' where pk_deal_id={id};";//СДЕЛАТЬ ТРИГГЕР НА НАПИСАНИЕ КВИТАНЦИИ
                 }
 
                 var com = new NpgsqlCommand(command, n);
@@ -910,6 +1088,8 @@ namespace BD_course_work
             }
             catch (Exception e)
             {
+                Console.Write(e);
+
                 return false;
             }
 
@@ -1063,7 +1243,7 @@ namespace BD_course_work
             }
         }
 
-        public static bool insertIntoCassette(int cassette_quality,int cassette_photo,double price,bool demand,int film_id)
+        public static bool insertIntoCassette(int cassette_quality,int? cassette_photo,double price,bool demand,int film_id)
         {
             NpgsqlCommand com= new NpgsqlCommand();
             try
@@ -1097,24 +1277,28 @@ namespace BD_course_work
             }
         }
 
-        public static bool updateCassette(int id,int cassette_quality, int cassette_photo, double price, bool demand, int film_id)
+        public static bool updateCassette(int id,int cassette_quality, int? cassette_photo, double price, bool demand, int film_id)//ДОДЕЛАТЬ
         {
             try
             {
                 NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
+                NpgsqlCommand com= new NpgsqlCommand();
+
                 n.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand($"update cassettes set fk_cassette_quality = '{cassette_quality}',fk_cassette_photo = {cassette_photo},cassette_price =  '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', cassette_demand = '{demand}',fk_film_id =  {film_id} where pk_cassette_id={id};", n);
-
+                com = new NpgsqlCommand($"update cassettes set fk_cassette_quality = '{cassette_quality}',fk_cassette_photo = {cassette_photo},cassette_price =  '{price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))}', cassette_demand = '{demand}',fk_film_id =  {film_id} where pk_cassette_id={id};", n);
+                
                 com.ExecuteNonQuery();
 
                 n.Close();
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.Write(e);
+
                 return false;
             }
         }
@@ -1200,7 +1384,7 @@ namespace BD_course_work
             {
                 Console.WriteLine(e);
 
-                MessageBox.Show("Строка не добавлена. Возможно, лицензия или номер телефона не уникальны.");
+                //MessageBox.Show("Строка не добавлена. Возможно, лицензия или номер телефона не уникальны.");
 
                 return false;
             }
@@ -1519,7 +1703,7 @@ namespace BD_course_work
             return false;
         }
 
-        public static bool deletePhoto(int id)
+        public static bool deletePhoto(int? id)
         {
             try
             {
@@ -1947,9 +2131,10 @@ namespace BD_course_work
 
             n.Open();
 
-            string com = "select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name,a.film_year,a.film_duration,a.film_info from films a " +
+            string com = "select a.pk_film_id,a.film_name,b.producer_last_name,b.producer_first_name,b.producer_patronymic,c.studio_name, d.country_name,a.film_year,a.film_duration,a.film_info from films a " +
                                 $"inner join {tables[8]} b on a.fk_producer_id=b.pk_producer_id " +
-                                $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id";
+                                $"inner join {tables[12]} c on a.fk_studio_id=c.pk_studio_id " +
+                                $"inner join countries d ON c.fk_studio_country = d.pk_country_id ";
 
             if (film_name != String.Empty)
             {
@@ -2245,6 +2430,26 @@ namespace BD_course_work
                     com += $" where amount_of_employees <= '{amount_empl2}' ";
                 }
             }
+
+            //Запрос с отбором по внешнему ключу – вывод видеопрокатов определенного района
+
+            /*com = $" SELECT a.pk_video_rental_id, a.video_caption,b.district_name,a.video_adress," +
+                $"c.property_type_name,a.video_phone,a.license_number," +
+                $"a.time_start,a.time_end,a.amount_of_employees,d.owner_last_name,d.owner_first_name," +
+                $"d.owner_patronymic FROM video_rental a " +
+                $"INNER JOIN district b ON a.fk_video_district = b.pk_district_id " +
+                $"INNER JOIN property_type c ON a.fk_property_type = c.pk_property_type_id" +
+                $"INNER JOIN owners d ON a.fk_owner_id = d.pk_owner_id where fk_video_district ={district};"*/
+
+            //Запрос с отбором по внешнему ключу – вывод видеопрокатов определенного типа собственности
+
+            /*com = $" SELECT a.pk_video_rental_id, a.video_caption,b.district_name,a.video_adress," +
+                $"c.property_type_name,a.video_phone,a.license_number," +
+                $"a.time_start,a.time_end,a.amount_of_employees,d.owner_last_name,d.owner_first_name," +
+                $"d.owner_patronymic FROM video_rental a " +
+                $"INNER JOIN district b ON a.fk_video_district = b.pk_district_id " +
+                $"INNER JOIN property_type c ON a.fk_property_type = c.pk_property_type_id" +
+                $"INNER JOIN owners d ON a.fk_owner_id = d.pk_owner_id where fk_property_type ={type_prop};";*/
 
             var command_sql = new NpgsqlCommand(com, n);
 

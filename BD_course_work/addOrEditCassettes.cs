@@ -131,7 +131,7 @@ namespace BD_course_work
                 return;
             }
 
-            added_photo.Add(Main_Menu.pic_id);
+            //added_photo.Add(Main_Menu.pic_id);
 
             if (!string.IsNullOrEmpty(Main_Menu.path))
             {

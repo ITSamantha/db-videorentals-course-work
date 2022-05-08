@@ -707,7 +707,7 @@ namespace BD_course_work
 
         public static string path;
 
-        public static int pic_id = 0;
+        public static int? pic_id = 0;
 
         public static bool insertPhotoIntoTable()//Добавление фото в таблицу
         {
@@ -1351,7 +1351,7 @@ namespace BD_course_work
             {
                 if (val == 0)
                 {
-                    if (ControllerForDB.insertOrUpdateIntoDeals(0, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text)))
+                    if (ControllerForDB.insertOrUpdateIntoDeals(0, int.Parse(add.idCB.Text), add.recipeTB.Text, add.dateCB.Text, ControllerForDB.getServicePriceID(add.rental_list[add.rentalCB.Text], add.services_list[add.serviceCB.Text]), double.Parse(add.priceTB.Text)))
                     {
                         MessageBox.Show("Строка добавлена.", "Оповещение");
                     }
@@ -1368,7 +1368,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.insertOrUpdateIntoDeals(1, int.Parse(add.idCB.Text), add.dateCB.Text, add.services_list[add.serviceCB.Text], double.Parse(add.priceTB.Text), id))
+                    if (ControllerForDB.insertOrUpdateIntoDeals(1, int.Parse(add.idCB.Text), add.recipeTB.Text, add.dateCB.Text, ControllerForDB.getServicePriceID(add.rental_list[add.rentalCB.Text], add.services_list[add.serviceCB.Text]), double.Parse(add.priceTB.Text), id))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -1501,8 +1501,7 @@ namespace BD_course_work
                 add.priceTB.Text = price;
 
                 add.photoPB.Image = b == null ? Resources.add_photo : Instruments.convertBIntoImage(b);
-
-                //if()
+                
             }
 
         m1:
@@ -1544,7 +1543,7 @@ namespace BD_course_work
                 }
                 else
                 {
-                    if (ControllerForDB.updateCassette(id, add.quality_list[add.qualityCB.Text], pic_id, double.Parse(add.priceTB.Text), bool.Parse(add.demandCB.Text == "Да" ? "true" : "false"), add.film_list[add.filmCB.Text]))
+                    if (ControllerForDB.updateCassette(id, add.quality_list[add.qualityCB.Text], pic_id==0?pic_id:pic_id, double.Parse(add.priceTB.Text), bool.Parse(add.demandCB.Text == "Да" ? "true" : "false"), add.film_list[add.filmCB.Text]))
                     {
                         MessageBox.Show("Строка обновлена.", "Оповещение");
                     }
@@ -1808,8 +1807,7 @@ namespace BD_course_work
                         {
                             return;
                         }
-
-                        MessageBox.Show("По каким-то причинам строка не добавлена.", "Оповещение");
+                        MessageBox.Show("Такая строка уже существует.", "Оповещение", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (val == 1)
@@ -3463,9 +3461,7 @@ namespace BD_course_work
         private void button57_Click(object sender, EventArgs e)
         {
             ControllerForDB.generateOrders(10001);
-
-            if (!label11.Text.Equals(strAmount)) { label11.Text = strAmount; }
-
+            
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
             if (ordersTable.RowCount != 0)
@@ -3487,7 +3483,7 @@ namespace BD_course_work
                 ordersTable.Columns[7].HeaderText = "Цена";
             }
 
-            label11.Text += ControllerForDB.amount;
+            label11.Text = strAmount + ordersTable.RowCount;
         }
 
         private void button58_Click(object sender, EventArgs e)
@@ -4266,7 +4262,7 @@ namespace BD_course_work
         {
             if (imagesTable.RowCount == 0)
             {
-                ControllerForDB.generatePics(100);
+                ControllerForDB.generatePics(20);
 
                 imagesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassette_photo");
 
@@ -4376,6 +4372,72 @@ namespace BD_course_work
                 }
             }
             label9.Text = strAmount + filmsTable.RowCount;
+        }
+
+        private void button69_Click(object sender, EventArgs e)
+        {
+            if (cassettesTable.RowCount == 0)
+            {
+                ControllerForDB.generateCassettes(20);
+
+                cassettesTable.DataSource= ControllerForDB.selectAllFromMainTables("cassettes");
+
+                if (cassettesTable.RowCount != 0)
+                { 
+                    cassettesTable.Columns[0].HeaderText = "ID";
+
+                    cassettesTable.Columns[1].HeaderText = "Качество кассеты";
+
+                    cassettesTable.Columns[2].HeaderText = "Фото";
+
+                    cassettesTable.Columns[3].HeaderText = "Цена кассеты";
+
+                    cassettesTable.Columns[4].HeaderText = "Спрос";
+
+                    cassettesTable.Columns[5].HeaderText = "Фильм";
+                }
+            }
+            label10.Text = strAmount + cassettesTable.RowCount;
+        }
+
+        private void button70_Click(object sender, EventArgs e)
+        {
+            if (videoTable.RowCount == 0)
+            {
+                ControllerForDB.generateVideoRental();
+
+                videoTable.DataSource= ControllerForDB.selectAllFromMainTables("video_rental");
+
+                if (videoTable.RowCount != 0)
+                {
+                    videoTable.Columns[0].HeaderText = "ID";
+
+                    videoTable.Columns[1].HeaderText = "Название видеопроката";
+
+                    videoTable.Columns[2].HeaderText = "Район";
+
+                    videoTable.Columns[3].HeaderText = "Адрес";
+
+                    videoTable.Columns[4].HeaderText = "Тип собственности";
+
+                    videoTable.Columns[5].HeaderText = "Телефон";
+
+                    videoTable.Columns[6].HeaderText = "№ Лицензии";
+
+                    videoTable.Columns[7].HeaderText = "Начало работы";
+
+                    videoTable.Columns[8].HeaderText = "Конец работы";
+
+                    videoTable.Columns[9].HeaderText = "Количество работников";
+
+                    videoTable.Columns[10].HeaderText = "Фамилия хозяина";
+
+                    videoTable.Columns[11].HeaderText = "Имя хозяина";
+
+                    videoTable.Columns[12].HeaderText = "Отчество хозяина";
+                }
+            }
+            label12.Text = strAmount + videoTable.RowCount;
         }
     }
 }

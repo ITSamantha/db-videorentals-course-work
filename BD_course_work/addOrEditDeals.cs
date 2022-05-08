@@ -25,24 +25,30 @@ namespace BD_course_work
         public addOrEditDeals()
         {
             InitializeComponent();
-
+            
             updateCassettes();
 
-            idCB.SelectedIndex = 0;
-            
             updateRental();
 
             rentalCB.SelectedIndex = 0;
-            
-            updateService();
 
+            updateService();
+            
             serviceCB.SelectedIndex = 0;
+
+            idCB.SelectedIndex = 0;
+            
+            dateCB.MaxDate = DateTime.Today;
+
+            dateCB.MinDate = new DateTime(2000, 01, 01);
+
+            updatePriceAndRecipe();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             isCanceled = true;
-
+            
             Close();
         }
 
@@ -51,6 +57,12 @@ namespace BD_course_work
             isEnabled = false;
 
             isCanceled = false;
+
+            isRen = false;
+
+            isServ = false;
+
+            isId = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +71,12 @@ namespace BD_course_work
 
             Close();
         }
+
+        public static bool isId=false;
+
+        public static bool isRen= false;
+
+        public static bool isServ = false;
 
         private void idCB_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -70,8 +88,12 @@ namespace BD_course_work
 
                 idCB.SelectedIndex = (id_list.Count - 1);
             }
+            if (isId)
+            {
+                updatePriceAndRecipe();
+            }
+            isId = true;
         }
-
         private void rentalCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (rentalCB.SelectedIndex == rental_list.Count)
@@ -82,33 +104,33 @@ namespace BD_course_work
 
                 rentalCB.SelectedIndex = (rental_list.Count - 1);
             }
+            if (isRen)
+            {
+                updateService();
 
-            updateService();
-
-            serviceCB.SelectedIndex = 0;
+                updatePriceAndRecipe();
+            }
+            isRen = true;
         }
 
         private void serviceCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (serviceCB.SelectedIndex == services_list.Count)
+            if (isServ)
             {
-                Main_Menu.InsertIntoDirectTables("services_view");
-
-                updateService();
-
-                serviceCB.SelectedIndex = (services_list.Count - 1);
+                updatePriceAndRecipe();
             }
+            isServ = true;
         }
 
         public void updateCassettes()
         {
             idCB.Items.Clear();
 
-            id_list = ControllerForDB.selectForComboBox("cassettes", "pk_cassette_id", "pk_cassette_id");
+            id_list = ControllerForDB.selectForComboBox("cassettes", "cassette_price", "pk_cassette_id");
 
             foreach (var it in id_list)
             {
-                idCB.Items.Add(it.Key);
+                idCB.Items.Add(it.Value);
             }
 
             idCB.Items.Add("+ Добавить ");
@@ -126,6 +148,7 @@ namespace BD_course_work
             }
 
             rentalCB.Items.Add("+ Добавить ");
+            
         }
 
         public void updateService()
@@ -138,13 +161,29 @@ namespace BD_course_work
             {
                 serviceCB.Items.Add(it.Key);
             }
+
+            serviceCB.SelectedIndex = 0;
+
         }
+        public static int service_id;
 
         public void updatePriceAndRecipe()
         {
-            //priceTB.Text=
+            service_id = ControllerForDB.getServicePriceID(rental_list[rentalCB.Text], services_list[serviceCB.Text]);
+
+            priceTB.Text=((double)ControllerForDB.selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + double.Parse((ControllerForDB.selectSmthById(int.Parse(idCB.Text), "cassettes", "cassette_price", "pk_cassette_id").ToString()))).ToString();
+
+            recipeTB.Text= $"Квитанция выдана {dateCB.Value.ToShortDateString()}.\n Цена: {priceTB.Text}.\n Услуга: {serviceCB.Text}.\n Спасибо за посещение видеопроката {rentalCB.Text}!";
         }
 
-       
+        private void dateCB_ValueChanged(object sender, EventArgs e)
+        {
+            updatePriceAndRecipe();
+        }
+
+
+        //command.Append($"( null, {cassette_id} , ");
+
+        // command.Append($"'Квитанция выдана {date}. . Цена: {price}.Спасибо за посещение! '" + $",  '{d}'::date " + $", '{service_id}', {price.ToString(System.Globalization.CultureInfo.GetCultureInfo("en-US"))} ); ");
     }
 }

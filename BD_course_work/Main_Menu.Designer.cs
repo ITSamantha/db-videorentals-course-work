@@ -33,6 +33,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.mainControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button70 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.button28 = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             this.button26 = new System.Windows.Forms.Button();
             this.button27 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button69 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
             this.cassettesTable = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,6 +57,7 @@
             this.button23 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button68 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.filmsTable = new System.Windows.Forms.DataGridView();
@@ -163,7 +166,9 @@
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button68 = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.queryCB = new System.Windows.Forms.ComboBox();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -195,6 +200,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -218,6 +225,7 @@
             this.mainControl.Controls.Add(this.qualityPage);
             this.mainControl.Controls.Add(this.imagesPage);
             this.mainControl.Controls.Add(this.serpricePage);
+            this.mainControl.Controls.Add(this.tabPage11);
             this.mainControl.Font = new System.Drawing.Font("Garamond", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mainControl.Location = new System.Drawing.Point(269, 70);
             this.mainControl.Name = "mainControl";
@@ -227,6 +235,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button70);
             this.tabPage1.Controls.Add(this.button45);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.button28);
@@ -241,6 +250,21 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Видеопрокат";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button70
+            // 
+            this.button70.BackColor = System.Drawing.Color.White;
+            this.button70.FlatAppearance.BorderSize = 0;
+            this.button70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button70.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button70.Image = ((System.Drawing.Image)(resources.GetObject("button70.Image")));
+            this.button70.Location = new System.Drawing.Point(668, 3);
+            this.button70.Name = "button70";
+            this.button70.Size = new System.Drawing.Size(44, 38);
+            this.button70.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.button70, "Генерация");
+            this.button70.UseVisualStyleBackColor = false;
+            this.button70.Click += new System.EventHandler(this.button70_Click);
             // 
             // button45
             // 
@@ -436,6 +460,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button69);
             this.tabPage2.Controls.Add(this.button47);
             this.tabPage2.Controls.Add(this.cassettesTable);
             this.tabPage2.Controls.Add(this.label10);
@@ -450,6 +475,21 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Кассеты";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button69
+            // 
+            this.button69.BackColor = System.Drawing.Color.White;
+            this.button69.FlatAppearance.BorderSize = 0;
+            this.button69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button69.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button69.Image = ((System.Drawing.Image)(resources.GetObject("button69.Image")));
+            this.button69.Location = new System.Drawing.Point(666, 3);
+            this.button69.Name = "button69";
+            this.button69.Size = new System.Drawing.Size(44, 38);
+            this.button69.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.button69, "Генерация");
+            this.button69.UseVisualStyleBackColor = false;
+            this.button69.Click += new System.EventHandler(this.button69_Click);
             // 
             // button47
             // 
@@ -547,6 +587,21 @@
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Фильмы";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button68
+            // 
+            this.button68.BackColor = System.Drawing.Color.White;
+            this.button68.FlatAppearance.BorderSize = 0;
+            this.button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button68.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button68.Image = ((System.Drawing.Image)(resources.GetObject("button68.Image")));
+            this.button68.Location = new System.Drawing.Point(667, 3);
+            this.button68.Name = "button68";
+            this.button68.Size = new System.Drawing.Size(44, 38);
+            this.button68.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.button68, "Генерация");
+            this.button68.UseVisualStyleBackColor = false;
+            this.button68.Click += new System.EventHandler(this.button68_Click);
             // 
             // button48
             // 
@@ -1812,7 +1867,7 @@
             this.Query.FlatAppearance.BorderSize = 0;
             this.Query.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Query.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Query.Location = new System.Drawing.Point(0, 508);
+            this.Query.Location = new System.Drawing.Point(0, 76);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(270, 38);
             this.Query.TabIndex = 19;
@@ -1826,7 +1881,7 @@
             this.Excel.FlatAppearance.BorderSize = 0;
             this.Excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excel.Font = new System.Drawing.Font("Garamond", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Excel.Location = new System.Drawing.Point(0, 470);
+            this.Excel.Location = new System.Drawing.Point(0, 38);
             this.Excel.Name = "Excel";
             this.Excel.Size = new System.Drawing.Size(270, 38);
             this.Excel.TabIndex = 18;
@@ -1855,7 +1910,7 @@
             this.panel1.MaximumSize = new System.Drawing.Size(270, 470);
             this.panel1.MinimumSize = new System.Drawing.Size(270, 38);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 470);
+            this.panel1.Size = new System.Drawing.Size(270, 38);
             this.panel1.TabIndex = 17;
             // 
             // button36
@@ -2099,20 +2154,51 @@
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
             // 
-            // button68
+            // tabPage11
             // 
-            this.button68.BackColor = System.Drawing.Color.White;
-            this.button68.FlatAppearance.BorderSize = 0;
-            this.button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button68.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button68.Image = ((System.Drawing.Image)(resources.GetObject("button68.Image")));
-            this.button68.Location = new System.Drawing.Point(667, 3);
-            this.button68.Name = "button68";
-            this.button68.Size = new System.Drawing.Size(44, 38);
-            this.button68.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.button68, "Генерация");
-            this.button68.UseVisualStyleBackColor = false;
-            this.button68.Click += new System.EventHandler(this.button68_Click);
+            this.tabPage11.Controls.Add(this.queryCB);
+            this.tabPage11.Controls.Add(this.dataGridView1);
+            this.tabPage11.Location = new System.Drawing.Point(4, 27);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(923, 579);
+            this.tabPage11.TabIndex = 14;
+            this.tabPage11.Text = "queryPage";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dataGridView1.Location = new System.Drawing.Point(19, 49);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(883, 524);
+            this.dataGridView1.TabIndex = 17;
+            // 
+            // queryCB
+            // 
+            this.queryCB.DropDownHeight = 100;
+            this.queryCB.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.queryCB.FormattingEnabled = true;
+            this.queryCB.IntegralHeight = false;
+            this.queryCB.Items.AddRange(new object[] {
+            "1.Cимметричное внутреннее соединение с условием отбора по внешнему ключу",
+            "2.Cимметричное внутреннее соединение с условием отбора по внешнему ключу",
+            "3.Cимметричное внутреннее соединение с условием отбора по дате",
+            "4.Cимметричное внутреннее соединение с условием отбора по дате",
+            "5.Симметричное внутреннее соединение без условия ",
+            "6.Симметричное внутреннее соединение без условия ",
+            "7.Симметричное внутреннее соединение без условия "});
+            this.queryCB.Location = new System.Drawing.Point(66, 11);
+            this.queryCB.Name = "queryCB";
+            this.queryCB.Size = new System.Drawing.Size(794, 29);
+            this.queryCB.TabIndex = 18;
             // 
             // Main_Menu
             // 
@@ -2174,6 +2260,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.servpriceTable)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2313,6 +2401,11 @@
         private System.Windows.Forms.Button button66;
         private System.Windows.Forms.Button button67;
         private System.Windows.Forms.Button button68;
+        private System.Windows.Forms.Button button69;
+        private System.Windows.Forms.Button button70;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.ComboBox queryCB;
+        public System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 
