@@ -2887,6 +2887,25 @@ namespace BD_course_work
 
         }
 
+        public static object selectForVideoRental(string whatChoose,string name)
+        {
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand($"select {whatChoose} from video_rental where video_caption = '{name}' ", n);
+
+            var obj = com.ExecuteScalar();
+
+            com.Dispose();
+
+            n.Close();
+
+            return obj;
+
+        }
+
         
         /*public static bool deleteAllFromtable(string table)
         {

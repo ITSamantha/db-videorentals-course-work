@@ -686,30 +686,38 @@ namespace BD_course_work
 
         private void button27_Click(object sender, EventArgs e)
         {
-            insertOrUpdateIntoDeals(0);
-
-            ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
-
-            if (ordersTable.RowCount ==1)
+            if (ControllerForDB.getAmountOfRows("video_rental") != 0)
             {
-                ordersTable.Columns[0].HeaderText = "ID";
+                insertOrUpdateIntoDeals(0);
 
-                ordersTable.Columns[1].HeaderText = "Видеопрокат";
+                ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
-                ordersTable.Columns[2].HeaderText = "ID кассеты";
+                if (ordersTable.RowCount == 1)
+                {
+                    ordersTable.Columns[0].HeaderText = "ID";
 
-                ordersTable.Columns[3].HeaderText = "Фильм";
+                    ordersTable.Columns[1].HeaderText = "Видеопрокат";
 
-                ordersTable.Columns[4].HeaderText = "Год фильма";
+                    ordersTable.Columns[2].HeaderText = "ID кассеты";
 
-                ordersTable.Columns[5].HeaderText = "Квитанция";
+                    ordersTable.Columns[3].HeaderText = "Фильм";
 
-                ordersTable.Columns[6].HeaderText = "Дата заказа";
+                    ordersTable.Columns[4].HeaderText = "Год фильма";
 
-                ordersTable.Columns[7].HeaderText = "Услуга";
+                    ordersTable.Columns[5].HeaderText = "Квитанция";
 
-                ordersTable.Columns[8].HeaderText = "Цена";
+                    ordersTable.Columns[6].HeaderText = "Дата заказа";
+
+                    ordersTable.Columns[7].HeaderText = "Услуга";
+
+                    ordersTable.Columns[8].HeaderText = "Цена";
+                }
             }
+            else
+            {
+                MessageBox.Show("Таблица \"Видеопрокаты\" пуста.","Error");
+            }
+            
 
             label11.Text = strAmount + ordersTable.RowCount;
         }
@@ -1072,9 +1080,9 @@ namespace BD_course_work
         {
             if (ordersTable.RowCount != 0)
             {
-                insertOrUpdateIntoDeals(1, int.Parse(ordersTable.SelectedRows[0].Cells[2].Value.ToString()), ordersTable.SelectedRows[0].Cells[4].Value.ToString(),
-                   ordersTable.SelectedRows[0].Cells[5].Value.ToString(), ordersTable.SelectedRows[0].Cells[1].Value.ToString(), ordersTable.SelectedRows[0].Cells[6].Value.ToString(),
-                   float.Parse(ordersTable.SelectedRows[0].Cells[7].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
+                insertOrUpdateIntoDeals(1, int.Parse(ordersTable.SelectedRows[0].Cells[2].Value.ToString()), ordersTable.SelectedRows[0].Cells[5].Value.ToString(),
+                   DateTime.Parse(ordersTable.SelectedRows[0].Cells[6].Value.ToString()).ToShortDateString(), ordersTable.SelectedRows[0].Cells[1].Value.ToString(), ordersTable.SelectedRows[0].Cells[7].Value.ToString(),
+                   float.Parse(ordersTable.SelectedRows[0].Cells[8].Value.ToString()), int.Parse(ordersTable.SelectedRows[0].Cells[0].Value.ToString()));
 
                 ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
@@ -4920,5 +4928,17 @@ namespace BD_course_work
 
             label10.Text = "Количество полей:" + cassettesTable.RowCount;
         }
+
+        private void videoTable_DoubleClick(object sender, EventArgs e)//Составная форма
+        {
+            SostavnayaForma s = new SostavnayaForma();
+
+            s.Table.DataSource = ControllerForDB.searchDeals("", "", videoTable.SelectedRows[0].Cells[1].Value.ToString(), "", "", "", "", "", false, false);
+
+            s.title.Text = videoTable.SelectedRows[0].Cells[1].Value.ToString();
+
+            s.ShowDialog();
+        }
+
     }
 }
