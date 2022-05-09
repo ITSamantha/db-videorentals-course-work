@@ -46,10 +46,8 @@ namespace BD_course_work
 
             idCB.SelectedIndex = 0;
             
-            dateCB.MaxDate = DateTime.Today;
-
-            dateCB.MinDate = new DateTime(2000, 01, 01);
-
+            dateCB.MaxDate =date1.MaxDate=date2.MaxDate= DateTime.Today;
+           
             updatePriceAndRecipe();
 
             updateFilms();
@@ -195,11 +193,15 @@ namespace BD_course_work
 
         public void updatePriceAndRecipe()
         {
-            service_id = ControllerForDB.getServicePriceID(rental_list[rentalCB.Text], services_list[serviceCB.Text]);
+            if (idCB.Text != "")
+            {
+                service_id = ControllerForDB.getServicePriceID(rental_list[rentalCB.Text], services_list[serviceCB.Text]);
 
-            priceTB.Text=((double)ControllerForDB.selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + double.Parse((ControllerForDB.selectSmthById(int.Parse(idCB.Text), "cassettes", "cassette_price", "pk_cassette_id").ToString()))).ToString();
+                priceTB.Text = ((double)ControllerForDB.selectSmthById(service_id, "services_prices", "service_price", "pk_service_price_id") + double.Parse((ControllerForDB.selectSmthById(int.Parse(idCB.Text), "cassettes", "cassette_price", "pk_cassette_id").ToString()))).ToString();
 
-            recipeTB.Text= $"Квитанция выдана {dateCB.Value.ToShortDateString()}.\n Цена: {priceTB.Text}.\n Услуга: {serviceCB.Text}.\n Спасибо за посещение видеопроката {rentalCB.Text}!";
+                recipeTB.Text = $"Квитанция выдана {dateCB.Value.ToShortDateString()}.\n Цена: {priceTB.Text}.\n Услуга: {serviceCB.Text}.\n Спасибо за посещение видеопроката {rentalCB.Text}!";
+
+            }
         }
 
         private void dateCB_ValueChanged(object sender, EventArgs e)

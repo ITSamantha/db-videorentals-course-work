@@ -145,10 +145,13 @@
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
             this.queryCB = new System.Windows.Forms.ComboBox();
             this.queryData = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button72 = new System.Windows.Forms.Button();
+            this.button71 = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
             this.Query = new System.Windows.Forms.Button();
             this.Excel = new System.Windows.Forms.Button();
@@ -169,9 +172,6 @@
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button71 = new System.Windows.Forms.Button();
-            this.button72 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
             this.mainControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.videoTable)).BeginInit();
@@ -1836,6 +1836,16 @@
             this.tabPage11.Text = "queryPage";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(3, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 21);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Количество полей:";
+            // 
             // queryCB
             // 
             this.queryCB.DropDownHeight = 100;
@@ -1907,6 +1917,36 @@
             this.panel2.Size = new System.Drawing.Size(270, 610);
             this.panel2.TabIndex = 20;
             // 
+            // button72
+            // 
+            this.button72.BackColor = System.Drawing.Color.Transparent;
+            this.button72.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button72.FlatAppearance.BorderSize = 0;
+            this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button72.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button72.Location = new System.Drawing.Point(0, 270);
+            this.button72.Name = "button72";
+            this.button72.Size = new System.Drawing.Size(270, 30);
+            this.button72.TabIndex = 23;
+            this.button72.Text = "Удалить все данные";
+            this.button72.UseVisualStyleBackColor = false;
+            this.button72.Click += new System.EventHandler(this.button72_Click);
+            // 
+            // button71
+            // 
+            this.button71.BackColor = System.Drawing.Color.Transparent;
+            this.button71.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button71.FlatAppearance.BorderSize = 0;
+            this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button71.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button71.Location = new System.Drawing.Point(0, 240);
+            this.button71.Name = "button71";
+            this.button71.Size = new System.Drawing.Size(270, 30);
+            this.button71.TabIndex = 22;
+            this.button71.Text = "Сгенерировать всё";
+            this.button71.UseVisualStyleBackColor = false;
+            this.button71.Click += new System.EventHandler(this.button71_Click);
+            // 
             // Exit
             // 
             this.Exit.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1929,7 +1969,7 @@
             this.Query.FlatAppearance.BorderSize = 0;
             this.Query.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Query.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Query.Location = new System.Drawing.Point(0, 62);
+            this.Query.Location = new System.Drawing.Point(0, 210);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(270, 30);
             this.Query.TabIndex = 19;
@@ -1944,7 +1984,7 @@
             this.Excel.FlatAppearance.BorderSize = 0;
             this.Excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excel.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Excel.Location = new System.Drawing.Point(0, 32);
+            this.Excel.Location = new System.Drawing.Point(0, 180);
             this.Excel.Name = "Excel";
             this.Excel.Size = new System.Drawing.Size(270, 30);
             this.Excel.TabIndex = 18;
@@ -1973,7 +2013,7 @@
             this.panel1.MaximumSize = new System.Drawing.Size(270, 410);
             this.panel1.MinimumSize = new System.Drawing.Size(270, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 32);
+            this.panel1.Size = new System.Drawing.Size(270, 180);
             this.panel1.TabIndex = 17;
             // 
             // button36
@@ -2216,46 +2256,6 @@
             this.tables.Text = "Таблицы";
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
-            // 
-            // button71
-            // 
-            this.button71.BackColor = System.Drawing.Color.Transparent;
-            this.button71.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button71.FlatAppearance.BorderSize = 0;
-            this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button71.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button71.Location = new System.Drawing.Point(0, 92);
-            this.button71.Name = "button71";
-            this.button71.Size = new System.Drawing.Size(270, 30);
-            this.button71.TabIndex = 22;
-            this.button71.Text = "Сгенерировать всё";
-            this.button71.UseVisualStyleBackColor = false;
-            this.button71.Click += new System.EventHandler(this.button71_Click);
-            // 
-            // button72
-            // 
-            this.button72.BackColor = System.Drawing.Color.Transparent;
-            this.button72.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button72.FlatAppearance.BorderSize = 0;
-            this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button72.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button72.Location = new System.Drawing.Point(0, 122);
-            this.button72.Name = "button72";
-            this.button72.Size = new System.Drawing.Size(270, 30);
-            this.button72.TabIndex = 23;
-            this.button72.Text = "Удалить все данные";
-            this.button72.UseVisualStyleBackColor = false;
-            this.button72.Click += new System.EventHandler(this.button72_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(3, 14);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(160, 21);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "Количество полей:";
             // 
             // Main_Menu
             // 

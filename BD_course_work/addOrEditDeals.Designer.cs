@@ -32,10 +32,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.idCB = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.date2 = new System.Windows.Forms.DateTimePicker();
+            this.date1 = new System.Windows.Forms.DateTimePicker();
             this.dateCB = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rentalCB = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.priceTB = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.serviceCB = new System.Windows.Forms.ComboBox();
@@ -43,12 +47,10 @@
             this.recipeTB = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.date1 = new System.Windows.Forms.DateTimePicker();
-            this.date2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.filmCB = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,6 +97,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.date2);
             this.groupBox1.Controls.Add(this.date1);
             this.groupBox1.Controls.Add(this.dateCB);
@@ -105,6 +108,32 @@
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Дата сделки";
+            // 
+            // date2
+            // 
+            this.date2.CalendarFont = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date2.Location = new System.Drawing.Point(179, 26);
+            this.date2.MaxDate = new System.DateTime(2046, 8, 11, 0, 0, 0, 0);
+            this.date2.MinDate = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(148, 35);
+            this.date2.TabIndex = 2;
+            this.date2.Visible = false;
+            // 
+            // date1
+            // 
+            this.date1.CalendarFont = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date1.Location = new System.Drawing.Point(6, 26);
+            this.date1.MaxDate = new System.DateTime(2046, 8, 11, 0, 0, 0, 0);
+            this.date1.MinDate = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(148, 35);
+            this.date1.TabIndex = 1;
+            this.date1.Visible = false;
             // 
             // dateCB
             // 
@@ -155,6 +184,30 @@
             this.groupBox4.TabIndex = 31;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Цена";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox2.Location = new System.Drawing.Point(184, 24);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(154, 37);
+            this.textBox2.TabIndex = 15;
+            this.textBox2.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(6, 24);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(154, 37);
+            this.textBox1.TabIndex = 14;
+            this.textBox1.Visible = false;
             // 
             // priceTB
             // 
@@ -242,32 +295,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // date1
-            // 
-            this.date1.CalendarFont = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date1.Location = new System.Drawing.Point(6, 26);
-            this.date1.MaxDate = new System.DateTime(2046, 8, 11, 0, 0, 0, 0);
-            this.date1.MinDate = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
-            this.date1.Name = "date1";
-            this.date1.Size = new System.Drawing.Size(148, 35);
-            this.date1.TabIndex = 1;
-            this.date1.Visible = false;
-            // 
-            // date2
-            // 
-            this.date2.CalendarFont = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date2.Location = new System.Drawing.Point(179, 26);
-            this.date2.MaxDate = new System.DateTime(2046, 8, 11, 0, 0, 0, 0);
-            this.date2.MinDate = new System.DateTime(2000, 12, 31, 0, 0, 0, 0);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(148, 35);
-            this.date2.TabIndex = 2;
-            this.date2.Visible = false;
-            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.filmCB);
@@ -292,29 +319,25 @@
             this.filmCB.Size = new System.Drawing.Size(332, 35);
             this.filmCB.TabIndex = 1;
             // 
-            // textBox1
+            // checkBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(6, 24);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 37);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.Visible = false;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(411, 89);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.Visible = false;
             // 
-            // textBox2
+            // checkBox2
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(184, 24);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 37);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.Visible = false;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(160, 37);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.Visible = false;
             // 
             // addOrEditDeals
             // 
@@ -323,6 +346,7 @@
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(809, 429);
             this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox6);
@@ -338,6 +362,7 @@
             this.Text = "addOrEditDeals";
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -346,6 +371,7 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -372,5 +398,7 @@
         public System.Windows.Forms.ComboBox filmCB;
         public System.Windows.Forms.TextBox textBox2;
         public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.CheckBox checkBox1;
+        public System.Windows.Forms.CheckBox checkBox2;
     }
 }

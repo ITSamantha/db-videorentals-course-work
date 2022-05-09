@@ -947,11 +947,12 @@ namespace BD_course_work
                         }
                     case "cassettes":
                         {
-                            command = "select * from cassettes_view;";
-                                /*$"select a.pk_cassette_id,b.quality_name,c.photo,a.cassette_price,a.cassette_demand,d.film_name from {table_name} a " +
+                            command = $"select a.pk_cassette_id,b.quality_name,c.photo,a.cassette_price,a.cassette_demand,d.film_name,d.film_year from cassettes a " +
                                 $"inner join {tables[1]} b on a.fk_cassette_quality=b.pk_quality_id " +
                                 $"inner join {tables[0]} c on a.fk_cassette_photo= c.pk_photo_id " +
-                                $"inner join {tables[6]} d on a.fk_film_id=d.pk_film_id";*/
+                                $"inner join {tables[6]} d on a.fk_film_id=d.pk_film_id";
+                            //command = "select * from cassettes_view;";
+                               
                             break;
                         }
                     case "video_rental":
@@ -977,13 +978,13 @@ namespace BD_course_work
 
                     case"deals":
                         {
-                            command = "select * from deals_view;";
-                            /*command = $" SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,a.recipe_deal," +
+                            //command = "select * from deals_view;";
+                            command = $" SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
                                 $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
                                 $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
                                 $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
                                 $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
-                                $"ON b.fk_video_rental = f.pk_video_rental_id; ";*/
+                                $"ON b.fk_video_rental = f.pk_video_rental_id; ";
                             break;
                         }
                     case "cassette_photo":
@@ -2037,19 +2038,115 @@ namespace BD_course_work
             
         }
 
-        public static DataTable searchDeals()
+        public static DataTable searchDeals(string id_casset,string film,string video,string service,string pr1,string pr2,string date1,string date2,bool one,bool two)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
 
             n.Open();
 
-            string com = $"select * from studios_view ";
+            string com = $"SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
+                                $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
+                                $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
+                                $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
+                                $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
+                                $"ON b.fk_video_rental = f.pk_video_rental_id";
+
+            if (id_casset != "")
+            {
+                com += $" where a.fk_cassete_id ='{id_casset}' ";
+            }
+            if (film != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and d.pk_film_id ='{film}' ";
+                }
+                else
+                {
+                    com += $" where d.pk_film_id ='{film}' ";
+                }
+            }
+            if (video != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and f.video_caption ='{video}' ";
+                }
+                else
+                {
+                    com += $" where f.video_caption ='{video}' ";
+                }
+            }
+            if (service != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and e.service_name ='{service}' ";
+                }
+                else
+                {
+                    com += $" where e.service_name ='{service}' ";
+                }
+            }
+            if (pr1 != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and a.general_price >='{pr1}' ";
+                }
+                else
+                {
+                    com += $" where a.general_price >='{pr1}' ";
+                }
+            }
+            if (pr2 != "")
+            {
+                if (com.Contains("where"))
+                {
+                    com += $" and a.general_price <='{pr2}' ";
+                }
+                else
+                {
+                    com += $" where a.general_price <='{pr2}' ";
+                }
+            }
+
+            if (one)
+            {
+                if (date1 != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and a.deal_date >='{date1}'::date ";
+                    }
+                    else
+                    {
+                        com += $" where a.deal_date >='{date1}'::date ";
+                    }
+                }
+            }
+
+            if (two)
+            {
+                if (date2 != "")
+                {
+                    if (com.Contains("where"))
+                    {
+                        com += $" and a.deal_date <='{date2}'::date ";
+                    }
+                    else
+                    {
+                        com += $" where a.deal_date <='{date2}'::date ";
+                    }
+                }
+            }
 
             var command_sql = new NpgsqlCommand(com, n);
 
             NpgsqlDataReader reader = command_sql.ExecuteReader();
 
             DataTable dt = new DataTable();
+        
 
             if (reader.HasRows)
             {

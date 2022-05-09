@@ -338,6 +338,8 @@ namespace BD_course_work
                 cassettesTable.Columns[4].HeaderText = "Спрос";
 
                 cassettesTable.Columns[5].HeaderText = "Фильм";
+
+                cassettesTable.Columns[6].HeaderText = "Год фильма";
             }
 
             label10.Text = strAmount + cassettesTable.RowCount;
@@ -397,13 +399,15 @@ namespace BD_course_work
 
                 ordersTable.Columns[3].HeaderText = "Фильм";
 
-                ordersTable.Columns[4].HeaderText = "Квитанция";
+                ordersTable.Columns[4].HeaderText = "Год фильма";
 
-                ordersTable.Columns[5].HeaderText = "Дата заказа";
+                ordersTable.Columns[5].HeaderText = "Квитанция";
 
-                ordersTable.Columns[6].HeaderText = "Услуга";
+                ordersTable.Columns[6].HeaderText = "Дата заказа";
 
-                ordersTable.Columns[7].HeaderText = "Цена";
+                ordersTable.Columns[7].HeaderText = "Услуга";
+
+                ordersTable.Columns[8].HeaderText = "Цена";
             }
 
             label11.Text = strAmount + ordersTable.RowCount;
@@ -653,6 +657,8 @@ namespace BD_course_work
                 cassettesTable.Columns[4].HeaderText = "Спрос";
 
                 cassettesTable.Columns[5].HeaderText = "Фильм";
+
+                cassettesTable.Columns[6].HeaderText = "Год фильма";
             }
 
             label10.Text = strAmount + cassettesTable.RowCount;
@@ -694,13 +700,15 @@ namespace BD_course_work
 
                 ordersTable.Columns[3].HeaderText = "Фильм";
 
-                ordersTable.Columns[4].HeaderText = "Квитанция";
+                ordersTable.Columns[4].HeaderText = "Год фильма";
 
-                ordersTable.Columns[5].HeaderText = "Дата заказа";
+                ordersTable.Columns[5].HeaderText = "Квитанция";
 
-                ordersTable.Columns[6].HeaderText = "Услуга";
+                ordersTable.Columns[6].HeaderText = "Дата заказа";
 
-                ordersTable.Columns[7].HeaderText = "Цена";
+                ordersTable.Columns[7].HeaderText = "Услуга";
+
+                ordersTable.Columns[8].HeaderText = "Цена";
             }
 
             label11.Text = strAmount + ordersTable.RowCount;
@@ -1048,7 +1056,7 @@ namespace BD_course_work
                 insertOrUpdateIntoCassettes(1, cassettesTable.SelectedRows[0].Cells[1].Value.ToString(),
                                                cassettesTable.SelectedRows[0].Cells[2].Value == DBNull.Value ? null : (byte[])cassettesTable.SelectedRows[0].Cells[2].Value,
                                                cassettesTable.SelectedRows[0].Cells[3].Value.ToString(), cassettesTable.SelectedRows[0].Cells[4].Value.ToString(),
-                                               cassettesTable.SelectedRows[0].Cells[5].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
+                                               cassettesTable.SelectedRows[0].Cells[5].Value.ToString()+","+ cassettesTable.SelectedRows[0].Cells[6].Value.ToString(), int.Parse(cassettesTable.SelectedRows[0].Cells[0].Value.ToString()));
 
                 cassettesTable.DataSource = ControllerForDB.selectAllFromMainTables("cassettes");
 
@@ -2930,6 +2938,8 @@ namespace BD_course_work
                     cassettesTable.Columns[4].HeaderText = "Спрос";
 
                     cassettesTable.Columns[5].HeaderText = "Фильм";
+
+                    cassettesTable.Columns[6].HeaderText = "Год фильма";
                 }
                 label10.Text = "Количество полей:" + cassettesTable.RowCount;
             }
@@ -3030,13 +3040,15 @@ namespace BD_course_work
 
                     ordersTable.Columns[3].HeaderText = "Фильм";
 
-                    ordersTable.Columns[4].HeaderText = "Квитанция";
+                    ordersTable.Columns[4].HeaderText = "Год фильма";
 
-                    ordersTable.Columns[5].HeaderText = "Дата заказа";
+                    ordersTable.Columns[5].HeaderText = "Квитанция";
 
-                    ordersTable.Columns[6].HeaderText = "Услуга";
+                    ordersTable.Columns[6].HeaderText = "Дата заказа";
 
-                    ordersTable.Columns[7].HeaderText = "Цена";
+                    ordersTable.Columns[7].HeaderText = "Услуга";
+
+                    ordersTable.Columns[8].HeaderText = "Цена";
                 }
                 label11.Text = "Количество полей:" + ordersTable.RowCount;
             }
@@ -4522,7 +4534,7 @@ namespace BD_course_work
 
             add.priceTB.Hide();
 
-            add.date1.Visible = add.date2.Visible = add.groupBox7.Visible=add.textBox1.Visible= add.textBox2.Visible=true;
+            add.date1.Visible = add.date2.Visible = add.groupBox7.Visible=add.textBox1.Visible= add.textBox2.Visible=add.checkBox1.Visible= add.checkBox2.Visible = true;
 
             add.clean();
             add.idCB.SelectedIndex = -1;
@@ -4535,9 +4547,96 @@ namespace BD_course_work
             
             add.filmCB.SelectedIndex = -1;
 
+            m1:
+
             add.ShowDialog();
 
-            
+            if (!add.isCanceled && add.isEnabled)
+            {
+                try
+                {
+                    double? n1 = null, n2 = null;
+
+                    if (add.textBox1.Text != String.Empty)
+                    {
+                        try
+                        {
+                            n1 = double.Parse(add.textBox1.Text);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Цена введена некорректно.");
+
+                            goto m1;
+                        }
+                    }
+                    if (add.textBox2.Text != String.Empty)
+                    {
+                        try
+                        {
+                            n2 = int.Parse(add.textBox2.Text);
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Цена введена некорректно.");
+                            goto m1;
+                        }
+                    }
+
+                    if (n1 != null && n2 != null)
+                    {
+                        if ((n2 - n1) < 0)
+                        {
+                            MessageBox.Show("Цена 2 должна быть больше цены 1.", "Error");
+
+                            goto m1;
+                        }
+                    }
+
+                    if (add.checkBox1.Checked && add.checkBox2.Checked)
+                    {
+                        if (add.date2.Value < add.date1.Value)
+                        {
+                            MessageBox.Show("Дата 2 должна быть больше даты 1.", "Error");
+
+                            goto m1;
+                        }
+                    }
+
+                    ordersTable.DataSource = ControllerForDB.searchDeals(add.idCB.Text, add.filmCB.Text==""?"":add.films_list[add.filmCB.Text].ToString(), add.rentalCB.Text, add.serviceCB.Text, add.textBox1.Text, add.textBox2.Text,add.date1.Value.ToShortDateString(), add.date2.Value.ToShortDateString(),add.checkBox1.Checked,add.checkBox2.Checked);
+                    
+                    if (ordersTable.RowCount != 0)
+                    {
+                        ordersTable.Columns[0].HeaderText = "ID";
+
+                        ordersTable.Columns[1].HeaderText = "Видеопрокат";
+
+                        ordersTable.Columns[2].HeaderText = "ID кассеты";
+
+                        ordersTable.Columns[3].HeaderText = "Фильм";
+
+                        ordersTable.Columns[4].HeaderText = "Год фильма";
+
+                        ordersTable.Columns[5].HeaderText = "Квитанция";
+
+                        ordersTable.Columns[6].HeaderText = "Дата заказа";
+
+                        ordersTable.Columns[7].HeaderText = "Услуга";
+
+                        ordersTable.Columns[8].HeaderText = "Цена";
+                    }
+                }
+                catch (Exception el)
+                {
+                    Console.Write(el);
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
+            label11.Text = strAmount + ordersTable.RowCount;
         }
 
         private void Query_Click(object sender, EventArgs e)
