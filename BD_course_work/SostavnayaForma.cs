@@ -20,6 +20,8 @@ namespace BD_course_work
         private void button2_Click(object sender, EventArgs e)
         {
             Close();
+            
+           
         }
     }
 }

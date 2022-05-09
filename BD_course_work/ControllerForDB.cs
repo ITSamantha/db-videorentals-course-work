@@ -13,7 +13,7 @@ namespace BD_course_work
 {
     class ControllerForDB
     {
-        public static string connectionString;
+        public static string connectionString= "Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ";
 
         public static bool isCanceledDelete=true;
 
@@ -78,7 +78,7 @@ namespace BD_course_work
         };
 
         //Тестовое соединение
-        public static bool Connection(string connect)
+        /*public static bool Connection(string connect)
         {
             try
             {
@@ -98,7 +98,7 @@ namespace BD_course_work
 
                 return false;
             }
-        }
+        }*/
 
         //Генерация данных
         public static void generatePics(int num)
@@ -2040,16 +2040,13 @@ namespace BD_course_work
 
         public static DataTable searchDeals(string id_casset,string film,string video,string service,string pr1,string pr2,string date1,string date2,bool one,bool two)
         {
-            NpgsqlConnection n = new NpgsqlConnection(connectionString);
-
-            n.Open();
-
+            
             string com = $"SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
                                 $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
                                 $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
                                 $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
                                 $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
-                                $"ON b.fk_video_rental = f.pk_video_rental_id";
+                                $"ON b.fk_video_rental = f.pk_video_rental_id ";
 
             if (id_casset != "")
             {
@@ -2140,13 +2137,16 @@ namespace BD_course_work
                     }
                 }
             }
+            
+            NpgsqlConnection n = new NpgsqlConnection("Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ");
+
+            n.Open();
 
             var command_sql = new NpgsqlCommand(com, n);
 
             NpgsqlDataReader reader = command_sql.ExecuteReader();
 
             DataTable dt = new DataTable();
-        
 
             if (reader.HasRows)
             {
@@ -2894,7 +2894,25 @@ namespace BD_course_work
 
             n.Open();
 
-            NpgsqlCommand com = new NpgsqlCommand($"select {whatChoose} from video_rental where video_caption = '{name}' ", n);
+            NpgsqlCommand com = new NpgsqlCommand($"select {whatChoose} from video_rental where video_caption = '{name}'", n);
+
+            var obj = com.ExecuteScalar();
+
+            com.Dispose();
+
+            n.Close();
+
+            return obj;
+        }
+
+        public static object selectDistrictForVideoRental(string name)
+        {
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand($"select district.district_name from video_rental  inner join district on video_rental.fk_video_district=district.pk_district_id where video_caption = '{name}'", n);
 
             var obj = com.ExecuteScalar();
 
@@ -2906,7 +2924,54 @@ namespace BD_course_work
 
         }
 
-        
+        public static object selectPropForVideoRental(string name)
+        {
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            NpgsqlCommand com = new NpgsqlCommand($"select property_type.property_type_name from video_rental  inner join property_type on video_rental.fk_property_type=property_type.pk_property_type_id where video_caption = '{name}'", n);
+
+            var obj = com.ExecuteScalar();
+
+            com.Dispose();
+
+            n.Close();
+
+            return obj;
+
+        }
+
+        public static object selectOwnerForVideoRental(string name)
+        {
+
+            NpgsqlConnection n = new NpgsqlConnection(connectionString);
+
+            n.Open();
+
+            object obj="";
+
+            NpgsqlCommand com = new NpgsqlCommand($"select b.owner_last_name,b.owner_first_name,b.owner_patronymic from video_rental a inner join owners b on a.fk_owner_id=b.pk_owner_id where video_caption = '{name}'", n);
+
+            var reader = com.ExecuteReader();
+
+            while (reader.Read())
+            {
+                obj = reader.GetString(0) + " " + reader.GetString(1) + " " + reader.GetString(2);
+            }
+
+            reader.Close();
+
+            com.Dispose();
+
+            n.Close();
+
+            return obj;
+
+        }
+
+
         /*public static bool deleteAllFromtable(string table)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);

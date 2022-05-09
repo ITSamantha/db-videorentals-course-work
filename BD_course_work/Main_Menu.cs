@@ -48,8 +48,7 @@ namespace BD_course_work
             InitializeComponent();
 
             Form_Initialization();
-
-            ControllerForDB.Connection(connectionStringDB);//Тест соединения
+            
 
         }
 
@@ -3477,7 +3476,7 @@ namespace BD_course_work
 
         private void button57_Click(object sender, EventArgs e)
         {
-            ControllerForDB.generateOrders(10001);
+            ControllerForDB.generateOrders(500);
             
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
@@ -4929,16 +4928,70 @@ namespace BD_course_work
             label10.Text = "Количество полей:" + cassettesTable.RowCount;
         }
 
+        public void func()
+        {
+            
+        }
+
         private void videoTable_DoubleClick(object sender, EventArgs e)//Составная форма
         {
             SostavnayaForma s = new SostavnayaForma();
 
-            s.Table.DataSource = ControllerForDB.searchDeals("", "", videoTable.SelectedRows[0].Cells[1].Value.ToString(), "", "", "", "", "", false, false);
+            Action action = () => s.Table.DataSource = ControllerForDB.searchDeals("", "", videoTable.SelectedRows[0].Cells[1].Value.ToString(), "", "", "", "", "", false, false);
+
+            if (InvokeRequired)
+                Invoke(action);
+            else
+                action();
 
             s.title.Text = videoTable.SelectedRows[0].Cells[1].Value.ToString();
 
+            s.timeStart.Text = ((int)ControllerForDB.selectForVideoRental("time_start", videoTable.SelectedRows[0].Cells[1].Value.ToString())).ToString();
+
+            s.timeEnd.Text = ((int)ControllerForDB.selectForVideoRental("time_end", videoTable.SelectedRows[0].Cells[1].Value.ToString())).ToString();
+
+            s.textBox4.Text = ControllerForDB.selectForVideoRental("video_adress", videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.number.Text = ControllerForDB.selectForVideoRental("video_phone", videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.textBox5.Text = ControllerForDB.selectForVideoRental("amount_of_employees", videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.textBox3.Text = ControllerForDB.selectForVideoRental("license_number", videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.textBox1.Text = ControllerForDB.selectDistrictForVideoRental(videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.textBox2.Text = ControllerForDB.selectPropForVideoRental(videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.adress.Text = ControllerForDB.selectOwnerForVideoRental(videoTable.SelectedRows[0].Cells[1].Value.ToString()).ToString();
+
+            s.Table.Columns[0].HeaderText = "ID";
+
+            s.Table.Columns[1].HeaderText = "Видеопрокат";
+
+            s.Table.Columns[2].HeaderText = "ID кассеты";
+
+            s.Table.Columns[3].HeaderText = "Фильм";
+
+            s.Table.Columns[4].HeaderText = "Год фильма";
+
+            s.Table.Columns[5].HeaderText = "Квитанция";
+
+            s.Table.Columns[6].HeaderText = "Дата заказа";
+
+            s.Table.Columns[7].HeaderText = "Услуга";
+
+            s.Table.Columns[8].HeaderText = "Цена";
+
             s.ShowDialog();
+            
         }
 
+        private void button73_Click(object sender, EventArgs e)
+        {
+            mainControl.SelectedIndex = 15;
+            
+            
+            /* */
+        }
     }
 }
