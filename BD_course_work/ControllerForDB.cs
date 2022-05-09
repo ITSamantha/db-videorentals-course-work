@@ -2137,7 +2137,27 @@ namespace BD_course_work
                     }
                 }
             }
-            
+
+            //Запрос симметричное внутреннее соединение с условием по дате
+            //Вывести сделки, совершенные после 15.12.2018
+            /*com = $"SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
+                                $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
+                                $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
+                                $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
+                                $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
+                                $"ON b.fk_video_rental = f.pk_video_rental_id " +
+                                $"WHERE a.deal_date >='15.12.2018'::date";*/
+
+            //Запрос симметричное внутреннее соединение с условием по дате
+            //Вывести сделки, совершенные после 15.12.2018 и до 01.11.2020
+            /*com = $"SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
+                                $"a.deal_date,e.service_name,a.general_price FROM deals a INNER JOIN services_prices b " +
+                                $"ON a.fk_service_price = b.pk_service_price_id INNER JOIN cassettes c ON a.fk_cassete_id " +
+                                $"= c.pk_cassette_id INNER JOIN films d ON c.fk_film_id = d.pk_film_id " +
+                                $"INNER JOIN services e ON b.fk_service_id = e.pk_service_id INNER JOIN video_rental f " +
+                                $"ON b.fk_video_rental = f.pk_video_rental_id " +
+                                $"WHERE a.deal_date >='15.12.2018'::date and  a.deal_date <='01.11.2020'::date";*/
+
             NpgsqlConnection n = new NpgsqlConnection("Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ");
 
             n.Open();

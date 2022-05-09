@@ -3476,7 +3476,7 @@ namespace BD_course_work
 
         private void button57_Click(object sender, EventArgs e)
         {
-            ControllerForDB.generateOrders(500);
+            ControllerForDB.generateOrders(10001);
             
             ordersTable.DataSource = ControllerForDB.selectAllFromMainTables("deals");
 
