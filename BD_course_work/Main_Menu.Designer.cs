@@ -55,122 +55,123 @@
             this.videorentalB = new System.Windows.Forms.Button();
             this.tables = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.queryData = new System.Windows.Forms.DataGridView();
-            this.queryCB = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.serpricePage = new System.Windows.Forms.TabPage();
-            this.button42 = new System.Windows.Forms.Button();
-            this.button41 = new System.Windows.Forms.Button();
-            this.button40 = new System.Windows.Forms.Button();
-            this.servpriceTable = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.button56 = new System.Windows.Forms.Button();
             this.button58 = new System.Windows.Forms.Button();
-            this.imagesPage = new System.Windows.Forms.TabPage();
-            this.button39 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.imagesTable = new System.Windows.Forms.DataGridView();
-            this.label14 = new System.Windows.Forms.Label();
-            this.button55 = new System.Windows.Forms.Button();
             this.button64 = new System.Windows.Forms.Button();
-            this.qualityPage = new System.Windows.Forms.TabPage();
-            this.button33 = new System.Windows.Forms.Button();
-            this.button32 = new System.Windows.Forms.Button();
-            this.button31 = new System.Windows.Forms.Button();
-            this.qualityTable = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button54 = new System.Windows.Forms.Button();
             this.button63 = new System.Windows.Forms.Button();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.addCountry = new System.Windows.Forms.Button();
-            this.deleteCountry = new System.Windows.Forms.Button();
-            this.editCountry = new System.Windows.Forms.Button();
-            this.countriesTable = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button53 = new System.Windows.Forms.Button();
             this.button60 = new System.Windows.Forms.Button();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.studiosTable = new System.Windows.Forms.DataGridView();
-            this.button43 = new System.Windows.Forms.Button();
             this.button65 = new System.Windows.Forms.Button();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.producersTable = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button44 = new System.Windows.Forms.Button();
             this.button66 = new System.Windows.Forms.Button();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.ownersTable = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button52 = new System.Windows.Forms.Button();
             this.button67 = new System.Windows.Forms.Button();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.servicesTable = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button51 = new System.Windows.Forms.Button();
             this.button62 = new System.Windows.Forms.Button();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.propertyTable = new System.Windows.Forms.DataGridView();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button50 = new System.Windows.Forms.Button();
             this.button59 = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.districtsTable = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button49 = new System.Windows.Forms.Button();
             this.button61 = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.filmsTable = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button48 = new System.Windows.Forms.Button();
             this.button68 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cassettesTable = new System.Windows.Forms.DataGridView();
-            this.button47 = new System.Windows.Forms.Button();
             this.button69 = new System.Windows.Forms.Button();
-            this.ordersPage = new System.Windows.Forms.TabPage();
-            this.button27 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.ordersTable = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.button46 = new System.Windows.Forms.Button();
             this.button57 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.videoTable = new System.Windows.Forms.DataGridView();
-            this.button30 = new System.Windows.Forms.Button();
-            this.button29 = new System.Windows.Forms.Button();
-            this.button28 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.button45 = new System.Windows.Forms.Button();
             this.button70 = new System.Windows.Forms.Button();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.excelB = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.queryCB = new System.Windows.Forms.ComboBox();
+            this.queryData = new System.Windows.Forms.DataGridView();
+            this.serpricePage = new System.Windows.Forms.TabPage();
+            this.button56 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.servpriceTable = new System.Windows.Forms.DataGridView();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
+            this.button42 = new System.Windows.Forms.Button();
+            this.imagesPage = new System.Windows.Forms.TabPage();
+            this.button55 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.imagesTable = new System.Windows.Forms.DataGridView();
+            this.button37 = new System.Windows.Forms.Button();
+            this.button38 = new System.Windows.Forms.Button();
+            this.button39 = new System.Windows.Forms.Button();
+            this.qualityPage = new System.Windows.Forms.TabPage();
+            this.button54 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.qualityTable = new System.Windows.Forms.DataGridView();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
+            this.button33 = new System.Windows.Forms.Button();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button53 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.countriesTable = new System.Windows.Forms.DataGridView();
+            this.editCountry = new System.Windows.Forms.Button();
+            this.deleteCountry = new System.Windows.Forms.Button();
+            this.addCountry = new System.Windows.Forms.Button();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.button43 = new System.Windows.Forms.Button();
+            this.studiosTable = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.button44 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.producersTable = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.button52 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ownersTable = new System.Windows.Forms.DataGridView();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.button51 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.servicesTable = new System.Windows.Forms.DataGridView();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.button50 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.propertyTable = new System.Windows.Forms.DataGridView();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button49 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.districtsTable = new System.Windows.Forms.DataGridView();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button48 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.filmsTable = new System.Windows.Forms.DataGridView();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button47 = new System.Windows.Forms.Button();
+            this.cassettesTable = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.ordersPage = new System.Windows.Forms.TabPage();
+            this.button46 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.ordersTable = new System.Windows.Forms.DataGridView();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button45 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.button28 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.videoTable = new System.Windows.Forms.DataGridView();
             this.mainControl = new System.Windows.Forms.TabControl();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -249,7 +250,7 @@
             this.button72.FlatAppearance.BorderSize = 0;
             this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button72.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button72.Location = new System.Drawing.Point(0, 500);
+            this.button72.Location = new System.Drawing.Point(0, 122);
             this.button72.Name = "button72";
             this.button72.Size = new System.Drawing.Size(270, 30);
             this.button72.TabIndex = 23;
@@ -264,7 +265,7 @@
             this.button71.FlatAppearance.BorderSize = 0;
             this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button71.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button71.Location = new System.Drawing.Point(0, 470);
+            this.button71.Location = new System.Drawing.Point(0, 92);
             this.button71.Name = "button71";
             this.button71.Size = new System.Drawing.Size(270, 30);
             this.button71.TabIndex = 22;
@@ -294,7 +295,7 @@
             this.Query.FlatAppearance.BorderSize = 0;
             this.Query.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Query.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Query.Location = new System.Drawing.Point(0, 440);
+            this.Query.Location = new System.Drawing.Point(0, 62);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(270, 30);
             this.Query.TabIndex = 19;
@@ -309,7 +310,7 @@
             this.Excel.FlatAppearance.BorderSize = 0;
             this.Excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Excel.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Excel.Location = new System.Drawing.Point(0, 410);
+            this.Excel.Location = new System.Drawing.Point(0, 32);
             this.Excel.Name = "Excel";
             this.Excel.Size = new System.Drawing.Size(270, 30);
             this.Excel.TabIndex = 18;
@@ -338,7 +339,7 @@
             this.panel1.MaximumSize = new System.Drawing.Size(270, 410);
             this.panel1.MinimumSize = new System.Drawing.Size(270, 32);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 410);
+            this.panel1.Size = new System.Drawing.Size(270, 32);
             this.panel1.TabIndex = 17;
             // 
             // button36
@@ -582,8 +583,219 @@
             this.tables.UseVisualStyleBackColor = false;
             this.tables.Click += new System.EventHandler(this.tables_Click);
             // 
+            // button58
+            // 
+            this.button58.BackColor = System.Drawing.Color.White;
+            this.button58.FlatAppearance.BorderSize = 0;
+            this.button58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button58.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button58.Image = ((System.Drawing.Image)(resources.GetObject("button58.Image")));
+            this.button58.Location = new System.Drawing.Point(655, 8);
+            this.button58.Name = "button58";
+            this.button58.Size = new System.Drawing.Size(44, 38);
+            this.button58.TabIndex = 22;
+            this.toolTip1.SetToolTip(this.button58, "Генерация");
+            this.button58.UseVisualStyleBackColor = false;
+            this.button58.Click += new System.EventHandler(this.button58_Click);
+            // 
+            // button64
+            // 
+            this.button64.BackColor = System.Drawing.Color.White;
+            this.button64.FlatAppearance.BorderSize = 0;
+            this.button64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button64.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button64.Image = ((System.Drawing.Image)(resources.GetObject("button64.Image")));
+            this.button64.Location = new System.Drawing.Point(665, 8);
+            this.button64.Name = "button64";
+            this.button64.Size = new System.Drawing.Size(44, 38);
+            this.button64.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.button64, "Генерация");
+            this.button64.UseVisualStyleBackColor = false;
+            this.button64.Click += new System.EventHandler(this.button64_Click);
+            // 
+            // button63
+            // 
+            this.button63.BackColor = System.Drawing.Color.White;
+            this.button63.FlatAppearance.BorderSize = 0;
+            this.button63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button63.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button63.Image = ((System.Drawing.Image)(resources.GetObject("button63.Image")));
+            this.button63.Location = new System.Drawing.Point(664, 8);
+            this.button63.Name = "button63";
+            this.button63.Size = new System.Drawing.Size(44, 38);
+            this.button63.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.button63, "Генерация");
+            this.button63.UseVisualStyleBackColor = false;
+            this.button63.Click += new System.EventHandler(this.button63_Click);
+            // 
+            // button60
+            // 
+            this.button60.BackColor = System.Drawing.Color.White;
+            this.button60.FlatAppearance.BorderSize = 0;
+            this.button60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button60.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button60.Image = ((System.Drawing.Image)(resources.GetObject("button60.Image")));
+            this.button60.Location = new System.Drawing.Point(654, 3);
+            this.button60.Name = "button60";
+            this.button60.Size = new System.Drawing.Size(44, 38);
+            this.button60.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.button60, "Генерация");
+            this.button60.UseVisualStyleBackColor = false;
+            this.button60.Click += new System.EventHandler(this.button60_Click);
+            // 
+            // button65
+            // 
+            this.button65.BackColor = System.Drawing.Color.White;
+            this.button65.FlatAppearance.BorderSize = 0;
+            this.button65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button65.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button65.Image = ((System.Drawing.Image)(resources.GetObject("button65.Image")));
+            this.button65.Location = new System.Drawing.Point(666, 3);
+            this.button65.Name = "button65";
+            this.button65.Size = new System.Drawing.Size(44, 38);
+            this.button65.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.button65, "Генерация");
+            this.button65.UseVisualStyleBackColor = false;
+            this.button65.Click += new System.EventHandler(this.button65_Click);
+            // 
+            // button66
+            // 
+            this.button66.BackColor = System.Drawing.Color.White;
+            this.button66.FlatAppearance.BorderSize = 0;
+            this.button66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button66.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button66.Image = ((System.Drawing.Image)(resources.GetObject("button66.Image")));
+            this.button66.Location = new System.Drawing.Point(664, 3);
+            this.button66.Name = "button66";
+            this.button66.Size = new System.Drawing.Size(44, 38);
+            this.button66.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.button66, "Генерация");
+            this.button66.UseVisualStyleBackColor = false;
+            this.button66.Click += new System.EventHandler(this.button66_Click);
+            // 
+            // button67
+            // 
+            this.button67.BackColor = System.Drawing.Color.White;
+            this.button67.FlatAppearance.BorderSize = 0;
+            this.button67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button67.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button67.Image = ((System.Drawing.Image)(resources.GetObject("button67.Image")));
+            this.button67.Location = new System.Drawing.Point(652, 3);
+            this.button67.Name = "button67";
+            this.button67.Size = new System.Drawing.Size(44, 38);
+            this.button67.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.button67, "Генерация");
+            this.button67.UseVisualStyleBackColor = false;
+            this.button67.Click += new System.EventHandler(this.button67_Click);
+            // 
+            // button62
+            // 
+            this.button62.BackColor = System.Drawing.Color.White;
+            this.button62.FlatAppearance.BorderSize = 0;
+            this.button62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button62.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button62.Image = ((System.Drawing.Image)(resources.GetObject("button62.Image")));
+            this.button62.Location = new System.Drawing.Point(664, 3);
+            this.button62.Name = "button62";
+            this.button62.Size = new System.Drawing.Size(44, 38);
+            this.button62.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.button62, "Генерация");
+            this.button62.UseVisualStyleBackColor = false;
+            this.button62.Click += new System.EventHandler(this.button62_Click);
+            // 
+            // button59
+            // 
+            this.button59.BackColor = System.Drawing.Color.White;
+            this.button59.FlatAppearance.BorderSize = 0;
+            this.button59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button59.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button59.Image = ((System.Drawing.Image)(resources.GetObject("button59.Image")));
+            this.button59.Location = new System.Drawing.Point(655, 3);
+            this.button59.Name = "button59";
+            this.button59.Size = new System.Drawing.Size(44, 38);
+            this.button59.TabIndex = 23;
+            this.toolTip1.SetToolTip(this.button59, "Генерация");
+            this.button59.UseVisualStyleBackColor = false;
+            this.button59.Click += new System.EventHandler(this.button59_Click);
+            // 
+            // button61
+            // 
+            this.button61.BackColor = System.Drawing.Color.White;
+            this.button61.FlatAppearance.BorderSize = 0;
+            this.button61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button61.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button61.Image = ((System.Drawing.Image)(resources.GetObject("button61.Image")));
+            this.button61.Location = new System.Drawing.Point(657, 3);
+            this.button61.Name = "button61";
+            this.button61.Size = new System.Drawing.Size(44, 38);
+            this.button61.TabIndex = 25;
+            this.toolTip1.SetToolTip(this.button61, "Генерация");
+            this.button61.UseVisualStyleBackColor = false;
+            this.button61.Click += new System.EventHandler(this.button61_Click);
+            // 
+            // button68
+            // 
+            this.button68.BackColor = System.Drawing.Color.White;
+            this.button68.FlatAppearance.BorderSize = 0;
+            this.button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button68.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button68.Image = ((System.Drawing.Image)(resources.GetObject("button68.Image")));
+            this.button68.Location = new System.Drawing.Point(667, 3);
+            this.button68.Name = "button68";
+            this.button68.Size = new System.Drawing.Size(44, 38);
+            this.button68.TabIndex = 26;
+            this.toolTip1.SetToolTip(this.button68, "Генерация");
+            this.button68.UseVisualStyleBackColor = false;
+            this.button68.Click += new System.EventHandler(this.button68_Click);
+            // 
+            // button69
+            // 
+            this.button69.BackColor = System.Drawing.Color.White;
+            this.button69.FlatAppearance.BorderSize = 0;
+            this.button69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button69.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button69.Image = ((System.Drawing.Image)(resources.GetObject("button69.Image")));
+            this.button69.Location = new System.Drawing.Point(666, 3);
+            this.button69.Name = "button69";
+            this.button69.Size = new System.Drawing.Size(44, 38);
+            this.button69.TabIndex = 27;
+            this.toolTip1.SetToolTip(this.button69, "Генерация");
+            this.button69.UseVisualStyleBackColor = false;
+            this.button69.Click += new System.EventHandler(this.button69_Click);
+            // 
+            // button57
+            // 
+            this.button57.BackColor = System.Drawing.Color.White;
+            this.button57.FlatAppearance.BorderSize = 0;
+            this.button57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button57.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button57.Image = ((System.Drawing.Image)(resources.GetObject("button57.Image")));
+            this.button57.Location = new System.Drawing.Point(657, 3);
+            this.button57.Name = "button57";
+            this.button57.Size = new System.Drawing.Size(44, 38);
+            this.button57.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.button57, "Генерация");
+            this.button57.UseVisualStyleBackColor = false;
+            this.button57.Click += new System.EventHandler(this.button57_Click);
+            // 
+            // button70
+            // 
+            this.button70.BackColor = System.Drawing.Color.White;
+            this.button70.FlatAppearance.BorderSize = 0;
+            this.button70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button70.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button70.Image = ((System.Drawing.Image)(resources.GetObject("button70.Image")));
+            this.button70.Location = new System.Drawing.Point(668, 3);
+            this.button70.Name = "button70";
+            this.button70.Size = new System.Drawing.Size(44, 38);
+            this.button70.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.button70, "Генерация");
+            this.button70.UseVisualStyleBackColor = false;
+            this.button70.Click += new System.EventHandler(this.button70_Click);
+            // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.excelB);
             this.tabPage11.Controls.Add(this.label16);
             this.tabPage11.Controls.Add(this.queryCB);
             this.tabPage11.Controls.Add(this.queryData);
@@ -596,20 +808,27 @@
             this.tabPage11.Text = "queryPage";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
-            // queryData
+            // excelB
             // 
-            this.queryData.AllowUserToAddRows = false;
-            this.queryData.AllowUserToDeleteRows = false;
-            this.queryData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.queryData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.queryData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.queryData.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.queryData.Location = new System.Drawing.Point(19, 49);
-            this.queryData.Name = "queryData";
-            this.queryData.ReadOnly = true;
-            this.queryData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.queryData.Size = new System.Drawing.Size(883, 524);
-            this.queryData.TabIndex = 17;
+            this.excelB.BackColor = System.Drawing.Color.White;
+            this.excelB.Location = new System.Drawing.Point(7, 38);
+            this.excelB.Name = "excelB";
+            this.excelB.Size = new System.Drawing.Size(183, 29);
+            this.excelB.TabIndex = 26;
+            this.excelB.Text = "Выгрузить в Excel";
+            this.excelB.UseVisualStyleBackColor = false;
+            this.excelB.Visible = false;
+            this.excelB.Click += new System.EventHandler(this.excelB_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.Location = new System.Drawing.Point(3, 14);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(160, 21);
+            this.label16.TabIndex = 21;
+            this.label16.Text = "Количество полей:";
             // 
             // queryCB
             // 
@@ -630,22 +849,38 @@
             "Вывод сделок, кассеты которых пользовались спросом",
             "Вывести фильмы кассет, стоимость которых менее 500, иначе в поле «Фильм» вывести " +
                 "«Слишком дорого…!»",
-            "Вывести информацию о кассетах, чьи стоимости ниже средней цены кассеты"});
+            "Вывести информацию о кассетах, чьи стоимости ниже средней цены кассеты",
+            "Определить процент видеотек, работающих в ночное время по каждому району города и" +
+                " по городу в целом",
+            "Вывод количества сделок видеопрокатов за период 12.10.2016 по 10.12.2020, которые" +
+                " превысили 70",
+            "Вывод видеопрокатов, у которых количество сделок превышает 400",
+            "Вывод количества сделок видеопрокатов, у которых название начинается с буквы «П»",
+            "Вывод видеопрокатов, у которых количество сделок менее 400",
+            "Вывод количества сделок видеопрокатов, у которых название начинается не с буквы \"" +
+                "П\"",
+            "По вводимому названию услуги предоставить информацию о количестве клиентов ее пол" +
+                "учивших и их суммарных затратах за указанный год "});
             this.queryCB.Location = new System.Drawing.Point(224, 7);
             this.queryCB.Name = "queryCB";
             this.queryCB.Size = new System.Drawing.Size(691, 29);
             this.queryCB.TabIndex = 18;
             this.queryCB.SelectedIndexChanged += new System.EventHandler(this.queryCB_SelectedIndexChanged);
             // 
-            // label16
+            // queryData
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.Location = new System.Drawing.Point(3, 14);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(160, 21);
-            this.label16.TabIndex = 21;
-            this.label16.Text = "Количество полей:";
+            this.queryData.AllowUserToAddRows = false;
+            this.queryData.AllowUserToDeleteRows = false;
+            this.queryData.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.queryData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.queryData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.queryData.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.queryData.Location = new System.Drawing.Point(19, 73);
+            this.queryData.Name = "queryData";
+            this.queryData.ReadOnly = true;
+            this.queryData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.queryData.Size = new System.Drawing.Size(883, 500);
+            this.queryData.TabIndex = 17;
             // 
             // serpricePage
             // 
@@ -665,47 +900,29 @@
             this.serpricePage.Text = "Услуги и цены";
             this.serpricePage.UseVisualStyleBackColor = true;
             // 
-            // button42
+            // button56
             // 
-            this.button42.BackColor = System.Drawing.Color.White;
-            this.button42.FlatAppearance.BorderSize = 0;
-            this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button42.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button42.Image = ((System.Drawing.Image)(resources.GetObject("button42.Image")));
-            this.button42.Location = new System.Drawing.Point(855, 8);
-            this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(44, 38);
-            this.button42.TabIndex = 17;
-            this.button42.UseVisualStyleBackColor = false;
-            this.button42.Click += new System.EventHandler(this.button42_Click);
+            this.button56.BackColor = System.Drawing.Color.White;
+            this.button56.FlatAppearance.BorderSize = 0;
+            this.button56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button56.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button56.Image = ((System.Drawing.Image)(resources.GetObject("button56.Image")));
+            this.button56.Location = new System.Drawing.Point(705, 8);
+            this.button56.Name = "button56";
+            this.button56.Size = new System.Drawing.Size(44, 38);
+            this.button56.TabIndex = 21;
+            this.button56.UseVisualStyleBackColor = false;
+            this.button56.Click += new System.EventHandler(this.button56_Click);
             // 
-            // button41
+            // label15
             // 
-            this.button41.BackColor = System.Drawing.Color.White;
-            this.button41.FlatAppearance.BorderSize = 0;
-            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button41.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button41.Image = ((System.Drawing.Image)(resources.GetObject("button41.Image")));
-            this.button41.Location = new System.Drawing.Point(805, 8);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(44, 38);
-            this.button41.TabIndex = 18;
-            this.button41.UseVisualStyleBackColor = false;
-            this.button41.Click += new System.EventHandler(this.button41_Click);
-            // 
-            // button40
-            // 
-            this.button40.BackColor = System.Drawing.Color.White;
-            this.button40.FlatAppearance.BorderSize = 0;
-            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button40.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button40.Image = ((System.Drawing.Image)(resources.GetObject("button40.Image")));
-            this.button40.Location = new System.Drawing.Point(755, 8);
-            this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(44, 38);
-            this.button40.TabIndex = 19;
-            this.button40.UseVisualStyleBackColor = false;
-            this.button40.Click += new System.EventHandler(this.button40_Click);
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.Location = new System.Drawing.Point(18, 11);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(160, 21);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "Количество полей:";
             // 
             // servpriceTable
             // 
@@ -722,44 +939,47 @@
             this.servpriceTable.Size = new System.Drawing.Size(883, 519);
             this.servpriceTable.TabIndex = 16;
             // 
-            // label15
+            // button40
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.Location = new System.Drawing.Point(18, 11);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(160, 21);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "Количество полей:";
+            this.button40.BackColor = System.Drawing.Color.White;
+            this.button40.FlatAppearance.BorderSize = 0;
+            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button40.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button40.Image = ((System.Drawing.Image)(resources.GetObject("button40.Image")));
+            this.button40.Location = new System.Drawing.Point(755, 8);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(44, 38);
+            this.button40.TabIndex = 19;
+            this.button40.UseVisualStyleBackColor = false;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
             // 
-            // button56
+            // button41
             // 
-            this.button56.BackColor = System.Drawing.Color.White;
-            this.button56.FlatAppearance.BorderSize = 0;
-            this.button56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button56.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button56.Image = ((System.Drawing.Image)(resources.GetObject("button56.Image")));
-            this.button56.Location = new System.Drawing.Point(705, 8);
-            this.button56.Name = "button56";
-            this.button56.Size = new System.Drawing.Size(44, 38);
-            this.button56.TabIndex = 21;
-            this.button56.UseVisualStyleBackColor = false;
-            this.button56.Click += new System.EventHandler(this.button56_Click);
+            this.button41.BackColor = System.Drawing.Color.White;
+            this.button41.FlatAppearance.BorderSize = 0;
+            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button41.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button41.Image = ((System.Drawing.Image)(resources.GetObject("button41.Image")));
+            this.button41.Location = new System.Drawing.Point(805, 8);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(44, 38);
+            this.button41.TabIndex = 18;
+            this.button41.UseVisualStyleBackColor = false;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
-            // button58
+            // button42
             // 
-            this.button58.BackColor = System.Drawing.Color.White;
-            this.button58.FlatAppearance.BorderSize = 0;
-            this.button58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button58.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button58.Image = ((System.Drawing.Image)(resources.GetObject("button58.Image")));
-            this.button58.Location = new System.Drawing.Point(655, 8);
-            this.button58.Name = "button58";
-            this.button58.Size = new System.Drawing.Size(44, 38);
-            this.button58.TabIndex = 22;
-            this.toolTip1.SetToolTip(this.button58, "Генерация");
-            this.button58.UseVisualStyleBackColor = false;
-            this.button58.Click += new System.EventHandler(this.button58_Click);
+            this.button42.BackColor = System.Drawing.Color.White;
+            this.button42.FlatAppearance.BorderSize = 0;
+            this.button42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button42.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button42.Image = ((System.Drawing.Image)(resources.GetObject("button42.Image")));
+            this.button42.Location = new System.Drawing.Point(855, 8);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(44, 38);
+            this.button42.TabIndex = 17;
+            this.button42.UseVisualStyleBackColor = false;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
             // imagesPage
             // 
@@ -779,47 +999,29 @@
             this.imagesPage.Text = "картинки";
             this.imagesPage.UseVisualStyleBackColor = true;
             // 
-            // button39
+            // button55
             // 
-            this.button39.BackColor = System.Drawing.Color.White;
-            this.button39.FlatAppearance.BorderSize = 0;
-            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button39.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button39.Image = ((System.Drawing.Image)(resources.GetObject("button39.Image")));
-            this.button39.Location = new System.Drawing.Point(855, 8);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(44, 38);
-            this.button39.TabIndex = 12;
-            this.button39.UseVisualStyleBackColor = false;
-            this.button39.Click += new System.EventHandler(this.button39_Click);
+            this.button55.BackColor = System.Drawing.Color.White;
+            this.button55.FlatAppearance.BorderSize = 0;
+            this.button55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button55.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button55.Image = ((System.Drawing.Image)(resources.GetObject("button55.Image")));
+            this.button55.Location = new System.Drawing.Point(705, 8);
+            this.button55.Name = "button55";
+            this.button55.Size = new System.Drawing.Size(44, 38);
+            this.button55.TabIndex = 16;
+            this.button55.UseVisualStyleBackColor = false;
+            this.button55.Click += new System.EventHandler(this.button55_Click);
             // 
-            // button38
+            // label14
             // 
-            this.button38.BackColor = System.Drawing.Color.White;
-            this.button38.FlatAppearance.BorderSize = 0;
-            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button38.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button38.Image = ((System.Drawing.Image)(resources.GetObject("button38.Image")));
-            this.button38.Location = new System.Drawing.Point(805, 8);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(44, 38);
-            this.button38.TabIndex = 13;
-            this.button38.UseVisualStyleBackColor = false;
-            this.button38.Click += new System.EventHandler(this.button38_Click);
-            // 
-            // button37
-            // 
-            this.button37.BackColor = System.Drawing.Color.White;
-            this.button37.FlatAppearance.BorderSize = 0;
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button37.Image = ((System.Drawing.Image)(resources.GetObject("button37.Image")));
-            this.button37.Location = new System.Drawing.Point(755, 8);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(44, 38);
-            this.button37.TabIndex = 14;
-            this.button37.UseVisualStyleBackColor = false;
-            this.button37.Click += new System.EventHandler(this.button37_Click);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.Location = new System.Drawing.Point(18, 11);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(160, 21);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Количество полей:";
             // 
             // imagesTable
             // 
@@ -836,44 +1038,47 @@
             this.imagesTable.Size = new System.Drawing.Size(883, 519);
             this.imagesTable.TabIndex = 11;
             // 
-            // label14
+            // button37
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.Location = new System.Drawing.Point(18, 11);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(160, 21);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Количество полей:";
+            this.button37.BackColor = System.Drawing.Color.White;
+            this.button37.FlatAppearance.BorderSize = 0;
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button37.Image = ((System.Drawing.Image)(resources.GetObject("button37.Image")));
+            this.button37.Location = new System.Drawing.Point(755, 8);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(44, 38);
+            this.button37.TabIndex = 14;
+            this.button37.UseVisualStyleBackColor = false;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
             // 
-            // button55
+            // button38
             // 
-            this.button55.BackColor = System.Drawing.Color.White;
-            this.button55.FlatAppearance.BorderSize = 0;
-            this.button55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button55.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button55.Image = ((System.Drawing.Image)(resources.GetObject("button55.Image")));
-            this.button55.Location = new System.Drawing.Point(705, 8);
-            this.button55.Name = "button55";
-            this.button55.Size = new System.Drawing.Size(44, 38);
-            this.button55.TabIndex = 16;
-            this.button55.UseVisualStyleBackColor = false;
-            this.button55.Click += new System.EventHandler(this.button55_Click);
+            this.button38.BackColor = System.Drawing.Color.White;
+            this.button38.FlatAppearance.BorderSize = 0;
+            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button38.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button38.Image = ((System.Drawing.Image)(resources.GetObject("button38.Image")));
+            this.button38.Location = new System.Drawing.Point(805, 8);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(44, 38);
+            this.button38.TabIndex = 13;
+            this.button38.UseVisualStyleBackColor = false;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
             // 
-            // button64
+            // button39
             // 
-            this.button64.BackColor = System.Drawing.Color.White;
-            this.button64.FlatAppearance.BorderSize = 0;
-            this.button64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button64.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button64.Image = ((System.Drawing.Image)(resources.GetObject("button64.Image")));
-            this.button64.Location = new System.Drawing.Point(665, 8);
-            this.button64.Name = "button64";
-            this.button64.Size = new System.Drawing.Size(44, 38);
-            this.button64.TabIndex = 23;
-            this.toolTip1.SetToolTip(this.button64, "Генерация");
-            this.button64.UseVisualStyleBackColor = false;
-            this.button64.Click += new System.EventHandler(this.button64_Click);
+            this.button39.BackColor = System.Drawing.Color.White;
+            this.button39.FlatAppearance.BorderSize = 0;
+            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button39.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button39.Image = ((System.Drawing.Image)(resources.GetObject("button39.Image")));
+            this.button39.Location = new System.Drawing.Point(855, 8);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(44, 38);
+            this.button39.TabIndex = 12;
+            this.button39.UseVisualStyleBackColor = false;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
             // 
             // qualityPage
             // 
@@ -893,47 +1098,29 @@
             this.qualityPage.Text = "Качество";
             this.qualityPage.UseVisualStyleBackColor = true;
             // 
-            // button33
+            // button54
             // 
-            this.button33.BackColor = System.Drawing.Color.White;
-            this.button33.FlatAppearance.BorderSize = 0;
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button33.Image = ((System.Drawing.Image)(resources.GetObject("button33.Image")));
-            this.button33.Location = new System.Drawing.Point(855, 8);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(44, 38);
-            this.button33.TabIndex = 7;
-            this.button33.UseVisualStyleBackColor = false;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
+            this.button54.BackColor = System.Drawing.Color.White;
+            this.button54.FlatAppearance.BorderSize = 0;
+            this.button54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button54.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button54.Image = ((System.Drawing.Image)(resources.GetObject("button54.Image")));
+            this.button54.Location = new System.Drawing.Point(705, 8);
+            this.button54.Name = "button54";
+            this.button54.Size = new System.Drawing.Size(44, 38);
+            this.button54.TabIndex = 11;
+            this.button54.UseVisualStyleBackColor = false;
+            this.button54.Click += new System.EventHandler(this.button54_Click);
             // 
-            // button32
+            // label13
             // 
-            this.button32.BackColor = System.Drawing.Color.White;
-            this.button32.FlatAppearance.BorderSize = 0;
-            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button32.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button32.Image = ((System.Drawing.Image)(resources.GetObject("button32.Image")));
-            this.button32.Location = new System.Drawing.Point(805, 8);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(44, 38);
-            this.button32.TabIndex = 8;
-            this.button32.UseVisualStyleBackColor = false;
-            this.button32.Click += new System.EventHandler(this.button32_Click);
-            // 
-            // button31
-            // 
-            this.button31.BackColor = System.Drawing.Color.White;
-            this.button31.FlatAppearance.BorderSize = 0;
-            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button31.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button31.Image = ((System.Drawing.Image)(resources.GetObject("button31.Image")));
-            this.button31.Location = new System.Drawing.Point(755, 8);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(44, 38);
-            this.button31.TabIndex = 9;
-            this.button31.UseVisualStyleBackColor = false;
-            this.button31.Click += new System.EventHandler(this.button31_Click);
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.Location = new System.Drawing.Point(18, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(160, 21);
+            this.label13.TabIndex = 10;
+            this.label13.Text = "Количество полей:";
             // 
             // qualityTable
             // 
@@ -950,44 +1137,47 @@
             this.qualityTable.Size = new System.Drawing.Size(883, 519);
             this.qualityTable.TabIndex = 6;
             // 
-            // label13
+            // button31
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(18, 11);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(160, 21);
-            this.label13.TabIndex = 10;
-            this.label13.Text = "Количество полей:";
+            this.button31.BackColor = System.Drawing.Color.White;
+            this.button31.FlatAppearance.BorderSize = 0;
+            this.button31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button31.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button31.Image = ((System.Drawing.Image)(resources.GetObject("button31.Image")));
+            this.button31.Location = new System.Drawing.Point(755, 8);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(44, 38);
+            this.button31.TabIndex = 9;
+            this.button31.UseVisualStyleBackColor = false;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
             // 
-            // button54
+            // button32
             // 
-            this.button54.BackColor = System.Drawing.Color.White;
-            this.button54.FlatAppearance.BorderSize = 0;
-            this.button54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button54.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button54.Image = ((System.Drawing.Image)(resources.GetObject("button54.Image")));
-            this.button54.Location = new System.Drawing.Point(705, 8);
-            this.button54.Name = "button54";
-            this.button54.Size = new System.Drawing.Size(44, 38);
-            this.button54.TabIndex = 11;
-            this.button54.UseVisualStyleBackColor = false;
-            this.button54.Click += new System.EventHandler(this.button54_Click);
+            this.button32.BackColor = System.Drawing.Color.White;
+            this.button32.FlatAppearance.BorderSize = 0;
+            this.button32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button32.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button32.Image = ((System.Drawing.Image)(resources.GetObject("button32.Image")));
+            this.button32.Location = new System.Drawing.Point(805, 8);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(44, 38);
+            this.button32.TabIndex = 8;
+            this.button32.UseVisualStyleBackColor = false;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
-            // button63
+            // button33
             // 
-            this.button63.BackColor = System.Drawing.Color.White;
-            this.button63.FlatAppearance.BorderSize = 0;
-            this.button63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button63.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button63.Image = ((System.Drawing.Image)(resources.GetObject("button63.Image")));
-            this.button63.Location = new System.Drawing.Point(664, 8);
-            this.button63.Name = "button63";
-            this.button63.Size = new System.Drawing.Size(44, 38);
-            this.button63.TabIndex = 25;
-            this.toolTip1.SetToolTip(this.button63, "Генерация");
-            this.button63.UseVisualStyleBackColor = false;
-            this.button63.Click += new System.EventHandler(this.button63_Click);
+            this.button33.BackColor = System.Drawing.Color.White;
+            this.button33.FlatAppearance.BorderSize = 0;
+            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button33.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button33.Image = ((System.Drawing.Image)(resources.GetObject("button33.Image")));
+            this.button33.Location = new System.Drawing.Point(855, 8);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(44, 38);
+            this.button33.TabIndex = 7;
+            this.button33.UseVisualStyleBackColor = false;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
             // 
             // tabPage10
             // 
@@ -1007,47 +1197,29 @@
             this.tabPage10.Text = "Страны";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
-            // addCountry
+            // button53
             // 
-            this.addCountry.BackColor = System.Drawing.Color.White;
-            this.addCountry.FlatAppearance.BorderSize = 0;
-            this.addCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addCountry.Image = ((System.Drawing.Image)(resources.GetObject("addCountry.Image")));
-            this.addCountry.Location = new System.Drawing.Point(854, 3);
-            this.addCountry.Name = "addCountry";
-            this.addCountry.Size = new System.Drawing.Size(44, 38);
-            this.addCountry.TabIndex = 2;
-            this.addCountry.UseVisualStyleBackColor = false;
-            this.addCountry.Click += new System.EventHandler(this.addCountry_Click);
+            this.button53.BackColor = System.Drawing.Color.White;
+            this.button53.FlatAppearance.BorderSize = 0;
+            this.button53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button53.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button53.Image = ((System.Drawing.Image)(resources.GetObject("button53.Image")));
+            this.button53.Location = new System.Drawing.Point(704, 3);
+            this.button53.Name = "button53";
+            this.button53.Size = new System.Drawing.Size(44, 38);
+            this.button53.TabIndex = 11;
+            this.button53.UseVisualStyleBackColor = false;
+            this.button53.Click += new System.EventHandler(this.button53_Click);
             // 
-            // deleteCountry
+            // label2
             // 
-            this.deleteCountry.BackColor = System.Drawing.Color.White;
-            this.deleteCountry.FlatAppearance.BorderSize = 0;
-            this.deleteCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteCountry.Image = ((System.Drawing.Image)(resources.GetObject("deleteCountry.Image")));
-            this.deleteCountry.Location = new System.Drawing.Point(804, 3);
-            this.deleteCountry.Name = "deleteCountry";
-            this.deleteCountry.Size = new System.Drawing.Size(44, 38);
-            this.deleteCountry.TabIndex = 3;
-            this.deleteCountry.UseVisualStyleBackColor = false;
-            this.deleteCountry.Click += new System.EventHandler(this.deleteCountry_Click);
-            // 
-            // editCountry
-            // 
-            this.editCountry.BackColor = System.Drawing.Color.White;
-            this.editCountry.FlatAppearance.BorderSize = 0;
-            this.editCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editCountry.Image = ((System.Drawing.Image)(resources.GetObject("editCountry.Image")));
-            this.editCountry.Location = new System.Drawing.Point(754, 3);
-            this.editCountry.Name = "editCountry";
-            this.editCountry.Size = new System.Drawing.Size(44, 38);
-            this.editCountry.TabIndex = 4;
-            this.editCountry.UseVisualStyleBackColor = false;
-            this.editCountry.Click += new System.EventHandler(this.editCountry_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(17, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 21);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Количество полей:";
             // 
             // countriesTable
             // 
@@ -1064,44 +1236,47 @@
             this.countriesTable.Size = new System.Drawing.Size(883, 519);
             this.countriesTable.TabIndex = 0;
             // 
-            // label2
+            // editCountry
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(17, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Количество полей:";
+            this.editCountry.BackColor = System.Drawing.Color.White;
+            this.editCountry.FlatAppearance.BorderSize = 0;
+            this.editCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editCountry.Image = ((System.Drawing.Image)(resources.GetObject("editCountry.Image")));
+            this.editCountry.Location = new System.Drawing.Point(754, 3);
+            this.editCountry.Name = "editCountry";
+            this.editCountry.Size = new System.Drawing.Size(44, 38);
+            this.editCountry.TabIndex = 4;
+            this.editCountry.UseVisualStyleBackColor = false;
+            this.editCountry.Click += new System.EventHandler(this.editCountry_Click);
             // 
-            // button53
+            // deleteCountry
             // 
-            this.button53.BackColor = System.Drawing.Color.White;
-            this.button53.FlatAppearance.BorderSize = 0;
-            this.button53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button53.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button53.Image = ((System.Drawing.Image)(resources.GetObject("button53.Image")));
-            this.button53.Location = new System.Drawing.Point(704, 3);
-            this.button53.Name = "button53";
-            this.button53.Size = new System.Drawing.Size(44, 38);
-            this.button53.TabIndex = 11;
-            this.button53.UseVisualStyleBackColor = false;
-            this.button53.Click += new System.EventHandler(this.button53_Click);
+            this.deleteCountry.BackColor = System.Drawing.Color.White;
+            this.deleteCountry.FlatAppearance.BorderSize = 0;
+            this.deleteCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteCountry.Image = ((System.Drawing.Image)(resources.GetObject("deleteCountry.Image")));
+            this.deleteCountry.Location = new System.Drawing.Point(804, 3);
+            this.deleteCountry.Name = "deleteCountry";
+            this.deleteCountry.Size = new System.Drawing.Size(44, 38);
+            this.deleteCountry.TabIndex = 3;
+            this.deleteCountry.UseVisualStyleBackColor = false;
+            this.deleteCountry.Click += new System.EventHandler(this.deleteCountry_Click);
             // 
-            // button60
+            // addCountry
             // 
-            this.button60.BackColor = System.Drawing.Color.White;
-            this.button60.FlatAppearance.BorderSize = 0;
-            this.button60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button60.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button60.Image = ((System.Drawing.Image)(resources.GetObject("button60.Image")));
-            this.button60.Location = new System.Drawing.Point(654, 3);
-            this.button60.Name = "button60";
-            this.button60.Size = new System.Drawing.Size(44, 38);
-            this.button60.TabIndex = 24;
-            this.toolTip1.SetToolTip(this.button60, "Генерация");
-            this.button60.UseVisualStyleBackColor = false;
-            this.button60.Click += new System.EventHandler(this.button60_Click);
+            this.addCountry.BackColor = System.Drawing.Color.White;
+            this.addCountry.FlatAppearance.BorderSize = 0;
+            this.addCountry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addCountry.Image = ((System.Drawing.Image)(resources.GetObject("addCountry.Image")));
+            this.addCountry.Location = new System.Drawing.Point(854, 3);
+            this.addCountry.Name = "addCountry";
+            this.addCountry.Size = new System.Drawing.Size(44, 38);
+            this.addCountry.TabIndex = 2;
+            this.addCountry.UseVisualStyleBackColor = false;
+            this.addCountry.Click += new System.EventHandler(this.addCountry_Click);
             // 
             // tabPage9
             // 
@@ -1121,57 +1296,19 @@
             this.tabPage9.Text = "Студии";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button43
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(854, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(44, 38);
-            this.button3.TabIndex = 5;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(804, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 38);
-            this.button2.TabIndex = 6;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(754, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 38);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(17, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(160, 21);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Количество полей:";
+            this.button43.BackColor = System.Drawing.Color.White;
+            this.button43.FlatAppearance.BorderSize = 0;
+            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button43.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button43.Image = ((System.Drawing.Image)(resources.GetObject("button43.Image")));
+            this.button43.Location = new System.Drawing.Point(704, 3);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(44, 38);
+            this.button43.TabIndex = 10;
+            this.button43.UseVisualStyleBackColor = false;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
             // studiosTable
             // 
@@ -1187,34 +1324,57 @@
             this.studiosTable.Size = new System.Drawing.Size(883, 519);
             this.studiosTable.TabIndex = 9;
             // 
-            // button43
+            // label3
             // 
-            this.button43.BackColor = System.Drawing.Color.White;
-            this.button43.FlatAppearance.BorderSize = 0;
-            this.button43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button43.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button43.Image = ((System.Drawing.Image)(resources.GetObject("button43.Image")));
-            this.button43.Location = new System.Drawing.Point(704, 3);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(44, 38);
-            this.button43.TabIndex = 10;
-            this.button43.UseVisualStyleBackColor = false;
-            this.button43.Click += new System.EventHandler(this.button43_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(17, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(160, 21);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Количество полей:";
             // 
-            // button65
+            // button1
             // 
-            this.button65.BackColor = System.Drawing.Color.White;
-            this.button65.FlatAppearance.BorderSize = 0;
-            this.button65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button65.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button65.Image = ((System.Drawing.Image)(resources.GetObject("button65.Image")));
-            this.button65.Location = new System.Drawing.Point(666, 3);
-            this.button65.Name = "button65";
-            this.button65.Size = new System.Drawing.Size(44, 38);
-            this.button65.TabIndex = 25;
-            this.toolTip1.SetToolTip(this.button65, "Генерация");
-            this.button65.UseVisualStyleBackColor = false;
-            this.button65.Click += new System.EventHandler(this.button65_Click);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(754, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 38);
+            this.button1.TabIndex = 7;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(804, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(44, 38);
+            this.button2.TabIndex = 6;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(854, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(44, 38);
+            this.button3.TabIndex = 5;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // tabPage8
             // 
@@ -1234,47 +1394,29 @@
             this.tabPage8.Text = "Режиссеры";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // button44
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.Location = new System.Drawing.Point(854, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(44, 38);
-            this.button6.TabIndex = 5;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button44.BackColor = System.Drawing.Color.White;
+            this.button44.FlatAppearance.BorderSize = 0;
+            this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button44.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button44.Image = ((System.Drawing.Image)(resources.GetObject("button44.Image")));
+            this.button44.Location = new System.Drawing.Point(704, 3);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(44, 38);
+            this.button44.TabIndex = 11;
+            this.button44.UseVisualStyleBackColor = false;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
             // 
-            // button5
+            // label4
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(804, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(44, 38);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(754, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(44, 38);
-            this.button4.TabIndex = 7;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(19, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 21);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Количество полей:";
             // 
             // producersTable
             // 
@@ -1290,44 +1432,47 @@
             this.producersTable.Size = new System.Drawing.Size(880, 513);
             this.producersTable.TabIndex = 2;
             // 
-            // label4
+            // button4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(19, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 21);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Количество полей:";
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(754, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(44, 38);
+            this.button4.TabIndex = 7;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button44
+            // button5
             // 
-            this.button44.BackColor = System.Drawing.Color.White;
-            this.button44.FlatAppearance.BorderSize = 0;
-            this.button44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button44.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button44.Image = ((System.Drawing.Image)(resources.GetObject("button44.Image")));
-            this.button44.Location = new System.Drawing.Point(704, 3);
-            this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(44, 38);
-            this.button44.TabIndex = 11;
-            this.button44.UseVisualStyleBackColor = false;
-            this.button44.Click += new System.EventHandler(this.button44_Click);
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
+            this.button5.Location = new System.Drawing.Point(804, 3);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(44, 38);
+            this.button5.TabIndex = 6;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button66
+            // button6
             // 
-            this.button66.BackColor = System.Drawing.Color.White;
-            this.button66.FlatAppearance.BorderSize = 0;
-            this.button66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button66.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button66.Image = ((System.Drawing.Image)(resources.GetObject("button66.Image")));
-            this.button66.Location = new System.Drawing.Point(664, 3);
-            this.button66.Name = "button66";
-            this.button66.Size = new System.Drawing.Size(44, 38);
-            this.button66.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.button66, "Генерация");
-            this.button66.UseVisualStyleBackColor = false;
-            this.button66.Click += new System.EventHandler(this.button66_Click);
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
+            this.button6.Location = new System.Drawing.Point(854, 3);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(44, 38);
+            this.button6.TabIndex = 5;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // tabPage7
             // 
@@ -1347,47 +1492,29 @@
             this.tabPage7.Text = "Хозяева";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // button52
             // 
-            this.button9.BackColor = System.Drawing.Color.White;
-            this.button9.FlatAppearance.BorderSize = 0;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
-            this.button9.Location = new System.Drawing.Point(852, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(44, 38);
-            this.button9.TabIndex = 8;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button52.BackColor = System.Drawing.Color.White;
+            this.button52.FlatAppearance.BorderSize = 0;
+            this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button52.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button52.Image = ((System.Drawing.Image)(resources.GetObject("button52.Image")));
+            this.button52.Location = new System.Drawing.Point(702, 3);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(44, 38);
+            this.button52.TabIndex = 12;
+            this.button52.UseVisualStyleBackColor = false;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
             // 
-            // button8
+            // label5
             // 
-            this.button8.BackColor = System.Drawing.Color.White;
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(802, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(44, 38);
-            this.button8.TabIndex = 9;
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.White;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.Location = new System.Drawing.Point(752, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(44, 38);
-            this.button7.TabIndex = 10;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(17, 6);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(160, 21);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Количество полей:";
             // 
             // ownersTable
             // 
@@ -1403,44 +1530,47 @@
             this.ownersTable.Size = new System.Drawing.Size(880, 519);
             this.ownersTable.TabIndex = 3;
             // 
-            // label5
+            // button7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 6);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(160, 21);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Количество полей:";
+            this.button7.BackColor = System.Drawing.Color.White;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
+            this.button7.Location = new System.Drawing.Point(752, 3);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(44, 38);
+            this.button7.TabIndex = 10;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button52
+            // button8
             // 
-            this.button52.BackColor = System.Drawing.Color.White;
-            this.button52.FlatAppearance.BorderSize = 0;
-            this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button52.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button52.Image = ((System.Drawing.Image)(resources.GetObject("button52.Image")));
-            this.button52.Location = new System.Drawing.Point(702, 3);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(44, 38);
-            this.button52.TabIndex = 12;
-            this.button52.UseVisualStyleBackColor = false;
-            this.button52.Click += new System.EventHandler(this.button52_Click);
+            this.button8.BackColor = System.Drawing.Color.White;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
+            this.button8.Location = new System.Drawing.Point(802, 3);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(44, 38);
+            this.button8.TabIndex = 9;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button67
+            // button9
             // 
-            this.button67.BackColor = System.Drawing.Color.White;
-            this.button67.FlatAppearance.BorderSize = 0;
-            this.button67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button67.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button67.Image = ((System.Drawing.Image)(resources.GetObject("button67.Image")));
-            this.button67.Location = new System.Drawing.Point(652, 3);
-            this.button67.Name = "button67";
-            this.button67.Size = new System.Drawing.Size(44, 38);
-            this.button67.TabIndex = 27;
-            this.toolTip1.SetToolTip(this.button67, "Генерация");
-            this.button67.UseVisualStyleBackColor = false;
-            this.button67.Click += new System.EventHandler(this.button67_Click);
+            this.button9.BackColor = System.Drawing.Color.White;
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
+            this.button9.Location = new System.Drawing.Point(852, 3);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(44, 38);
+            this.button9.TabIndex = 8;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // tabPage6
             // 
@@ -1460,47 +1590,29 @@
             this.tabPage6.Text = "Услуги";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // button51
             // 
-            this.button12.BackColor = System.Drawing.Color.White;
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
-            this.button12.Location = new System.Drawing.Point(854, 3);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(44, 38);
-            this.button12.TabIndex = 8;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.button51.BackColor = System.Drawing.Color.White;
+            this.button51.FlatAppearance.BorderSize = 0;
+            this.button51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button51.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button51.Image = ((System.Drawing.Image)(resources.GetObject("button51.Image")));
+            this.button51.Location = new System.Drawing.Point(704, 3);
+            this.button51.Name = "button51";
+            this.button51.Size = new System.Drawing.Size(44, 38);
+            this.button51.TabIndex = 12;
+            this.button51.UseVisualStyleBackColor = false;
+            this.button51.Click += new System.EventHandler(this.button51_Click);
             // 
-            // button11
+            // label6
             // 
-            this.button11.BackColor = System.Drawing.Color.White;
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
-            this.button11.Location = new System.Drawing.Point(804, 3);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(44, 38);
-            this.button11.TabIndex = 9;
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // button10
-            // 
-            this.button10.BackColor = System.Drawing.Color.White;
-            this.button10.FlatAppearance.BorderSize = 0;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
-            this.button10.Location = new System.Drawing.Point(754, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(44, 38);
-            this.button10.TabIndex = 10;
-            this.button10.UseVisualStyleBackColor = false;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(17, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 21);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Количество полей:";
             // 
             // servicesTable
             // 
@@ -1516,44 +1628,47 @@
             this.servicesTable.Size = new System.Drawing.Size(880, 516);
             this.servicesTable.TabIndex = 4;
             // 
-            // label6
+            // button10
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(17, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(160, 21);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Количество полей:";
+            this.button10.BackColor = System.Drawing.Color.White;
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Image = ((System.Drawing.Image)(resources.GetObject("button10.Image")));
+            this.button10.Location = new System.Drawing.Point(754, 3);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(44, 38);
+            this.button10.TabIndex = 10;
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button51
+            // button11
             // 
-            this.button51.BackColor = System.Drawing.Color.White;
-            this.button51.FlatAppearance.BorderSize = 0;
-            this.button51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button51.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button51.Image = ((System.Drawing.Image)(resources.GetObject("button51.Image")));
-            this.button51.Location = new System.Drawing.Point(704, 3);
-            this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(44, 38);
-            this.button51.TabIndex = 12;
-            this.button51.UseVisualStyleBackColor = false;
-            this.button51.Click += new System.EventHandler(this.button51_Click);
+            this.button11.BackColor = System.Drawing.Color.White;
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
+            this.button11.Location = new System.Drawing.Point(804, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(44, 38);
+            this.button11.TabIndex = 9;
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // button62
+            // button12
             // 
-            this.button62.BackColor = System.Drawing.Color.White;
-            this.button62.FlatAppearance.BorderSize = 0;
-            this.button62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button62.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button62.Image = ((System.Drawing.Image)(resources.GetObject("button62.Image")));
-            this.button62.Location = new System.Drawing.Point(664, 3);
-            this.button62.Name = "button62";
-            this.button62.Size = new System.Drawing.Size(44, 38);
-            this.button62.TabIndex = 24;
-            this.toolTip1.SetToolTip(this.button62, "Генерация");
-            this.button62.UseVisualStyleBackColor = false;
-            this.button62.Click += new System.EventHandler(this.button62_Click);
+            this.button12.BackColor = System.Drawing.Color.White;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
+            this.button12.Location = new System.Drawing.Point(854, 3);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(44, 38);
+            this.button12.TabIndex = 8;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // tabPage5
             // 
@@ -1573,47 +1688,29 @@
             this.tabPage5.Text = "Тип собств.";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // button50
             // 
-            this.button15.BackColor = System.Drawing.Color.White;
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
-            this.button15.Location = new System.Drawing.Point(855, 3);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(44, 38);
-            this.button15.TabIndex = 8;
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.button50.BackColor = System.Drawing.Color.White;
+            this.button50.FlatAppearance.BorderSize = 0;
+            this.button50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button50.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button50.Image = ((System.Drawing.Image)(resources.GetObject("button50.Image")));
+            this.button50.Location = new System.Drawing.Point(705, 3);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(44, 38);
+            this.button50.TabIndex = 12;
+            this.button50.UseVisualStyleBackColor = false;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
             // 
-            // button14
+            // label7
             // 
-            this.button14.BackColor = System.Drawing.Color.White;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.Location = new System.Drawing.Point(805, 3);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(44, 38);
-            this.button14.TabIndex = 9;
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.White;
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
-            this.button13.Location = new System.Drawing.Point(755, 3);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(44, 38);
-            this.button13.TabIndex = 10;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(17, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(160, 21);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Количество полей:";
             // 
             // propertyTable
             // 
@@ -1629,44 +1726,47 @@
             this.propertyTable.Size = new System.Drawing.Size(880, 516);
             this.propertyTable.TabIndex = 5;
             // 
-            // label7
+            // button13
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(17, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 21);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Количество полей:";
+            this.button13.BackColor = System.Drawing.Color.White;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.Location = new System.Drawing.Point(755, 3);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(44, 38);
+            this.button13.TabIndex = 10;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
-            // button50
+            // button14
             // 
-            this.button50.BackColor = System.Drawing.Color.White;
-            this.button50.FlatAppearance.BorderSize = 0;
-            this.button50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button50.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button50.Image = ((System.Drawing.Image)(resources.GetObject("button50.Image")));
-            this.button50.Location = new System.Drawing.Point(705, 3);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(44, 38);
-            this.button50.TabIndex = 12;
-            this.button50.UseVisualStyleBackColor = false;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
+            this.button14.BackColor = System.Drawing.Color.White;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
+            this.button14.Location = new System.Drawing.Point(805, 3);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(44, 38);
+            this.button14.TabIndex = 9;
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button59
+            // button15
             // 
-            this.button59.BackColor = System.Drawing.Color.White;
-            this.button59.FlatAppearance.BorderSize = 0;
-            this.button59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button59.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button59.Image = ((System.Drawing.Image)(resources.GetObject("button59.Image")));
-            this.button59.Location = new System.Drawing.Point(655, 3);
-            this.button59.Name = "button59";
-            this.button59.Size = new System.Drawing.Size(44, 38);
-            this.button59.TabIndex = 23;
-            this.toolTip1.SetToolTip(this.button59, "Генерация");
-            this.button59.UseVisualStyleBackColor = false;
-            this.button59.Click += new System.EventHandler(this.button59_Click);
+            this.button15.BackColor = System.Drawing.Color.White;
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
+            this.button15.Location = new System.Drawing.Point(855, 3);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(44, 38);
+            this.button15.TabIndex = 8;
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // tabPage4
             // 
@@ -1686,47 +1786,29 @@
             this.tabPage4.Text = "Районы";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // button49
             // 
-            this.button18.BackColor = System.Drawing.Color.White;
-            this.button18.FlatAppearance.BorderSize = 0;
-            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button18.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button18.Image = ((System.Drawing.Image)(resources.GetObject("button18.Image")));
-            this.button18.Location = new System.Drawing.Point(857, 3);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(44, 38);
-            this.button18.TabIndex = 8;
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
+            this.button49.BackColor = System.Drawing.Color.White;
+            this.button49.FlatAppearance.BorderSize = 0;
+            this.button49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button49.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button49.Image = ((System.Drawing.Image)(resources.GetObject("button49.Image")));
+            this.button49.Location = new System.Drawing.Point(707, 3);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(44, 38);
+            this.button49.TabIndex = 12;
+            this.button49.UseVisualStyleBackColor = false;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
-            // button17
+            // label8
             // 
-            this.button17.BackColor = System.Drawing.Color.White;
-            this.button17.FlatAppearance.BorderSize = 0;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
-            this.button17.Location = new System.Drawing.Point(807, 3);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(44, 38);
-            this.button17.TabIndex = 9;
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.White;
-            this.button16.FlatAppearance.BorderSize = 0;
-            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button16.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
-            this.button16.Location = new System.Drawing.Point(757, 3);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(44, 38);
-            this.button16.TabIndex = 10;
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(17, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(160, 21);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Количество полей:";
             // 
             // districtsTable
             // 
@@ -1742,44 +1824,47 @@
             this.districtsTable.Size = new System.Drawing.Size(880, 517);
             this.districtsTable.TabIndex = 6;
             // 
-            // label8
+            // button16
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(17, 6);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 21);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Количество полей:";
+            this.button16.BackColor = System.Drawing.Color.White;
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
+            this.button16.Location = new System.Drawing.Point(757, 3);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(44, 38);
+            this.button16.TabIndex = 10;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // button49
+            // button17
             // 
-            this.button49.BackColor = System.Drawing.Color.White;
-            this.button49.FlatAppearance.BorderSize = 0;
-            this.button49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button49.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button49.Image = ((System.Drawing.Image)(resources.GetObject("button49.Image")));
-            this.button49.Location = new System.Drawing.Point(707, 3);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(44, 38);
-            this.button49.TabIndex = 12;
-            this.button49.UseVisualStyleBackColor = false;
-            this.button49.Click += new System.EventHandler(this.button49_Click);
+            this.button17.BackColor = System.Drawing.Color.White;
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
+            this.button17.Location = new System.Drawing.Point(807, 3);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(44, 38);
+            this.button17.TabIndex = 9;
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
-            // button61
+            // button18
             // 
-            this.button61.BackColor = System.Drawing.Color.White;
-            this.button61.FlatAppearance.BorderSize = 0;
-            this.button61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button61.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button61.Image = ((System.Drawing.Image)(resources.GetObject("button61.Image")));
-            this.button61.Location = new System.Drawing.Point(657, 3);
-            this.button61.Name = "button61";
-            this.button61.Size = new System.Drawing.Size(44, 38);
-            this.button61.TabIndex = 25;
-            this.toolTip1.SetToolTip(this.button61, "Генерация");
-            this.button61.UseVisualStyleBackColor = false;
-            this.button61.Click += new System.EventHandler(this.button61_Click);
+            this.button18.BackColor = System.Drawing.Color.White;
+            this.button18.FlatAppearance.BorderSize = 0;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button18.Image = ((System.Drawing.Image)(resources.GetObject("button18.Image")));
+            this.button18.Location = new System.Drawing.Point(857, 3);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(44, 38);
+            this.button18.TabIndex = 8;
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
             // tabPage3
             // 
@@ -1799,47 +1884,29 @@
             this.tabPage3.Text = "Фильмы";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button21
+            // button48
             // 
-            this.button21.BackColor = System.Drawing.Color.White;
-            this.button21.FlatAppearance.BorderSize = 0;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
-            this.button21.Location = new System.Drawing.Point(857, 3);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(44, 38);
-            this.button21.TabIndex = 8;
-            this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.button48.BackColor = System.Drawing.Color.White;
+            this.button48.FlatAppearance.BorderSize = 0;
+            this.button48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button48.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button48.Image = ((System.Drawing.Image)(resources.GetObject("button48.Image")));
+            this.button48.Location = new System.Drawing.Point(707, 3);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(44, 38);
+            this.button48.TabIndex = 12;
+            this.button48.UseVisualStyleBackColor = false;
+            this.button48.Click += new System.EventHandler(this.button48_Click);
             // 
-            // button20
+            // label9
             // 
-            this.button20.BackColor = System.Drawing.Color.White;
-            this.button20.FlatAppearance.BorderSize = 0;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button20.Image = ((System.Drawing.Image)(resources.GetObject("button20.Image")));
-            this.button20.Location = new System.Drawing.Point(807, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(44, 38);
-            this.button20.TabIndex = 9;
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.White;
-            this.button19.FlatAppearance.BorderSize = 0;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button19.Image = ((System.Drawing.Image)(resources.GetObject("button19.Image")));
-            this.button19.Location = new System.Drawing.Point(757, 3);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(44, 38);
-            this.button19.TabIndex = 10;
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(17, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(160, 21);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Количество полей:";
             // 
             // filmsTable
             // 
@@ -1855,44 +1922,47 @@
             this.filmsTable.Size = new System.Drawing.Size(880, 514);
             this.filmsTable.TabIndex = 7;
             // 
-            // label9
+            // button19
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.Location = new System.Drawing.Point(17, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(160, 21);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Количество полей:";
+            this.button19.BackColor = System.Drawing.Color.White;
+            this.button19.FlatAppearance.BorderSize = 0;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button19.Image = ((System.Drawing.Image)(resources.GetObject("button19.Image")));
+            this.button19.Location = new System.Drawing.Point(757, 3);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(44, 38);
+            this.button19.TabIndex = 10;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
-            // button48
+            // button20
             // 
-            this.button48.BackColor = System.Drawing.Color.White;
-            this.button48.FlatAppearance.BorderSize = 0;
-            this.button48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button48.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button48.Image = ((System.Drawing.Image)(resources.GetObject("button48.Image")));
-            this.button48.Location = new System.Drawing.Point(707, 3);
-            this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(44, 38);
-            this.button48.TabIndex = 12;
-            this.button48.UseVisualStyleBackColor = false;
-            this.button48.Click += new System.EventHandler(this.button48_Click);
+            this.button20.BackColor = System.Drawing.Color.White;
+            this.button20.FlatAppearance.BorderSize = 0;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button20.Image = ((System.Drawing.Image)(resources.GetObject("button20.Image")));
+            this.button20.Location = new System.Drawing.Point(807, 3);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(44, 38);
+            this.button20.TabIndex = 9;
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
-            // button68
+            // button21
             // 
-            this.button68.BackColor = System.Drawing.Color.White;
-            this.button68.FlatAppearance.BorderSize = 0;
-            this.button68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button68.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button68.Image = ((System.Drawing.Image)(resources.GetObject("button68.Image")));
-            this.button68.Location = new System.Drawing.Point(667, 3);
-            this.button68.Name = "button68";
-            this.button68.Size = new System.Drawing.Size(44, 38);
-            this.button68.TabIndex = 26;
-            this.toolTip1.SetToolTip(this.button68, "Генерация");
-            this.button68.UseVisualStyleBackColor = false;
-            this.button68.Click += new System.EventHandler(this.button68_Click);
+            this.button21.BackColor = System.Drawing.Color.White;
+            this.button21.FlatAppearance.BorderSize = 0;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button21.Image = ((System.Drawing.Image)(resources.GetObject("button21.Image")));
+            this.button21.Location = new System.Drawing.Point(857, 3);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(44, 38);
+            this.button21.TabIndex = 8;
+            this.button21.UseVisualStyleBackColor = false;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // tabPage2
             // 
@@ -1912,57 +1982,19 @@
             this.tabPage2.Text = "Кассеты";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button24
+            // button47
             // 
-            this.button24.BackColor = System.Drawing.Color.White;
-            this.button24.FlatAppearance.BorderSize = 0;
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button24.Image = ((System.Drawing.Image)(resources.GetObject("button24.Image")));
-            this.button24.Location = new System.Drawing.Point(857, 3);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(44, 38);
-            this.button24.TabIndex = 9;
-            this.button24.UseVisualStyleBackColor = false;
-            this.button24.Click += new System.EventHandler(this.button24_Click);
-            // 
-            // button23
-            // 
-            this.button23.BackColor = System.Drawing.Color.White;
-            this.button23.FlatAppearance.BorderSize = 0;
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button23.Image = ((System.Drawing.Image)(resources.GetObject("button23.Image")));
-            this.button23.Location = new System.Drawing.Point(807, 3);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(44, 38);
-            this.button23.TabIndex = 10;
-            this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
-            // 
-            // button22
-            // 
-            this.button22.BackColor = System.Drawing.Color.White;
-            this.button22.FlatAppearance.BorderSize = 0;
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button22.Image = ((System.Drawing.Image)(resources.GetObject("button22.Image")));
-            this.button22.Location = new System.Drawing.Point(757, 3);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(44, 38);
-            this.button22.TabIndex = 11;
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label10.Location = new System.Drawing.Point(17, 6);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(160, 21);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Количество полей:";
+            this.button47.BackColor = System.Drawing.Color.White;
+            this.button47.FlatAppearance.BorderSize = 0;
+            this.button47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button47.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button47.Image = ((System.Drawing.Image)(resources.GetObject("button47.Image")));
+            this.button47.Location = new System.Drawing.Point(707, 3);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(44, 38);
+            this.button47.TabIndex = 14;
+            this.button47.UseVisualStyleBackColor = false;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
             // cassettesTable
             // 
@@ -1978,34 +2010,57 @@
             this.cassettesTable.Size = new System.Drawing.Size(880, 507);
             this.cassettesTable.TabIndex = 13;
             // 
-            // button47
+            // label10
             // 
-            this.button47.BackColor = System.Drawing.Color.White;
-            this.button47.FlatAppearance.BorderSize = 0;
-            this.button47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button47.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button47.Image = ((System.Drawing.Image)(resources.GetObject("button47.Image")));
-            this.button47.Location = new System.Drawing.Point(707, 3);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(44, 38);
-            this.button47.TabIndex = 14;
-            this.button47.UseVisualStyleBackColor = false;
-            this.button47.Click += new System.EventHandler(this.button47_Click);
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label10.Location = new System.Drawing.Point(17, 6);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(160, 21);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Количество полей:";
             // 
-            // button69
+            // button22
             // 
-            this.button69.BackColor = System.Drawing.Color.White;
-            this.button69.FlatAppearance.BorderSize = 0;
-            this.button69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button69.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button69.Image = ((System.Drawing.Image)(resources.GetObject("button69.Image")));
-            this.button69.Location = new System.Drawing.Point(666, 3);
-            this.button69.Name = "button69";
-            this.button69.Size = new System.Drawing.Size(44, 38);
-            this.button69.TabIndex = 27;
-            this.toolTip1.SetToolTip(this.button69, "Генерация");
-            this.button69.UseVisualStyleBackColor = false;
-            this.button69.Click += new System.EventHandler(this.button69_Click);
+            this.button22.BackColor = System.Drawing.Color.White;
+            this.button22.FlatAppearance.BorderSize = 0;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button22.Image = ((System.Drawing.Image)(resources.GetObject("button22.Image")));
+            this.button22.Location = new System.Drawing.Point(757, 3);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(44, 38);
+            this.button22.TabIndex = 11;
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
+            // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.White;
+            this.button23.FlatAppearance.BorderSize = 0;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button23.Image = ((System.Drawing.Image)(resources.GetObject("button23.Image")));
+            this.button23.Location = new System.Drawing.Point(807, 3);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(44, 38);
+            this.button23.TabIndex = 10;
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
+            // 
+            // button24
+            // 
+            this.button24.BackColor = System.Drawing.Color.White;
+            this.button24.FlatAppearance.BorderSize = 0;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button24.Image = ((System.Drawing.Image)(resources.GetObject("button24.Image")));
+            this.button24.Location = new System.Drawing.Point(857, 3);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(44, 38);
+            this.button24.TabIndex = 9;
+            this.button24.UseVisualStyleBackColor = false;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
             // ordersPage
             // 
@@ -2025,47 +2080,29 @@
             this.ordersPage.Text = "Сделки";
             this.ordersPage.UseVisualStyleBackColor = true;
             // 
-            // button27
+            // button46
             // 
-            this.button27.BackColor = System.Drawing.Color.White;
-            this.button27.FlatAppearance.BorderSize = 0;
-            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button27.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button27.Image = ((System.Drawing.Image)(resources.GetObject("button27.Image")));
-            this.button27.Location = new System.Drawing.Point(857, 3);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(44, 38);
-            this.button27.TabIndex = 8;
-            this.button27.UseVisualStyleBackColor = false;
-            this.button27.Click += new System.EventHandler(this.button27_Click);
+            this.button46.BackColor = System.Drawing.Color.White;
+            this.button46.FlatAppearance.BorderSize = 0;
+            this.button46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button46.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button46.Image = ((System.Drawing.Image)(resources.GetObject("button46.Image")));
+            this.button46.Location = new System.Drawing.Point(707, 3);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(44, 38);
+            this.button46.TabIndex = 13;
+            this.button46.UseVisualStyleBackColor = false;
+            this.button46.Click += new System.EventHandler(this.button46_Click);
             // 
-            // button26
+            // label11
             // 
-            this.button26.BackColor = System.Drawing.Color.White;
-            this.button26.FlatAppearance.BorderSize = 0;
-            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button26.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button26.Image = ((System.Drawing.Image)(resources.GetObject("button26.Image")));
-            this.button26.Location = new System.Drawing.Point(807, 3);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(44, 38);
-            this.button26.TabIndex = 9;
-            this.button26.UseVisualStyleBackColor = false;
-            this.button26.Click += new System.EventHandler(this.button26_Click);
-            // 
-            // button25
-            // 
-            this.button25.BackColor = System.Drawing.Color.White;
-            this.button25.FlatAppearance.BorderSize = 0;
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button25.Image = ((System.Drawing.Image)(resources.GetObject("button25.Image")));
-            this.button25.Location = new System.Drawing.Point(757, 3);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(44, 38);
-            this.button25.TabIndex = 10;
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.Location = new System.Drawing.Point(16, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(160, 21);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Количество полей:";
             // 
             // ordersTable
             // 
@@ -2081,44 +2118,47 @@
             this.ordersTable.Size = new System.Drawing.Size(880, 514);
             this.ordersTable.TabIndex = 11;
             // 
-            // label11
+            // button25
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(16, 6);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(160, 21);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "Количество полей:";
+            this.button25.BackColor = System.Drawing.Color.White;
+            this.button25.FlatAppearance.BorderSize = 0;
+            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button25.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button25.Image = ((System.Drawing.Image)(resources.GetObject("button25.Image")));
+            this.button25.Location = new System.Drawing.Point(757, 3);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(44, 38);
+            this.button25.TabIndex = 10;
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
             // 
-            // button46
+            // button26
             // 
-            this.button46.BackColor = System.Drawing.Color.White;
-            this.button46.FlatAppearance.BorderSize = 0;
-            this.button46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button46.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button46.Image = ((System.Drawing.Image)(resources.GetObject("button46.Image")));
-            this.button46.Location = new System.Drawing.Point(707, 3);
-            this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(44, 38);
-            this.button46.TabIndex = 13;
-            this.button46.UseVisualStyleBackColor = false;
-            this.button46.Click += new System.EventHandler(this.button46_Click);
+            this.button26.BackColor = System.Drawing.Color.White;
+            this.button26.FlatAppearance.BorderSize = 0;
+            this.button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button26.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button26.Image = ((System.Drawing.Image)(resources.GetObject("button26.Image")));
+            this.button26.Location = new System.Drawing.Point(807, 3);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(44, 38);
+            this.button26.TabIndex = 9;
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
-            // button57
+            // button27
             // 
-            this.button57.BackColor = System.Drawing.Color.White;
-            this.button57.FlatAppearance.BorderSize = 0;
-            this.button57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button57.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button57.Image = ((System.Drawing.Image)(resources.GetObject("button57.Image")));
-            this.button57.Location = new System.Drawing.Point(657, 3);
-            this.button57.Name = "button57";
-            this.button57.Size = new System.Drawing.Size(44, 38);
-            this.button57.TabIndex = 14;
-            this.toolTip1.SetToolTip(this.button57, "Генерация");
-            this.button57.UseVisualStyleBackColor = false;
-            this.button57.Click += new System.EventHandler(this.button57_Click);
+            this.button27.BackColor = System.Drawing.Color.White;
+            this.button27.FlatAppearance.BorderSize = 0;
+            this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button27.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button27.Image = ((System.Drawing.Image)(resources.GetObject("button27.Image")));
+            this.button27.Location = new System.Drawing.Point(857, 3);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(44, 38);
+            this.button27.TabIndex = 8;
+            this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // tabPage1
             // 
@@ -2138,48 +2178,29 @@
             this.tabPage1.Text = "Видеопрокат";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // videoTable
+            // button45
             // 
-            this.videoTable.AllowUserToAddRows = false;
-            this.videoTable.AllowUserToDeleteRows = false;
-            this.videoTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.videoTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.videoTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.videoTable.Location = new System.Drawing.Point(17, 50);
-            this.videoTable.Name = "videoTable";
-            this.videoTable.ReadOnly = true;
-            this.videoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.videoTable.Size = new System.Drawing.Size(881, 511);
-            this.videoTable.TabIndex = 9;
-            this.videoTable.DoubleClick += new System.EventHandler(this.videoTable_DoubleClick);
+            this.button45.BackColor = System.Drawing.Color.White;
+            this.button45.FlatAppearance.BorderSize = 0;
+            this.button45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button45.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button45.Image = ((System.Drawing.Image)(resources.GetObject("button45.Image")));
+            this.button45.Location = new System.Drawing.Point(708, 3);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(44, 38);
+            this.button45.TabIndex = 14;
+            this.button45.UseVisualStyleBackColor = false;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
             // 
-            // button30
+            // label12
             // 
-            this.button30.BackColor = System.Drawing.Color.White;
-            this.button30.FlatAppearance.BorderSize = 0;
-            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button30.Image = ((System.Drawing.Image)(resources.GetObject("button30.Image")));
-            this.button30.Location = new System.Drawing.Point(858, 3);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(44, 38);
-            this.button30.TabIndex = 10;
-            this.button30.UseVisualStyleBackColor = false;
-            this.button30.Click += new System.EventHandler(this.button30_Click);
-            // 
-            // button29
-            // 
-            this.button29.BackColor = System.Drawing.Color.White;
-            this.button29.FlatAppearance.BorderSize = 0;
-            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button29.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button29.Image = ((System.Drawing.Image)(resources.GetObject("button29.Image")));
-            this.button29.Location = new System.Drawing.Point(808, 3);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(44, 38);
-            this.button29.TabIndex = 11;
-            this.button29.UseVisualStyleBackColor = false;
-            this.button29.Click += new System.EventHandler(this.button29_Click);
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label12.Location = new System.Drawing.Point(13, 6);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(160, 21);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Количество полей:";
             // 
             // button28
             // 
@@ -2195,44 +2216,48 @@
             this.button28.UseVisualStyleBackColor = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
-            // label12
+            // button29
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Garamond", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(13, 6);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(160, 21);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Количество полей:";
+            this.button29.BackColor = System.Drawing.Color.White;
+            this.button29.FlatAppearance.BorderSize = 0;
+            this.button29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button29.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button29.Image = ((System.Drawing.Image)(resources.GetObject("button29.Image")));
+            this.button29.Location = new System.Drawing.Point(808, 3);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(44, 38);
+            this.button29.TabIndex = 11;
+            this.button29.UseVisualStyleBackColor = false;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
-            // button45
+            // button30
             // 
-            this.button45.BackColor = System.Drawing.Color.White;
-            this.button45.FlatAppearance.BorderSize = 0;
-            this.button45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button45.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button45.Image = ((System.Drawing.Image)(resources.GetObject("button45.Image")));
-            this.button45.Location = new System.Drawing.Point(708, 3);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(44, 38);
-            this.button45.TabIndex = 14;
-            this.button45.UseVisualStyleBackColor = false;
-            this.button45.Click += new System.EventHandler(this.button45_Click);
+            this.button30.BackColor = System.Drawing.Color.White;
+            this.button30.FlatAppearance.BorderSize = 0;
+            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button30.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button30.Image = ((System.Drawing.Image)(resources.GetObject("button30.Image")));
+            this.button30.Location = new System.Drawing.Point(858, 3);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(44, 38);
+            this.button30.TabIndex = 10;
+            this.button30.UseVisualStyleBackColor = false;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
             // 
-            // button70
+            // videoTable
             // 
-            this.button70.BackColor = System.Drawing.Color.White;
-            this.button70.FlatAppearance.BorderSize = 0;
-            this.button70.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button70.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button70.Image = ((System.Drawing.Image)(resources.GetObject("button70.Image")));
-            this.button70.Location = new System.Drawing.Point(668, 3);
-            this.button70.Name = "button70";
-            this.button70.Size = new System.Drawing.Size(44, 38);
-            this.button70.TabIndex = 15;
-            this.toolTip1.SetToolTip(this.button70, "Генерация");
-            this.button70.UseVisualStyleBackColor = false;
-            this.button70.Click += new System.EventHandler(this.button70_Click);
+            this.videoTable.AllowUserToAddRows = false;
+            this.videoTable.AllowUserToDeleteRows = false;
+            this.videoTable.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.videoTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.videoTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.videoTable.Location = new System.Drawing.Point(17, 50);
+            this.videoTable.Name = "videoTable";
+            this.videoTable.ReadOnly = true;
+            this.videoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.videoTable.Size = new System.Drawing.Size(881, 511);
+            this.videoTable.TabIndex = 9;
+            this.videoTable.DoubleClick += new System.EventHandler(this.videoTable_DoubleClick);
             // 
             // mainControl
             // 
@@ -2468,6 +2493,7 @@
         private System.Windows.Forms.Button button30;
         public System.Windows.Forms.DataGridView videoTable;
         private System.Windows.Forms.TabControl mainControl;
+        private System.Windows.Forms.Button excelB;
     }
 }
 

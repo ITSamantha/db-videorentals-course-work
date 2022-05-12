@@ -46,7 +46,7 @@ namespace BD_course_work
 
         public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда",
             "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm","ПосмотриФильм", "ПоттерДом", "ПодПопкорн","Бублик", "Integer",
-            "Видеопросмотр"};
+            "Видеопросмотр","ПоПкОрН", "Перемотка+", "Перемотка++", "СуперВидеопрокат", "ЛюбителиКино", "Видеопрокат для ребят"};
 
 
         public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патриция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
@@ -2158,6 +2158,17 @@ namespace BD_course_work
                                 $"ON b.fk_video_rental = f.pk_video_rental_id " +
                                 $"WHERE a.deal_date >='15.12.2018'::date and  a.deal_date <='01.11.2020'::date";*/
 
+            //Запрос на запросе по принципу левого соединения
+            //Вывод сделок, совершенных видеопрокатом «LostFilm».
+            /*com = $"SELECT a.pk_deal_id,f.video_caption,a.fk_cassete_id,d.film_name,d.film_year,a.recipe_deal," +
+                                $"a.deal_date,e.service_name,a.general_price FROM deals a " +
+                                $"LEFT JOIN services_prices b ON a.fk_service_price = b.pk_service_price_id " +
+                                $"LEFT JOIN cassettes c ON a.fk_cassete_id = c.pk_cassette_id " +
+                                $"LEFT JOIN films d ON c.fk_film_id = d.pk_film_id " +
+                                $"LEFT JOIN services e ON b.fk_service_id = e.pk_service_id " +
+                                $"LEFT JOIN video_rental f ON b.fk_video_rental = f.pk_video_rental_id " +
+                                $"WHERE f.video_caption = 'LostFilm'";*/
+
             NpgsqlConnection n = new NpgsqlConnection("Server = localhost; Port = 5432;UserId = postgres; Password =01dr10kv; Database = Video_Rentals; ");
 
             n.Open();
@@ -2843,7 +2854,7 @@ namespace BD_course_work
                 case 8:
                     {
                         //Запрос с подзапросом NOT IN
-                        //вывод сделок, кассеты которых пользовались спросом
+                        //Вывод сделок, кассеты которых пользовались спросом
                         com = $" SELECT pk_deal_id,cassettes.pk_cassette_id,films.film_name,films.film_year,cassettes.cassette_demand, " +
                             $"deals.recipe_deal,deals.deal_date,deals.general_price from deals " +
                             $"inner join cassettes on cassettes.pk_cassette_id = deals.fk_cassete_id " +
@@ -2879,9 +2890,138 @@ namespace BD_course_work
                     }
                 case 11:
                     {
+                        //Спец. запрос 1
+                        //Определить процент видеотек, работающих в ночное время по каждому району города и по городу в целом.
+                        com=$"select " +
+                            $"(count(CASE WHEN a.time_end >= 20 THEN a.time_end END) * 100) / count(a.pk_video_rental_id)  AS main_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Буденновский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Буденновский' THEN b.pk_district_id END) " +
+                            $"AS bud_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ворошиловский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Ворошиловский' THEN b.pk_district_id END) " +
+                            $"AS voros_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Калининский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Калининский' THEN b.pk_district_id END) " +
+                            $"AS kalin_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Киевский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Киевский' THEN b.pk_district_id END) " +
+                            $"AS kiev_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Кировский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Кировский' THEN b.pk_district_id END) AS kir_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Куйбышевский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Куйбышевский' THEN b.pk_district_id END) " +
+                            $"AS kuyb_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ленинский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Ленинский' THEN b.pk_district_id END) " +
+                            $"AS lenin_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Петровский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Петровский' THEN b.pk_district_id END) " +
+                            $"AS petr_proc, " +
+                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Пролетарский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Пролетарский' THEN b.pk_district_id END) " +
+                            $"AS prolet_proc from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";
+                        
+                        break;
+                    }
+                case 12:
+                    {
+                        //Итоговый запрос на данные  группы
+                        //Вывод количества сделок видеопрокатов за период 12.10.2016 по 10.12.2020, которые превысили 70
+                        com = $"SELECT f.pk_video_rental_id,f.video_caption,count(pk_deal_id)" +
+                                $" FROM deals a INNER JOIN services_prices b " +
+                                $"ON a.fk_service_price = b.pk_service_price_id " +
+                                $"INNER JOIN video_rental f " +
+                                $"ON b.fk_video_rental = f.pk_video_rental_id " +
+                                $"WHERE a.deal_date >='12.10.2016'::date and  a.deal_date <='10.12.2020'::date  " +
+                                $"GROUP BY f.pk_video_rental_id,f.video_caption " +
+                                $"HAVING count(pk_deal_id)>= 70";
 
                         break;
                     }
+                case 13:
+                    {
+                        //Итоговый запрос с условием на данные по значению
+                        //Вывод видеопрокатов, у которых количество сделок за все время превышает 400
+                        com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
+                            $"HAVING count(c.pk_video_rental_id) > 400";
+
+                        break;
+                    }
+                case 14:
+                    {   //Итоговый запрос с условием на данные по маске
+                        //Вывод количества сделок видеопрокатов, у которых название начинается с буквы «П»
+                        com = "select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) " +
+                            "from deals a INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            "INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            "INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            "INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            "GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
+                            "HAVING c.video_caption LIKE 'П%'";
+                        break;
+                    }
+                case 15:
+                    {
+                        //Итоговый запрос с условием на данные без использования индекса
+                        //Вывод видеопрокатов, у которых количество сделок за все время менее 400
+                        com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) from deals a " +
+                            $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
+                            $"HAVING count(c.pk_video_rental_id) < 400";
+
+                        break;
+                    }
+                case 16:
+                    {
+                        //Итоговый запрос с условием на данные по маске
+                        //Вывод количества сделок видеопрокатов, у которых название начинается не с буквы "П"
+                        com = "select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) " +
+                            "from deals a INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            "INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
+                            "INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
+                            "INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
+                            "GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
+                            "HAVING c.video_caption NOT LIKE 'П%'";
+
+                        break;
+                    }
+                case 17:
+                    {
+                        com = $"select c.service_name,count(a.pk_deal_id),sum(a.general_price) from deals a " +
+                            $"inner join services_prices b on a.fk_service_price = b.pk_service_price_id " +
+                            $"inner join services c on b.fk_service_id = c.pk_service_id " +
+                            $"where c.service_name = 'Запись' and a.deal_date BETWEEN '01.01.2000' AND '31.12.2000' " +
+                            $"group by service_name ";
+                        break;
+                    }
+                /*case 17:
+                    {
+                        NpgsqlConnection n1 = new NpgsqlConnection(connectionString);
+
+                        n.Open();
+
+                        com = "select ";
+
+                        var textCommand = "select video_caption from video_rental";
+
+                        List<string> l = new List<string>();
+
+                        var command1 = new NpgsqlCommand(textCommand, n);
+
+                        var reader1 = command1.ExecuteReader();
+
+                        while (reader1.Read())
+                        {
+                            l.Add(reader1.GetString(0));
+                        }
+                        reader1.Close();
+
+                        while (l.Count != 0)
+                        {
+                            com+="avg"
+                            l.Remove(l[0]);
+                        }*/
+
+
+                
             }
 
             NpgsqlCommand command = new NpgsqlCommand(com, n);

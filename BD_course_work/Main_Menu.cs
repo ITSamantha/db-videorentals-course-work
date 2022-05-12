@@ -48,6 +48,7 @@ namespace BD_course_work
             InitializeComponent();
 
             Form_Initialization();
+
             
 
         }
@@ -4677,6 +4678,7 @@ namespace BD_course_work
                             queryData.Columns[6].HeaderText = "Студия";
 
                         }
+                        excelB.Visible = false;
                         break;
                     }
                 case 2:
@@ -4689,6 +4691,7 @@ namespace BD_course_work
 
                             queryData.Columns[2].HeaderText = "Количество сделок";
                         }
+                        excelB.Visible = true;
                         break;
                     }
                 case 3:
@@ -4707,6 +4710,7 @@ namespace BD_course_work
 
                             queryData.Columns[5].HeaderText = "Ужасного качества";
                         }
+                        excelB.Visible = true;
                         break;
                     }
                 case 4:
@@ -4725,7 +4729,7 @@ namespace BD_course_work
 
                             queryData.Columns[5].HeaderText = "Средний заработок";
                         }
-
+                        excelB.Visible = true;
                         break;
                     }
 
@@ -4749,7 +4753,7 @@ namespace BD_course_work
 
                             queryData.Columns[7].HeaderText = "Наибольший заработок";
                         }
-
+                        excelB.Visible = false;
                         break;
                     }
                 case 6:
@@ -4762,7 +4766,7 @@ namespace BD_course_work
 
                             queryData.Columns[2].HeaderText = "Заработок";
                         }
-
+                        excelB.Visible = false;
                         break;
                     }
                 case 7:
@@ -4786,6 +4790,7 @@ namespace BD_course_work
 
                             queryData.Columns[7].HeaderText = "Цена";
                         }
+                        excelB.Visible = false;
                         break;
                     }
                 case 9:
@@ -4804,6 +4809,7 @@ namespace BD_course_work
 
                             queryData.Columns[5].HeaderText = "Фильм";
                         }
+                        excelB.Visible = false;
                         break;
                     }
                 case 10:
@@ -4824,8 +4830,86 @@ namespace BD_course_work
 
                             queryData.Columns[6].HeaderText = "Цена";
                         }
+                        excelB.Visible = false;
                         break;
                     }
+                case 11:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "По городу";
+
+                            queryData.Columns[1].HeaderText = "Буденновский";
+
+                            queryData.Columns[2].HeaderText = "Ворошиловский";
+
+                            queryData.Columns[3].HeaderText = "Калининский";
+
+                            queryData.Columns[4].HeaderText = "Киевский";
+
+                            queryData.Columns[5].HeaderText = "Кировский";
+
+                            queryData.Columns[6].HeaderText = "Куйбышевский";
+
+                            queryData.Columns[7].HeaderText = "Ленинский";
+
+                            queryData.Columns[8].HeaderText = "Петровский";
+
+                            queryData.Columns[9].HeaderText = "Пролетарский";
+                        }
+                        excelB.Visible = false;
+                        break;
+                    }
+                case 12:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID видеопроката";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Кол-во сделок";
+
+                        }
+                        excelB.Visible = true;
+                        break;
+                    }
+                case 13:
+                case 14:
+                case 15:
+                case 16:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "ID Видеопроката";
+
+                            queryData.Columns[1].HeaderText = "Видеопрокат";
+
+                            queryData.Columns[2].HeaderText = "Район";
+
+                            queryData.Columns[3].HeaderText = "Адрес";
+
+                            queryData.Columns[4].HeaderText = "Тип собственности";
+
+                            queryData.Columns[5].HeaderText = "Количество сделок";
+                        }
+                        excelB.Visible = true;
+                        break;
+                    }
+                case 17:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "Услуга";
+
+                            queryData.Columns[1].HeaderText = "Количество клиентов";
+
+                            queryData.Columns[2].HeaderText = "Затраты клиентов";
+                        }
+                        excelB.Visible = false;
+                        break;
+                    }
+                    
 
 
             }
@@ -4986,12 +5070,44 @@ namespace BD_course_work
             
         }
 
-        private void button73_Click(object sender, EventArgs e)
+        int fileCounter = 0;
+
+        private void excelB_Click(object sender, EventArgs e)
         {
-            mainControl.SelectedIndex = 15;
-            
-            
-            /* */
+            Microsoft.Office.Interop.Excel.Application XlApp = new Microsoft.Office.Interop.Excel.Application();
+            OpenFileDialog f = new OpenFileDialog();
+
+            f.ShowDialog();
+
+            f.Filter = "Excel |*.xlsx";
+
+            Microsoft.Office.Interop.Excel.Workbook XlWorkBook;
+
+            if (f.FileName != "")
+            {
+                XlWorkBook = XlApp.Workbooks.Open(f.FileName); //создать новый файл: 
+            }
+            else
+            {
+                XlWorkBook = XlApp.Workbooks.Add();
+            }
+
+            Microsoft.Office.Interop.Excel.Worksheet XlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)XlWorkBook.Worksheets.get_Item(1); //1-й лист по порядку
+
+            for (int i = 0; i < queryData.Rows.Count; i++)
+            {
+                for (int j = 0; j < queryData.ColumnCount; j++)
+                {
+
+                    XlWorkSheet.Cells[i + 1, j + 1] = queryData.Rows[i].Cells[j].Value;
+                }
+            }
+
+            XlWorkBook.SaveAs(Directory.GetCurrentDirectory()+"\\Files\\result" + fileCounter + ".xlsx");
+
+            fileCounter++;
+
+            XlWorkBook.Close();
         }
     }
 }

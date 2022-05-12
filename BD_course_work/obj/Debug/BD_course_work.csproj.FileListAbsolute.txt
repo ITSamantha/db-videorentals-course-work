@@ -156,3 +156,10 @@ C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_wo
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.deleteMenu.resources
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.SearchAndFilterStudio.resources
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.SostavnayaForma.resources
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.License.dll
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.Pdf.dll
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.XLS.dll
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Microsoft.mshtml.dll
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.License.xml
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.Pdf.xml
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.XLS.xml
