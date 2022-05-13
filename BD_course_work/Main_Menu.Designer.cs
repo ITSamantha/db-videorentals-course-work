@@ -37,7 +37,6 @@
             this.button71 = new System.Windows.Forms.Button();
             this.Exit = new System.Windows.Forms.Button();
             this.Query = new System.Windows.Forms.Button();
-            this.Excel = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button36 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
@@ -173,6 +172,7 @@
             this.button30 = new System.Windows.Forms.Button();
             this.videoTable = new System.Windows.Forms.DataGridView();
             this.mainControl = new System.Windows.Forms.TabControl();
+            this.diagrB = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage11.SuspendLayout();
@@ -235,7 +235,6 @@
             this.panel2.Controls.Add(this.button71);
             this.panel2.Controls.Add(this.Exit);
             this.panel2.Controls.Add(this.Query);
-            this.panel2.Controls.Add(this.Excel);
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 70);
@@ -250,7 +249,7 @@
             this.button72.FlatAppearance.BorderSize = 0;
             this.button72.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button72.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button72.Location = new System.Drawing.Point(0, 122);
+            this.button72.Location = new System.Drawing.Point(0, 92);
             this.button72.Name = "button72";
             this.button72.Size = new System.Drawing.Size(270, 30);
             this.button72.TabIndex = 23;
@@ -265,7 +264,7 @@
             this.button71.FlatAppearance.BorderSize = 0;
             this.button71.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button71.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button71.Location = new System.Drawing.Point(0, 92);
+            this.button71.Location = new System.Drawing.Point(0, 62);
             this.button71.Name = "button71";
             this.button71.Size = new System.Drawing.Size(270, 30);
             this.button71.TabIndex = 22;
@@ -295,27 +294,13 @@
             this.Query.FlatAppearance.BorderSize = 0;
             this.Query.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Query.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Query.Location = new System.Drawing.Point(0, 62);
+            this.Query.Location = new System.Drawing.Point(0, 32);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(270, 30);
             this.Query.TabIndex = 19;
             this.Query.Text = "Запросы";
             this.Query.UseVisualStyleBackColor = false;
             this.Query.Click += new System.EventHandler(this.Query_Click);
-            // 
-            // Excel
-            // 
-            this.Excel.BackColor = System.Drawing.Color.Transparent;
-            this.Excel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Excel.FlatAppearance.BorderSize = 0;
-            this.Excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Excel.Font = new System.Drawing.Font("Garamond", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Excel.Location = new System.Drawing.Point(0, 32);
-            this.Excel.Name = "Excel";
-            this.Excel.Size = new System.Drawing.Size(270, 30);
-            this.Excel.TabIndex = 18;
-            this.Excel.Text = "Отчеты";
-            this.Excel.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -795,6 +780,7 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.diagrB);
             this.tabPage11.Controls.Add(this.excelB);
             this.tabPage11.Controls.Add(this.label16);
             this.tabPage11.Controls.Add(this.queryCB);
@@ -2283,6 +2269,18 @@
             this.mainControl.Size = new System.Drawing.Size(931, 610);
             this.mainControl.TabIndex = 18;
             // 
+            // diagrB
+            // 
+            this.diagrB.BackColor = System.Drawing.Color.White;
+            this.diagrB.Location = new System.Drawing.Point(224, 38);
+            this.diagrB.Name = "diagrB";
+            this.diagrB.Size = new System.Drawing.Size(222, 29);
+            this.diagrB.TabIndex = 27;
+            this.diagrB.Text = "Просмотреть диаграмму";
+            this.diagrB.UseVisualStyleBackColor = false;
+            this.diagrB.Visible = false;
+            this.diagrB.Click += new System.EventHandler(this.diagrB_Click);
+            // 
             // Main_Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2355,7 +2353,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button Query;
-        private System.Windows.Forms.Button Excel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button countriesB;
         private System.Windows.Forms.Button studiosB;
@@ -2494,6 +2491,7 @@
         public System.Windows.Forms.DataGridView videoTable;
         private System.Windows.Forms.TabControl mainControl;
         private System.Windows.Forms.Button excelB;
+        private System.Windows.Forms.Button diagrB;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using BD_course_work.Properties;
+using Spire.Pdf.Graphics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -60,10 +61,6 @@ namespace BD_course_work
 
         public void Form_Initialization()
         {
-            //label1.BackColor=Color.FromArgb(30,40,79);
-
-            Instruments.SetRoundedShape(Excel, Instruments.radius);
-
             Instruments.SetRoundedShape(tables, Instruments.radius);
 
             Instruments.SetRoundedShape(Query, Instruments.radius);
@@ -4692,6 +4689,7 @@ namespace BD_course_work
                             queryData.Columns[2].HeaderText = "Количество сделок";
                         }
                         excelB.Visible = true;
+                        diagrB.Visible = true;
                         break;
                     }
                 case 3:
@@ -4711,6 +4709,7 @@ namespace BD_course_work
                             queryData.Columns[5].HeaderText = "Ужасного качества";
                         }
                         excelB.Visible = true;
+                        diagrB.Visible = true;
                         break;
                     }
                 case 4:
@@ -4839,23 +4838,10 @@ namespace BD_course_work
                         {
                             queryData.Columns[0].HeaderText = "По городу";
 
-                            queryData.Columns[1].HeaderText = "Буденновский";
-
-                            queryData.Columns[2].HeaderText = "Ворошиловский";
-
-                            queryData.Columns[3].HeaderText = "Калининский";
-
-                            queryData.Columns[4].HeaderText = "Киевский";
-
-                            queryData.Columns[5].HeaderText = "Кировский";
-
-                            queryData.Columns[6].HeaderText = "Куйбышевский";
-
-                            queryData.Columns[7].HeaderText = "Ленинский";
-
-                            queryData.Columns[8].HeaderText = "Петровский";
-
-                            queryData.Columns[9].HeaderText = "Пролетарский";
+                            for(int i = 0; i < ControllerForDB.district.Count; i++)
+                            {
+                                queryData.Columns[i + 1].HeaderText = ControllerForDB.district[i];
+                            }
                         }
                         excelB.Visible = false;
                         break;
@@ -5075,11 +5061,17 @@ namespace BD_course_work
         private void excelB_Click(object sender, EventArgs e)
         {
             Microsoft.Office.Interop.Excel.Application XlApp = new Microsoft.Office.Interop.Excel.Application();
+
             OpenFileDialog f = new OpenFileDialog();
-
-            f.ShowDialog();
-
+            
             f.Filter = "Excel |*.xlsx";
+
+            MessageBox.Show("Выберите файл для записи. Нажмите \"Отмена\", чтобы загрузить результаты в стандартный файл.");
+
+            if (f.ShowDialog() == DialogResult.Cancel)//Фото не выбрано
+            {
+                MessageBox.Show("Результаты запроса будут записаны в файл "+ Directory.GetCurrentDirectory() + "\\Files\\result" + fileCounter + ".xlsx");
+            }
 
             Microsoft.Office.Interop.Excel.Workbook XlWorkBook;
 
@@ -5094,20 +5086,115 @@ namespace BD_course_work
 
             Microsoft.Office.Interop.Excel.Worksheet XlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)XlWorkBook.Worksheets.get_Item(1); //1-й лист по порядку
 
+            for(int i = 0; i < queryData.ColumnCount; i++)
+            {
+                XlWorkSheet.Cells[1, i+1]=queryData.Columns[i].HeaderText;
+
+                Microsoft.Office.Interop.Excel.Range range = XlWorkSheet.UsedRange;
+
+                Microsoft.Office.Interop.Excel.Range cell = range.Cells[1,i+1];
+
+                Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+
+                border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+
+                border.Weight = 2d;
+            }
             for (int i = 0; i < queryData.Rows.Count; i++)
             {
                 for (int j = 0; j < queryData.ColumnCount; j++)
                 {
+                    XlWorkSheet.Cells[i + 2, j + 1] = queryData.Rows[i].Cells[j].Value;
 
-                    XlWorkSheet.Cells[i + 1, j + 1] = queryData.Rows[i].Cells[j].Value;
+                    Microsoft.Office.Interop.Excel.Range range = XlWorkSheet.UsedRange;
+
+                    Microsoft.Office.Interop.Excel.Range cell = range.Cells[i+2, j+1];
+
+                    Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+
+                    border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
+                    border.Weight = 2d;
                 }
             }
 
-            XlWorkBook.SaveAs(Directory.GetCurrentDirectory()+"\\Files\\result" + fileCounter + ".xlsx");
+            if (f.FileName == "")
+            {
+                XlWorkBook.SaveAs(Directory.GetCurrentDirectory() + "\\Files\\result" + fileCounter + ".xlsx");
+            }
+            else
+            {
+                XlWorkBook.SaveAs(f.FileName);
+            }
+
+            MessageBox.Show("Данные успешно записаны.", "Оповещение");
 
             fileCounter++;
 
             XlWorkBook.Close();
+        }
+
+        private void diagrB_Click(object sender, EventArgs e)
+        {
+            if (queryData.RowCount != 0)
+            {
+                switch (queryCB.SelectedIndex)
+                {
+                    case 2:
+                        {
+                            Diagrams d = new Diagrams();
+
+                            d.mainL1.Text = queryCB.Text;
+
+                            d.chart1.Series[0]["PieLabelStyle"] = "Disabled";
+
+                            d.chart1.Series[0].Points.Clear();
+
+                            d.chart2.Series[0].Points.Clear();
+
+                            d.chart3.Series[0].Points.Clear();
+
+                            for (int i = 0; i < queryData.RowCount; i++)
+                            {
+                                d.chart1.Series[0].Points.AddXY(queryData.Rows[i].Cells[1].Value, queryData.Rows[i].Cells[2].Value);
+
+                                d.chart2.Series[0].Points.AddXY(queryData.Rows[i].Cells[1].Value, queryData.Rows[i].Cells[2].Value);
+
+                                d.chart3.Series[0].Points.AddXY(queryData.Rows[i].Cells[1].Value, queryData.Rows[i].Cells[2].Value);
+                            }
+
+                            d.ShowDialog();
+                            break;
+                        }
+                    case 3:
+                        {
+                            Diagrams d = new Diagrams();
+
+                            d.mainL1.Text = queryCB.Text;
+
+                            d.chart1.Series[0].Points.Clear();
+
+                            d.chart2.Series[0].Points.Clear();
+
+                            d.chart3.Series[0].Points.Clear();
+
+                            for (int i = 1; i < queryData.ColumnCount; i++)
+                            {
+                                d.chart1.Series[0].Points.AddXY(queryData.Columns[i].HeaderText, queryData.Rows[0].Cells[i].Value);
+
+                                d.chart2.Series[0].Points.AddXY(queryData.Columns[i].HeaderText, queryData.Rows[0].Cells[i].Value);
+
+                                d.chart3.Series[0].Points.AddXY(queryData.Columns[i].HeaderText, queryData.Rows[0].Cells[i].Value);
+                            }
+
+                            d.ShowDialog();
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Таблица не содержит полей.");
+            }
         }
     }
 }

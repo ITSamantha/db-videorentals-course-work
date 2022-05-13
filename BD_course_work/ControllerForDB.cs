@@ -46,7 +46,8 @@ namespace BD_course_work
 
         public static string[] video_rentals = { "Перемотка", "Architecto", "БестФилм", "КассетА", "НаНочь!", "Explicabo", "ЕслиСкучно!", "ЗайдиСюда",
             "Nostrum", "TimeToWatchFilm", "Watch?", "what about film?", "Films!", "WatchMe", "LostFilm","ПосмотриФильм", "ПоттерДом", "ПодПопкорн","Бублик", "Integer",
-            "Видеопросмотр","ПоПкОрН", "Перемотка+", "Перемотка++", "СуперВидеопрокат", "ЛюбителиКино", "Видеопрокат для ребят"};
+            "Видеопросмотр","ПоПкОрН", "Перемотка+", "Перемотка++", "СуперВидеопрокат", "ЛюбителиКино", "Видеопрокат для ребят","Леонтьев", "NoExit","MyFilm",
+            "Filmец","Dandelions", "EatAndWatch","ПО", "Фильмы Средневековья", "Психология фильма", "ДляЛюбителя!"};
 
 
         public static string[] female_names = { "Анна", "Дарья", "Амели", "Диана", "Ольга", "Саманта", "Зоя", "Патриция", "Эмма", "Ника", "Жанна", "Владислава", "Дафна" };
@@ -2742,6 +2743,8 @@ namespace BD_course_work
             return dt;
         }
 
+        public static List<string> district = new List<string>();
+
         public static DataTable startQuery(int num)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -2892,7 +2895,31 @@ namespace BD_course_work
                     {
                         //Спец. запрос 1
                         //Определить процент видеотек, работающих в ночное время по каждому району города и по городу в целом.
-                        com=$"select " +
+
+                        com = "select district_name from district;";
+
+                        district = new List<string>();
+
+                        var command1 = new NpgsqlCommand(com, n);
+
+                        var reader1 = command1.ExecuteReader();
+
+                        while (reader1.Read())
+                        {
+                            district.Add(reader1.GetString(0));
+                        }
+                        reader1.Close();
+
+                        com = "select (count(CASE WHEN a.time_end >= 20 THEN a.time_end END) * 100) / greatest( count(a.pk_video_rental_id),1) ";
+
+                        for(int i = 0; i < district.Count; i++)
+                        {
+                            com += $",(count(CASE WHEN a.time_end >= 20 and b.district_name = '{district[i]}' THEN a.time_end END) * 100)/ greatest(count(CASE WHEN b.district_name = '{district[i]}' THEN b.pk_district_id END),1) ";
+                        }
+
+                        com += "from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";
+
+                        /*com=$"select " +
                             $"(count(CASE WHEN a.time_end >= 20 THEN a.time_end END) * 100) / count(a.pk_video_rental_id)  AS main_proc, " +
                             $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Буденновский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Буденновский' THEN b.pk_district_id END) " +
                             $"AS bud_proc, " +
@@ -2910,8 +2937,8 @@ namespace BD_course_work
                             $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Петровский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Петровский' THEN b.pk_district_id END) " +
                             $"AS petr_proc, " +
                             $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Пролетарский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Пролетарский' THEN b.pk_district_id END) " +
-                            $"AS prolet_proc from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";
-                        
+                            $"AS prolet_proc from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";*/
+
                         break;
                     }
                 case 12:
@@ -3027,6 +3054,7 @@ namespace BD_course_work
             NpgsqlCommand command = new NpgsqlCommand(com, n);
 
             var command_sql = new NpgsqlCommand(com, n);
+
 
             NpgsqlDataReader reader = command_sql.ExecuteReader();
 

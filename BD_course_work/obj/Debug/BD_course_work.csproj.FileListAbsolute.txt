@@ -163,3 +163,4 @@ C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Microsoft.ms
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.License.xml
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.Pdf.xml
 C:\Users\diana\source\repos\DB_course_proj\BD_course_work\bin\Debug\Spire.XLS.xml
+C:\Users\diana\source\repos\DB_course_proj\BD_course_work\obj\Debug\BD_course_work.Diagrams.resources
