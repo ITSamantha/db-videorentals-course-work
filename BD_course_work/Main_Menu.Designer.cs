@@ -69,6 +69,7 @@
             this.button57 = new System.Windows.Forms.Button();
             this.button70 = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.diagrB = new System.Windows.Forms.Button();
             this.excelB = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.queryCB = new System.Windows.Forms.ComboBox();
@@ -172,7 +173,6 @@
             this.button30 = new System.Windows.Forms.Button();
             this.videoTable = new System.Windows.Forms.DataGridView();
             this.mainControl = new System.Windows.Forms.TabControl();
-            this.diagrB = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage11.SuspendLayout();
@@ -794,6 +794,18 @@
             this.tabPage11.Text = "queryPage";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // diagrB
+            // 
+            this.diagrB.BackColor = System.Drawing.Color.White;
+            this.diagrB.Location = new System.Drawing.Point(224, 38);
+            this.diagrB.Name = "diagrB";
+            this.diagrB.Size = new System.Drawing.Size(222, 29);
+            this.diagrB.TabIndex = 27;
+            this.diagrB.Text = "Просмотреть диаграмму";
+            this.diagrB.UseVisualStyleBackColor = false;
+            this.diagrB.Visible = false;
+            this.diagrB.Click += new System.EventHandler(this.diagrB_Click);
+            // 
             // excelB
             // 
             this.excelB.BackColor = System.Drawing.Color.White;
@@ -846,7 +858,8 @@
             "Вывод количества сделок видеопрокатов, у которых название начинается не с буквы \"" +
                 "П\"",
             "По вводимому названию услуги предоставить информацию о количестве клиентов ее пол" +
-                "учивших и их суммарных затратах за указанный год "});
+                "учивших и их суммарных затратах за указанный год ",
+            "Определить среднее количество клиентов по каждому району и по городу в целом"});
             this.queryCB.Location = new System.Drawing.Point(224, 7);
             this.queryCB.Name = "queryCB";
             this.queryCB.Size = new System.Drawing.Size(691, 29);
@@ -2268,18 +2281,6 @@
             this.mainControl.SelectedIndex = 0;
             this.mainControl.Size = new System.Drawing.Size(931, 610);
             this.mainControl.TabIndex = 18;
-            // 
-            // diagrB
-            // 
-            this.diagrB.BackColor = System.Drawing.Color.White;
-            this.diagrB.Location = new System.Drawing.Point(224, 38);
-            this.diagrB.Name = "diagrB";
-            this.diagrB.Size = new System.Drawing.Size(222, 29);
-            this.diagrB.TabIndex = 27;
-            this.diagrB.Text = "Просмотреть диаграмму";
-            this.diagrB.UseVisualStyleBackColor = false;
-            this.diagrB.Visible = false;
-            this.diagrB.Click += new System.EventHandler(this.diagrB_Click);
             // 
             // Main_Menu
             // 

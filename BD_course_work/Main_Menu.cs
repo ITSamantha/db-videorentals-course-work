@@ -4647,6 +4647,8 @@ namespace BD_course_work
         private void Query_Click(object sender, EventArgs e)
         {
             mainControl.SelectedIndex = (int)Pages.Query;
+
+            
         }
 
         private void queryCB_SelectedIndexChanged(object sender, EventArgs e)
@@ -4893,6 +4895,16 @@ namespace BD_course_work
                             queryData.Columns[2].HeaderText = "Затраты клиентов";
                         }
                         excelB.Visible = false;
+                        break;
+                    }
+                case 18:
+                    {
+                        if (queryData.RowCount != 0)
+                        {
+                            queryData.Columns[0].HeaderText = "По городу";
+
+                            queryData.Columns[1].HeaderText = ControllerForDB.district1;
+                        }
                         break;
                     }
                     

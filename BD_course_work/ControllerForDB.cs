@@ -2745,6 +2745,8 @@ namespace BD_course_work
 
         public static List<string> district = new List<string>();
 
+        public static List<string> video_rental = new List<string>();
+
         public static DataTable startQuery(int num)
         {
             NpgsqlConnection n = new NpgsqlConnection(connectionString);
@@ -2919,26 +2921,26 @@ namespace BD_course_work
 
                         com += "from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";
 
-                        /*com=$"select " +
-                            $"(count(CASE WHEN a.time_end >= 20 THEN a.time_end END) * 100) / count(a.pk_video_rental_id)  AS main_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Буденновский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Буденновский' THEN b.pk_district_id END) " +
-                            $"AS bud_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ворошиловский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Ворошиловский' THEN b.pk_district_id END) " +
-                            $"AS voros_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Калининский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Калининский' THEN b.pk_district_id END) " +
-                            $"AS kalin_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Киевский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Киевский' THEN b.pk_district_id END) " +
-                            $"AS kiev_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Кировский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Кировский' THEN b.pk_district_id END) AS kir_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Куйбышевский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Куйбышевский' THEN b.pk_district_id END) " +
-                            $"AS kuyb_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ленинский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Ленинский' THEN b.pk_district_id END) " +
-                            $"AS lenin_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Петровский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Петровский' THEN b.pk_district_id END) " +
-                            $"AS petr_proc, " +
-                            $"(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Пролетарский' THEN a.time_end END) * 100)/ count(CASE WHEN b.district_name = 'Пролетарский' THEN b.pk_district_id END) " +
-                            $"AS prolet_proc from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";*/
-
+                        /*com += "select (count(CASE WHEN a.time_end >= 20 THEN a.time_end END) * 100) / " +
+                            "greatest( count(a.pk_video_rental_id),1) ,(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Киевский' " +
+                            "THEN a.time_end END) * 100)/ greatest(count(CASE WHEN b.district_name = 'Киевский' THEN b.pk_district_id END),1) " +
+                            ",(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Пролетарский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Пролетарский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ленинский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Ленинский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Петровский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Петровский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Куйбышевский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Куйбышевский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Ворошиловский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Ворошиловский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Буденновский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Буденновский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Калининский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Калининский' THEN b.pk_district_id END),1) ," +
+                            "(count(CASE WHEN a.time_end >= 20 and b.district_name = 'Кировский' THEN a.time_end END) * 100)/ " +
+                            "greatest(count(CASE WHEN b.district_name = 'Кировский' THEN b.pk_district_id END),1) " +
+                            "from video_rental a inner join district b on a.fk_video_district = b.pk_district_id";*/
                         break;
                     }
                 case 12:
@@ -3012,68 +3014,81 @@ namespace BD_course_work
                     }
                 case 17:
                     {
+                        //Спец.запрос 2
+                        twoforms add = new twoforms();
+                        
+                        add.ShowDialog();
                         com = $"select c.service_name,count(a.pk_deal_id),sum(a.general_price) from deals a " +
                             $"inner join services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"inner join services c on b.fk_service_id = c.pk_service_id " +
-                            $"where c.service_name = 'Запись' and a.deal_date BETWEEN '01.01.2000' AND '31.12.2000' " +
+                            $"where c.service_name = '{add.title.Text}' and a.deal_date BETWEEN '01.01.{add.year.Text}' AND '31.12.{add.year.Text}' " +
                             $"group by service_name ";
                         break;
                     }
-                /*case 17:
+                case 18:
                     {
-                        NpgsqlConnection n1 = new NpgsqlConnection(connectionString);
+                        //Спец. запрос 2
+                        //Определить среднее количество клиентов по заданному району и по городу в целом.
+                        AddOrEditOneColumn add = new AddOrEditOneColumn();
 
-                        n.Open();
+                        add.mainL1.Text = "Введите район";
 
-                        com = "select ";
+                        add.button1.Text = "Запуск";
 
-                        var textCommand = "select video_caption from video_rental";
+                        add.groupBox1.Text = "Район";
 
-                        List<string> l = new List<string>();
+                        add.ShowDialog();
 
-                        var command1 = new NpgsqlCommand(textCommand, n);
+                        district1 = add.countryTB.Text;
 
-                        var reader1 = command1.ExecuteReader();
-
-                        while (reader1.Read())
-                        {
-                            l.Add(reader1.GetString(0));
-                        }
-                        reader1.Close();
-
-                        while (l.Count != 0)
-                        {
-                            com+="avg"
-                            l.Remove(l[0]);
-                        }*/
+                        //Ср. кол-во по району это все сделки/кол-во видеопрокатов района
+                        com = "select count(a.pk_deal_id) / greatest( (select count(*) from video_rental),1) " +
+                            $",count(CASE WHEN  district.district_name='{add.countryTB.Text}'  " +
+                            $"THEN a.pk_deal_id END)/ greatest((select count(*) from video_rental " +
+                            $"inner join district on district.pk_district_id=video_rental.fk_video_district " +
+                            $"where district.district_name='{add.countryTB.Text}'  ),1) " +
+                            "from deals a inner join services_prices b on a.fk_service_price=b.pk_service_price_id " +
+                            "inner join video_rental c on b.fk_video_rental=c.pk_video_rental_id " +
+                            "inner join district on c.fk_video_district=district.pk_district_id";
+                        break;
+                    }
 
 
                 
             }
 
-            NpgsqlCommand command = new NpgsqlCommand(com, n);
 
-            var command_sql = new NpgsqlCommand(com, n);
-
-
-            NpgsqlDataReader reader = command_sql.ExecuteReader();
-
-            if (reader.HasRows)
+            try
             {
-                dt.Load(reader);
+                NpgsqlCommand command = new NpgsqlCommand(com, n);
+
+                var command_sql = new NpgsqlCommand(com, n);
+
+
+                NpgsqlDataReader reader = command_sql.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                command_sql.Dispose();
+
+                reader.Close();
+
+                n.Close();
+
+                return dt;
             }
-
-            command_sql.Dispose();
-
-            reader.Close();
-
-            n.Close();
-
-            return dt;
+            catch(Exception e)
+            { return null; }
+            
 
 
 
         }
+
+        public static string district1;
 
         public static object selectForVideoRental(string whatChoose,string name)
         {

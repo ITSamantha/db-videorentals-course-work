@@ -199,6 +199,12 @@
     <Compile Include="SostavnayaForma.Designer.cs">
       <DependentUpon>SostavnayaForma.cs</DependentUpon>
     </Compile>
+    <Compile Include="twoforms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="twoforms.Designer.cs">
+      <DependentUpon>twoforms.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addOrEditCassettes.resx">
       <DependentUpon>addOrEditCassettes.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SostavnayaForma.resx">
       <DependentUpon>SostavnayaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="twoforms.resx">
+      <DependentUpon>twoforms.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
