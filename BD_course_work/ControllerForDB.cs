@@ -2805,13 +2805,24 @@ namespace BD_course_work
                 case 4:
                     {   //Итоговый запрос с условием на группы
                         //Вывод видеопрокатов, среднее всех цен сделок которых превышает 1200
+
+                        AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+                        add.mainL1.Text = "Введите значение";
+
+                        add.button1.Text = "Запуск";
+
+                        add.groupBox1.Text = "Значение";
+
+                        add.ShowDialog();
+
                         com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,avg(a.general_price) from deals a " +
                             $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
                             $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
                             $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
                             $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
-                            $"HAVING avg(a.general_price) > 1200";
+                            $"HAVING avg(a.general_price) > {add.countryTB.Text}";
                         break;
                     }
                 case 5:
@@ -2873,8 +2884,18 @@ namespace BD_course_work
                     {
                         //Запрос с подзапросом CASE
                         //Вывести фильмы кассет, стоимость которых менее 500, иначе в поле «Фильм» вывести «Слишком дорого…!».
+                        AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+                        add.mainL1.Text = "Введите значение";
+
+                        add.button1.Text = "Запуск";
+
+                        add.groupBox1.Text = "Значение";
+
+                        add.ShowDialog();
+
                         com = $"SELECT pk_cassette_id, cassette_demand, cassette_quality.quality_name,cassette_photo.photo,cassette_price, " +
-                            $"CASE WHEN cassette_price <= 500 then(select film_name from films where pk_film_id = cassettes.fk_film_id ) " +
+                            $"CASE WHEN cassette_price <= {add.countryTB.Text} then(select film_name from films where pk_film_id = cassettes.fk_film_id ) " +
                             $"else 'Слишком дорого...!' end as film_name " +
                             $"from cassettes " +
                             $"inner join cassette_quality on cassettes.fk_cassette_quality = cassette_quality.pk_quality_id " +
@@ -2945,6 +2966,21 @@ namespace BD_course_work
                     }
                 case 12:
                     {
+
+                        AddOrEditThreeColumns add = new AddOrEditThreeColumns();
+
+                        add.mainL2.Text = "Введите значения";
+
+                        add.groupBox1.Text = "Значение";
+
+                        add.groupBox2.Text = "Начало периода д.м.г";
+
+                        add.groupBox3.Text= "Конец периода д.м.г";
+
+                        add.button1.Text = "Запуск";
+
+                        add.ShowDialog();
+
                         //Итоговый запрос на данные  группы
                         //Вывод количества сделок видеопрокатов за период 12.10.2016 по 10.12.2020, которые превысили 70
                         com = $"SELECT f.pk_video_rental_id,f.video_caption,count(pk_deal_id)" +
@@ -2952,9 +2988,9 @@ namespace BD_course_work
                                 $"ON a.fk_service_price = b.pk_service_price_id " +
                                 $"INNER JOIN video_rental f " +
                                 $"ON b.fk_video_rental = f.pk_video_rental_id " +
-                                $"WHERE a.deal_date >='12.10.2016'::date and  a.deal_date <='10.12.2020'::date  " +
+                                $"WHERE a.deal_date >='{add.name.Text}'::date and  a.deal_date <='{add.patronymic.Text}'::date  " +
                                 $"GROUP BY f.pk_video_rental_id,f.video_caption " +
-                                $"HAVING count(pk_deal_id)>= 70";
+                                $"HAVING count(pk_deal_id)>= {add.fam.Text}";
 
                         break;
                     }
@@ -2962,13 +2998,24 @@ namespace BD_course_work
                     {
                         //Итоговый запрос с условием на данные по значению
                         //Вывод видеопрокатов, у которых количество сделок за все время превышает 400
+
+                        AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+                        add.mainL1.Text = "Введите значение";
+
+                        add.button1.Text = "Запуск";
+
+                        add.groupBox1.Text = "Значение";
+
+                        add.ShowDialog();
+
                         com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) from deals a " +
                             $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
                             $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
                             $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
                             $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
-                            $"HAVING count(c.pk_video_rental_id) > 400";
+                            $"HAVING count(c.pk_video_rental_id) > {add.countryTB.Text}";
 
                         break;
                     }
@@ -2988,13 +3035,24 @@ namespace BD_course_work
                     {
                         //Итоговый запрос с условием на данные без использования индекса
                         //Вывод видеопрокатов, у которых количество сделок за все время менее 400
+
+                        AddOrEditOneColumn add = new AddOrEditOneColumn();
+
+                        add.mainL1.Text = "Введите значение";
+
+                        add.button1.Text = "Запуск";
+
+                        add.groupBox1.Text = "Значение";
+
+                        add.ShowDialog();
+
                         com = $"select c.pk_video_rental_id,c.video_caption,d.district_name,c.video_adress,e.property_type_name,count(pk_video_rental_id) from deals a " +
                             $"INNER JOIN services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"INNER JOIN video_rental c on b.fk_video_rental = c.pk_video_rental_id " +
                             $"INNER JOIN district d on c.fk_video_district = d.pk_district_id " +
                             $"INNER JOIN property_type e on c.fk_property_type = e.pk_property_type_id " +
                             $"GROUP BY c.pk_video_rental_id,c.video_caption,d.district_name,e.property_type_name " +
-                            $"HAVING count(c.pk_video_rental_id) < 400";
+                            $"HAVING count(c.pk_video_rental_id) <{add.countryTB.Text}";
 
                         break;
                     }
@@ -3018,6 +3076,7 @@ namespace BD_course_work
                         twoforms add = new twoforms();
                         
                         add.ShowDialog();
+
                         com = $"select c.service_name,count(a.pk_deal_id),sum(a.general_price) from deals a " +
                             $"inner join services_prices b on a.fk_service_price = b.pk_service_price_id " +
                             $"inner join services c on b.fk_service_id = c.pk_service_id " +
@@ -3052,9 +3111,6 @@ namespace BD_course_work
                             "inner join district on c.fk_video_district=district.pk_district_id";
                         break;
                     }
-
-
-                
             }
 
 
@@ -3082,10 +3138,6 @@ namespace BD_course_work
             }
             catch(Exception e)
             { return null; }
-            
-
-
-
         }
 
         public static string district1;
